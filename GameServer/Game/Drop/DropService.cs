@@ -1,5 +1,6 @@
 using March7thHoney.Data;
 using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Scene;
 
 namespace March7thHoney.GameServer.Game.Drop;
@@ -35,7 +36,7 @@ public class DropService
 
         items.Add(new ItemData
         {
-            ItemId = 1,
+            ItemId = (int)VirtualItemEnum.Hcoin,
             Count = level switch
             {
                 ChestTypeEnum.CHEST_LOW_LEVEL => 5,
@@ -134,7 +135,7 @@ public class DropService
 
         items.Add(new ItemData
         {
-            ItemId = 2,
+            ItemId = (int)VirtualItemEnum.Scoin,
             Count = level switch
             {
                 ChestTypeEnum.CHEST_LOW_LEVEL => 750,

@@ -396,7 +396,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
                 if (battle.CocoonId > 0 &&
                     GameData.CocoonConfigData.TryGetValue(battle.CocoonId * 100 + battle.WorldLevel,
                         out var calyx) && calyx.CocoonType == CocoonTypeEnum.TYPE_NORMAL)
-                    await Player.InventoryManager!.AddItem(22, CalyxClearExp);
+                    await Player.InventoryManager!.AddItem((int)VirtualItemEnum.PlayerExp, CalyxClearExp);
                 break;
             case BattleEndStatus.BattleEndLose:
                 // Set avatar hp to 20% if the player's party is downed

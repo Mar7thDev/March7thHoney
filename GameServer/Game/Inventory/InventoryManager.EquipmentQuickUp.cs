@@ -119,12 +119,12 @@ public partial class InventoryManager
         requiredExp = Math.Max(0, requiredExp);
         if (providedExp < requiredExp) return (Retcode.RetItemNotEnough, []);
         foreach (var (id, count) in promotionCosts) costs[id] = costs.GetValueOrDefault(id) + count;
-        costs[2] = costs.GetValueOrDefault(2) + providedExp / 2;
+        costs[(int)VirtualItemEnum.Scoin] = costs.GetValueOrDefault((int)VirtualItemEnum.Scoin) + providedExp / 2;
         foreach (var (id, count) in costs)
         {
             if (count > int.MaxValue || !GameData.ItemConfigData.ContainsKey(id)) return (Retcode.RetReqParaInvalid, []);
             if ((GetItem(id)?.Count ?? 0) < count)
-                return (id == 2 ? Retcode.RetScoinNotEnough : Retcode.RetItemNotEnough, []);
+                return (id == (int)VirtualItemEnum.Scoin ? Retcode.RetScoinNotEnough : Retcode.RetItemNotEnough, []);
         }
 
         // All costs, caps and fodder protections are validated before the first inventory change.
@@ -132,7 +132,7 @@ public partial class InventoryManager
         foreach (var (id, count) in costs.Where(cost => cost.Value > 0))
         {
             var removed = await RemoveItem(id, (int)count, sync: false);
-            if (id != 2 && removed != null) changedMaterials[id] = removed;
+            if (id != (int)VirtualItemEnum.Scoin && removed != null) changedMaterials[id] = removed;
         }
         foreach (var consumed in fodder) await RemoveItem(consumed.ItemId, 1, consumed.UniqueId, false);
         var returns = new List<ItemData>();

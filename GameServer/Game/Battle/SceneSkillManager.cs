@@ -4,6 +4,7 @@ using March7thHoney.Data;
 using March7thHoney.Data.Config;
 using March7thHoney.Data.Config.Task;
 using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Drop;
 using March7thHoney.GameServer.Game.Player;
@@ -299,7 +300,7 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
         if (reward.Hcoin > 0)
             items.Add(new ItemData
             {
-                ItemId = 1,
+                ItemId = (int)VirtualItemEnum.Hcoin,
                 Count = reward.Hcoin
             });
 

@@ -2,7 +2,6 @@ using March7thHoney.Data;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Mission;
-using March7thHoney.GameServer.Game.DailyActive;
 using March7thHoney.GameServer.Game.Pet;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
@@ -212,12 +211,12 @@ public partial class InventoryManager(PlayerInstance player) : BasePlayerManager
         {
             ItemMainTypeEnum.Material or ItemMainTypeEnum.Pet or ItemMainTypeEnum.Mission or ItemMainTypeEnum.Usable =>
                 Data.MaterialItems.Find(x => x.ItemId == itemId)?.Count ?? 0,
-            ItemMainTypeEnum.Virtual => itemConfig.ID switch
+            ItemMainTypeEnum.Virtual => (VirtualItemEnum)itemConfig.ID switch
             {
-                1 => Player.Data.Hcoin,
-                2 => Player.Data.Scoin,
-                3 => Player.Data.Mcoin,
-                32 => Player.Data.TalentPoints,
+                VirtualItemEnum.Hcoin => Player.Data.Hcoin,
+                VirtualItemEnum.Scoin => Player.Data.Scoin,
+                VirtualItemEnum.Mcoin => Player.Data.Mcoin,
+                VirtualItemEnum.TalentPoint => Player.Data.TalentPoints,
                 _ => 0
             },
             _ => 0
@@ -310,21 +309,21 @@ public partial class InventoryManager(PlayerInstance player) : BasePlayerManager
                 break;
             case ItemMainTypeEnum.Virtual:
                 if (GetRemovableCount(itemId) < count) return null;
-                switch (itemConfig.ID)
+                switch ((VirtualItemEnum)itemConfig.ID)
                 {
-                    case 1:
+                    case VirtualItemEnum.Hcoin:
                         Player.Data.Hcoin -= count;
                         itemData = new ItemData { ItemId = itemId, Count = count };
                         break;
-                    case 2:
+                    case VirtualItemEnum.Scoin:
                         Player.Data.Scoin -= count;
                         itemData = new ItemData { ItemId = itemId, Count = count };
                         break;
-                    case 3:
+                    case VirtualItemEnum.Mcoin:
                         Player.Data.Mcoin -= count;
                         itemData = new ItemData { ItemId = itemId, Count = count };
                         break;
-                    case 32:
+                    case VirtualItemEnum.TalentPoint:
                         Player.Data.TalentPoints -= count;
                         itemData = new ItemData { ItemId = itemId, Count = count };
                         break;
@@ -388,53 +387,8 @@ public partial class InventoryManager(PlayerInstance player) : BasePlayerManager
                     ? Data.RelicItems.Find(x => x.UniqueId == uniqueId)
                     : Data.RelicItems.Find(x => x.ItemId == itemId);
             case ItemMainTypeEnum.Virtual:
-                switch (itemConfig?.ID ?? 0)
-                {
-                    case 1:
-                        return new ItemData
-                        {
-                            ItemId = itemId,
-                            Count = Player.Data.Hcoin
-                        };
-                    case 2:
-                        return new ItemData
-                        {
-                            ItemId = itemId,
-                            Count = Player.Data.Scoin
-                        };
-                    case 3:
-                        return new ItemData
-                        {
-                            ItemId = itemId,
-                            Count = Player.Data.Mcoin
-                        };
-                    case 11:
-                        return new ItemData
-                        {
-                            ItemId = itemId,
-                            Count = Player.Data.Stamina
-                        };
-                    case 22:
-                        return new ItemData
-                        {
-                            ItemId = itemId,
-                            Count = Player.Data.Exp
-                        };
-                    case 32:
-                        return new ItemData
-                        {
-                            ItemId = itemId,
-                            Count = Player.Data.TalentPoints
-                        };
-                    case DailyActiveManager.DailyActivePointItemId:
-                        return new ItemData
-                        {
-                            ItemId = itemId,
-                            Count = Player.GetComponentOrDefault<DailyActiveManager>()?.Point ?? 0
-                        };
-                }
-
-                break;
+                var balance = GetVirtualItemCount(itemConfig?.ID ?? 0);
+                return balance == null ? null : new ItemData { ItemId = itemId, Count = balance.Value };
         }
 
         return null;

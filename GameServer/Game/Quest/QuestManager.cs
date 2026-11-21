@@ -3,6 +3,7 @@ using March7thHoney.Data.Excel;
 using March7thHoney.Database;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Database.Quests;
+using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Mission;
 using March7thHoney.Enums.Quest;
 using March7thHoney.GameServer.Game.Battle;
@@ -301,7 +302,7 @@ public class QuestManager(PlayerInstance player) : BasePlayerManager<QuestData>(
                 rewards.Add(new ItemData { ItemId = itemId, Count = count });
 
         if (rewardData.Hcoin > 0)
-            rewards.Add(new ItemData { ItemId = 1, Count = rewardData.Hcoin });
+            rewards.Add(new ItemData { ItemId = (int)VirtualItemEnum.Hcoin, Count = rewardData.Hcoin });
     }
 
     public async ValueTask AddQuestProgress(int questId, int progress, bool push = false)

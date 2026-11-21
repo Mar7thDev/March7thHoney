@@ -80,13 +80,13 @@ public partial class InventoryManager
         if (providedExp < requiredExp) return (Retcode.RetAvatarResExpNotEnough, []);
         foreach (var (itemId, count) in promotionCosts)
             costs[itemId] = costs.GetValueOrDefault(itemId) + count;
-        costs[2] = costs.GetValueOrDefault(2) + providedExp / 10;
+        costs[(int)VirtualItemEnum.Scoin] = costs.GetValueOrDefault((int)VirtualItemEnum.Scoin) + providedExp / 10;
         foreach (var (itemId, count) in costs)
         {
             if (count > int.MaxValue || !GameData.ItemConfigData.ContainsKey(itemId))
                 return (Retcode.RetReqParaInvalid, []);
             if ((GetItem(itemId)?.Count ?? 0) < count)
-                return (itemId == 2 ? Retcode.RetScoinNotEnough : Retcode.RetItemNotEnough, []);
+                return (itemId == (int)VirtualItemEnum.Scoin ? Retcode.RetScoinNotEnough : Retcode.RetItemNotEnough, []);
         }
 
         // Validate every cost before consuming anything. Publish the final avatar, currency and
@@ -95,7 +95,7 @@ public partial class InventoryManager
         foreach (var (itemId, count) in costs.Where(cost => cost.Value > 0))
         {
             var removed = await RemoveItem(itemId, (int)count, sync: false);
-            if (itemId != 2 && removed != null) changedItems[itemId] = removed;
+            if (itemId != (int)VirtualItemEnum.Scoin && removed != null) changedItems[itemId] = removed;
         }
         var returns = new List<ItemData>();
         var leftover = providedExp - requiredExp;

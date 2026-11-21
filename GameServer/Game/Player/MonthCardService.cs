@@ -1,6 +1,7 @@
 using March7thHoney.Database;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Database.Player;
+using March7thHoney.Enums.Item;
 using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Player;
@@ -12,9 +13,9 @@ namespace March7thHoney.GameServer.Game.Player;
 /// </summary>
 public static class MonthCardService
 {
-    public const int DailyRewardItemId = 1; // Stellar Jade
+    public const int DailyRewardItemId = (int)VirtualItemEnum.Hcoin;
     public const int DailyRewardAmount = 90;
-    public const int PurchaseRewardItemId = 3; // Oneiric Shard
+    public const int PurchaseRewardItemId = (int)VirtualItemEnum.Mcoin;
     public const int PurchaseRewardAmount = 300;
     public const int ActiveDaysPerPurchase = 30;
 

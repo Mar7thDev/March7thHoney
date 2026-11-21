@@ -9,6 +9,7 @@ using March7thHoney.Database.Player;
 using March7thHoney.Database.Scene;
 using March7thHoney.Database.Tutorial;
 using March7thHoney.Enums.Avatar;
+using March7thHoney.Enums.Item;
 using March7thHoney.GameServer.Game.Activity;
 using March7thHoney.GameServer.Game.Activity.ActivityBangboo;
 using March7thHoney.GameServer.Game.Activity.ExpeditionBattle;
@@ -676,10 +677,10 @@ public partial class PlayerInstance(PlayerData data)
     {
         Data.Stamina -= staminaCost;
         await SendPacket(new PacketStaminaInfoScNotify(this));
-        // Spent Trailblaze Power counts as using item 11 ("Consume 120 Trailblaze Power").
+        // Spent Trailblaze Power counts as using its virtual item ("Consume 120 Trailblaze Power").
         if (staminaCost > 0 && MissionManager != null)
             await MissionManager.HandleFinishType(MissionFinishTypeEnum.UseItem,
-                new ItemData { ItemId = 11, Count = staminaCost });
+                new ItemData { ItemId = (int)VirtualItemEnum.Stamina, Count = staminaCost });
     }
 
     public void OnAddExp()

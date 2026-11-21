@@ -1,5 +1,6 @@
 using March7thHoney.Data.Excel;
 using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Item;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.Proto;
@@ -21,8 +22,6 @@ public enum RechargeResult
 /// </summary>
 public static class RechargeService
 {
-    private const int OneiricShardItemId = 3;
-
     private static readonly Logger Logger = new("Recharge");
 
     public static ValueTask<RechargeResult> Purchase(PlayerInstance player, RechargeConfigExcel product)
@@ -39,12 +38,12 @@ public static class RechargeService
     {
         if (!ConfigManager.Config.ServerOption.EnableFakeRecharge) return RechargeResult.Disabled;
 
-        List<ItemData> rewards = [new() { ItemId = OneiricShardItemId, Count = product.FirstCharge }];
+        List<ItemData> rewards = [new() { ItemId = (int)VirtualItemEnum.Mcoin, Count = product.FirstCharge }];
         if (product.NormalCharge > 0)
-            rewards.Add(new ItemData { ItemId = OneiricShardItemId, Count = product.NormalCharge });
+            rewards.Add(new ItemData { ItemId = (int)VirtualItemEnum.Mcoin, Count = product.NormalCharge });
 
         var total = rewards.Sum(x => x.Count);
-        await player.InventoryManager!.AddItem(OneiricShardItemId, total, notify: false, sync: false);
+        await player.InventoryManager!.AddItem((int)VirtualItemEnum.Mcoin, total, notify: false, sync: false);
         await player.SendPacket(new PacketPlayerSyncScNotify(player.ToProto()));
         await player.SendPacket(new PacketRechargeSuccNotify(product.ProductID, rewards,
             MonthCardService.GetMonthCardOutDateTime(player.Data)));

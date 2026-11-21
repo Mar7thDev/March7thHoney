@@ -149,7 +149,7 @@ public partial class InventoryManager
         var costScoin = exp / 10;
         if (Player.Data.Scoin < costScoin) return [];
         foreach (var cost in item.ItemList) await RemoveItem((int)cost.PileItem.ItemId, (int)cost.PileItem.ItemNum);
-        await RemoveItem(2, costScoin);
+        await RemoveItem((int)VirtualItemEnum.Scoin, costScoin);
 
         var maxLevel = promotionConfig.MaxLevel;
         var curExp = avatarData.Exp;
@@ -293,7 +293,7 @@ public partial class InventoryManager
         if (Player.Data.Scoin < costScoin) return (Retcode.RetScoinNotEnough, []);
         await RemoveItems(costItems);
 
-        await RemoveItem(2, costScoin);
+        await RemoveItem((int)VirtualItemEnum.Scoin, costScoin);
 
         var maxLevel = equipmentPromotionConfig.MaxLevel;
         var curExp = itemData.Exp;
@@ -460,7 +460,7 @@ public partial class InventoryManager
             }
 
         // credit
-        await RemoveItem(2, money);
+        await RemoveItem((int)VirtualItemEnum.Scoin, money);
 
         // level up
         GameData.RelicConfigData.TryGetValue(relicItem.ItemId, out var relicExcel);

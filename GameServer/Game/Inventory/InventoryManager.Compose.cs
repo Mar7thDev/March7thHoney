@@ -50,7 +50,7 @@ public partial class InventoryManager
             .. composeConfig.MaterialCost.Where(cost => cost.ItemNum != 0)
                 .Select(cost => (cost.ItemID, (long)cost.ItemNum * count))
         ];
-        if (composeConfig.CoinCost != 0) costs.Add((2, (long)composeConfig.CoinCost * count));
+        if (composeConfig.CoinCost != 0) costs.Add(((int)VirtualItemEnum.Scoin, (long)composeConfig.CoinCost * count));
 
         if (composeConfig.SpecialMaterialCostNumber > 0 && composeConfig.SpecialMaterialCost.Count > 0)
         {
