@@ -10,7 +10,7 @@ Upgrade tool: [`scripts/SceneCacheUpgrade/`](../../scripts/SceneCacheUpgrade/)
 
 ### Background
 
-`IsHoyoGroup` is stored as an appended nullable field: it is `null` in an old cache, and `false` when the raw resources omit the field. At runtime the server rejects a cache in which server-side atmosphere groups lack this metadata, so that updating only the program cannot keep loading the wrong atmosphere groups. A release must ship with its matching `Config/Resource.bin`.
+`IsHoyoGroup` is stored as an appended nullable field: it is `null` in an old cache, and `false` when the raw resources omit the field. The 4.5 production build rejected a cache in which server-side atmosphere groups lacked this metadata; the current version no longer checks it at load time, so keep the metadata in place with this tool. A release must ship with its matching `Config/Resource.bin`.
 
 ### Prerequisites
 

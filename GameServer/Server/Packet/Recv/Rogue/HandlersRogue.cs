@@ -287,13 +287,9 @@ public sealed class HandlerHandleRogueCommonPendingActionCsReq : Handler<OFEDNNJ
 
         await connection.SendPacket(BasePacket.Create(CmdIds.HandleRogueCommonPendingActionScRsp, rsp));
 
-        // A pick that completes a path-resonance threshold opens the aeon draft; the client needs it twice.
+        // A pick that completes a path-resonance threshold opens the aeon draft.
         if (ret == Retcode.RetSucc && manager.RogueInstance is { BuffSelect.HasSelection: true } inst)
-        {
             await connection.SendPacket(new PacketSyncRogueCommonPendingActionScNotify(RogueManager.BuildPendingAction(inst)));
-            if (GameConstants.IsVersion("4.5.0"))
-                await connection.SendPacket(new PacketSyncRogueCommonPendingActionScNotify(RogueManager.BuildPendingAction(inst)));
-        }
     }
 
     // Parameterless arms are reroll answers; a Simulated Universe run only holds a blessing draft to reroll.

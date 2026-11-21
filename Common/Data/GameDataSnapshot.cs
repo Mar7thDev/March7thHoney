@@ -16,9 +16,13 @@ using March7thHoney.Enums.Item;
 
 namespace March7thHoney.Data;
 
-// Auto-generated companion to GameData. Aggregates every static resource collection into a single
+// Hand-maintained companion to GameData. Aggregates every static resource collection into a single
 // MemoryPack-serializable object for the binary resource cache (Resource.bin). ConcurrentDictionary
 // fields are stored as plain Dictionary and converted back on apply.
+// The member order below IS the cache format: MemoryPack serializes members in declaration order, so
+// members are append-only. Never reorder, rename into a different position or remove a member, even
+// one nothing reads any more; add new members at the end and give them a null fallback in
+// ApplySnapshot, because an older cache deserializes them as null.
 [MemoryPackable]
 public partial class GameDataSnapshot
 {
