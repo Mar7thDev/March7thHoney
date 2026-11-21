@@ -192,7 +192,7 @@ public static class GlobalChatManager
         _ = PostWebhookAsync(uri, content);
     }
 
-    private static async System.Threading.Tasks.Task PostWebhookAsync(Uri uri, string content)
+    private static async Task PostWebhookAsync(Uri uri, string content)
     {
         try
         {

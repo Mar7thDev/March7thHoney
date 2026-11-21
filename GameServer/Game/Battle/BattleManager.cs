@@ -19,6 +19,17 @@ namespace March7thHoney.GameServer.Game.Battle;
 
 public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
 {
+    /// <summary>Lets every game mode that can own a battle adjust it before it is sent to the client.</summary>
+    private void NotifyBattleStart(BattleInstance battleInstance)
+    {
+        Player.ChallengeManager!.ChallengeInstance?.OnBattleStart(battleInstance);
+        Player.RogueManager?.OnBattleStart(battleInstance);
+        Player.RogueTournManager?.OnBattleStart(battleInstance);
+        Player.RogueMagicManager?.OnBattleStart(battleInstance);
+        Player.ChessRogueManager?.OnBattleStart(battleInstance);
+        Player.QuestManager!.OnBattleStart(battleInstance);
+    }
+
     public StageConfigExcel? NextBattleStageConfig { get; set; }
     public List<int> NextBattleMonsterIds { get; set; } = [];
 
@@ -139,12 +150,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
             var gmSpawnLevel = ApplyGmSpawnLoadout(battleInstance, targetList.Where(x => x.IsAlive));
 
             // call battle start
-            Player.ChallengeManager!.ChallengeInstance?.OnBattleStart(battleInstance);
-            Player.RogueManager?.OnBattleStart(battleInstance);
-            Player.RogueTournManager?.OnBattleStart(battleInstance);
-            Player.RogueMagicManager?.OnBattleStart(battleInstance);
-            Player.ChessRogueManager?.OnBattleStart(battleInstance);
-            Player.QuestManager!.OnBattleStart(battleInstance);
+            NotifyBattleStart(battleInstance);
 
             // A mode's own level override (challenge/rogue) always wins over the /spawn lvN request.
             if (gmSpawnLevel > 0 && battleInstance.CustomLevel == 0) battleInstance.CustomLevel = gmSpawnLevel;
@@ -220,12 +226,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         battleInstance.AvatarInfo = avatarList;
 
         // call battle start
-        Player.ChallengeManager!.ChallengeInstance?.OnBattleStart(battleInstance);
-        Player.RogueManager?.OnBattleStart(battleInstance);
-        Player.RogueTournManager?.OnBattleStart(battleInstance);
-        Player.RogueMagicManager?.OnBattleStart(battleInstance);
-        Player.ChessRogueManager?.OnBattleStart(battleInstance);
-        Player.QuestManager!.OnBattleStart(battleInstance);
+        NotifyBattleStart(battleInstance);
 
         Player.BattleInstance = battleInstance;
 
