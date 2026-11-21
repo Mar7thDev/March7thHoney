@@ -421,6 +421,78 @@ public class LineupManager : BasePlayerManager<LineupData>
         }
     }
 
+    /// <summary>
+    ///     Rewrites trial slots saved with a SpecialAvatar row key (special avatar ID * 10 + world level) to the
+    ///     special avatar ID, and brings the trial avatars of all trial slots to the player's world level.
+    /// </summary>
+    public void RefreshTrialAvatarSlots()
+    {
+        foreach (var info in GetAllLineup().SelectMany(lineupInfo => lineupInfo.BaseAvatars ?? []))
+        {
+            if (info.SpecialAvatarId > 0 &&
+                GameData.SpecialAvatarData.TryGetValue(info.SpecialAvatarId, out var excel))
+            {
+                info.SpecialAvatarId = excel.SpecialAvatarID;
+                Player.AvatarManager!.GetTrialAvatar(excel.SpecialAvatarID)?.CheckLevel(Player.Data.WorldLevel);
+            }
+
+            if (info.SpecialAvatarId > 0 &&
+                GameData.SpecialAvatarData.TryGetValue(info.SpecialAvatarId * 10 + 0, out var e))
+                Player.AvatarManager!.GetTrialAvatar(e.SpecialAvatarID)?.CheckLevel(Player.Data.WorldLevel);
+        }
+    }
+
+    /// <summary>
+    ///     Login-time repair of the saved lineups, before the scene loads: leaves an extra lineup that no running mode
+    ///     owns any more, trims oversized lineups, moves trial IDs saved as a base avatar into the trial slot and
+    ///     revives the fallen members of the current lineup. A new account without a current lineup is left alone.
+    /// </summary>
+    public async ValueTask RepairAtLogin(bool extraLineupOwned)
+    {
+        if (GetCurLineup() == null) return;
+
+        if (GetCurLineup()!.IsExtraLineup() && !extraLineupOwned)
+        {
+            SetExtraLineup(ExtraLineupType.LineupNone, []);
+            if (GetCurLineup()!.IsExtraLineup()) await SetCurLineup(0);
+        }
+
+        foreach (var lineup in Data.Lineups)
+        {
+            if (lineup.Value.BaseAvatars!.Count >= 5)
+                lineup.Value.BaseAvatars = lineup.Value.BaseAvatars.GetRange(0, 4);
+
+            foreach (var avatar in lineup.Value.BaseAvatars!)
+                if (avatar.BaseAvatarId > 10000)
+                {
+                    GameData.SpecialAvatarData.TryGetValue(avatar.BaseAvatarId, out var special);
+                    if (special != null)
+                    {
+                        avatar.SpecialAvatarId = special.SpecialAvatarID;
+                        avatar.BaseAvatarId = special.AvatarID;
+                    }
+                    else
+                    {
+                        GameData.SpecialAvatarData.TryGetValue(avatar.BaseAvatarId * 10 + Player.Data.WorldLevel,
+                            out special);
+                        if (special != null)
+                        {
+                            avatar.SpecialAvatarId = special.SpecialAvatarID;
+                            avatar.BaseAvatarId = special.AvatarID;
+                        }
+                    }
+                }
+        }
+
+        foreach (var avatar in GetCurLineup()!.BaseAvatars!)
+        {
+            var avatarData = Player.AvatarManager!.GetFormalAvatar(avatar.BaseAvatarId);
+            if (avatarData is { CurrentHp: <= 0 })
+                // revive
+                avatarData.CurrentHp = 2000;
+        }
+    }
+
     public async ValueTask AddAvatarToCurTeam(int avatarId, bool sendPacket = true)
     {
         await AddAvatar(Data.GetCurLineupIndex(), avatarId, sendPacket);

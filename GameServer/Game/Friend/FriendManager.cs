@@ -17,6 +17,16 @@ public partial class FriendManager(PlayerInstance player) : BasePlayerManager(pl
     public FriendData FriendData { get; set; } =
         DatabaseHelper.Instance!.GetInstanceOrCreateNew<FriendData>(player.Uid);
 
+    /// <summary>Drops the development records (shown on the friend profile) that are a week old or older.</summary>
+    public void PruneExpiredDevelopmentRecords()
+    {
+        if (Player.FriendRecordData is not { } records) return;
+        foreach (var friendDevelopmentInfoPb in records.DevelopmentInfos.ToArray())
+            if (Extensions.GetUnixSec() - friendDevelopmentInfoPb.Time >=
+                TimeSpan.TicksPerDay * 7 / TimeSpan.TicksPerSecond)
+                records.DevelopmentInfos.Remove(friendDevelopmentInfoPb);
+    }
+
     public async ValueTask<Retcode> AddFriend(int targetUid)
     {
         if (targetUid == Player.Uid) return Retcode.RetSucc; // Cannot add self

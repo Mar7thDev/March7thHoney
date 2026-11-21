@@ -65,7 +65,8 @@ internal static class RealityShowRegression
 
         var player = new PlayerInstance(60060);
         await player.InitializeAsync();
-        foreach (var avatarId in new[] { 1407, 1413, 1415, 1409, 1001 }) await player.AddAvatar(avatarId, false, false);
+        foreach (var avatarId in new[] { 1407, 1413, 1415, 1409, 1001 })
+            await player.AvatarManager!.AddAvatar(avatarId, false, false);
         var connection = new ProbeConnection(peer) { Player = player };
         player.Connection = connection;
         var manager = player.GetComponent<RealityShowManager>();

@@ -15,8 +15,14 @@ using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Avatar;
 
-public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData>(player)
+public partial class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData>(player)
 {
+    /// <summary>March 7th: every new account starts with her, and she joins the team at character creation.</summary>
+    public const int StarterCompanionAvatarId = 1001;
+
+    /// <summary>Star Rail Pass, the standard warp ticket (the cost item of the standard banner).</summary>
+    public const int PromotionRewardItemId = 101;
+
     private static readonly Logger Logger = new("Avatar");
 
     public async ValueTask<AvatarConfigExcel?> AddAvatar(int avatarId, bool sync = true, bool notify = true,
@@ -66,6 +72,45 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         if (notify) await Player.SendPacket(new PacketAddAvatarScNotify(avatar.BaseAvatarId, isGacha));
 
         return avatarExcel;
+    }
+
+    public async ValueTask<FormalAvatarInfo> MarkAvatar(int avatarId, bool isMarked, bool sendPacket = true)
+    {
+        var avatar = GetFormalAvatar(avatarId)!;
+        avatar.IsMarked = isMarked;
+        if (sendPacket) await Player.SendPacket(new PacketPlayerSyncScNotify(avatar));
+        return avatar;
+    }
+
+    /// <summary>Caps every stored skill level at the skill tree's MaxLevel (saves made under older tables).</summary>
+    public void ClampSkillLevels()
+    {
+        foreach (var avatar in Data.FormalAvatars)
+        foreach (var path in avatar.PathInfos.Values)
+        foreach (var skill in path.GetSkillTree())
+        {
+            GameData.AvatarSkillTreeConfigData.TryGetValue(skill.Key * 100 + 1, out var config);
+            if (config == null) continue;
+            path.GetSkillTree()[skill.Key] = Math.Min(skill.Value, config.MaxLevel); // limit skill level
+        }
+    }
+
+    /// <summary>
+    ///     Claims the reward of a promotion level the avatar has already reached. Every check runs before the claim is
+    ///     recorded; on success the paid items are returned.
+    /// </summary>
+    public async ValueTask<(Retcode Retcode, List<Proto.Item> Rewards)> TakePromotionReward(int baseAvatarId,
+        int promotion)
+    {
+        var avatar = GetFormalAvatar(baseAvatarId);
+        if (avatar == null) return (Retcode.RetAvatarNotExist, []);
+        if (promotion < 0 || promotion >= avatar.Promotion) return (Retcode.RetPromotionRewardConfigNotExist, []);
+        if (avatar.HasTakenReward(promotion)) return (Retcode.RetPromotionRewardAlreadyTaken, []);
+
+        avatar.TakeReward(promotion);
+        await Player.InventoryManager!.AddItem(PromotionRewardItemId, 1, false);
+        await Player.SendPacket(new PacketPlayerSyncScNotify(avatar));
+        return (Retcode.RetSucc, [new Proto.Item { ItemId = PromotionRewardItemId, Num = 1 }]);
     }
 
     public FormalAvatarInfo? GetFormalAvatar(int avatarId)
@@ -249,57 +294,6 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
             }
         }
 
-        return true;
-    }
-
-    public FormalAvatarInfo? GetHero()
-    {
-        return Data.FormalAvatars.Find(avatar => avatar.BaseAvatarId == TrailblazerAvatar.BaseAvatarId);
-    }
-
-    /// <summary>
-    ///     Corrects the Trailblazer's current path before login (yuukisr_go a532fa0): <c>cur_multi_path_avatar_type</c>
-    ///     must be a Trailblazer path variant and, once the gender is known, must match the player's gender. Old saves
-    ///     can hold a non-path id or a variant of the opposite gender; the client resolves the team leader from it,
-    ///     finds no path data, <c>TeamManager._CreateMemberEntity</c> throws IndexOutOfRange and login hangs on the
-    ///     loading screen. Only the in-memory data is fixed and marked dirty, to be persisted by the next save; data
-    ///     that is already consistent is left untouched. Returns whether a correction was made.
-    /// </summary>
-    public bool NormalizeHeroCurPath()
-    {
-        var hero = GetHero();
-        if (hero == null) return false;
-
-        var gender = Player.Data.CurrentGender;
-        // With missions enabled and no gender chosen yet, the client has not decided the protagonist's look, so the
-        // default gender must not drive a correction.
-        var genderKnown = gender is Gender.Man or Gender.Woman && (Player.Data.IsGenderSet || !Player.MissionEnabled);
-        var cur = hero.AvatarId;
-
-        if (!TrailblazerAvatar.IsPath(cur))
-        {
-            // Not a path id: fall back to the lowest-numbered owned path that matches the gender (when known); if there
-            // is none, use that gender's Destruction path.
-            var owned = hero.PathInfos.Keys.Where(TrailblazerAvatar.IsPath)
-                .Where(id => !genderKnown || TrailblazerAvatar.NormalizePathId(id, gender) == id)
-                .OrderBy(id => id).ToList();
-            cur = owned.Count > 0
-                ? owned[0]
-                : gender == Gender.Man ? TrailblazerAvatar.MaleDestructionId : TrailblazerAvatar.FemaleDestructionId;
-        }
-        else if (genderKnown)
-        {
-            cur = TrailblazerAvatar.NormalizePathId(cur, gender);
-        }
-
-        var hasPath = hero.PathInfos.ContainsKey(cur);
-        if (cur == hero.AvatarId && Player.Data.CurBasicType == cur && hasPath) return false;
-        if (!hasPath && !hero.EnsurePathInfo(cur)) return false;
-
-        Logger.Warn($"Player {Player.Uid}: Trailblazer current path {hero.AvatarId} retargeted to {cur}");
-        hero.AvatarId = cur;
-        Player.Data.CurBasicType = cur;
-        MarkDirty();
         return true;
     }
 

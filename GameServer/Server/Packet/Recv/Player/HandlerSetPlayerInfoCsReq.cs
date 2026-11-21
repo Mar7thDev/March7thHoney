@@ -1,4 +1,4 @@
-using March7thHoney.Enums.Avatar;
+using March7thHoney.GameServer.Game.Avatar;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.Kcp;
@@ -9,6 +9,9 @@ namespace March7thHoney.GameServer.Server.Packet.Recv.Player;
 [Opcode(CmdIds.SetPlayerInfoCsReq)]
 public class HandlerSetPlayerInfoCsReq : Handler<SetPlayerInfoCsReq>
 {
+    /// <summary>The prologue sub-mission that waits for the nickname and gender choice.</summary>
+    private const int NameAndGenderSubMissionId = 100010134;
+
     protected override async Task OnHandle(Connection connection, PlayerInstance player, SetPlayerInfoCsReq req)
     {
         if (req == null) return;
@@ -21,17 +24,14 @@ public class HandlerSetPlayerInfoCsReq : Handler<SetPlayerInfoCsReq>
             return;
         }
 
-        if (req.Gender == Gender.Woman)
-            player.Data.CurrentGender = Gender.Woman;
-        else
-            player.Data.CurrentGender = Gender.Man;
-        player.Data.IsGenderSet = true;
-        await player.ChangeAvatarPathType(8001, MultiPathAvatarTypeEnum.Warrior);
+        await player.AvatarManager!.SetHeroGenderAtCreation(req.Gender);
 
-        var heroAvatarId = player.Data.CurrentGender == Gender.Woman ? 8002 : 8001;
+        var heroAvatarId = player.Data.CurrentGender == Gender.Woman
+            ? TrailblazerAvatar.FemaleDestructionId
+            : TrailblazerAvatar.MaleDestructionId;
         await player.LineupManager!.AddAvatarToRealTeam(heroAvatarId);
-        await player.LineupManager!.AddAvatarToRealTeam(1001);
-        await player.MissionManager!.FinishSubMission(100010134);
+        await player.LineupManager!.AddAvatarToRealTeam(AvatarManager.StarterCompanionAvatarId);
+        await player.MissionManager!.FinishSubMission(NameAndGenderSubMissionId);
 
         await connection.SendPacket(new PacketSetPlayerInfoScRsp(player, req.IsModify));
         await connection.SendPacket(new PacketPlayerSyncScNotify(player.ToProto()));

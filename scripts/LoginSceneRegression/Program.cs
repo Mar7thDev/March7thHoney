@@ -685,24 +685,24 @@ Check("avatar data basic types and path list agree on the hero's gender",
 var heroSync = PlayerSyncScNotify.Parser.ParseFrom(new PacketPlayerSyncScNotify(hero).Data);
 Check("avatar sync announces only the hero's gender paths",
     OnlyGender(heroSync.AvatarSync.AvatarPathDataInfoList.Select(x => x.AvatarId), 0));
-Check("female choosing a male path id stores the female variant", await givePlayer.ChangeAvatarPathType(8001,
+Check("female choosing a male path id stores the female variant", await givePlayer.AvatarManager!.ChangePathType(8001,
     (MultiPathAvatarTypeEnum)8003) == 8004 && hero.AvatarId == 8004 && givePlayer.Data.CurBasicType == 8004);
-Check("female choosing a female path id keeps it", await givePlayer.ChangeAvatarPathType(8001,
+Check("female choosing a female path id keeps it", await givePlayer.AvatarManager!.ChangePathType(8001,
     (MultiPathAvatarTypeEnum)8006) == 8006 && hero.AvatarId == 8006);
-Check("path change accepts any variant id as the base", await givePlayer.ChangeAvatarPathType(8004,
+Check("path change accepts any variant id as the base", await givePlayer.AvatarManager!.ChangePathType(8004,
     (MultiPathAvatarTypeEnum)8002) == 8002 && hero.AvatarId == 8002);
-Check("another character's path cannot be put on the hero", await givePlayer.ChangeAvatarPathType(8001,
+Check("another character's path cannot be put on the hero", await givePlayer.AvatarManager!.ChangePathType(8001,
     MultiPathAvatarTypeEnum.Mar_7thRogue) == 0 && hero.AvatarId == 8002);
-Check("non-hero path change stores the requested path", await givePlayer.ChangeAvatarPathType(1001,
+Check("non-hero path change stores the requested path", await givePlayer.AvatarManager!.ChangePathType(1001,
     MultiPathAvatarTypeEnum.Mar_7thRogue) == 1224 && ownedMarch.AvatarId == 1224);
 giveSender.Messages.Clear();
 await new CommandHero().ChangeType(new CommandArg("type 1001", giveSender, giveTarget));
 Check("/hero type rejects a non-Trailblazer path", hero.AvatarId == 8002
     && giveSender.Messages.Single() == I18NManager.Translate("Game.Command.Hero.HeroTypeNotSpecified"));
-await givePlayer.SetHeroGender(Gender.Man);
+await givePlayer.AvatarManager!.SetHeroGender(Gender.Man);
 Check("gender switch keeps stored paths and announces only male paths", hero.AvatarId == 8001
     && hero.PathInfos.ContainsKey(8004) && OnlyGender(AnnouncedHeroPaths(), 1));
-Check("male choosing a female path id stores the male variant", await givePlayer.ChangeAvatarPathType(8001,
+Check("male choosing a female path id stores the male variant", await givePlayer.AvatarManager!.ChangePathType(8001,
     (MultiPathAvatarTypeEnum)8004) == 8003 && hero.AvatarId == 8003 && OnlyGender(AnnouncedHeroPaths(), 1));
 
 var rogueTournLobby = new SceneInstance(player, GameData.MazePlaneData[10341], 10341001, 10341901);
@@ -1647,7 +1647,7 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
     // Skin changes must persist and both incremental and full snapshots must select the same owner.
     var skinPlayer = new PlayerInstance(60021);
     await skinPlayer.InitializeAsync();
-    await skinPlayer.AddAvatar(1415, false, false);
+    await skinPlayer.AvatarManager!.AddAvatar(1415, false, false);
     var skinAvatar = skinPlayer.AvatarManager!.GetFormalAvatar(1415)!;
     skinAvatar.Level = 21;
     var skinPath = skinAvatar.GetCurPathInfo();
@@ -1684,7 +1684,7 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
             savedSkinAvatar.GetCurPathInfo().Skin == 1141501 && savedSkinAvatar.Level == 21 &&
             savedSkinAvatar.GetCurPathInfo().EquipId == skinCone.UniqueId && savedSkinAvatar.GetCurPathInfo().Relic[1] == skinRelic.UniqueId);
     }
-    await skinPlayer.AddAvatar(1415, false, false);
+    await skinPlayer.AvatarManager!.AddAvatar(1415, false, false);
     Check("adding an owned avatar does not create an empty duplicate or reset its loadout",
         skinPlayer.AvatarManager.Data.FormalAvatars.Count(avatar => avatar.BaseAvatarId == 1415) == 1 &&
         ReferenceEquals(skinPlayer.AvatarManager.GetFormalAvatar(1415), skinAvatar) && skinPath.Skin == 1141501);
@@ -1742,7 +1742,7 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
         File.ReadAllText(Path.Combine(repository, "Config", "Custom", "AvatarExRankMaterials.json"))));
     var exRankPlayer = new PlayerInstance(60031);
     await exRankPlayer.InitializeAsync();
-    await exRankPlayer.AddAvatar(1308, false, false);
+    await exRankPlayer.AvatarManager!.AddAvatar(1308, false, false);
     exRankPlayer.AvatarManager!.Data.ExRankIds[1308] = [130801];
     var exRankAvatar = exRankPlayer.AvatarManager.GetFormalAvatar(1308)!;
     var exRankCollection = new March7thHoney.Database.Avatar.PlayerDataCollection(exRankPlayer.Data, exRankPlayer.InventoryManager!.Data, new());
@@ -1787,8 +1787,8 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
     var extraPathId = GameData.MultiplePathAvatarConfigData.Values.First(path => path.BaseAvatarID == 8001 &&
         path.AvatarID != 8001 && !pathOwner.PathInfos.ContainsKey(path.AvatarID) && GameData.AvatarConfigData.ContainsKey(path.AvatarID)).AvatarID;
     var currentPathId = pathOwner.AvatarId;
-    await skinPlayer.AddAvatar(extraPathId, false, false);
-    await skinPlayer.AddAvatar(extraPathId, false, false);
+    await skinPlayer.AvatarManager!.AddAvatar(extraPathId, false, false);
+    await skinPlayer.AvatarManager!.AddAvatar(extraPathId, false, false);
     Check("repeated alternate path unlock keeps a single owner and its current path",
         skinPlayer.AvatarManager.Data.FormalAvatars.Count(avatar => avatar.BaseAvatarId == 8001) == 1 &&
         pathOwner.AvatarId == currentPathId && pathOwner.PathInfos.ContainsKey(extraPathId));
@@ -1802,7 +1802,7 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
     {
         var ahaPlayer = new PlayerInstance(60042);
         await ahaPlayer.InitializeAsync();
-        await ahaPlayer.AddAvatar(ahaAvatarId, false, false);
+        await ahaPlayer.AvatarManager!.AddAvatar(ahaAvatarId, false, false);
         var ahaConnection = new ProbeConnection(serverPeer) { Player = ahaPlayer };
         ahaPlayer.Connection = ahaConnection;
 
@@ -2292,7 +2292,7 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
     int[] collabLineup = [1015, 1514, 1515];
     if (collabLineup.All(GameData.AvatarConfigData.ContainsKey))
     {
-        foreach (var avatarId in collabLineup) await ambushPlayer.AddAvatar(avatarId, false, false);
+        foreach (var avatarId in collabLineup) await ambushPlayer.AvatarManager!.AddAvatar(avatarId, false, false);
         await ambushPlayer.LineupManager!.ReplaceLineup(ambushPlayer.LineupManager.Data.GetCurLineupIndex(), [.. collabLineup]);
         await ambushScene.SyncLineup(true);
         ambushPlayer.Connection = ambushConnection;

@@ -86,7 +86,7 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
             list.Add(await AcceptSubMission(i, sendPacket));
         if (missionId == 1000400)
         {
-            await Player.AddAvatar(1003);
+            await Player.AvatarManager!.AddAvatar(1003);
             await Player.LineupManager!.AddAvatarToCurTeam(1003);
         }
 
