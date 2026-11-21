@@ -4,8 +4,8 @@ using March7thHoney.Data;
 using March7thHoney.Database;
 using March7thHoney.Kcp;
 using March7thHoney.Util;
-using March7thHoney.WebServer.Services;
 using March7thHoney.WebServer.Server;
+using March7thHoney.WebServer.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
@@ -31,7 +31,7 @@ public static partial class AdminRoutes
     {
         var config = ConfigManager.Config;
         using var process = Process.GetCurrentProcess();
-        var (machineTotalMb, machineAvailableMb) = MuipManager.GetMachineMemory();
+        var (machineTotalMb, machineAvailableMb) = HostMetrics.GetMachineMemory();
         var rateLimits = AuthRateLimiter.GetSnapshot();
         var now = Extensions.GetUnixSec();
 

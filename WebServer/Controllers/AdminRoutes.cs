@@ -7,10 +7,10 @@ using March7thHoney.Database.Player;
 using March7thHoney.GameServer.Server;
 using March7thHoney.Kcp;
 using March7thHoney.Util;
-using March7thHoney.WebServer.Services;
 using March7thHoney.WebServer.Http;
 using March7thHoney.WebServer.Pages;
 using March7thHoney.WebServer.Server;
+using March7thHoney.WebServer.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
@@ -121,7 +121,7 @@ public static partial class AdminRoutes
         var onlinePlayers = GetOnlinePlayers();
         using var process = Process.GetCurrentProcess();
         var option = ConfigManager.Config.ServerOption;
-        var (machineTotalMb, machineAvailableMb) = MuipManager.GetMachineMemory();
+        var (machineTotalMb, machineAvailableMb) = HostMetrics.GetMachineMemory();
 
         var stats = new OverviewStats(
             accounts.Count,
