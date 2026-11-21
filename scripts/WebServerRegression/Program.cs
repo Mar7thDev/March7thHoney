@@ -223,6 +223,8 @@ Check("windy loaded requires a target", await Execute("/windy loaded") ==
                                              I18NManager.Translate("Game.Command.Notice.PlayerNotFound"));
 
 Check("web console does not inherit terminal target", await Execute("/regression-probe") == "target=0;explicit=False");
+// Web commands run on a per-request session that never enters the MUIP table or its admission limits.
+Check("admin page commands do not register MUIP sessions", probe.SessionsDuringRun == 0);
 Check("target field is explicit", await Execute("/regression-probe", 10002) == "target=10002;explicit=True");
 Check("leading @uid selects only this command", await Execute("@10002 /regression-probe") == "target=10002;explicit=True");
 Check("trailing @uid selects only this command", await Execute("/regression-probe @10002") == "target=10002;explicit=True");
@@ -301,6 +303,10 @@ using (var connect = await ConsolePost("/player/exec", new { command = "" }, con
     Check("console connect reports the session", connect.RootElement.GetProperty("output").GetString()!.Contains($"UID {fixtureUid}"));
 using (var help = await ConsolePost("/player/exec", new { command = "/help" }, consoleToken))
     Check("console runs an allowed command", help.RootElement.GetProperty("output").GetString()!.Contains("/help"));
+probe.SessionsDuringRun = -1;
+using (var probeRun = await ConsolePost("/player/exec", new { command = "/regression-probe" }, consoleToken))
+    Check("player console commands do not register MUIP sessions",
+        probeRun.RootElement.GetProperty("retcode").GetInt32() == 0 && probe.SessionsDuringRun == 0);
 using (var denied = await ConsolePost("/player/exec", new { command = "/account roles" }, consoleToken))
     Check("console refuses a command the role lacks",
         denied.RootElement.GetProperty("output").GetString()!.Contains(I18NManager.Translate("Game.Command.Notice.NoPermission")));
@@ -466,11 +472,13 @@ sealed class ProbeCommand : ICommand
 {
     public Connection? LastTarget;
     public bool LastExplicit;
+    public int SessionsDuringRun = -1;
 
     public object? Run(CommandArg arg)
     {
         LastTarget = arg.Target;
         LastExplicit = arg.IsTargetExplicit;
+        SessionsDuringRun = MuipManager.Sessions.Count;
         if (arg.Args.Contains("delayed")) return Delayed(arg);
         if (arg.Args.Contains("throws")) return Throws();
         return arg.SendMsg($"target={arg.Target?.Player?.Uid ?? 0};explicit={arg.IsTargetExplicit}");

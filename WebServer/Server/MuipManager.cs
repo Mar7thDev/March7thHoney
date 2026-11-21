@@ -7,6 +7,7 @@ using System.Text;
 using March7thHoney.Command;
 using March7thHoney.Data;
 using March7thHoney.Database;
+using March7thHoney.Database.Account;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Lineup;
 using March7thHoney.Database.Player;
@@ -195,28 +196,66 @@ public static class MuipManager
             if (string.IsNullOrWhiteSpace(commandStr))
                 return new ExecuteCommandResponse(3, "Wrong encrypted key");
 
-            var handler = CommandHandler;
-            if (handler == null)
-                return new ExecuteCommandResponse(5, "Command handler is not initialized!");
-
-            logger.Info($"SessionId: {sessionId}, UID: {targetUid}, ExecuteCommand: {commandStr}");
-            var output = new StringBuilder();
-            var sender = new MuipCommandSender(session, msg =>
-            {
-                lock (output) output.Append(msg).Append("\r\n");
-            }) { SenderUid = targetUid };
-
-            await handler(commandStr, sender).ConfigureAwait(false);
+            var result = await RunCommandAsync(session, commandStr, targetUid).ConfigureAwait(false);
+            if (result.Code != 0)
+                return new ExecuteCommandResponse(result.Code, result.Message);
 
             return new ExecuteCommandResponse(0, "Success", new ExecuteCommandData
             {
                 SessionId = sessionId,
-                Message = Convert.ToBase64String(Encoding.UTF8.GetBytes(output.ToString()))
+                Message = Convert.ToBase64String(Encoding.UTF8.GetBytes(result.Output))
             });
         }
 
         return new ExecuteCommandResponse(2, "Session not found!");
     }
+
+    /// <summary>
+    ///     Builds the session for a web caller that authenticated the request itself (the admin page or the player
+    ///     console). It is never added to <see cref="Sessions" />, so it cannot be looked up by ID and does not count
+    ///     toward the admission limits.
+    /// </summary>
+    internal static MuipSession CreateLocalSession(string idPrefix, bool isAdmin, AccountData? account = null)
+    {
+        return new MuipSession
+        {
+            SessionId = $"{idPrefix}-{Guid.NewGuid():N}",
+            ExpireTimeStamp = DateTimeOffset.UtcNow.AddMinutes(1).ToUnixTimeSeconds(),
+            IsAdmin = isAdmin,
+            IsAuthorized = true,
+            Account = account
+        };
+    }
+
+    /// <summary>
+    ///     Runs a plain-text command for <paramref name="session" /> and collects its output. The session rules still
+    ///     apply, so an administrator session stops working once the admin key is disabled, wherever it came from.
+    /// </summary>
+    internal static async Task<CommandResult> RunCommandAsync(MuipSession session, string command, int targetUid)
+    {
+        if (!IsCurrent(session))
+            return new CommandResult(1, "Session has expired!", "");
+
+        if (!session.IsAuthorized)
+            return new CommandResult(4, "Not authorized!", "");
+
+        var handler = CommandHandler;
+        if (handler == null)
+            return new CommandResult(5, "Command handler is not initialized!", "");
+
+        logger.Info($"SessionId: {session.SessionId}, UID: {targetUid}, ExecuteCommand: {command}");
+        var output = new StringBuilder();
+        var sender = new MuipCommandSender(session, msg =>
+        {
+            lock (output) output.Append(msg).Append("\r\n");
+        }) { SenderUid = targetUid };
+
+        await handler(command, sender).ConfigureAwait(false);
+        return new CommandResult(0, "Success", output.ToString());
+    }
+
+    /// <summary>Outcome of <see cref="RunCommandAsync" />; <see cref="Output" /> is plain text, one line per message.</summary>
+    internal readonly record struct CommandResult(int Code, string Message, string Output);
 
     public static ServerInformationResponse GetInformation(string sessionId)
     {

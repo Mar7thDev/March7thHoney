@@ -164,36 +164,14 @@ public static class ConsoleRoutes
             if (!online)
                 return ConsoleJson(1, "player offline", null, 400);
 
-            // Run through the MUIP pipeline with a non-admin session bound to the player's account and
-            // targeting their own uid. MuipCommandSender then resolves permissions via
-            // Account.HasPermission, identical to chat.
-            var sessionId = $"console-{Guid.NewGuid():N}";
-            MuipManager.Sessions[sessionId] = new MuipSession
-            {
-                SessionId = sessionId,
-                ExpireTimeStamp = DateTime.Now.AddMinutes(1).ToUnixSec(),
-                IsAdmin = false,
-                IsAuthorized = true,
-                Account = account
-            };
+            // A non-admin session bound to the player's account and targeting their own uid:
+            // MuipCommandSender then resolves permissions via Account.HasPermission, identical to chat.
+            var result = await MuipManager.RunCommandAsync(
+                MuipManager.CreateLocalSession("console", isAdmin: false, account), command, account.Uid);
+            if (result.Code != 0)
+                return ConsoleJson(1, result.Message, null, 400);
 
-            try
-            {
-                var encoded = Convert.ToBase64String(Encoding.UTF8.GetBytes(command));
-                var response = await MuipManager.ExecuteCommandAsync(sessionId, encoded, account.Uid);
-                if (response.Code != 0)
-                    return ConsoleJson(1, response.Message, null, 400);
-
-                var output = string.Empty;
-                if (!string.IsNullOrWhiteSpace(response.Data?.Message))
-                    output = Encoding.UTF8.GetString(Convert.FromBase64String(response.Data.Message));
-
-                return ConsoleJson(0, "OK", output.TrimEnd());
-            }
-            finally
-            {
-                MuipManager.Sessions.TryRemove(sessionId, out _);
-            }
+            return ConsoleJson(0, "OK", result.Output.TrimEnd());
         }
         catch (Exception ex)
         {
