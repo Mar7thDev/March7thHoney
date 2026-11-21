@@ -1,5 +1,5 @@
 using March7thHoney.Internationalization;
-using March7thHoney.Util.Security;
+using March7thHoney.Util.PacketCipher;
 
 namespace March7thHoney.Util;
 
