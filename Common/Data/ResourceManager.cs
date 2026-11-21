@@ -66,41 +66,7 @@ public class ResourceManager
         var t8 = Task.Run(LoadAdventureModifier);
         var t9 = Task.Run(LoadLocalPlayer);
         var t10 = Task.Run(LoadFinalityBattleTurnLimit);
-        GameData.ActivityConfig = LoadCustomFile<ActivityConfig>("Activity", "ActivityConfig") ?? new ActivityConfig();
-        LoadMissionInfoOverrides();
-        GameData.BannersConfig = LoadBanners();
-        GameData.VideoKeysConfig =
-            LoadCustomFile<VideoKeysConfig>("VideoKeys", "VideoKeysConfig") ?? new VideoKeysConfig();
-        GameData.RogueMapGenData =
-            LoadCustomFile<Dictionary<int, List<int>>>("Rogue Map", "RogueMapGen") ?? [];
-        GameData.QueryProductInfoConfig =
-            LoadCustomFile<QueryProductInfoConfig>("QueryProductInfo", "QueryProductInfoConfig") ??
-            new QueryProductInfoConfig();
-        GameData.DiceyDungeonConfig =
-            LoadCustomFile<DiceyDungeonConfig>("DiceyDungeon", "DiceyDungeon") ?? new DiceyDungeonConfig();
-        GameData.RealityShowConfig =
-            LoadCustomFile<RealityShowConfig>("RealityShow", "RealityShow") ?? new RealityShowConfig();
-        GameData.SceneRainbowGroupPropertyData =
-            LoadCustomFile<SceneRainbowGroupPropertyConfig>("Scene Rainbow Group Property",
-                "SceneRainbowGroupProperty") ?? new SceneRainbowGroupPropertyConfig();
-        GameData.ChallengePeakOverrideConfig =
-            LoadCustomFile<ChallengePeakOverrideConfig>("ChallengePeak Override", "ChallengePeak") ??
-            new ChallengePeakOverrideConfig();
-        GameData.GridFightRewardRulesConfig =
-            LoadCustomFile<GridFightRewardRulesConfig>("GridFight Reward Rules", "GridFightRewardRules") ??
-            new GridFightRewardRulesConfig();
-        GameData.GridFightBasicOrbRewardsConfig =
-            LoadCustomFile<GridFightBasicOrbRewardsConfig>("GridFight Orb Rewards", "GridFightBasicOrbRewards") ??
-            new GridFightBasicOrbRewardsConfig();
-        GameData.GridFightRuntimeConfig =
-            LoadCustomFile<GridFightRuntimeConfig>("GridFight Runtime Config", "GridFightRuntime") ??
-            new GridFightRuntimeConfig();
-        GameData.GridFightBasicOrbRewardsConfig.RewardRules = GameData.GridFightRewardRulesConfig;
-        GameData.GridFightBasicOrbRewardsConfig.RuntimeConfig = GameData.GridFightRuntimeConfig;
-        LoadRogueMagicRoomData();
-
-        LoadChessRogueRoomData();
-        LoadChessRogueDiceSurfaceEffectData();
+        CustomConfigFiles.Load(CustomConfigPass.ResourceLoad);
 
         Task.WaitAll(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10);
 
@@ -586,7 +552,7 @@ public class ResourceManager
     ///     Parsed entry by entry on purpose: a single bad row (most often a gachaType the server does not
     ///     know) used to abort the whole file and leave the player with no banners at all, standard pool
     ///     included. A broken row is now reported and skipped, and the rest still load.
-    ///     This is also NOT served from Resource.bin — see EntryPoint, where it is re-read after the cache
+    ///     This is also NOT served from Resource.bin — see CustomConfigFiles, which re-reads it after the cache
     ///     path so operators can edit the banner list without regenerating the resource cache.
     /// </summary>
     public static BannersConfig LoadBanners()

@@ -181,6 +181,13 @@ dotnet run --project scripts/LoginSceneRegression/LoginSceneRegression.csproj -c
 - `VideoKeyInfo` 把 `video_key` 写入 `HHCAKADKHAN`、`ps_field_3` 写入 `BOGECOHIINH`（4.6 为字段 6/13，4.7 为字段 10/7，4.8 为字段 10/12），以 id `5600` 的官服值核对。
 - 开场动画密钥：回归读取 `Config/Custom/VideoKeysConfig.json` 的临时副本，通过实际的视频回包验证教学开场视频 `8` 的密钥，以及普通视频 `5600`、活动视频 `1806` 的完整 64 位字段。值与官服 4.6 抓包 seq 133 一致；4.7 按原始属性身份写入新的字段号。服务端更新并重启后，新登录会收到完整密钥；已经完成的开场任务不会自动回退。
 
+### 缓存启动时的运营文件
+
+代码：`scripts/LoginSceneRegression/CustomConfigFilesRegression.cs`；它会替换前面检查用到的配置，所以最后运行。
+
+- `CustomConfigFiles.Load(AfterCacheLoad)` 是服务端读完 `Resource.bin` 后执行的一轮，在没有原始资源树时也从仓库跟踪的 `Config/Custom` 装入 `RealityShow.json`、`VideoKeysConfig.json`、`Banners.json`、`DiceyDungeon.json` 和 `ActivityBangboo.json`。
+- 原始资源启动后的一轮读取 `ActivityBangboo.json`，但不再改动 `ResourceManager.LoadGameData` 已读过的卡池和视频密钥；重新加载视频密钥时会再读一次文件。
+
 ### 玩家状态与共享配置
 
 代码：`scripts/LoginSceneRegression/SharedConfigRegression.cs`。

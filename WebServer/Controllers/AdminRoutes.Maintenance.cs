@@ -1,7 +1,6 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using March7thHoney.Data;
-using March7thHoney.Data.Custom;
 using March7thHoney.Database;
 using March7thHoney.Kcp;
 using March7thHoney.Util;
@@ -116,16 +115,14 @@ public static partial class AdminRoutes
             {
                 case "banner":
                 case "banners":
-                    GameData.BannersConfig = ResourceManager.LoadBanners();
+                    CustomConfigFiles.Reload(ReloadableCustomConfig.Banners);
                     return Success(new ReloadData("banner", "Banners reloaded"));
                 case "activity":
-                    GameData.ActivityConfig = ResourceManager.LoadCustomFile<ActivityConfig>("Activity", "ActivityConfig") ??
-                                              new ActivityConfig();
+                    CustomConfigFiles.Reload(ReloadableCustomConfig.Activity);
                     return Success(new ReloadData("activity", "Activity config reloaded"));
                 case "videokey":
                 case "videokeys":
-                    GameData.VideoKeysConfig = ResourceManager.LoadCustomFile<VideoKeysConfig>("VideoKeys", "VideoKeysConfig") ??
-                                               new VideoKeysConfig();
+                    CustomConfigFiles.Reload(ReloadableCustomConfig.VideoKeys);
                     return Success(new ReloadData("videokey", "Video keys reloaded"));
                 default:
                     return Error("Unknown reload target (banner, activity, videokey)");

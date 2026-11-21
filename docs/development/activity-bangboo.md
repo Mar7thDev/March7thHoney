@@ -15,7 +15,7 @@ The event was added in 4.8 (client OSBETAWin4.7.51). Client module `RPG.Client.A
 | Request handlers | `GameServer/Server/Packet/Recv/ActivityBangboo/HandlerActivityBangboo.cs` |
 | Responses and notifications | `GameServer/Server/Packet/Send/ActivityBangboo/PacketActivityBangboo.cs` |
 | Save table `PlayerActivityBangboo` | `Common/Database/ActivityBangboo/PlayerActivityBangbooData.cs` |
-| Configuration | `Config/Custom/ActivityBangboo.json`, model `Common/Data/Custom/ActivityBangbooConfig.cs`, read at startup by `Program/Program/EntryPoint.cs` |
+| Configuration | `Config/Custom/ActivityBangboo.json`, model `Common/Data/Custom/ActivityBangbooConfig.cs`, read at startup by `Common/Data/CustomConfigFiles.cs` |
 | Event missions | `GameServer/Game/Mission/FinishType/Handler/MissionHandlerActivityBangboo.cs` |
 | Schedule | `5014701` / `5014702` in `Config/Custom/ActivityConfig.json`, panel `50147` |
 | Regression | `scripts/LoginSceneRegression/ActivityBangbooRegression.cs` |

@@ -2,7 +2,6 @@ using March7thHoney.Command;
 using March7thHoney.Command.Command;
 using March7thHoney.Configuration;
 using March7thHoney.Data;
-using March7thHoney.Data.Custom;
 using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Enums;
@@ -240,60 +239,9 @@ public class EntryPoint
                     ResourceManager.ApplyResourceCompatibility(ConfigManager.Config.Path.ResourceVersion);
                 }
 
-                ResourceManager.LoadMissionInfoOverrides();
-                ResourceManager.ReportTruncatedMissionGraphs();
-                // Load operator edits on either boot path so they don't require a cache rebuild.
-                GameData.BannersConfig = ResourceManager.LoadBanners();
-                GameData.VideoKeysConfig =
-                    ResourceManager.LoadCustomFile<VideoKeysConfig>("VideoKeys", "VideoKeysConfig") ??
-                    new VideoKeysConfig();
-                // The activity schedule is operator data too (Config/Custom/ActivityConfig.json). Keep the
-                // cached copy only when the file is missing or unreadable.
-                var activityConfig = ResourceManager.LoadCustomFile<ActivityConfig>("Activity", "ActivityConfig");
-                if (activityConfig != null) GameData.ActivityConfig = activityConfig;
-                // Read the operator's Rogue room pools even when booting from Resource.bin.
-                var rogueMapGen =
-                    ResourceManager.LoadCustomFile<Dictionary<int, List<int>>>("Rogue Map", "RogueMapGen");
-                if (rogueMapGen != null) GameData.RogueMapGenData = rogueMapGen;
-                // Planarcadia Reverie (ActivityBangboo) stages, holes and Bangboo, decoded from client tables the
-                // resource export does not produce; never part of Resource.bin, so read on either boot path.
-                GameData.ActivityBangbooConfig =
-                    ResourceManager.LoadCustomFile<ActivityBangbooConfig>("ActivityBangboo", "ActivityBangboo") ??
-                    new ActivityBangbooConfig();
-
-                // ExRank (奇缘星魂) materials are an operator overlay, so they must also load on a cache boot.
-                AvatarExRankMaterials.Apply();
-                // Story-trial skill limits and IsUseWorldLevel live on the raw excel rows, not in Resource.bin.
-                StoryTrialTables.Load();
-
-                // Use current room and dice definitions even with the older 4.6 cache.
-                if (!loadedFromResources)
-                {
-                    // ChallengePeak.json pins each season's map; seasons it leaves out are derived from the
-                    // floors in the cache. Re-read it so pinning a new season only needs a restart.
-                    var peakOverrides = ResourceManager.LoadCustomFile<ChallengePeakOverrideConfig>(
-                        "ChallengePeak Override", "ChallengePeak");
-                    if (peakOverrides != null)
-                    {
-                        GameData.ChallengePeakOverrideConfig = peakOverrides;
-                        ResourceManager.ApplyChallengePeakOverrides();
-                    }
-
-                    // The DiceyDungeon tables are not part of Resource.bin either.
-                    GameData.DiceyDungeonConfig =
-                        ResourceManager.LoadCustomFile<DiceyDungeonConfig>("DiceyDungeon", "DiceyDungeon") ??
-                        new DiceyDungeonConfig();
-
-                    // RealityShow.json is not part of Resource.bin either; without it no Road to Fame challenge can start.
-                    GameData.RealityShowConfig =
-                        ResourceManager.LoadCustomFile<RealityShowConfig>("RealityShow", "RealityShow") ??
-                        new RealityShowConfig();
-
-                    ResourceManager.LoadRogueMagicRoomData();
-                    ResourceManager.LoadChessRogueRoomData();
-                    ResourceManager.LoadChessRogueDiceSurfaceEffectData();
-                    ResourceManager.LoadRogueChestMapInfo();
-                }
+                CustomConfigFiles.Load(loadedFromResources
+                    ? CustomConfigPass.AfterResourceLoad
+                    : CustomConfigPass.AfterCacheLoad);
             }
             catch (Exception e)
             {

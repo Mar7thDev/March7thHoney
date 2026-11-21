@@ -15,7 +15,7 @@
 | 请求处理器 | `GameServer/Server/Packet/Recv/ActivityBangboo/HandlerActivityBangboo.cs` |
 | 响应与通知包 | `GameServer/Server/Packet/Send/ActivityBangboo/PacketActivityBangboo.cs` |
 | 存档表 `PlayerActivityBangboo` | `Common/Database/ActivityBangboo/PlayerActivityBangbooData.cs` |
-| 配置 | `Config/Custom/ActivityBangboo.json`，模型 `Common/Data/Custom/ActivityBangbooConfig.cs`，启动时由 `Program/Program/EntryPoint.cs` 读取 |
+| 配置 | `Config/Custom/ActivityBangboo.json`，模型 `Common/Data/Custom/ActivityBangbooConfig.cs`，启动时由 `Common/Data/CustomConfigFiles.cs` 读取 |
 | 活动任务 | `GameServer/Game/Mission/FinishType/Handler/MissionHandlerActivityBangboo.cs` |
 | 排期 | `Config/Custom/ActivityConfig.json` 中 `5014701` / `5014702`，面板 `50147` |
 | 回归 | `scripts/LoginSceneRegression/ActivityBangbooRegression.cs` |

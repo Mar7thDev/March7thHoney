@@ -181,6 +181,13 @@ Code: `scripts/LoginSceneRegression/ChallengeRegression.cs`.
 - `VideoKeyInfo` writes `video_key` into `HHCAKADKHAN` and `ps_field_3` into `BOGECOHIINH` (fields 6/13 in 4.6, 10/7 in 4.7, 10/12 in 4.8), checked against the official value for ID `5600`.
 - Opening video keys: the regression reads a temporary copy of `Config/Custom/VideoKeysConfig.json` and, through the real video response, checks the key of tutorial opening video `8` and the full 64-bit fields of ordinary video `5600` and activity video `1806`. The values match official 4.6 capture seq 133; 4.7 writes them by the original attribute identity into the new field numbers. After updating and restarting the server, new logins receive the full key; opening missions that are already finished are not rolled back.
 
+### Operator files on a cache boot
+
+Code: `scripts/LoginSceneRegression/CustomConfigFilesRegression.cs`; it runs last because it replaces configuration the earlier checks use.
+
+- `CustomConfigFiles.Load(AfterCacheLoad)`, the pass the server runs after reading `Resource.bin`, installs `RealityShow.json`, `VideoKeysConfig.json`, `Banners.json`, `DiceyDungeon.json` and `ActivityBangboo.json` from the tracked `Config/Custom` without a raw resource tree.
+- The pass after a raw-resource load reads `ActivityBangboo.json` but leaves the banners and video keys that `ResourceManager.LoadGameData` already read; reloading the video keys reads the file again.
+
 ### Player state and shared configuration
 
 Code: `scripts/LoginSceneRegression/SharedConfigRegression.cs`.
