@@ -1,6 +1,6 @@
 using March7thHoney.Util;
 
-namespace March7thHoney.WebServer.Handler;
+namespace March7thHoney.WebServer.Services;
 
 /// <summary>
 ///     In-memory ring buffer of recent log lines, fed by <see cref="PluginEventCommon.OnLogEntry" />, so the admin

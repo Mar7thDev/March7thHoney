@@ -7,7 +7,7 @@ using March7thHoney.Util.Security;
 using March7thHoney.WebServer.Http;
 using Microsoft.AspNetCore.Http;
 
-namespace March7thHoney.WebServer.Handler;
+namespace March7thHoney.WebServer.Services;
 
 public enum AuthRateLimitAction
 {

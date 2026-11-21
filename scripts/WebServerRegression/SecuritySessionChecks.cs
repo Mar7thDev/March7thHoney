@@ -8,6 +8,7 @@ using March7thHoney.Util;
 using March7thHoney.WebServer.Handler;
 using March7thHoney.WebServer.Objects;
 using March7thHoney.WebServer.Server;
+using March7thHoney.WebServer.Services;
 
 internal static class SecuritySessionChecks
 {

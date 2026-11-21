@@ -3,7 +3,7 @@ using System.Globalization;
 using March7thHoney.Database.Account;
 using March7thHoney.Util.Security;
 
-namespace March7thHoney.WebServer.Handler;
+namespace March7thHoney.WebServer.Services;
 
 /// <summary>
 /// Short-lived player console sessions. The credential fingerprint binds a token to the password
