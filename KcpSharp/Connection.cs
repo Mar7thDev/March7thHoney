@@ -32,7 +32,7 @@ public class March7thHoneyConnection
         Conversation = conversation;
         RemoteEndPoint = remote;
         CancelToken = new CancellationTokenSource();
-        if (ConfigManager.Config.GameServer.UsePacketEncryption) XorKey = Crypto.ClientSecretKey!.GetXorKey();
+        if (Crypto.PacketEncryptionEnabled) XorKey = Crypto.ClientSecretKey!.GetXorKey();
     }
 
     public byte[]? XorKey { get; set; }
@@ -141,7 +141,7 @@ public class March7thHoneyConnection
     {
         try
         {
-            if (ConfigManager.Config.GameServer.UsePacketEncryption)
+            if (Crypto.PacketEncryptionEnabled)
                 Crypto.Xor(packet, XorKey!);
 
             _ = await Conversation.SendAsync(packet, CancelToken.Token);

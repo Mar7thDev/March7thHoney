@@ -71,7 +71,7 @@ internal class QueryGatewayHandler
         gateServer.RogueTournBuildRefApiReqColorHeaderKey = "x-rpc-rpglineup-tourn";
         gateServer.RogueTournBuildRefApiReqColorHeaderValue = "tourn";
 
-        if (ConfigManager.Config.GameServer.UsePacketEncryption)
+        if (Crypto.PacketEncryptionEnabled)
             gateServer.ClientSecretKey = Convert.ToBase64String(Crypto.ClientSecretKey!.GetBytes());
 
         var baseUrl = req.version.StartsWith("CN", StringComparison.OrdinalIgnoreCase) ? BaseUrl.CN : BaseUrl.OS;

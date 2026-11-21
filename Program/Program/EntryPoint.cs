@@ -28,7 +28,10 @@ public class EntryPoint
     public static readonly CommandManager CommandManager = new();
     private static PosixSignalRegistration? _sigtermRegistration;
 
-    public static async Task Main(string[] args)
+    private const int StartupFailedExitCode = 1;
+    private static int _cleanupStarted;
+
+    public static async Task<int> Main(string[] args)
     {
         IConsole.InitConsole();
         IConsole.RedrawInput(IConsole.Input);
@@ -73,14 +76,14 @@ public class EntryPoint
             TryOpenLogFiles();
             Logger.Error(
                 I18NManager.Translate("Server.ServerInfo.FailedToLoadItem", I18NManager.Translate("Word.Config")), e);
-            Console.ReadLine();
-            return;
+            WaitForEnterIfInteractive();
+            return StartupFailedExitCode;
         }
 
         if (!TryOpenLogFiles())
         {
-            Console.ReadLine();
-            return;
+            WaitForEnterIfInteractive();
+            return StartupFailedExitCode;
         }
 
         // Load the language
@@ -92,8 +95,8 @@ public class EntryPoint
         {
             Logger.Error(
                 I18NManager.Translate("Server.ServerInfo.FailedToLoadItem", I18NManager.Translate("Word.Language")), e);
-            Console.ReadLine();
-            return;
+            WaitForEnterIfInteractive();
+            return StartupFailedExitCode;
         }
 
         // Starting logs after i18n is ready
@@ -123,8 +126,8 @@ public class EntryPoint
         {
             Logger.Error(
                 I18NManager.Translate("Server.ServerInfo.FailedToLoadItem", I18NManager.Translate("Word.Database")), e);
-            Console.ReadLine();
-            return;
+            WaitForEnterIfInteractive();
+            return StartupFailedExitCode;
         }
 
         // Warm protobuf descriptors at startup so the first login doesn't pay the initialization cost.
@@ -134,7 +137,6 @@ public class EntryPoint
         if (ConfigManager.Config.GameServer.UsePacketEncryption)
         {
             Crypto.ClientSecretKey = Crypto.InitEc2b();
-            if (Crypto.ClientSecretKey == null) ConfigManager.Config.GameServer.UsePacketEncryption = false;
         }
 
         Logger.Warn(I18NManager.Translate("Server.ServerInfo.WaitForAllDone"));
@@ -151,15 +153,15 @@ public class EntryPoint
                 Logger.Error(
                     I18NManager.Translate("Server.ServerInfo.FailedToLoadItem", I18NManager.Translate("Word.GameData")),
                     e);
-                Console.ReadLine();
-                return;
+                WaitForEnterIfInteractive();
+                return StartupFailedExitCode;
             }
 
             // check option
             if (args.Contains("-generate-tourn"))
             {
                 TournRoomGenerator.GenerateFile("RogueTournRoom.json");
-                return;
+                return 0;
             }
         }
 
@@ -173,8 +175,8 @@ public class EntryPoint
             Logger.Error(
                 I18NManager.Translate("Server.ServerInfo.FailedToInitializeItem",
                     I18NManager.Translate("Word.Command")), e);
-            Console.ReadLine();
-            return;
+            WaitForEnterIfInteractive();
+            return StartupFailedExitCode;
         }
 
         CommandExecutor.OnRunCommand += (sender, e) => { CommandManager.HandleCommand(e, sender); };
@@ -212,8 +214,8 @@ public class EntryPoint
                 Logger.Error(
                     I18NManager.Translate("Server.ServerInfo.FailedToLoadItem",
                         I18NManager.Translate("Word.Database")), e);
-                Console.ReadLine();
-                return;
+                WaitForEnterIfInteractive();
+                return StartupFailedExitCode;
             }
 
             Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItem", I18NManager.Translate("Word.Database")));
@@ -260,6 +262,17 @@ public class EntryPoint
 
         IConsole.ListenConsole();
         GC.KeepAlive(_sigtermRegistration);
+        return 0;
+    }
+
+    /// <summary>
+    ///     Keeps a failed startup's console window open until the operator presses Enter. A service, a container or
+    ///     any run with redirected input exits straight away so its supervisor sees the exit code.
+    /// </summary>
+    private static void WaitForEnterIfInteractive()
+    {
+        if (Console.IsInputRedirected || !Environment.UserInteractive) return;
+        Console.ReadLine();
     }
 
     /// <summary>Opens this run's log files in the configured log directory, packing the earlier runs' logs.</summary>
@@ -304,6 +317,8 @@ public class EntryPoint
 
     private static void PerformCleanup()
     {
+        // ProcessExit and the unhandled-exception handler can both reach this; save and notify only once.
+        if (Interlocked.Exchange(ref _cleanupStarted, 1) != 0) return;
         var notificationTask = LifecycleNotifier.NotifyMaintenanceAsync();
         // Stopping a live connection on shutdown can throw (disposed CancellationTokenSource race); never let it skip the save.
         try { March7thHoneyListener.GetSnapshot().ForEach(x => x.Stop()); }

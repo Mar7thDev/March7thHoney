@@ -150,7 +150,7 @@ public class HandlerPlayerGetTokenCsReq : Handler
         connection.Player.Connection = connection;
         await connection.SendPacket(new PacketPlayerGetTokenScRsp(connection));
 
-        if (ConfigManager.Config.GameServer.UsePacketEncryption)
+        if (Crypto.PacketEncryptionEnabled)
         {
             connection.XorKey = Crypto.GenerateXorKey(connection.ClientSecretKeySeed);
             _logger.Info($"{connection.RemoteEndPoint} key exchange successful");

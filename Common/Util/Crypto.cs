@@ -12,6 +12,13 @@ public class Crypto
 
     public static Ec2b? ClientSecretKey { get; set; }
 
+    /// <summary>
+    ///     Whether this run XOR-encrypts game packets: Config.json asks for it and the client secret key is loaded.
+    ///     A key that fails to load turns encryption off for this run only and is never written back to Config.json.
+    /// </summary>
+    public static bool PacketEncryptionEnabled =>
+        ConfigManager.Config.GameServer.UsePacketEncryption && ClientSecretKey != null;
+
     public static void Xor(byte[] packet, byte[] key)
     {
         try
