@@ -90,10 +90,7 @@ public sealed class HandlerRogueTournLeaveCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await player.RogueTournManager!.LeaveRun();
-
-        var (success, _) = await player.TryEnterScene(RogueTournManager.RogueLobbyEntranceId, 0, false);
-        if (!success)
+        if (!await player.RogueTournManager!.LeaveRunToLobby())
         {
             await connection.SendPacket(new MessagePacket(CmdIds.RogueTournLeaveScRsp,
                 new RogueTournLeaveScRsp { Retcode = (uint)Retcode.RetFail }));
@@ -381,14 +378,7 @@ public sealed class HandlerRogueTournConfirmSettleCsReq : Handler<RogueTournConf
             await connection.SendPacket(new MessagePacket(CmdIds.RogueTournExpNotify,
                 new RogueTournExpNotify { Exp = (uint)manager.Data.Exp }));
 
-        // The settled run is over: drop it and its lineup, then return to the DU map (the lobby when absent).
-        await manager.LeaveRun();
-        await connection.SendPacket(new PacketSyncServerSceneChangeNotify());
-        var entrance = GameData.MapEntranceData.ContainsKey(RogueTournManager.TournMapEntranceId)
-            ? RogueTournManager.TournMapEntranceId
-            : RogueTournManager.RogueLobbyEntranceId;
-        var (success, _) = await player.TryEnterScene(entrance, 0, false);
-        if (!success)
+        if (!await manager.LeaveSettledRun())
         {
             await connection.SendPacket(new MessagePacket(CmdIds.RogueTournConfirmSettleScRsp,
                 new RogueTournConfirmSettleScRsp { Retcode = (uint)Retcode.RetFail }));

@@ -36,6 +36,7 @@ using March7thHoney.GameServer.Game.ChessRogue;
 using March7thHoney.GameServer.Game.Friend;
 using March7thHoney.GameServer.Game.Rogue;
 using March7thHoney.GameServer.Game.RogueMagic;
+using March7thHoney.GameServer.Game.RogueCommon;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Game.Tutorial;
@@ -1443,7 +1444,7 @@ Check("an empty or Auto BeginParam does not gate a main", GameData.MainMissionDa
 // Rogue Index arms in the Simulated Universe lobby (80112001 group 3, MazeProp 1005 Prop_Rogue_Gallery).
 async Task<List<PropStateEnum?>> RogueIndexArmStates(PlayerInstance owner)
 {
-    var lobby = new SceneInstance(owner, GameData.MazePlaneData[80112], 80112001, RogueManager.RogueEntranceId);
+    var lobby = new SceneInstance(owner, GameData.MazePlaneData[80112], 80112001, RogueLobby.EntranceId);
     var armGroup = lobby.FloorInfo!.Groups[3];
     var states = new List<PropStateEnum?>();
     foreach (var armId in new[] { 300003, 300008 })
@@ -2468,7 +2469,7 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
             .Select(slot => slot.SpecialAvatarId).SequenceEqual(new[] { 4000004, 4000001, 4000002 }));
     var tutorialRoomEntry = previouslyResetTutorial.Data.EntryId;
     await previouslyResetTutorial.LineupManager!.SetExtraLineup(ExtraLineupType.LineupNone, false);
-    previouslyResetTutorial.Data.EntryId = RogueManager.RogueEntranceId;
+    previouslyResetTutorial.Data.EntryId = RogueLobby.EntranceId;
     Check("a saved Rogue run outside its current room cannot replace the lobby's ordinary squad",
         !await previouslyResetTutorial.RogueManager!.RestoreLineupAtLogin() &&
         previouslyResetTutorial.LineupManager.Data.CurExtraLineup == -1);
@@ -3165,8 +3166,8 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
     }
     var orphanLeave = await LeaveRogue();
     Check("LeaveRogue with no live run returns an orphaned Rogue room to the lobby",
-        orphanLeave.Rsp is { Retcode: 0 } && orphanLeave.Rsp.Scene?.EntryId == RogueManager.RogueEntranceId &&
-        orphanLeave.Rsp.Lineup != null && roguePlayer.SceneInstance?.EntryId == RogueManager.RogueEntranceId &&
+        orphanLeave.Rsp is { Retcode: 0 } && orphanLeave.Rsp.Scene?.EntryId == RogueLobby.EntranceId &&
+        orphanLeave.Rsp.Lineup != null && roguePlayer.SceneInstance?.EntryId == RogueLobby.EntranceId &&
         roguePlayer.LineupManager.Data.CurExtraLineup == -1 &&
         orphanLeave.Frames.FindIndex(frame => frame.Id == CmdIds.SyncServerSceneChangeNotify) is var boundary and >= 0 &&
         boundary < orphanLeave.Frames.FindIndex(frame => frame.Id == CmdIds.LeaveRogueScRsp) &&

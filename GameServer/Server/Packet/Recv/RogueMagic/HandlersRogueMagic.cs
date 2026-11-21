@@ -123,10 +123,7 @@ public sealed class HandlerRogueMagicLeaveCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await player.RogueMagicManager!.LeaveRun();
-
-        var (success, _) = await player.TryEnterScene(RogueMagicManager.RogueLobbyEntranceId, 0, false);
-        if (!success)
+        if (!await player.RogueMagicManager!.LeaveRunToLobby())
         {
             await connection.SendPacket(new MessagePacket(CmdIds.RogueMagicLeaveScRsp,
                 new RogueMagicLeaveScRsp { Retcode = (uint)Retcode.RetFail }));
@@ -161,8 +158,7 @@ public sealed class HandlerRogueMagicSettleCsReq : PlayerHandler
             BNLLEJPCIGD = new NOAKCDKAAFB()
         };
 
-        await manager.LeaveRun();
-        await player.TryEnterScene(RogueMagicManager.RogueLobbyEntranceId, 0, false);
+        await manager.LeaveRunToLobby();
         await connection.SendPacket(new PacketSyncServerSceneChangeNotify());
         await connection.SendPacket(new MessagePacket(CmdIds.RogueMagicSettleScRsp, new RogueMagicSettleScRsp
         {

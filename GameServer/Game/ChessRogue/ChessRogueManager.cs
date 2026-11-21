@@ -8,19 +8,17 @@ using March7thHoney.Enums.Rogue;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.RogueCommon;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Server.Packet.Send;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 using March7thHoney.Util;
-using MemoryPack;
 
 namespace March7thHoney.GameServer.Game.ChessRogue;
 
 public partial class ChessRogueManager : BasePlayerManager
 {
-    public const int RogueLobbyEntranceId = 801120102;
-
     // Legacy run defaults: 100 rogue money, 15 action points, revive 80, lineup mp 5.
     private const int StartMoney = 100;
     private const int StartActionPoint = 15;
@@ -43,25 +41,13 @@ public partial class ChessRogueManager : BasePlayerManager
 
     public void Save()
     {
-        Data.RunInstance = RunInstance == null
-            ? null
-            : Convert.ToBase64String(MemoryPackSerializer.Serialize(RunInstance));
+        Data.RunInstance = RogueRunBlob.Serialize(RunInstance);
         DatabaseHelper.MarkDirty(Player.Uid);
     }
 
     private void ResurrectRun()
     {
-        if (string.IsNullOrEmpty(Data.RunInstance)) return;
-
-        ChessRogueRunData? run;
-        try
-        {
-            run = MemoryPackSerializer.Deserialize<ChessRogueRunData>(Convert.FromBase64String(Data.RunInstance));
-        }
-        catch
-        {
-            run = null;
-        }
+        if (!RogueRunBlob.TryLoad<ChessRogueRunData>(Data.RunInstance, out var run)) return;
 
         if (run == null || run.LevelStatus != ChessRogueStates.LevelProcessing || run.CurCell() == null)
         {
@@ -252,7 +238,7 @@ public partial class ChessRogueManager : BasePlayerManager
         await SendLevelStatusNotify(run);
 
         await ClearRun();
-        await Player.EnterScene(RogueLobbyEntranceId, 0, false);
+        await Player.EnterScene(RogueLobby.EntranceId, 0, false);
         await Player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.RogueFinishCnt);
         return run;
     }
@@ -260,27 +246,15 @@ public partial class ChessRogueManager : BasePlayerManager
     private async ValueTask ClearRun()
     {
         RunInstance = null;
-        await Player.LineupManager!.SetExtraLineup(ExtraLineupType.LineupNone, false);
+        await RogueExtraLineup.Release(Player);
         Save();
     }
 
-    private async ValueTask<bool> ActivateLineup(List<int> avatarIds)
+    // Board runs open with full energy, the other rogue modes with half.
+    private ValueTask<bool> ActivateLineup(List<int> avatarIds)
     {
-        var lineupManager = Player.LineupManager!;
-        lineupManager.SetExtraLineup(ExtraLineupType.LineupChessRogue, avatarIds);
-        var lineup = lineupManager.GetExtraLineup(ExtraLineupType.LineupChessRogue);
-        if (lineup == null || lineup.BaseAvatars?.Count == 0) return false;
-
-        lineup.Mp = StartMp;
-        foreach (var avatarId in avatarIds)
-        {
-            var avatar = Player.AvatarManager!.GetFormalAvatar(avatarId);
-            avatar?.SetCurHp(10000, true);
-            avatar?.SetCurSp(10000, true);
-        }
-
-        await lineupManager.SetExtraLineup(ExtraLineupType.LineupChessRogue, false);
-        return true;
+        return RogueExtraLineup.Activate(Player, ExtraLineupType.LineupChessRogue, avatarIds,
+            new RogueLineupStart(StartMp, RogueExtraLineup.FullSp, RogueLineupRefill.RequestedFormalAvatars));
     }
 
     #endregion
@@ -456,8 +430,8 @@ public partial class ChessRogueManager : BasePlayerManager
 
         var blockType = (RogueDLCBlockTypeEnum)cell.BlockType;
         OpenDraft(run, blockType == RogueDLCBlockTypeEnum.MonsterBoss
-            ? ChessRogueResources.BossDraftGroupId
-            : ChessRogueResources.NormalDraftGroupId);
+            ? RogueDraftGroups.Elite
+            : RogueDraftGroups.Normal);
 
         if (blockType is RogueDLCBlockTypeEnum.MonsterNousBoss or RogueDLCBlockTypeEnum.MonsterSwarmBoss)
             run.LevelStatus = ChessRogueStates.LevelFinish;
