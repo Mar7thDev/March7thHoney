@@ -40,7 +40,6 @@ public class Logger(string moduleName)
             }
 
             var logMessage = $"[{time}][{moduleName}][{level}] {message}";
-            PluginEventCommon.InvokeOnConsoleLog(logMessage);
             try
             {
                 PluginEventCommon.InvokeOnLogEntry(moduleName, level, message);

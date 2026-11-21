@@ -1,5 +1,3 @@
-using System.Security.Cryptography;
-using System.Text;
 using March7thHoney.Internationalization;
 using March7thHoney.Util.Security;
 
@@ -7,7 +5,6 @@ namespace March7thHoney.Util;
 
 public class Crypto
 {
-    private static readonly Random SecureRandom = new();
     public static Logger Logger = new("Crypto");
 
     public static Ec2b? ClientSecretKey { get; set; }
@@ -76,26 +73,6 @@ public class Crypto
         {
             Logger.Error($"An error occurred while loading the Client Secret Key：{ex}");
             return null;
-        }
-    }
-
-    // Simple way to create a unique session key
-    public static string CreateSessionKey(string accountUid)
-    {
-        var random = new byte[64];
-        SecureRandom.NextBytes(random);
-
-        var temp = accountUid + "." + DateTime.Now.Ticks + "." + SecureRandom;
-
-        try
-        {
-            var bytes = SHA512.HashData(Encoding.UTF8.GetBytes(temp));
-            return Convert.ToBase64String(bytes);
-        }
-        catch
-        {
-            var bytes = SHA512.HashData(Encoding.UTF8.GetBytes(temp));
-            return Convert.ToBase64String(bytes);
         }
     }
 }

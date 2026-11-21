@@ -277,16 +277,4 @@ public static class ConfigManager
             if (File.Exists(tempPath)) File.Delete(tempPath);
         }
     }
-
-    public static void InitDirectories()
-    {
-        foreach (var property in Config.Path.GetType().GetProperties())
-        {
-            var dir = property.GetValue(Config.Path)?.ToString();
-
-            if (!string.IsNullOrEmpty(dir))
-                if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
-                    Directory.CreateDirectory(dir);
-        }
-    }
 }
