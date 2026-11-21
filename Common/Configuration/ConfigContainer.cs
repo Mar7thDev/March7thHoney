@@ -362,6 +362,7 @@ public class LogOption
     public bool DisableLogDetailPacket { get; set; } = false;
     public bool SavePersonalDebugFile { get; set; } = false;
     public bool LogResourceCacheLoading { get; set; } = true;
+    public bool ShowDebugInConsole { get; set; } = false;
 }
 
 public class ServerAnnounce

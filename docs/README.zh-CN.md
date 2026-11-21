@@ -33,6 +33,7 @@
 - [账号迁移](operations/account-migration.zh-CN.md)
 - [场景缓存元数据升级](operations/scene-cache-upgrade.zh-CN.md)
 - [从客户端导出重建资源缓存](operations/resource-cache-from-client-export.zh-CN.md)
+- [服务器日志](operations/server-logs.zh-CN.md)
 
 ## 测试
 

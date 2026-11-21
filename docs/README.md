@@ -35,6 +35,7 @@ The project overview is the [README](../README.md), also available in
 - [Account migration](operations/account-migration.md)
 - [Upgrading scene cache metadata](operations/scene-cache-upgrade.md)
 - [Rebuilding the resource cache from a client export](operations/resource-cache-from-client-export.md)
+- [Server logs](operations/server-logs.md)
 
 ## Testing
 

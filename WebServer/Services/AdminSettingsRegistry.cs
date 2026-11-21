@@ -245,6 +245,7 @@ public static class AdminSettingsRegistry
         yield return Bool("LogOption.DisableLogDetailPacket", "logging", () => log.DisableLogDetailPacket, v => log.DisableLogDetailPacket = v);
         yield return Bool("LogOption.SavePersonalDebugFile", "logging", () => log.SavePersonalDebugFile, v => log.SavePersonalDebugFile = v);
         yield return Bool("LogOption.LogResourceCacheLoading", "logging", () => log.LogResourceCacheLoading, v => log.LogResourceCacheLoading = v, restart: true);
+        yield return Bool("LogOption.ShowDebugInConsole", "logging", () => log.ShowDebugInConsole, v => log.ShowDebugInConsole = v);
     }
 
     #region Definition helpers

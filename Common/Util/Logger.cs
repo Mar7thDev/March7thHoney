@@ -18,26 +18,16 @@ public class Logger(string moduleName)
 
     public void Log(string message, LoggerLevel level)
     {
+        // Debug lines are diagnostics for developers; the console shows them only when the owner asks for it.
+        Log(message, level, level != LoggerLevel.DEBUG || ShowDebugInConsole());
+    }
+
+    private void Log(string message, LoggerLevel level, bool toConsole)
+    {
         lock (Lock)
         {
             var time = DateTime.Now.ToString("HH:mm:ss");
-            // Resource loader warnings stay out of the console and the main log; they are kept in the debug log only.
-            if (level == LoggerLevel.WARN && moduleName is "ResMgr" or "ResCache")
-            {
-                WriteToDebugFile($"[{time}][{moduleName}][{level}] {message}");
-                return;
-            }
-
-            var entry = new ConsoleLogEntry(time, moduleName, level, message);
-            if (_consoleDirect)
-            {
-                WriteConsole(entry);
-            }
-            else
-            {
-                Interlocked.Increment(ref _consolePending);
-                if (!ConsoleLog.Writer.TryWrite(entry)) Interlocked.Decrement(ref _consolePending);
-            }
+            if (toConsole) QueueConsole(new ConsoleLogEntry(time, moduleName, level, message));
 
             var logMessage = $"[{time}][{moduleName}][{level}] {message}";
             try
@@ -57,6 +47,31 @@ public class Logger(string moduleName)
 
             WriteToFile(logMessage);
         }
+    }
+
+    private static bool ShowDebugInConsole()
+    {
+        try
+        {
+            return ConfigManager.Config.ServerOption.LogOption.ShowDebugInConsole;
+        }
+        catch
+        {
+            // Lines logged while the configuration is still being initialised fall back to the default.
+            return false;
+        }
+    }
+
+    private static void QueueConsole(ConsoleLogEntry entry)
+    {
+        if (_consoleDirect)
+        {
+            WriteConsole(entry);
+            return;
+        }
+
+        Interlocked.Increment(ref _consolePending);
+        if (!ConsoleLog.Writer.TryWrite(entry)) Interlocked.Decrement(ref _consolePending);
     }
 
     private static Channel<ConsoleLogEntry> CreateConsoleLog()
@@ -189,6 +204,15 @@ public class Logger(string moduleName)
             Log(e.Message, LoggerLevel.DEBUG);
             Log(e.StackTrace ?? string.Empty, LoggerLevel.DEBUG);
         }
+    }
+
+    /// <summary>
+    ///     Writes a game packet line (<c>LogOption.LogPacketToConsole</c>). It is recorded at debug level in the debug
+    ///     log, but always reaches the console because the owner turned the packet log on to watch it there.
+    /// </summary>
+    public void Packet(string message)
+    {
+        Log(message, LoggerLevel.DEBUG, true);
     }
 
     public static void SetLogFile(FileInfo file)

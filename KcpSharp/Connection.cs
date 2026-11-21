@@ -124,7 +124,7 @@ public class March7thHoneyConnection
     private void WritePacketLog(string output)
     {
         if (ConfigManager.Config.ServerOption.LogOption.LogPacketToConsole)
-            Logger.Debug(output);
+            Logger.Packet(output);
 
         if (!ConfigManager.Config.ServerOption.LogOption.SavePersonalDebugFile) return;
         _packetLog.WriteLine($"[{DateTime.Now:HH:mm:ss}] [GameServer] [DEBUG] " + output);
