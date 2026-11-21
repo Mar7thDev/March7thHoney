@@ -2,7 +2,7 @@
 
 English | [简体中文](inventory-regression.zh-CN.md)
 
-`InventoryRegression` checks that item removal, shop purchases, item and relic synthesis and item use validate counts and balances before they grant anything. Run it after changing `InventoryManager` removal, `ShopService`, synthesis or item use.
+`InventoryRegression` checks that item removal, shop purchases, item and relic synthesis and item use validate counts and balances before they grant anything. Run it after changing `InventoryManager` removal, `ShopManager`, synthesis or item use.
 
 Project: [`scripts/InventoryRegression/`](../../scripts/InventoryRegression/)
 

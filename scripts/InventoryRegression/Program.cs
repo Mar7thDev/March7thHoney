@@ -96,7 +96,7 @@ GameData.ShopConfigData[Shop] = new ShopConfigExcel { ShopID = Shop, Goods = [go
 var player = new PlayerInstance(70001);
 var inventory = new InventoryManager(player);
 typeof(PlayerInstance).GetProperty(nameof(PlayerInstance.InventoryManager))!.SetValue(player, inventory);
-typeof(PlayerInstance).GetProperty(nameof(PlayerInstance.ShopService))!.SetValue(player, new ShopService(player));
+typeof(PlayerInstance).GetProperty(nameof(PlayerInstance.ShopManager))!.SetValue(player, new ShopManager(player));
 int Owned(int id) => (int)inventory.GetRemovableCount(id);
 void SetBalance(int hcoin, int scoin, params (int id, int count)[] materials)
 {
@@ -129,18 +129,18 @@ Check("an affordable cost is removed", await inventory.TryRemoveItems([(Material
 
 // --- Shop --------------------------------------------------------------------------------------------------------
 SetBalance(0, 0);
-var (retcode, bought) = await player.ShopService!.BuyItem(Shop, MaterialGoods, 1);
+var (retcode, bought) = await player.ShopManager!.BuyItem(Shop, MaterialGoods, 1);
 Check("buying with zero balance is rejected", retcode == Retcode.RetItemNotEnough && bought.Count == 0 &&
                                               Owned(Output) == 0 && player.Data.Hcoin == 0);
 SetBalance(1000, 0);
-(retcode, bought) = await player.ShopService.BuyItem(Shop, MaterialGoods, 0xFFFFFFFFL);
+(retcode, bought) = await player.ShopManager.BuyItem(Shop, MaterialGoods, 0xFFFFFFFFL);
 Check("GoodsNum 0xFFFFFFFF is rejected", retcode != Retcode.RetSucc && Owned(Output) == 0 && player.Data.Hcoin == 1000);
-(retcode, bought) = await player.ShopService.BuyItem(Shop, MaterialGoods, 0);
+(retcode, bought) = await player.ShopManager.BuyItem(Shop, MaterialGoods, 0);
 Check("GoodsNum 0 is rejected", retcode != Retcode.RetSucc && Owned(Output) == 0);
-(retcode, bought) = await player.ShopService.BuyItem(Shop, MaterialGoods, 7);
+(retcode, bought) = await player.ShopManager.BuyItem(Shop, MaterialGoods, 7);
 Check("buying more than the balance covers is rejected", retcode == Retcode.RetItemNotEnough && Owned(Output) == 0 &&
                                                          player.Data.Hcoin == 1000);
-(retcode, bought) = await player.ShopService.BuyItem(Shop, MaterialGoods, 6);
+(retcode, bought) = await player.ShopManager.BuyItem(Shop, MaterialGoods, 6);
 Check("an affordable purchase is charged in full", retcode == Retcode.RetSucc && Owned(Output) == 6 &&
                                                    player.Data.Hcoin == 40);
 

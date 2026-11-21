@@ -19,7 +19,7 @@ public class QuestManager(PlayerInstance player) : BasePlayerManager<QuestData>(
     /// <summary>QuestData.QuestType of the daily training (每日实训) quests.</summary>
     public const int DailyQuestType = 5;
 
-    public UnlockHandler UnlockHandler { get; } = new(player);
+    public FuncUnlockChecker FuncUnlockChecker { get; } = new(player);
     public List<QuestInfo> WaitToSync { get; } = [];
 
     private QuestInfo? GetActivityQuest(int questId) => Player.B51RacingManager?.GetQuestInfo(questId) ?? Player.MechCraftManager?.GetQuestInfo(questId);

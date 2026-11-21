@@ -5,7 +5,7 @@ using March7thHoney.Enums.Scene;
 
 namespace March7thHoney.GameServer.Game.Drop;
 
-public class DropService
+public static class DropService
 {
     public static List<ItemData> CalculateDropsFromProp(int chestId)
     {

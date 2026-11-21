@@ -76,7 +76,7 @@ public partial class PlayerInstance(PlayerData data)
     #region Shopping Managers
 
     public GachaManager? GachaManager { get; private set; }
-    public ShopService? ShopService { get; private set; }
+    public ShopManager? ShopManager { get; private set; }
     public OfferingManager? OfferingManager { get; private set; }
 
     #endregion
@@ -221,7 +221,7 @@ public partial class PlayerInstance(PlayerData data)
         MessageManager = new MessageManager(this);
         MailManager = new MailManager(this);
         FriendManager = new FriendManager(this);
-        ShopService = new ShopService(this);
+        ShopManager = new ShopManager(this);
         ChallengeManager = new ChallengeManager(this);
         ChallengePeakManager = new ChallengePeakManager(this);
         ChallengeTierceManager = new ChallengeTierceManager(this);
