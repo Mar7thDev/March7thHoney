@@ -17,7 +17,6 @@ using March7thHoney.WebServer;
 using March7thHoney.WebServer.Handler;
 using March7thHoney.WebServer.Server;
 using System.Globalization;
-using System.IO.Compression;
 using System.Runtime.InteropServices;
 
 namespace March7thHoney.Program.Program;
@@ -62,62 +61,6 @@ public class EntryPoint
             _sigtermRegistration = PosixSignalRegistration.Create(PosixSignal.SIGTERM, OnSigTerm);
         var time = DateTime.Now;
 
-        // pack the old log
-        var logDirectory = new DirectoryInfo(GetConfig().Path.LogPath);
-        if (logDirectory.Exists)
-        {
-            List<string> packed = [];
-            foreach (var oldFile in logDirectory.GetFiles().ToArray())
-            {
-                if (!oldFile.Name.EndsWith(".log")) continue;
-                if (oldFile.Name.EndsWith("-debug.log")) continue;
-                if (packed.Contains(oldFile.Name)) continue;
-
-                var fileName = oldFile.Name.Replace(".log", "");
-                var debugFileName = fileName + "-debug";
-                var oldDebugFile = logDirectory.GetFiles(debugFileName + ".log").FirstOrDefault();
-
-                if (oldFile.Exists)
-                {
-                    var zipFileName = fileName + ".zip";
-                    var zipFile = new FileInfo(Path.Combine(GetConfig().Path.LogPath, zipFileName));
-                    if (zipFile.Exists) zipFile.Delete();
-                    using (var zip = ZipFile.Open(zipFile.FullName, ZipArchiveMode.Create))
-                    {
-                        zip.CreateEntryFromFile(oldFile.FullName, oldFile.Name);
-                        if (oldDebugFile is { Exists: true })
-                            zip.CreateEntryFromFile(oldDebugFile.FullName, oldDebugFile.Name);
-                    }
-
-                    oldFile.Delete();
-                    oldDebugFile?.Delete();
-                    packed.Add(oldFile.Name);
-                    packed.Add(oldDebugFile?.Name ?? "");
-                }
-            }
-        }
-
-        // Initialize the logfile
-        var counter = 0;
-        FileInfo file;
-        FileInfo zi;
-        while (true)
-        {
-            file = new FileInfo(Path.Combine(GetConfig().Path.LogPath,
-                $"{DateTime.Now:yyyy-MM-dd}-{++counter}.log"));
-            zi = new FileInfo(Path.Combine(GetConfig().Path.LogPath,
-                $"{DateTime.Now:yyyy-MM-dd}-{counter}.zip"));
-            if (file is not { Exists: false, Directory: not null }) continue;
-            if (zi is not { Exists: false, Directory: not null }) continue;
-            file.Directory.Create();
-            break;
-        }
-
-        var debugFile = new FileInfo(Path.Combine(GetConfig().Path.LogPath,
-            $"{DateTime.Now:yyyy-MM-dd}-{counter}-debug.log"));
-
-        Logger.SetLogFile(file);
-        Logger.SetDebugLogFile(debugFile);
         // Load the config
         try
         {
@@ -125,8 +68,17 @@ public class EntryPoint
         }
         catch (Exception e)
         {
+            // Uses the log directory of the configuration in memory: the default unless Config.json was read before
+            // the failure.
+            TryOpenLogFiles();
             Logger.Error(
                 I18NManager.Translate("Server.ServerInfo.FailedToLoadItem", I18NManager.Translate("Word.Config")), e);
+            Console.ReadLine();
+            return;
+        }
+
+        if (!TryOpenLogFiles())
+        {
             Console.ReadLine();
             return;
         }
@@ -308,6 +260,21 @@ public class EntryPoint
 
         IConsole.ListenConsole();
         GC.KeepAlive(_sigtermRegistration);
+    }
+
+    /// <summary>Opens this run's log files in the configured log directory, packing the earlier runs' logs.</summary>
+    private static bool TryOpenLogFiles()
+    {
+        try
+        {
+            LogFiles.RotateAndOpen(GetConfig().Path.LogPath);
+            return true;
+        }
+        catch (Exception e)
+        {
+            Logger.Error($"Failed to open the log files in {GetConfig().Path.LogPath}", e);
+            return false;
+        }
     }
 
     public static ConfigContainer GetConfig()

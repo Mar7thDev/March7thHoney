@@ -192,36 +192,73 @@ public class Logger(string moduleName)
         }
     }
 
-    public static void SetLogFile(FileInfo file) => _logFile = file;
-    public static void SetDebugLogFile(FileInfo file) => _debugLogFile = file;
+    public static void SetLogFile(FileInfo file)
+    {
+        lock (Lock)
+        {
+            _logFile = file;
+            Flush(file, PendingFileLines);
+        }
+    }
+
+    public static void SetDebugLogFile(FileInfo file)
+    {
+        lock (Lock)
+        {
+            _debugLogFile = file;
+            Flush(file, PendingDebugFileLines);
+        }
+    }
+
     public static FileInfo? CurrentLogFile => _logFile;
     public static FileInfo? CurrentDebugLogFile => _debugLogFile;
 
+    // The log directory is configured in Config.json, which is read after the first lines are logged. Those lines are
+    // held here (a bounded number, for tools that never open a log file) and written once the file is set.
+    private const int MaxPendingFileLines = 1000;
+    private static readonly List<string> PendingFileLines = [];
+    private static readonly List<string> PendingDebugFileLines = [];
+
     public static void WriteToFile(string message)
     {
-        try
+        lock (Lock)
         {
-            if (_logFile == null) throw new Exception("LogFile is not set");
-            _logFile.Directory?.Create();
-            using var sw = _logFile.AppendText();
-            sw.WriteLine(message);
-        }
-        catch
-        {
+            if (_logFile == null) Hold(PendingFileLines, message);
+            else Append(_logFile, message);
         }
     }
 
     public static void WriteToDebugFile(string message)
     {
+        lock (Lock)
+        {
+            if (_debugLogFile == null) Hold(PendingDebugFileLines, message);
+            else Append(_debugLogFile, message);
+        }
+    }
+
+    private static void Hold(List<string> pending, string message)
+    {
+        if (pending.Count < MaxPendingFileLines) pending.Add(message);
+    }
+
+    private static void Flush(FileInfo file, List<string> pending)
+    {
+        foreach (var message in pending) Append(file, message);
+        pending.Clear();
+    }
+
+    private static void Append(FileInfo file, string message)
+    {
         try
         {
-            if (_debugLogFile == null) throw new Exception("DebugLogFile is not set");
-            _debugLogFile.Directory?.Create();
-            using var sw = _debugLogFile.AppendText();
+            file.Directory?.Create();
+            using var sw = file.AppendText();
             sw.WriteLine(message);
         }
         catch
         {
+            // An unwritable log file must not break the caller; the console and the log subscribers still get the line.
         }
     }
 
