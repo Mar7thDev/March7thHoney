@@ -37,14 +37,12 @@ public static class MaterialSubmitterTable
     private static Dictionary<int, MaterialSubmitterRow> Load()
     {
         var rows = new Dictionary<int, MaterialSubmitterRow>();
-        var file = ConfigManager.Config.Path.ExcelOutputDirs
-            .Select(dir => Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "MaterialSubmitter.json"))
-            .FirstOrDefault(File.Exists);
+        var file = ResourcePaths.FindExcel("MaterialSubmitter.json");
         if (file == null) return rows;
 
         try
         {
-            foreach (var row in JArray.Parse(File.ReadAllText(file)).OfType<JObject>())
+            foreach (var row in JArray.Parse(File.ReadAllText(file.FullName)).OfType<JObject>())
             {
                 var id = row["ID"]?.Value<int>() ?? 0;
                 if (id <= 0) continue;

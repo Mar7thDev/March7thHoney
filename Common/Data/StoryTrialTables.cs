@@ -1,4 +1,3 @@
-using March7thHoney.Util;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data;
@@ -62,7 +61,7 @@ public static class StoryTrialTables
 
     private static bool LoadSkillTree(string fileName)
     {
-        var file = FindExcel(fileName);
+        var file = ResourcePaths.FindExcel(fileName);
         if (file == null) return false;
 
         var loaded = false;
@@ -88,7 +87,7 @@ public static class StoryTrialTables
 
     private static bool LoadSpecialAvatars(string fileName)
     {
-        var file = FindExcel(fileName);
+        var file = ResourcePaths.FindExcel(fileName);
         if (file == null) return false;
 
         var loaded = false;
@@ -102,13 +101,6 @@ public static class StoryTrialTables
         }
 
         return loaded;
-    }
-
-    private static FileInfo? FindExcel(string fileName)
-    {
-        return ConfigManager.Config.Path.ExcelOutputDirs
-            .Select(dir => new FileInfo(Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, fileName)))
-            .FirstOrDefault(file => file.Exists);
     }
 
     private static IEnumerable<Dictionary<string, int>> ReadObjects(FileInfo file)

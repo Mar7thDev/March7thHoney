@@ -37,15 +37,12 @@ public static class VoracityInvasionAllyBuff
 
     private static int ReadTopBuffId()
     {
-        var file = ConfigManager.Config.Path.ExcelOutputDirs
-            .Select(dir => Path.Combine(ConfigManager.Config.Path.ResourcePath, dir,
-                "ActivityVoracityInvasionBuf.json"))
-            .FirstOrDefault(File.Exists);
+        var file = ResourcePaths.FindExcel("ActivityVoracityInvasionBuf.json");
         if (file == null) return 0;
 
         try
         {
-            return JArray.Parse(File.ReadAllText(file))
+            return JArray.Parse(File.ReadAllText(file.FullName))
                 .OfType<JObject>()
                 .Select(row => (Id: row["BuffID"]?.Value<int>() ?? 0, Level: row["BuffLevel"]?.Value<int>() ?? 0))
                 .Where(row => row.Id > 0)

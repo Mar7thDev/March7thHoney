@@ -22,14 +22,6 @@ public class ResourceManager
 {
     public static Logger Logger { get; } = new("ResMgr");
 
-    /// <summary>Absolute path of a file inside the resource tree (Config.Path.ResourcePath).</summary>
-    /// <remarks>
-    ///     Paths read from excel and level data may be null or empty, and a leading separator is stripped so a
-    ///     stray "/Config/..." still resolves inside the resource tree instead of escaping it.
-    /// </remarks>
-    private static string ResPath(string? relative) =>
-        Path.Combine(ConfigManager.Config.Path.ResourcePath, (relative ?? string.Empty).TrimStart('/', '\\'));
-
     private static void LogPartialMissingSummary(string itemName, int missingCount, List<string> missingFiles)
     {
         if (missingCount <= 0) return;
@@ -145,10 +137,7 @@ public class ResourceManager
         foreach (var fileName in attribute.FileName)
             try
             {
-                var file = ConfigManager.Config.Path.ExcelOutputDirs
-                    .Select(dir => new FileInfo(
-                        Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, fileName)))
-                    .FirstOrDefault(f => f.Exists);
+                var file = ResourcePaths.FindExcel(fileName);
                 if (file == null)
                 {
                     if (attribute.OptionalFileNames.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
@@ -265,14 +254,14 @@ public class ResourceManager
     public static void LoadFloorInfo()
     {
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", I18NManager.Translate("Word.FloorInfo")));
-        DirectoryInfo directory = new(ResPath("Config/LevelOutput/RuntimeFloor/"));
+        DirectoryInfo directory = new(ResourcePaths.Resource("Config/LevelOutput/RuntimeFloor/"));
         var missingGroupInfos = false;
 
         if (!directory.Exists)
         {
             Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
                 I18NManager.Translate("Word.FloorInfo"),
-                ResPath("Config/LevelOutput/RuntimeFloor"),
+                ResourcePaths.Resource("Config/LevelOutput/RuntimeFloor"),
                 I18NManager.Translate("Word.FloorMissingResult")));
             return;
         }
@@ -293,7 +282,7 @@ public class ResourceManager
                 GameData.FloorInfoData[name] = info;
 
                 // Load navmap infos
-                FileInfo navmapFile = new(ResPath(info.NavmapConfigPath));
+                FileInfo navmapFile = new(ResourcePaths.Resource(info.NavmapConfigPath));
                 if (navmapFile.Exists)
                     try
                     {
@@ -319,7 +308,7 @@ public class ResourceManager
                 {
                     if (groupInfo.IsDelete) continue;
                     if (groupInfo.GroupPath.Contains("_D100")) continue;
-                    FileInfo groupFile = new(ResPath(groupInfo.GroupPath));
+                    FileInfo groupFile = new(ResourcePaths.Resource(groupInfo.GroupPath));
                     if (!groupFile.Exists) continue;
 
                     try
@@ -337,7 +326,7 @@ public class ResourceManager
                             info.Groups[groupInfo.ID] = group;
 
                             // Load graph
-                            var graphPath = ResPath(group.LevelGraph);
+                            var graphPath = ResourcePaths.Resource(group.LevelGraph);
                             var graphFile = new FileInfo(graphPath);
                             if (graphFile.Exists)
                             {
@@ -380,7 +369,7 @@ public class ResourceManager
         if (missingGroupInfos)
             Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
                 I18NManager.Translate("Word.FloorGroupInfo"),
-                ResPath("Config/LevelOutput/SharedRuntimeGroup"),
+                ResourcePaths.Resource("Config/LevelOutput/SharedRuntimeGroup"),
                 I18NManager.Translate("Word.FloorGroupMissingResult")));
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", GameData.FloorInfoData.Count.ToString(),
@@ -390,12 +379,12 @@ public class ResourceManager
     public static void LoadMissionInfo()
     {
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", I18NManager.Translate("Word.MissionInfo")));
-        DirectoryInfo directory = new(ResPath("Config/Level/Mission"));
+        DirectoryInfo directory = new(ResourcePaths.Resource("Config/Level/Mission"));
         if (!directory.Exists)
         {
             Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
                 I18NManager.Translate("Word.MissionInfo"),
-                ResPath("Config/Level/Mission"),
+                ResourcePaths.Resource("Config/Level/Mission"),
                 I18NManager.Translate("Word.Mission")));
             return;
         }
@@ -409,7 +398,7 @@ public class ResourceManager
             try
             {
                 var path =
-                    ResPath($"Config/Level/Mission/{missionExcel.Key}/MissionInfo_{missionExcel.Key}.json");
+                    ResourcePaths.Resource($"Config/Level/Mission/{missionExcel.Key}/MissionInfo_{missionExcel.Key}.json");
                 if (!File.Exists(path))
                 {
                     missingMissionInfos = true;
@@ -424,7 +413,7 @@ public class ResourceManager
                 var json = File.ReadAllText(path);
                 var missionInfo = JsonConvert.DeserializeObject<MissionInfo>(json);
                 var partialPath =
-                    ResPath($"Config/Level/Mission/{missionExcel.Key}/MissionInfo_{missionExcel.Key}.partial.json");
+                    ResourcePaths.Resource($"Config/Level/Mission/{missionExcel.Key}/MissionInfo_{missionExcel.Key}.partial.json");
                 if (missionInfo != null && File.Exists(partialPath))
                     try
                     {
@@ -757,7 +746,7 @@ public class ResourceManager
         {
             var adventurePath = adventure.PlayerJsonPath.Replace("_Config.json", "_Ability.json")
                 .Replace("ConfigCharacter", "ConfigAdventureAbility");
-            var path = ResPath(adventurePath);
+            var path = ResourcePaths.Resource(adventurePath);
             var file = new FileInfo(path);
             if (!file.Exists)
             {
@@ -800,12 +789,12 @@ public class ResourceManager
             // character/ability assets are not shipped. Do not derive a skill
             // filename from an empty path or require those development assets.
             if (adventure.JsonPath.StartsWith("Config/ConfigCharacter/WhiteBox/", StringComparison.Ordinal)
-                && !File.Exists(ResPath(adventure.JsonPath))) return;
+                && !File.Exists(ResourcePaths.Resource(adventure.JsonPath))) return;
             var adventurePath = adventure.ConfigEntityPath.Replace("_Entity.json", "_Ability.json")
                 .Replace("_Config.json", "_Ability.json")
                 .Replace("ConfigEntity", "ConfigAdventureAbility");
 
-            var path = ResPath(adventurePath);
+            var path = ResourcePaths.Resource(adventurePath);
             var file = new FileInfo(path);
             if (!file.Exists)
             {
@@ -875,7 +864,7 @@ public class ResourceManager
         var missingFiles = new List<string>();
         Parallel.ForEach(GameData.SummonUnitDataData.Values, summonUnit =>
         {
-            var path = ResPath(summonUnit.JsonPath);
+            var path = ResourcePaths.Resource(summonUnit.JsonPath);
             var file = new FileInfo(path);
             if (!file.Exists)
             {
@@ -923,7 +912,7 @@ public class ResourceManager
         var missingFiles = new List<string>();
         Parallel.ForEach(GameData.RogueNPCData.Values, dialogue =>
         {
-            var path = ResPath(dialogue.NPCJsonPath);
+            var path = ResourcePaths.Resource(dialogue.NPCJsonPath);
             var file = new FileInfo(path);
             if (!file.Exists)
             {
@@ -974,7 +963,7 @@ public class ResourceManager
         if (entry == null || !entry.DialoguePath.Contains("RogueEventTourn", StringComparison.Ordinal)) return;
 
         // Some official builds pad their resource paths with trailing whitespace.
-        var file = new FileInfo(ResPath(entry.DialoguePath.Trim()));
+        var file = new FileInfo(ResourcePaths.Resource(entry.DialoguePath.Trim()));
         if (!file.Exists) return;
         try
         {
@@ -1007,7 +996,7 @@ public class ResourceManager
                 return;
             }
 
-            var path = ResPath(performance.PerformancePath);
+            var path = ResourcePaths.Resource(performance.PerformancePath);
             var file = new FileInfo(path);
             if (!file.Exists) return;
             try
@@ -1037,7 +1026,7 @@ public class ResourceManager
                 return;
             }
 
-            var path = ResPath(performance.PerformancePath);
+            var path = ResourcePaths.Resource(performance.PerformancePath);
             var file = new FileInfo(path);
             if (!file.Exists) return;
             try
@@ -1072,7 +1061,7 @@ public class ResourceManager
         {
             if (subMission.SubMissionInfo == null || subMission.SubMissionInfo.MissionJsonPath == "") return;
 
-            var path = ResPath(subMission.SubMissionInfo.MissionJsonPath);
+            var path = ResourcePaths.Resource(subMission.SubMissionInfo.MissionJsonPath);
             var file = new FileInfo(path);
             if (!file.Exists) return;
             try
@@ -1116,7 +1105,7 @@ public class ResourceManager
                 continue;
             }
 
-            var path = ResPath(board.ChessBoardConfiguration);
+            var path = ResourcePaths.Resource(board.ChessBoardConfiguration);
 
             var file = new FileInfo(path);
             if (!file.Exists) continue;
@@ -1144,7 +1133,7 @@ public class ResourceManager
         if (count < boardList.Count)
             Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
                 I18NManager.Translate("Word.RogueChestMapInfo"),
-                ResPath("Config/Gameplays/RogueDLC"),
+                ResourcePaths.Resource("Config/Gameplays/RogueDLC"),
                 I18NManager.Translate("Word.RogueChestMap")));
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
@@ -1154,7 +1143,7 @@ public class ResourceManager
     // Reads the lose-side round limit of FinalityBattle_TurnLimit so settle records can derive remaining rounds.
     public static void LoadFinalityBattleTurnLimit()
     {
-        var path = ResPath("Config/ConfigAbility/FinalityBattle/Avatar_FinalityBattle_BattleTarget_Ability.json");
+        var path = ResourcePaths.Resource("Config/ConfigAbility/FinalityBattle/Avatar_FinalityBattle_BattleTarget_Ability.json");
         if (!File.Exists(path)) return;
         try
         {
@@ -1177,12 +1166,12 @@ public class ResourceManager
         var count = 0;
 
         // list the files in folder
-        var directory = new DirectoryInfo(ResPath("Config/ConfigAdventureModifier"));
+        var directory = new DirectoryInfo(ResourcePaths.Resource("Config/ConfigAdventureModifier"));
         if (!directory.Exists)
         {
             Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
                 I18NManager.Translate("Word.AdventureModifierInfo"),
-                ResPath("Config/ConfigAdventureModifier"),
+                ResourcePaths.Resource("Config/ConfigAdventureModifier"),
                 I18NManager.Translate("Word.Buff")));
 
             return;
@@ -1224,7 +1213,7 @@ public class ResourceManager
         var count = 0;
         Parallel.ForEach(GameData.AdventurePlayerData.Values, excel =>
         {
-            var path = ResPath(excel.PlayerJsonPath);
+            var path = ResourcePaths.Resource(excel.PlayerJsonPath);
             var file = new FileInfo(path);
             if (!file.Exists) return;
             try
@@ -1251,7 +1240,7 @@ public class ResourceManager
         if (count < GameData.SummonUnitDataData.Count)
             Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
                 I18NManager.Translate("Word.LocalPlayerCharacterInfo"),
-                ResPath("Config/ConfigCharacter"),
+                ResourcePaths.Resource("Config/ConfigCharacter"),
                 I18NManager.Translate("Word.LocalPlayerCharacter")));
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),

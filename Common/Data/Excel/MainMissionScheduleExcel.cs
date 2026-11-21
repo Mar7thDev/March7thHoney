@@ -51,14 +51,12 @@ public partial class MainMissionScheduleExcel : ExcelResource
 
     private static void TryLoadFromDisk()
     {
-        var file = ConfigManager.Config.Path.ExcelOutputDirs
-            .Select(dir => Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "MainMissionSchedule.json"))
-            .FirstOrDefault(File.Exists);
+        var file = ResourcePaths.FindExcel("MainMissionSchedule.json");
         if (file == null) return;
 
         try
         {
-            var rows = JsonConvert.DeserializeObject<List<MainMissionScheduleExcel>>(File.ReadAllText(file));
+            var rows = JsonConvert.DeserializeObject<List<MainMissionScheduleExcel>>(File.ReadAllText(file.FullName));
             foreach (var row in rows ?? []) row.Loaded();
         }
         catch (Exception ex)
