@@ -12,7 +12,7 @@ using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.Proto;
 
-namespace March7thHoney.GameServer.Game.Task;
+namespace March7thHoney.GameServer.Game.LevelTasks;
 
 [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicMethods)]
 public class LevelTask(PlayerInstance player)

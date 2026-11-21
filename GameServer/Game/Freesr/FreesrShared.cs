@@ -336,7 +336,7 @@ public static class FreesrShared
     public static async ValueTask ImportJson(
         string json,
         PlayerInstance player,
-        Func<string[], System.Threading.Tasks.Task> sendI18nCallback)
+        Func<string[], Task> sendI18nCallback)
     {
         var data = DeserializeFreesrPayload(json);
         if (data == null)
@@ -495,7 +495,7 @@ public static class FreesrShared
         if (calyxOverrideData?.CachedJson?.BattleConfig != null)
             data.BattleConfig = calyxOverrideData.CachedJson.BattleConfig;
 
-        return await System.Threading.Tasks.Task.FromResult(JsonSerializer.Serialize(data, new JsonSerializerOptions
+        return await Task.FromResult(JsonSerializer.Serialize(data, new JsonSerializerOptions
         {
             WriteIndented = writeIndented,
             DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull

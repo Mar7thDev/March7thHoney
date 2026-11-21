@@ -3,7 +3,7 @@ using March7thHoney.Data.Excel;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
 
-namespace March7thHoney.GameServer.Game.Task;
+namespace March7thHoney.GameServer.Game.LevelTasks;
 
 public class SceneTaskTrigger(PlayerInstance player)
 {

@@ -1,7 +1,7 @@
 using March7thHoney.GameServer.Game.Player;
-using March7thHoney.GameServer.Game.Task.AvatarTask;
+using March7thHoney.GameServer.Game.LevelTasks.AvatarTask;
 
-namespace March7thHoney.GameServer.Game.Task;
+namespace March7thHoney.GameServer.Game.LevelTasks;
 
 public class TaskManager(PlayerInstance player) : BasePlayerManager(player)
 {

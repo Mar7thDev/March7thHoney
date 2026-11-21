@@ -7,7 +7,7 @@ using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 using March7thHoney.Proto;
 using March7thHoney.Util;
 
-namespace March7thHoney.GameServer.Game.Task.AvatarTask;
+namespace March7thHoney.GameServer.Game.LevelTasks.AvatarTask;
 
 [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicMethods)]
 public class SummonUnitLevelTask

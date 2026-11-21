@@ -44,7 +44,7 @@ using March7thHoney.GameServer.Game.Shop;
 using March7thHoney.GameServer.Game.Sync.Player;
 using March7thHoney.GameServer.Game.TrainCakeCatch;
 using March7thHoney.GameServer.Game.TrainParty;
-using March7thHoney.GameServer.Game.Task;
+using March7thHoney.GameServer.Game.LevelTasks;
 using March7thHoney.GameServer.Server;
 using March7thHoney.GameServer.Server.Packet.Send.DailyActive;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
