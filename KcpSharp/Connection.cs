@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Collections.Frozen;
 using System.Net;
 using March7thHoney.Kcp.KcpSharp;
 using March7thHoney.Util;
@@ -7,16 +8,16 @@ namespace March7thHoney.Kcp;
 
 public class March7thHoneyConnection
 {
-    public static readonly ConcurrentBag<int> BannedPackets = [];
     private static readonly Logger Logger = new("GameServer");
     public static readonly ConcurrentDictionary<int, string> LogMap = [];
     private static readonly ConcurrentDictionary<string, int> NameToCmdId = new(StringComparer.Ordinal);
 
-    public static readonly ConcurrentBag<int> IgnoreLog =
-    [
+    // Packets too frequent to be worth a packet log line; checked on every send and receive.
+    private static readonly FrozenSet<int> IgnoreLog = new[]
+    {
         CmdIds.PlayerHeartBeatCsReq, CmdIds.PlayerHeartBeatScRsp, CmdIds.SceneEntityMoveCsReq,
         CmdIds.SceneEntityMoveScRsp, CmdIds.GetShopListCsReq, CmdIds.GetShopListScRsp
-    ];
+    }.ToFrozenSet();
 
     protected readonly CancellationTokenSource CancelToken;
     protected readonly KcpConversation Conversation;
@@ -175,8 +176,6 @@ public class March7thHoneyConnection
             return;
         }
 
-        // DO NOT REMOVE (unless we find a way to validate code before sending to client which I don't think we can)
-        if (BannedPackets.Contains(packet.CmdId)) return;
         LogPacket("Send", packet.CmdId, packet.Data);
         // Header: a reply sent while a request is handled carries that request's packet id.
         var requestPacketId = PacketHead.RequestPacketId.Value;
