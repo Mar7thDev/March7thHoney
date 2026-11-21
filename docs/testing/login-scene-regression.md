@@ -181,11 +181,12 @@ Code: `scripts/LoginSceneRegression/ChallengeRegression.cs`.
 - `VideoKeyInfo` writes `video_key` into `HHCAKADKHAN` and `ps_field_3` into `BOGECOHIINH` (fields 6/13 in 4.6, 10/7 in 4.7, 10/12 in 4.8), checked against the official value for ID `5600`.
 - Opening video keys: the regression reads a temporary copy of `Config/Custom/VideoKeysConfig.json` and, through the real video response, checks the key of tutorial opening video `8` and the full 64-bit fields of ordinary video `5600` and activity video `1806`. The values match official 4.6 capture seq 133; 4.7 writes them by the original attribute identity into the new field numbers. After updating and restarting the server, new logins receive the full key; opening missions that are already finished are not rolled back.
 
-### Operator files on a cache boot
+### Operator files
 
-Code: `scripts/LoginSceneRegression/CustomConfigFilesRegression.cs`; it runs last because it replaces configuration the earlier checks use.
+Code: `scripts/LoginSceneRegression/CustomConfigFilesRegression.cs`; it runs last because it reloads all game data.
 
-- `CustomConfigFiles.Load(AfterCacheLoad)`, the pass the server runs after reading `Resource.bin`, installs `RealityShow.json`, `VideoKeysConfig.json`, `Banners.json`, `DiceyDungeon.json` and `ActivityBangboo.json` from the tracked `Config/Custom` without a raw resource tree.
+- Every `Config/Custom/*.json` in the repository is listed in `CustomConfigFiles.Files`, and every entry there is shipped (in `Config/Custom`, or `Config/` for `RogueMagicRoomGen.json`) or marked optional, so the publish, which copies those files, and the loader cannot drift apart.
+- The game data boot (`GameDataStartup.LoadAsync`) runs from the copy of `Resource.bin` in the scratch configuration directory, without a raw resource tree, after the shipped operator files were copied there and `QueryProductInfoConfig.json` and `GridFightRuntime.json` were edited: the edited values win over the copies inside the cache, the GridFight runtime settings and reward rules are linked onto the orb rewards, and `RealityShow.json`, `DiceyDungeon.json`, `ActivityBangboo.json`, `Banners.json` and `VideoKeysConfig.json` are installed.
 - The pass after a raw-resource load reads `ActivityBangboo.json` but leaves the banners and video keys that `ResourceManager.LoadGameData` already read; reloading the video keys reads the file again.
 
 ### Player state and shared configuration

@@ -4314,7 +4314,7 @@ using (var diceClientPeer = new KcpConversation(endpoint, diceInbound, options))
     }
 }
 
-CustomConfigFilesRegression.Run(repository, scratch, Check);
+await CustomConfigFilesRegression.Run(repository, Check);
 Console.WriteLine($"Login/scene regression: {checks} checks, {failures.Count} failures. Temporary artifacts: {scratch}");
 Environment.ExitCode = failures.Count == 0 ? 0 : 1;
 

@@ -192,44 +192,7 @@ public class EntryPoint
         {
             try
             {
-                if (File.Exists(ResourceCache.CachePath))
-                {
-                    Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem",
-                        I18NManager.Translate("Word.Cache")));
-                    if (!ResourceCache.LoadCache(ConfigManager.Config.Path.ResourceVersion))
-                    {
-                        ResourceCache.ClearGameData();
-                        throw new InvalidDataException("Resource cache is invalid. Delete it before restarting to rebuild from Resources.");
-                    }
-                }
-                else
-                {
-                    Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem",
-                        I18NManager.Translate("Word.GameData")));
-                    ResourceManager.LoadGameData();
-                    loadedFromResources = true;
-
-                    // Finish writing the cache before startup completes.
-                    if (ConfigManager.Config.ServerOption.UseCache && ResourceCache.IsComplete)
-                    {
-                        Logger.Warn(I18NManager.Translate("Server.ServerInfo.WaitingItem",
-                            I18NManager.Translate("Word.Cache")));
-                        await ResourceCache.SaveCache();
-                    }
-                    else if (ConfigManager.Config.ServerOption.UseCache)
-                    {
-                        Logger.Warn(
-                            "Resource cache NOT written: one or more resources failed to load (see the errors above). " +
-                            "Fix them and restart, or the server will re-read the raw resource tree on every boot.");
-                    }
-
-                    // Keep version-specific runtime overlays out of newly generated caches.
-                    ResourceManager.ApplyResourceCompatibility(ConfigManager.Config.Path.ResourceVersion);
-                }
-
-                CustomConfigFiles.Load(loadedFromResources
-                    ? CustomConfigPass.AfterResourceLoad
-                    : CustomConfigPass.AfterCacheLoad);
+                loadedFromResources = await GameDataStartup.LoadAsync();
             }
             catch (Exception e)
             {

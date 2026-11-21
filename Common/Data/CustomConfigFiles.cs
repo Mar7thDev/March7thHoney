@@ -1,4 +1,5 @@
 using March7thHoney.Data.Custom;
+using March7thHoney.Util;
 
 namespace March7thHoney.Data;
 
@@ -6,17 +7,17 @@ namespace March7thHoney.Data;
 public enum CustomConfigPass
 {
     /// <summary>
-    ///     Part of <see cref="ResourceManager.LoadGameData" />: the operator files a generated Resource.bin carries,
-    ///     plus DiceyDungeon and RealityShow, which the cache does not keep.
+    ///     Part of <see cref="ResourceManager.LoadGameData" />, before the floors finish loading: the files a generated
+    ///     Resource.bin carries a copy of, so a cache stays complete for builds that still read those copies.
     /// </summary>
     ResourceLoad,
 
-    /// <summary>After a raw-resource load: the overlays <see cref="ResourceLoad" /> does not cover.</summary>
+    /// <summary>After a raw-resource load: the files <see cref="ResourceLoad" /> did not read, then the derived steps.</summary>
     AfterResourceLoad,
 
     /// <summary>
-    ///     After Resource.bin was read: every operator file again, so editing one only needs a restart instead of a
-    ///     regenerated cache (which needs the raw resource tree most deployments do not ship).
+    ///     After Resource.bin was read: every file, replacing the cached copies, then the derived steps. An edited file
+    ///     therefore reaches the players with a restart, without regenerating the cache.
     /// </summary>
     AfterCacheLoad
 }
@@ -30,180 +31,171 @@ public enum ReloadableCustomConfig
 }
 
 /// <summary>
-///     Operator-authored JSON under Config/Custom (or the legacy Config root), as opposed to dumped game data. Each
-///     file is declared once here; the startup passes and the runtime reload are ordered lists over those entries.
+///     One operator file. <see cref="Load" /> is null for a file its consumer reads on first use rather than at startup.
+/// </summary>
+public sealed class CustomConfigFile(string fileName, Action? load, bool readByResourceLoad = false,
+    bool inConfigRoot = false, bool optional = false)
+{
+    public string FileName { get; } = fileName;
+
+    /// <summary>Lives in Config/ instead of Config/Custom/.</summary>
+    public bool InConfigRoot { get; } = inConfigRoot;
+
+    /// <summary>Not shipped with the repository; the server runs without it.</summary>
+    public bool Optional { get; } = optional;
+
+    /// <summary>Path below Config/ of the shipped copy.</summary>
+    public string RelativePath => InConfigRoot ? FileName : Path.Combine("Custom", FileName);
+
+    internal Action? Load { get; } = load;
+    internal bool ReadByResourceLoad { get; } = readByResourceLoad;
+}
+
+/// <summary>
+///     Operator-authored JSON under Config/Custom (or the legacy Config root), as opposed to dumped game data. Every file
+///     is listed once in <see cref="Files" />; each boot path reads all of them from disk, so Resource.bin never decides
+///     their content. A missing or unreadable file leaves the type's empty configuration and a warning.
 /// </summary>
 public static class CustomConfigFiles
 {
-    private static readonly CustomFile<ActivityConfig> Activity =
-        Json<ActivityConfig>("Activity", "ActivityConfig", value => GameData.ActivityConfig = value);
+    private static readonly CustomConfigFile Activity =
+        Json<ActivityConfig>("ActivityConfig", "Activity", value => GameData.ActivityConfig = value, true);
 
-    private static readonly CustomFile<BannersConfig> Banners =
-        new(ResourceManager.LoadBanners, () => new BannersConfig(), value => GameData.BannersConfig = value);
+    private static readonly CustomConfigFile Banners =
+        new("Banners.json", () => GameData.BannersConfig = ResourceManager.LoadBanners(), true);
 
-    private static readonly CustomFile<VideoKeysConfig> VideoKeys =
-        Json<VideoKeysConfig>("VideoKeys", "VideoKeysConfig", value => GameData.VideoKeysConfig = value);
+    private static readonly CustomConfigFile VideoKeys =
+        Json<VideoKeysConfig>("VideoKeysConfig", "VideoKeys", value => GameData.VideoKeysConfig = value, true);
 
-    private static readonly CustomFile<Dictionary<int, List<int>>> RogueMapGen =
-        Json<Dictionary<int, List<int>>>("Rogue Map", "RogueMapGen", value => GameData.RogueMapGenData = value);
-
-    private static readonly CustomFile<QueryProductInfoConfig> QueryProductInfo =
-        Json<QueryProductInfoConfig>("QueryProductInfo", "QueryProductInfoConfig",
-            value => GameData.QueryProductInfoConfig = value);
-
-    private static readonly CustomFile<DiceyDungeonConfig> DiceyDungeon =
-        Json<DiceyDungeonConfig>("DiceyDungeon", "DiceyDungeon", value => GameData.DiceyDungeonConfig = value);
-
-    private static readonly CustomFile<RealityShowConfig> RealityShow =
-        Json<RealityShowConfig>("RealityShow", "RealityShow", value => GameData.RealityShowConfig = value);
-
-    private static readonly CustomFile<SceneRainbowGroupPropertyConfig> SceneRainbowGroupProperty =
-        Json<SceneRainbowGroupPropertyConfig>("Scene Rainbow Group Property", "SceneRainbowGroupProperty",
-            value => GameData.SceneRainbowGroupPropertyData = value);
-
-    private static readonly CustomFile<ChallengePeakOverrideConfig> ChallengePeak =
-        Json<ChallengePeakOverrideConfig>("ChallengePeak Override", "ChallengePeak",
-            value => GameData.ChallengePeakOverrideConfig = value);
-
-    private static readonly CustomFile<GridFightRewardRulesConfig> GridFightRewardRules =
-        Json<GridFightRewardRulesConfig>("GridFight Reward Rules", "GridFightRewardRules",
-            value => GameData.GridFightRewardRulesConfig = value);
-
-    private static readonly CustomFile<GridFightBasicOrbRewardsConfig> GridFightBasicOrbRewards =
-        Json<GridFightBasicOrbRewardsConfig>("GridFight Orb Rewards", "GridFightBasicOrbRewards",
-            value => GameData.GridFightBasicOrbRewardsConfig = value);
-
-    private static readonly CustomFile<GridFightRuntimeConfig> GridFightRuntime =
-        Json<GridFightRuntimeConfig>("GridFight Runtime Config", "GridFightRuntime",
-            value => GameData.GridFightRuntimeConfig = value);
-
-    // Planarcadia Reverie (ActivityBangboo) stages, holes and Bangboo, decoded from client tables the resource export
-    // does not produce; never part of Resource.bin, so it is read after either boot path.
-    private static readonly CustomFile<ActivityBangbooConfig> ActivityBangboo =
+    /// <summary>Every operator file, in load order.</summary>
+    public static IReadOnlyList<CustomConfigFile> Files { get; } =
+    [
+        Activity,
+        Banners,
+        VideoKeys,
+        Json<Dictionary<int, List<int>>>("RogueMapGen", "Rogue Map", value => GameData.RogueMapGenData = value, true),
+        Json<QueryProductInfoConfig>("QueryProductInfoConfig", "QueryProductInfo",
+            value => GameData.QueryProductInfoConfig = value, true),
+        Json<DiceyDungeonConfig>("DiceyDungeon", "DiceyDungeon", value => GameData.DiceyDungeonConfig = value, true),
+        Json<RealityShowConfig>("RealityShow", "RealityShow", value => GameData.RealityShowConfig = value, true),
+        Json<SceneRainbowGroupPropertyConfig>("SceneRainbowGroupProperty", "Scene Rainbow Group Property",
+            value => GameData.SceneRainbowGroupPropertyData = value, true),
+        Json<ChallengePeakOverrideConfig>("ChallengePeak", "ChallengePeak Override",
+            value => GameData.ChallengePeakOverrideConfig = value, true),
+        Json<GridFightRewardRulesConfig>("GridFightRewardRules", "GridFight Reward Rules",
+            value => GameData.GridFightRewardRulesConfig = value, true),
+        Json<GridFightBasicOrbRewardsConfig>("GridFightBasicOrbRewards", "GridFight Orb Rewards",
+            value => GameData.GridFightBasicOrbRewardsConfig = value, true),
+        Json<GridFightRuntimeConfig>("GridFightRuntime", "GridFight Runtime Config",
+            value => GameData.GridFightRuntimeConfig = value, true),
+        new("RogueMagicRoomGen.json", () =>
+        {
+            GameData.RogueMagicRoomGenData = [];
+            ResourceManager.LoadRogueMagicRoomData();
+        }, true, inConfigRoot: true),
+        new("ChessRogueRoomGen.json", () =>
+        {
+            GameData.ChessRogueRoomData.Clear();
+            ResourceManager.LoadChessRogueRoomData();
+        }, true),
+        new("ChessRogueDiceSurfaceEffect.json", () =>
+        {
+            GameData.ChessRogueDiceSurfaceEffectData = [];
+            ResourceManager.LoadChessRogueDiceSurfaceEffectData();
+        }, true),
+        // Needs the complete mission graph, so it is never part of the resource load.
+        new("MissionInfoOverride.json", ResourceManager.LoadMissionInfoOverrides, optional: true),
         Json<ActivityBangbooConfig>("ActivityBangboo", "ActivityBangboo",
-            value => GameData.ActivityBangbooConfig = value);
-
-    private static readonly Action[] ResourceLoadSteps =
-    [
-        Activity.Replace,
-        // Runs while the mission graph is still loading; AfterResourceLoad applies it again to the complete graph.
-        ResourceManager.LoadMissionInfoOverrides,
-        Banners.Replace,
-        VideoKeys.Replace,
-        RogueMapGen.Replace,
-        QueryProductInfo.Replace,
-        DiceyDungeon.Replace,
-        RealityShow.Replace,
-        SceneRainbowGroupProperty.Replace,
-        // Applied by ResourceManager.LoadGameData once the floors are loaded.
-        ChallengePeak.Replace,
-        GridFightRewardRules.Replace,
-        GridFightBasicOrbRewards.Replace,
-        GridFightRuntime.Replace,
-        LinkGridFightRewards,
-        ResourceManager.LoadRogueMagicRoomData,
-        ResourceManager.LoadChessRogueRoomData,
-        ResourceManager.LoadChessRogueDiceSurfaceEffectData
+            value => GameData.ActivityBangbooConfig = value),
+        // ExRank (奇缘星魂) materials and definitions.
+        new("AvatarExRankMaterials.json", AvatarExRankMaterials.Apply),
+        // Read by the admin console's GridFight catalog when it is first opened.
+        new("GridFightNames.json", null),
+        // Read by RogueTournResources on the first Divergent Universe run.
+        new("RogueTournRoomPlan.json", null)
     ];
 
-    private static readonly Action[] AfterResourceLoadSteps =
-    [
-        ResourceManager.LoadMissionInfoOverrides,
-        ResourceManager.ReportTruncatedMissionGraphs,
-        ActivityBangboo.Replace,
-        // ExRank (奇缘星魂) materials are an operator overlay.
-        AvatarExRankMaterials.Apply,
-        // Story-trial skill limits and IsUseWorldLevel live on the raw excel rows, not in Resource.bin.
-        StoryTrialTables.Load
-    ];
-
-    private static readonly Action[] AfterCacheLoadSteps =
-    [
-        ResourceManager.LoadMissionInfoOverrides,
-        ResourceManager.ReportTruncatedMissionGraphs,
-        Banners.Replace,
-        VideoKeys.Replace,
-        // The cache carries a copy of these two; keep it when the file is missing or unreadable.
-        Activity.Overlay,
-        RogueMapGen.Overlay,
-        ActivityBangboo.Replace,
-        AvatarExRankMaterials.Apply,
-        StoryTrialTables.Load,
-        // Seasons ChallengePeak.json leaves out are derived from the floors in the cache.
-        OverlayChallengePeak,
-        DiceyDungeon.Replace,
-        RealityShow.Replace,
-        // Room pools and dice surfaces added after a cache was built must not require replacing it.
-        ResourceManager.LoadRogueMagicRoomData,
-        ResourceManager.LoadChessRogueRoomData,
-        ResourceManager.LoadChessRogueDiceSurfaceEffectData,
-        ResourceManager.LoadRogueChestMapInfo
-    ];
-
-    private static readonly Dictionary<ReloadableCustomConfig, Action> ReloadSteps = new()
+    // Banners, the activity schedule and the video keys are looked up per request, so swapping them is safe while
+    // players are online. The other files feed state that is derived once (ChallengePeak rows, GridFight sessions,
+    // room pools, mission graphs) and only change with a restart.
+    private static readonly Dictionary<ReloadableCustomConfig, CustomConfigFile> Reloadable = new()
     {
-        [ReloadableCustomConfig.Banners] = Banners.Replace,
-        [ReloadableCustomConfig.Activity] = Activity.Replace,
-        [ReloadableCustomConfig.VideoKeys] = VideoKeys.Replace
+        [ReloadableCustomConfig.Banners] = Banners,
+        [ReloadableCustomConfig.Activity] = Activity,
+        [ReloadableCustomConfig.VideoKeys] = VideoKeys
     };
 
-    /// <summary>Reads the operator files of one startup pass, in a fixed order.</summary>
+    /// <summary>
+    ///     Where an operator file is read from: Config/Custom/&lt;name&gt;, or the legacy Config/&lt;name&gt; when there is
+    ///     no Config/Custom copy.
+    /// </summary>
+    public static string ResolvePath(string fileName)
+    {
+        var configPath = ConfigManager.Config.Path.ConfigPath;
+        var customPath = Path.Combine(configPath, "Custom", fileName);
+        return File.Exists(customPath) ? customPath : Path.Combine(configPath, fileName);
+    }
+
+    /// <summary>Reads the operator files of one startup pass.</summary>
     public static void Load(CustomConfigPass pass)
     {
-        var steps = pass switch
+        switch (pass)
         {
-            CustomConfigPass.ResourceLoad => ResourceLoadSteps,
-            CustomConfigPass.AfterResourceLoad => AfterResourceLoadSteps,
-            CustomConfigPass.AfterCacheLoad => AfterCacheLoadSteps,
-            _ => throw new ArgumentOutOfRangeException(nameof(pass), pass, null)
-        };
-        foreach (var step in steps) step();
+            case CustomConfigPass.ResourceLoad:
+                LoadFiles(file => file.ReadByResourceLoad);
+                LinkGridFightRewards();
+                // ResourceManager.LoadGameData applies the ChallengePeak overrides once the floors are loaded.
+                break;
+            case CustomConfigPass.AfterResourceLoad:
+                LoadFiles(file => !file.ReadByResourceLoad);
+                FinishLoad();
+                break;
+            case CustomConfigPass.AfterCacheLoad:
+                LoadFiles(_ => true);
+                LinkGridFightRewards();
+                // Seasons ChallengePeak.json leaves out are derived from the floors in the cache.
+                ResourceManager.ApplyChallengePeakOverrides();
+                // Chessboard maps come from the raw tree; a cache-only deployment keeps the cached ones.
+                ResourceManager.LoadRogueChestMapInfo();
+                FinishLoad();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(pass), pass, null);
+        }
     }
 
     /// <summary>Re-reads one operator file; a missing or unreadable file installs an empty configuration.</summary>
     public static void Reload(ReloadableCustomConfig file)
     {
-        ReloadSteps[file]();
+        Reloadable[file].Load?.Invoke();
     }
 
-    // Resource.bin stores the reward rules and the runtime settings inside the orb-reward configuration, so they are
-    // linked before a cache can be written from this load.
+    private static void LoadFiles(Func<CustomConfigFile, bool> include)
+    {
+        foreach (var file in Files)
+            if (file.Load != null && include(file))
+                file.Load();
+    }
+
+    private static void FinishLoad()
+    {
+        ResourceManager.ReportTruncatedMissionGraphs();
+        // Story-trial skill limits and IsUseWorldLevel live on the raw excel rows, not in Resource.bin.
+        StoryTrialTables.Load();
+    }
+
+    // Resource.bin stores the reward rules and the runtime settings inside the orb-reward configuration, and the
+    // GridFight code reads them from there.
     private static void LinkGridFightRewards()
     {
         GameData.GridFightBasicOrbRewardsConfig.RewardRules = GameData.GridFightRewardRulesConfig;
         GameData.GridFightBasicOrbRewardsConfig.RuntimeConfig = GameData.GridFightRuntimeConfig;
     }
 
-    private static void OverlayChallengePeak()
+    private static CustomConfigFile Json<T>(string name, string label, Action<T> assign, bool readByResourceLoad = false)
+        where T : class, new()
     {
-        if (ChallengePeak.TryOverlay()) ResourceManager.ApplyChallengePeakOverrides();
-    }
-
-    private static CustomFile<T> Json<T>(string label, string fileName, Action<T> assign) where T : class, new()
-    {
-        return new CustomFile<T>(() => ResourceManager.LoadCustomFile<T>(label, fileName), () => new T(), assign);
-    }
-
-    private sealed class CustomFile<T>(Func<T?> read, Func<T> empty, Action<T> assign) where T : class
-    {
-        /// <summary>Installs the file, or an empty configuration when it is missing or unreadable.</summary>
-        public void Replace()
-        {
-            assign(read() ?? empty());
-        }
-
-        /// <summary>Installs the file, keeping the loaded value when the file is missing or unreadable.</summary>
-        public void Overlay()
-        {
-            TryOverlay();
-        }
-
-        public bool TryOverlay()
-        {
-            var value = read();
-            if (value == null) return false;
-            assign(value);
-            return true;
-        }
+        return new CustomConfigFile($"{name}.json",
+            () => assign(ResourceManager.LoadCustomFile<T>(label, name) ?? new T()), readByResourceLoad);
     }
 }

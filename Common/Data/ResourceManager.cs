@@ -631,9 +631,7 @@ public class ResourceManager
     public static T? LoadCustomFile<T>(string filetype, string filename)
     {
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", filetype));
-        var customPath = Path.Combine(ConfigManager.Config.Path.ConfigPath, "Custom", $"{filename}.json");
-        var legacyPath = Path.Combine(ConfigManager.Config.Path.ConfigPath, $"{filename}.json");
-        FileInfo file = new(File.Exists(customPath) ? customPath : legacyPath);
+        FileInfo file = new(CustomConfigFiles.ResolvePath($"{filename}.json"));
         T? customFile = default;
         if (!file.Exists)
         {
