@@ -3,7 +3,7 @@ using March7thHoney.Command.Command;
 using March7thHoney.Configuration;
 using March7thHoney.Data;
 using March7thHoney.Database;
-using March7thHoney.Database.Avatar;
+using March7thHoney.Database.Migrations;
 using March7thHoney.Enums;
 using March7thHoney.GameServer.Command;
 using March7thHoney.GameServer.Server;
@@ -353,66 +353,7 @@ public class EntryPoint
 
         ServerUtils.InitializeHandlers();
 
-        // check if the database is up to date
-        var updated = false;
-        foreach (var avatarData in DatabaseHelper.GetAllInstanceFromMap<AvatarData>()!)
-        {
-            if (avatarData.DatabaseVersion == GameConstants.AvatarDbVersion) continue;
-
-            foreach (var avatar in avatarData.Avatars)
-            {
-                var formalAvatar = new FormalAvatarInfo
-                {
-                    BaseAvatarId = avatar.AvatarId,
-                    AvatarId = avatar.PathId == 0 ? avatar.AvatarId : avatar.PathId,
-                    CurrentHp = avatar.CurrentHp,
-                    CurrentSp = avatar.CurrentSp,
-                    Exp = avatar.Exp,
-                    ExtraLineupHp = avatar.ExtraLineupHp,
-                    ExtraLineupSp = avatar.ExtraLineupSp,
-                    IsMarked = avatar.IsMarked,
-                    Level = avatar.Level,
-                    Promotion = avatar.Promotion,
-                    PathInfos = []
-                };
-
-                foreach (var info in avatar.PathInfoes)
-                {
-                    if (info.Value.PathId == 0)
-                        info.Value.PathId = avatar.AvatarId;
-                    formalAvatar.PathInfos.Add(info.Value.PathId, new PathInfo(info.Value.PathId)
-                    {
-                        PathId = info.Value.PathId,
-                        EquipId = info.Value.EquipId,
-                        Rank = info.Value.Rank,
-                        Relic = info.Value.Relic,
-                        Skin = info.Value.Skin,
-                        EnhanceInfos =
-                        {
-                            {
-                                0, new EnhanceInfo(0)
-                                {
-                                    SkillTree = avatar.SkillTreeExtra.GetValueOrDefault(info.Value.PathId) ?? []
-                                }
-                            }
-                        }
-                    });
-                }
-
-                avatarData.FormalAvatars.Add(formalAvatar);
-            }
-
-            avatarData.DatabaseVersion = GameConstants.AvatarDbVersion;
-            updated = true;
-            DatabaseHelper.MarkDirty(avatarData.Uid);
-        }
-
-        if (updated)
-        {
-            Logger.Info(I18NManager.Translate("Server.ServerInfo.UpdatedItem",
-                I18NManager.Translate("Word.Database")));
-            DatabaseHelper.SaveDatabase();
-        }
+        FormalAvatarMigration.Run(DatabaseHelper);
 
         if (args.Contains("--upgrade-database")) DatabaseHelper.UpgradeDatabase();
 
