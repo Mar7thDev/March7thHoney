@@ -120,12 +120,7 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeStateData da
         });
 
         if (Config.StoryExcel == null) return;
-        // Target id 10003 = FantasticStory continuous-wave score container.
-        // Using 10002 (legacy PF) causes the client to settle after wave 1 only,
-        // capping a full-clear at ~2300 instead of the expected ~40000.
-        battle.AddBattleTarget(1, 10003, GetTotalScore());
-
-        foreach (var id in Config.StoryExcel.BattleTargetID!) battle.AddBattleTarget(5, id, GetTotalScore());
+        ChallengeScoreTargets.AddStoryTargets(battle, Config.StoryExcel.BattleTargetID!, GetTotalScore());
 
         if (Story.Buffs.Count < Story.CurrentStage) return;
         var buffId = Story.Buffs[(int)(Story.CurrentStage - 1)];

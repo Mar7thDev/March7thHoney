@@ -54,6 +54,13 @@ internal static class ChallengeRegression
             await player.SceneInstance.RemoveEntity(monster, false);
     }
 
+    private static List<(uint Id, uint Progress)> TargetsOf(BattleInstance battle, int key)
+    {
+        return battle.BattleTargets.TryGetValue(key, out var list)
+            ? list.BattleTargetList_.Select(target => (target.Id, target.Progress)).ToList()
+            : [];
+    }
+
     private static PVEBattleResultCsReq Result(BattleEndStatus status, uint score)
     {
         return new PVEBattleResultCsReq { EndStatus = status, Stt = new BattleStatistics { ChallengeScore = score } };
@@ -75,6 +82,15 @@ internal static class ChallengeRegression
         if (story == null) return;
 
         var state = story.Data.Story!;
+        var startScore = state.ScoreStage1;
+        state.ScoreStage1 = 1200;
+        var storyBattle = new BattleInstance(player, player.LineupManager!.GetCurLineup()!, new List<EntityMonster>());
+        story.OnBattleStart(storyBattle);
+        check("PF battle carries the 10003 score container and the stage targets at the run score",
+            TargetsOf(storyBattle, 1).SequenceEqual([(10003u, 1200u)]) &&
+            TargetsOf(storyBattle, 5).SequenceEqual(config.StoryExcel!.BattleTargetID!.Select(id => ((uint)id, 1200u))));
+        state.ScoreStage1 = startScore;
+
         // A stage-1 win with monsters left keeps the stage open; the client reports the cumulative score.
         await story.OnBattleEnd(null!, Result(BattleEndStatus.BattleEndWin, 30000));
         check("PF stage-1 win with monsters left records the score and stays on stage 1",
@@ -150,6 +166,11 @@ internal static class ChallengeRegression
         var boss = manager.ChallengeInstance as ChallengeBossInstance;
         check($"AS {config.ID} starts on stage 1", boss is { Data.Boss.CurrentStage: 1 });
         if (boss == null) return;
+
+        var bossBattle = new BattleInstance(player, player.LineupManager!.GetCurLineup()!, new List<EntityMonster>());
+        boss.OnBattleStart(bossBattle);
+        check("AS battle carries the 90004/90005 score header pair",
+            TargetsOf(bossBattle, 1).SequenceEqual([(90004u, 0u), (90005u, 0u)]) && !bossBattle.BattleTargets.ContainsKey(5));
 
         var tolerated = true;
         try

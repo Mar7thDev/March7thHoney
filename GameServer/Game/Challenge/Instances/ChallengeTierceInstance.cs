@@ -115,17 +115,13 @@ public class ChallengeTierceInstance : BaseChallengeInstance
             // PF Tierce uses a per-node turn limit (PreConfig.ChallengeCountDown comes from
             // ChallengeStoryMazeExtra.TurnLimit) and the FantasticStory score container.
             battle.RoundLimit = PreConfig.ChallengeCountDown;
-            battle.AddBattleTarget(1, 10003, GetTotalScore());
-            if (PreConfig.StoryExcel?.BattleTargetID != null)
-                foreach (var id in PreConfig.StoryExcel.BattleTargetID)
-                    battle.AddBattleTarget(5, id, GetTotalScore());
+            ChallengeScoreTargets.AddStoryTargets(battle, PreConfig.StoryExcel?.BattleTargetID ?? [], GetTotalScore());
         }
         else if (IsBossMode)
         {
-            // AS Tierce: same recipe as ChallengeBossInstance.OnBattleStart — no round limit
-            // (fight runs until all bosses are down) and a fixed pair of type-1 score targets.
-            battle.AddBattleTarget(1, 90004, 0);
-            battle.AddBattleTarget(1, 90005, 0);
+            // AS Tierce: no round limit (the fight runs until all bosses are down) and the Apocalyptic Shadow
+            // score header pair.
+            ChallengeScoreTargets.AddBossTargets(battle);
         }
         else
         {
