@@ -179,7 +179,7 @@ public class EntryPoint
         // Generate handbooks only when this startup reads raw resources.
         if (loadedFromResources)
         {
-            var handbookThread = new Thread(HandbookGenerator.GenerateAll)
+            var handbookThread = new Thread(() => HandbookGenerator.GenerateAll(CommandManager.CommandInfo.Values))
             {
                 IsBackground = true,
                 Name = "HandbookGenerator",
