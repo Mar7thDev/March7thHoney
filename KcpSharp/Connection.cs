@@ -23,9 +23,9 @@ public class March7thHoneyConnection
     protected readonly KcpConversation Conversation;
     public readonly IPEndPoint RemoteEndPoint;
 
-    public string DebugFile = "";
-    public bool IsOnline = true;
-    public StreamWriter? Writer;
+    private readonly PacketLogFile _packetLog = new();
+
+    public bool IsOnline { get; protected set; } = true;
 
     public March7thHoneyConnection(KcpConversation conversation, IPEndPoint remote)
     {
@@ -64,7 +64,14 @@ public class March7thHoneyConnection
         {
         }
 
+        _packetLog.Dispose();
         IsOnline = false;
+    }
+
+    /// <summary>Sends this connection's packet log to <paramref name="path" /> when SavePersonalDebugFile is on.</summary>
+    public void SetPacketLogFile(string path)
+    {
+        _packetLog.SetPath(path);
     }
 
     public void LogPacket(string sendOrRecv, ushort opcode, byte[] payload)
@@ -119,24 +126,8 @@ public class March7thHoneyConnection
         if (ConfigManager.Config.ServerOption.LogOption.LogPacketToConsole)
             Logger.Debug(output);
 
-        if (DebugFile == "" || !ConfigManager.Config.ServerOption.LogOption.SavePersonalDebugFile) return;
-        var sw = GetWriter();
-        sw.WriteLine($"[{DateTime.Now:HH:mm:ss}] [GameServer] [DEBUG] " + output);
-        sw.Flush();
-    }
-
-    private StreamWriter GetWriter()
-    {
-        // Create the file if it doesn't exist
-        var file = new FileInfo(DebugFile);
-        if (!file.Exists)
-        {
-            Directory.CreateDirectory(file.DirectoryName!);
-            File.Create(DebugFile).Dispose();
-        }
-
-        Writer ??= new StreamWriter(DebugFile, true);
-        return Writer;
+        if (!ConfigManager.Config.ServerOption.LogOption.SavePersonalDebugFile) return;
+        _packetLog.WriteLine($"[{DateTime.Now:HH:mm:ss}] [GameServer] [DEBUG] " + output);
     }
 
     /// <summary>

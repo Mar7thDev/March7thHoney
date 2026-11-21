@@ -138,8 +138,8 @@ public class HandlerPlayerGetTokenCsReq : Handler
         var pd = DatabaseHelper.Instance?.GetInstance<PlayerData>(uid);
         connection.Player = pd == null ? new PlayerInstance(uid) : new PlayerInstance(pd);
 
-        connection.DebugFile = Path.Combine(ConfigManager.Config.Path.LogPath, "Debug/", $"{uid}/",
-            $"Debug-{DateTime.Now:yyyy-MM-dd HH-mm-ss}.log");
+        connection.SetPacketLogFile(Path.Combine(ConfigManager.Config.Path.LogPath, "Debug/", $"{uid}/",
+            $"Debug-{DateTime.Now:yyyy-MM-dd HH-mm-ss}.log"));
 
         await connection.Player.OnGetToken();
         if (DatabaseHelper.IsUidDeleted(uid) || AccountData.GetAccountByUid(uid)?.IsDeleting == true)

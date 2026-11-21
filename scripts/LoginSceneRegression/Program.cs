@@ -29,6 +29,7 @@ using March7thHoney.Enums.Task;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Command;
 using March7thHoney.Enums.Mission;
+using March7thHoney.Enums.Server;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Mission;
 using March7thHoney.Database.DiceyDungeon;
@@ -4245,15 +4246,9 @@ using (var diceClientPeer = new KcpConversation(endpoint, diceInbound, options))
     var processFrame = typeof(Connection).GetMethod("ProcessMessageAsync", BindingFlags.Instance | BindingFlags.NonPublic)!;
     byte[] RawFrame(ushort cmd, byte[] head, byte[] body)
     {
-        var frame = new byte[12 + head.Length + body.Length + 4];
-        BinaryPrimitives.WriteUInt32BigEndian(frame, 0x9D74C714);
-        BinaryPrimitives.WriteUInt16BigEndian(frame.AsSpan(4), cmd);
-        BinaryPrimitives.WriteUInt16BigEndian(frame.AsSpan(6), (ushort)head.Length);
-        BinaryPrimitives.WriteUInt32BigEndian(frame.AsSpan(8), (uint)body.Length);
-        head.CopyTo(frame.AsSpan(12));
-        body.CopyTo(frame.AsSpan(12 + head.Length));
-        BinaryPrimitives.WriteUInt32BigEndian(frame.AsSpan(12 + head.Length + body.Length), 0xD7A152C8);
-        return frame;
+        var packet = new BasePacket(cmd);
+        packet.SetData(body);
+        return packet.BuildPacket(head);
     }
     async Task<List<(ushort Id, byte[] Head, byte[] Body)>> RawExchange(byte[] frame)
     {
@@ -4265,13 +4260,12 @@ using (var diceClientPeer = new KcpConversation(endpoint, diceInbound, options))
         while (true)
         {
             var received = await diceClientPeer.ReceiveAsync(buffer, timeout.Token);
-            if (received.TransportClosed || received.BytesReceived < 16)
+            var offset = 0;
+            if (received.TransportClosed ||
+                !PacketFrameReader.TryRead(buffer.AsSpan(0, received.BytesReceived), ref offset, out var sent, out _))
                 throw new InvalidDataException("KCP packet head test did not receive a complete game packet.");
-            var id = BinaryPrimitives.ReadUInt16BigEndian(buffer.AsSpan(4));
-            if (id == ushort.MaxValue) return packets;
-            var headLength = BinaryPrimitives.ReadUInt16BigEndian(buffer.AsSpan(6));
-            var bodyLength = (int)BinaryPrimitives.ReadUInt32BigEndian(buffer.AsSpan(8));
-            packets.Add((id, buffer.AsSpan(12, headLength).ToArray(), buffer.AsSpan(12 + headLength, bodyLength).ToArray()));
+            if (sent.CmdId == ushort.MaxValue) return packets;
+            packets.Add((sent.CmdId, sent.Head, sent.Body));
         }
     }
     var echoed = await RawExchange(RawFrame((ushort)CmdIds.DLDDOMMLPBK, PacketHead.Encode(300), []));
@@ -4282,6 +4276,44 @@ using (var diceClientPeer = new KcpConversation(endpoint, diceInbound, options))
         && unheaded.Single(p => p.Id == CmdIds.OBJJEHIKFJC).Head.Length == 0
         && PacketHead.ReadPacketId([0x10, 0x05, 0x08, 0xAC, 0x02]) == 300 && PacketHead.ReadPacketId([0x08]) == 0
         && PacketHead.RequestPacketId.Value == 0);
+
+    // The frame reader stops quietly at the end of a message and reports a bad magic or a length past the end.
+    var frameBytes = RawFrame(7, [1, 2], [3, 4, 5]);
+    var frameOffset = 0;
+    var readFrame = PacketFrameReader.TryRead(frameBytes, ref frameOffset, out var parsedFrame, out var frameError);
+    var endOffset = frameOffset;
+    var atEnd = !PacketFrameReader.TryRead(frameBytes, ref endOffset, out _, out var endError) && endError == null;
+    var badMagic = (byte[])frameBytes.Clone();
+    badMagic[0] ^= 0xFF;
+    var magicOffset = 0;
+    var magicRejected = !PacketFrameReader.TryRead(badMagic, ref magicOffset, out _, out var magicError) &&
+                        magicError?.Contains("expect 0x9D74C714") == true;
+    var overlong = (byte[])frameBytes.Clone();
+    BinaryPrimitives.WriteUInt32BigEndian(overlong.AsSpan(8), uint.MaxValue);
+    var overlongOffset = 0;
+    var overlongRejected = !PacketFrameReader.TryRead(overlong, ref overlongOffset, out _, out var overlongError) &&
+                           overlongError?.Contains("exceeds remaining buffer") == true;
+    Check("the packet frame reader parses a frame, stops at its tail and rejects a bad magic or length",
+        readFrame && frameError == null && parsedFrame.CmdId == 7 && parsedFrame.Head.SequenceEqual(new byte[] { 1, 2 })
+        && parsedFrame.Body.SequenceEqual(new byte[] { 3, 4, 5 }) && frameOffset == frameBytes.Length - 4
+        && atEnd && magicRejected && overlongRejected);
+
+    // A /debug packet script answers each awaited packet with the steps up to the next wait, in order.
+    PacketActionData ScriptStep(PacketActionTypeEnum action, string name, bool interrupt = false) =>
+        new() { Action = action, Param = new PacketActionParamData { PacketName = name, InterruptFormalHandler = interrupt } };
+    var script = new CustomPacketQueue();
+    script.Replace([
+        ScriptStep(PacketActionTypeEnum.WaitForPacket, "A", true), ScriptStep(PacketActionTypeEnum.SendPacket, "B"),
+        ScriptStep(PacketActionTypeEnum.SendPacket, "C"), ScriptStep(PacketActionTypeEnum.WaitForPacket, "D"),
+        ScriptStep(PacketActionTypeEnum.SendPacket, "E")
+    ]);
+    var ignoredOther = !script.TryAdvance("D", out _, out _) && !script.TryAdvance(null, out _, out _);
+    var firstStep = script.TryAdvance("A", out var firstSends, out var firstInterrupt);
+    var secondStep = script.TryAdvance("D", out var secondSends, out var secondInterrupt);
+    Check("a custom packet script answers its awaited packets in order and reports the interrupt flag",
+        ignoredOther && firstStep && firstInterrupt && firstSends.Select(s => s.Param.PacketName).SequenceEqual(["B", "C"])
+        && secondStep && !secondInterrupt && secondSends.Single().Param.PacketName == "E"
+        && !script.TryAdvance("D", out _, out _));
 
     var ack = DiceLast(await DiceRequest(new HandlerDiceyDungeonUnknownCsReq(), new MDOHKDNNDPI()), CmdIds.LHDOHPHPABA,
         LHDOHPHPABA.Parser);
