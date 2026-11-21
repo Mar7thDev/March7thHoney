@@ -25,7 +25,7 @@ public static partial class AdminRoutes
             var isKey = !string.IsNullOrWhiteSpace(request.identity_key);
             var block = IdentityBlockHelper.Block(request.kind, isKey ? request.identity_key! : request.value!, request.reason,
                 expireAt, isKey);
-            var connections = March7thHoneyListener.GetSnapshot().OfType<Connection>().ToList();
+            var connections = Listener.GetConnections().ToList();
             var affected = GetAllAccounts().Where(a => AccountBanHelper.ParseIdentityKeys(a.KnownIdentityKeys)
                 .Contains(block.IdentityKey)).Select(a => a.Uid).ToHashSet();
             foreach (var connection in connections)

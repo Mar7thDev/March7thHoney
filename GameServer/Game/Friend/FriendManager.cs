@@ -415,12 +415,10 @@ public partial class FriendManager(PlayerInstance player) : BasePlayerManager(pl
     {
         var list = new List<PlayerData>();
 
-        foreach (var kcp in March7thHoneyListener.GetSnapshot())
+        foreach (var player in Listener.GetActivePlayers())
         {
-            if (kcp.State != SessionStateEnum.ACTIVE) continue;
-            if (kcp is not Connection connection) continue;
-            if (connection.Player?.Uid == Player.Uid) continue;
-            var data = connection.Player?.Data;
+            if (player.Uid == Player.Uid) continue;
+            var data = player.Data;
             if (data == null) continue;
             list.Add(data);
         }

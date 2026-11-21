@@ -55,7 +55,7 @@ public static partial class AdminRoutes
         }
         else
         {
-            recipients = March7thHoneyListener.GetSnapshot().OfType<Connection>();
+            recipients = Listener.GetConnections();
         }
 
         var sent = 0;

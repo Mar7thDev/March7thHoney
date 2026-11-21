@@ -265,8 +265,7 @@ public static partial class AdminRoutes
 
     private static List<OnlinePlayer> GetOnlinePlayers()
     {
-        return March7thHoneyListener.GetSnapshot()
-            .OfType<Connection>()
+        return Listener.GetConnections()
             .Where(connection => connection.Player != null && connection.State == SessionStateEnum.ACTIVE)
             .Select(connection => new OnlinePlayer(
                 connection.Player!.Uid,

@@ -39,7 +39,7 @@ public class CommandAnno : ICommand
 
         var recipients = arg.IsTargetExplicit && arg.Target != null
             ? [arg.Target]
-            : March7thHoneyListener.GetSnapshot().OfType<Connection>();
+            : Listener.GetConnections();
 
         var sent = 0;
         foreach (var connection in recipients)

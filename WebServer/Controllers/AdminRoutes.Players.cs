@@ -26,8 +26,7 @@ public static partial class AdminRoutes
 
     private static IResult GetSessions()
     {
-        var sessions = March7thHoneyListener.GetSnapshot()
-            .OfType<Connection>()
+        var sessions = Listener.GetConnections()
             .Select(ToSessionInfo)
             .OrderByDescending(session => session.has_player)
             .ThenBy(session => session.uid)
@@ -39,7 +38,7 @@ public static partial class AdminRoutes
     private static IResult KickAllSessions()
     {
         var kicked = 0;
-        foreach (var connection in March7thHoneyListener.GetSnapshot().OfType<Connection>())
+        foreach (var connection in Listener.GetConnections())
         {
             if (connection.Player == null) continue;
             ConnectionDisconnectHelper.KickByGm(connection);

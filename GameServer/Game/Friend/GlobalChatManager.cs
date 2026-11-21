@@ -50,14 +50,7 @@ public static class GlobalChatManager
 
     public static List<PlayerInstance> GetOnlinePlayers()
     {
-        var players = new List<PlayerInstance>();
-        foreach (var kcp in March7thHoneyListener.GetSnapshot())
-        {
-            if (kcp.State != SessionStateEnum.ACTIVE) continue;
-            if (kcp is Connection { Player: { } player }) players.Add(player);
-        }
-
-        return players;
+        return Listener.GetActivePlayers().ToList();
     }
 
     /// <summary>

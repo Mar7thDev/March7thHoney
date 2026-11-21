@@ -265,7 +265,7 @@ public static partial class AdminRoutes
         try
         {
             account.ClearLoginTokens();
-            var connections = March7thHoneyListener.GetSnapshot().OfType<Connection>()
+            var connections = Listener.GetConnections()
                 .Where(c => c.Player?.Uid == account.Uid).ToList();
             await Task.WhenAll(connections.Select(ConnectionDisconnectHelper.KickByGmAsync));
             if (connections.Any(c => c.IsOnline))

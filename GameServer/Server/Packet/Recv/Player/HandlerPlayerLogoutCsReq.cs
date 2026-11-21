@@ -13,7 +13,7 @@ public class HandlerPlayerLogoutCsReq : PlayerHandler
         var uid = player?.Uid.ToString() ?? "<none>";
         _logger.Info($"Player logout requested. remote={connection.RemoteEndPoint} uid={uid}");
 
-        // TODO: the connection is closed without Listener.SendDisconnectPacket. That call was dropped while
+        // TODO: the connection is closed without March7thHoneyListener.SendDisconnectPacket. That call was dropped while
         // the server ran over TCP; decide whether a KCP client should get the disconnect packet again.
         await Task.Delay(50);
         connection.Stop();

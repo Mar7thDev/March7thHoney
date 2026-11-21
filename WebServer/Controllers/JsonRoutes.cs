@@ -49,16 +49,7 @@ public static class JsonRoutes
             if (!WebCredentialVerifier.TryVerify(ctx, acc, password, "sr_tools_import", out var failure))
                 return CredentialFailure(failure);
 
-            Connection? con = null;
-            foreach (var item in March7thHoneyListener.GetSnapshot())
-            {
-                if (item is not Connection c) continue;
-                if (c.Player?.Uid == acc.Uid)
-                {
-                    con = c;
-                    break;
-                }
-            }
+            var con = Listener.GetPlayerConnection(acc.Uid);
 
             if (con?.Player == null)
                 return Results.Text("player offline", "text/plain", null, 400);
