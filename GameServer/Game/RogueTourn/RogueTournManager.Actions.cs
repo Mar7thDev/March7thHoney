@@ -2,7 +2,6 @@ using March7thHoney.Data;
 using March7thHoney.Database.RogueTourn;
 using March7thHoney.Enums.Rogue;
 using March7thHoney.Enums.TournRogue;
-using March7thHoney.GameServer.Server.Packet.Send;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 
@@ -410,7 +409,7 @@ public partial class RogueTournManager
         await SendStyleTierUpdate();
         await SendPendingNotify();
         if (kind == RogueTournPendingKind.Formula && ret == Retcode.RetSucc)
-            await Player.SendPacket(new MessagePacket(CmdIds.RogueTournHandBookNotify,
+            await Player.SendPacket(BasePacket.Create(CmdIds.RogueTournHandBookNotify,
                 new RogueTournHandBookNotify { ICNOEGEEPOF = new MJBODJKDPPD { KAHMGPGPOII = (uint)value } }));
 
         // The official response echoes the position in both fields.
@@ -510,7 +509,7 @@ public partial class RogueTournManager
         var run = RunInstance;
         if (run == null || run.ModifierAdds.Count == 0) return;
         foreach (var add in run.ModifierAdds)
-            await Player.SendPacket(new MessagePacket(CmdIds.RogueModifierAddNotify,
+            await Player.SendPacket(BasePacket.Create(CmdIds.RogueModifierAddNotify,
                 new RogueModifierAddNotify { Modifier = RogueTournProtoBuilder.BuildModifierRow(add.Id, true, add.StyleArm, 0) }));
         run.ModifierAdds.Clear();
     }
@@ -521,7 +520,7 @@ public partial class RogueTournManager
         var run = RunInstance;
         if (run == null || run.StyleModifier == 0 || !run.StyleTierUp) return;
         run.StyleTierUp = false;
-        await Player.SendPacket(new MessagePacket(CmdIds.RogueModifierUpdateNotify,
+        await Player.SendPacket(BasePacket.Create(CmdIds.RogueModifierUpdateNotify,
             new RogueModifierUpdateNotify
             {
                 Modifier = RogueTournProtoBuilder.BuildModifierRow(run.StyleModifier, true, true, run.StyleTier())

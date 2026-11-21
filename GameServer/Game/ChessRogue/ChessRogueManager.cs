@@ -9,7 +9,6 @@ using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.RogueCommon;
 using March7thHoney.GameServer.Game.Scene;
-using March7thHoney.GameServer.Server.Packet.Send;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 using March7thHoney.Util;
@@ -303,7 +302,7 @@ public partial class ChessRogueManager : BasePlayerManager
         if (effect != null)
         {
             if (run.Modifier != null)
-                await Player.SendPacket(new MessagePacket(CmdIds.RogueModifierDelNotify,
+                await Player.SendPacket(BasePacket.Create(CmdIds.RogueModifierDelNotify,
                     new RogueModifierDelNotify { FCHLCANJIGL = (ulong)run.Modifier.ModifierId }));
 
             run.Modifier = new ChessRogueModifierData
@@ -312,7 +311,7 @@ public partial class ChessRogueManager : BasePlayerManager
                 SurfaceId = run.Dice.CurSurfaceId
             };
             await ModifierOnConfirmed(run, run.Modifier, effect);
-            await Player.SendPacket(new MessagePacket(CmdIds.RogueModifierAddNotify,
+            await Player.SendPacket(BasePacket.Create(CmdIds.RogueModifierAddNotify,
                 new RogueModifierAddNotify { Modifier = ChessRogueProtoBuilder.BuildModifier(run.Modifier) }));
         }
 
@@ -440,7 +439,7 @@ public partial class ChessRogueManager : BasePlayerManager
 
         if (blockType is RogueDLCBlockTypeEnum.MonsterBoss or RogueDLCBlockTypeEnum.MonsterNousBoss
             or RogueDLCBlockTypeEnum.MonsterSwarmBoss)
-            await Player.SendPacket(new MessagePacket(CmdIds.ChessRogueLayerSettlement,
+            await Player.SendPacket(BasePacket.Create(CmdIds.ChessRogueLayerSettlement,
                 new ChessRogueLayerSettlement { MINFCKLKLNJ = ChessRogueProtoBuilder.BuildFinishInfo(run, Player) }));
 
         if (run.LevelStatus == ChessRogueStates.LevelFinish) await SendLevelStatusNotify(run);
@@ -570,27 +569,27 @@ public partial class ChessRogueManager : BasePlayerManager
 
     private async ValueTask SendDiceNotify(ChessRogueRunData run)
     {
-        await Player.SendPacket(new MessagePacket(CmdIds.ChessRogueUpdateDiceInfoScNotify,
+        await Player.SendPacket(BasePacket.Create(CmdIds.ChessRogueUpdateDiceInfoScNotify,
             new ChessRogueUpdateDiceInfoScNotify { POHEPEEFBOA = ChessRogueProtoBuilder.BuildDice(run) }));
     }
 
     private async ValueTask SendLevelStatusNotify(ChessRogueRunData run)
     {
-        await Player.SendPacket(new MessagePacket(CmdIds.ChessRogueUpdateLevelBaseInfoScNotify,
+        await Player.SendPacket(BasePacket.Create(CmdIds.ChessRogueUpdateLevelBaseInfoScNotify,
             new ChessRogueUpdateLevelBaseInfoScNotify { GKDCPNLOLNF = (GDHLDNFLOOF)run.LevelStatus }));
     }
 
     private async ValueTask CostActionPoint(ChessRogueRunData run, int cost)
     {
         run.ActionPoint -= cost;
-        await Player.SendPacket(new MessagePacket(CmdIds.ChessRogueUpdateActionPointScNotify,
+        await Player.SendPacket(BasePacket.Create(CmdIds.ChessRogueUpdateActionPointScNotify,
             new ChessRogueUpdateActionPointScNotify { EABEFBDOJEO = run.ActionPoint }));
     }
 
     private async ValueTask GainMoney(ChessRogueRunData run, int amount)
     {
         run.Money += amount;
-        await Player.SendPacket(new MessagePacket(CmdIds.ChessRogueUpdateMoneyInfoScNotify,
+        await Player.SendPacket(BasePacket.Create(CmdIds.ChessRogueUpdateMoneyInfoScNotify,
             new ChessRogueUpdateMoneyInfoScNotify { DHEKLJDBNNP = new AGEOGDOGDMM { RogueMoney = (uint)run.Money } }));
     }
 
@@ -604,19 +603,19 @@ public partial class ChessRogueManager : BasePlayerManager
             Reason = byModifier ? AIMCAMJABNA.Iliioljmkme : AIMCAMJABNA.Nlcdgipgfdj
         };
         notify.CPPCIGMJALM.AddRange(cells.Select(ChessRogueProtoBuilder.BuildCell));
-        await Player.SendPacket(new MessagePacket(CmdIds.ChessRogueCellUpdateNotify, notify));
+        await Player.SendPacket(BasePacket.Create(CmdIds.ChessRogueCellUpdateNotify, notify));
     }
 
     private async ValueTask SendModifierStageStart()
     {
-        await Player.SendPacket(new MessagePacket(CmdIds.RogueModifierStageStartNotify,
+        await Player.SendPacket(BasePacket.Create(CmdIds.RogueModifierStageStartNotify,
             new RogueModifierStageStartNotify { SourceType = RogueModifierSourceType.RogueModifierSourceDiceRoll }));
     }
 
     public async ValueTask SendPendingNotify(ChessRogueRunData run)
     {
         if (run.PendingBuffKeys.Count == 0) return;
-        await Player.SendPacket(new MessagePacket(CmdIds.SyncRogueCommonPendingActionScNotify,
+        await Player.SendPacket(BasePacket.Create(CmdIds.SyncRogueCommonPendingActionScNotify,
             new SyncRogueCommonPendingActionScNotify
             {
                 Action = ChessRogueProtoBuilder.BuildPendingAction(run),

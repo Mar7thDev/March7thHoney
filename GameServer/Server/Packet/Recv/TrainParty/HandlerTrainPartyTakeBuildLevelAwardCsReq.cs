@@ -11,8 +11,7 @@ public class HandlerTrainPartyTakeBuildLevelAwardCsReq : Handler
         // The request carries no level: every build level reached but not yet taken is handed out.
         var rsp = await connection.Player!.TrainPartyManager!.TakeBuildLevelAward();
 
-        var packet = new BasePacket(CmdIds.TrainPartyTakeBuildLevelAwardScRsp);
-        packet.SetData(rsp);
+        var packet = BasePacket.Create(CmdIds.TrainPartyTakeBuildLevelAwardScRsp, rsp);
         await connection.SendPacket(packet);
     }
 }

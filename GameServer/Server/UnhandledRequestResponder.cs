@@ -83,8 +83,7 @@ internal static class UnhandledRequestResponder
             }
         }
 
-        var packet = new BasePacket((ushort)rspOpcode);
-        packet.SetData(rsp);
+        var packet = BasePacket.Create(rspOpcode, rsp);
         await connection.SendPacket(packet);
     }
 

@@ -13,8 +13,7 @@ public class HandlerRankUpAvatarCsReq : Handler<RankUpAvatarCsReq>
         if (req.CostData == null || req.CostData.ItemList.Any(cost => cost.PileItem != null &&
                 AvatarExRankMaterials.IsMaterial((int)cost.PileItem.ItemId)))
         {
-            var rejected = new BasePacket(CmdIds.RankUpAvatarScRsp);
-            rejected.SetData(new RankUpAvatarScRsp { PLDKENJLKME = (uint)Retcode.RetAvatarRankNotMatch });
+            var rejected = BasePacket.Create(CmdIds.RankUpAvatarScRsp, new RankUpAvatarScRsp { PLDKENJLKME = (uint)Retcode.RetAvatarRankNotMatch });
             await connection.SendPacket(rejected);
             return;
         }
@@ -32,8 +31,7 @@ public class HandlerActivateAvatarExRankCsReq : Handler<HIGLJHLNODG>
     protected override async Task OnHandle(Connection connection, PlayerInstance player, HIGLJHLNODG req)
     {
         var result = await player.AvatarManager!.ActivateExRank(unchecked((int)req.OJFIGABCKLG));
-        var response = new BasePacket(CmdIds.ENKEIJOLCNO);
-        response.SetData(new LPOLGDLAADM { Retcode = (uint)result });
+        var response = BasePacket.Create(CmdIds.ENKEIJOLCNO, new LPOLGDLAADM { Retcode = (uint)result });
         await connection.SendPacket(response);
     }
 }

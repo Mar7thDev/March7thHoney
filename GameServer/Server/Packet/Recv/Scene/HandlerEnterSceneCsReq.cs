@@ -60,8 +60,7 @@ public class HandlerEnterSceneCsReq : Handler<EnterSceneCsReq>
 
             if (previousRoomOwnerUid.HasValue && previousRoomOwnerUid.Value != roomOwnerUid)
             {
-                var leavePacket = new BasePacket(CmdIds.SocialPlayGameplayOperationScNotify);
-                leavePacket.SetData(new SocialPlayGameplayOperationScNotify
+                var leavePacket = BasePacket.Create(CmdIds.SocialPlayGameplayOperationScNotify, new SocialPlayGameplayOperationScNotify
                 {
                     RoomOwnerUid = previousRoomOwnerUid.Value,
                     OpUid = (uint)player.Uid,
@@ -72,8 +71,7 @@ public class HandlerEnterSceneCsReq : Handler<EnterSceneCsReq>
 
             if (isJoinedSocialEnter)
             {
-                var gameplayTypePacket = new BasePacket(CmdIds.SocialPlayGameplayOperationScNotify);
-                gameplayTypePacket.SetData(new SocialPlayGameplayOperationScNotify
+                var gameplayTypePacket = BasePacket.Create(CmdIds.SocialPlayGameplayOperationScNotify, new SocialPlayGameplayOperationScNotify
                 {
                     RoomOwnerUid = roomOwnerUid,
                     OpUid = (uint)player.Uid,
@@ -86,8 +84,7 @@ public class HandlerEnterSceneCsReq : Handler<EnterSceneCsReq>
                 var arrivalHistoryNotify = player.TrainCakeCatchManager.BuildArrivalHistoryNotify(roomOwnerUid);
                 if (arrivalHistoryNotify != null)
                 {
-                    var arrivalHistoryPacket = new BasePacket(CmdIds.SocialPlayGameplayOperationScNotify);
-                    arrivalHistoryPacket.SetData(arrivalHistoryNotify);
+                    var arrivalHistoryPacket = BasePacket.Create(CmdIds.SocialPlayGameplayOperationScNotify, arrivalHistoryNotify);
                     await connection.SendPacket(arrivalHistoryPacket);
                 }
             }
@@ -117,8 +114,7 @@ public class HandlerEnterSceneCsReq : Handler<EnterSceneCsReq>
 
         // 4.7 dropped the LABNNEGJNHO room-snapshot member of this notify's oneof; LMFMBJCNALJ is the
         // one member left that carries the same POBLGKIGINE snapshot.
-        var roomSnapshotPacket = new BasePacket(CmdIds.SocialPlayGameplayOperationScNotify);
-        roomSnapshotPacket.SetData(new SocialPlayGameplayOperationScNotify
+        var roomSnapshotPacket = BasePacket.Create(CmdIds.SocialPlayGameplayOperationScNotify, new SocialPlayGameplayOperationScNotify
         {
             RoomOwnerUid = roomOwnerUid,
             OpUid = (uint)player.Uid,
@@ -135,8 +131,7 @@ public class HandlerEnterSceneCsReq : Handler<EnterSceneCsReq>
 
         foreach (var notify in player.TrainCakeCatchManager.BuildInitialRoomMoveNotifies(roomOwnerUid))
         {
-            var roomMovePacket = new BasePacket(CmdIds.SocialPlayRoomPlayerMoveScNotify);
-            roomMovePacket.SetData(notify);
+            var roomMovePacket = BasePacket.Create(CmdIds.SocialPlayRoomPlayerMoveScNotify, notify);
             await connection.SendPacket(roomMovePacket);
         }
     }

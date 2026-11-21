@@ -17,6 +17,17 @@ public class BasePacket(ushort cmdId)
     public ushort CmdId { get; set; } = cmdId;
     public byte[] Data { get; set; } = [];
 
+    /// <summary>
+    ///     Builds a packet that carries one already-built protobuf message under its command id, for responses and
+    ///     notifies that need no packet-specific assembly.
+    /// </summary>
+    public static BasePacket Create(int cmdId, IMessage message)
+    {
+        var packet = new BasePacket((ushort)cmdId);
+        packet.SetData(message);
+        return packet;
+    }
+
     public void SetData(byte[] data)
     {
         Data = data;

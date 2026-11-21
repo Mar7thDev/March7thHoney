@@ -4,7 +4,6 @@ using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.GridFight;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
-using March7thHoney.GameServer.Server.Packet.Send;
 
 namespace March7thHoney.GameServer.Server.Packet.Recv.GridFight;
 
@@ -26,7 +25,7 @@ public abstract class GridFightHandler<TReq> : Handler<TReq> where TReq : IMessa
             if (player.GridFightManager?.BuildSeasonTwoFollowUpSync() is { } followUp)
                 await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(followUp));
             if (player.GridFightManager?.BuildInterestDisplayRefresh(previousSession, previousInterestCap) is { } refresh)
-                await connection.SendPacket(new MessagePacket(CmdIds.GridFightGetDataScRsp, refresh));
+                await connection.SendPacket(BasePacket.Create(CmdIds.GridFightGetDataScRsp, refresh));
         }
         finally
         {
@@ -54,7 +53,7 @@ public sealed class HandlerGridFightTraitUpdateCsReq : GridFightHandler<GridFigh
         var session = manager.Session;
         var sync = session == null ? null : Handle(manager, session, request);
         if (sync != null) await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(sync));
-        await connection.SendPacket(new MessagePacket(CmdIds.GridFightTraitUpdateScRsp, new GridFightTraitUpdateScRsp
+        await connection.SendPacket(BasePacket.Create(CmdIds.GridFightTraitUpdateScRsp, new GridFightTraitUpdateScRsp
         {
             Retcode = sync != null ? 0 : (uint)Retcode.RetFail,
         }));
@@ -154,7 +153,7 @@ public sealed class HandlerGridFightSpotLightEnterCsReq : GridFightHandler<NLMAA
         var settled = open ? null : session?.ResolveStaleSpotLightNode();
         if (open || settled != null)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildSpotLightSync(settled, 0)));
-        await connection.SendPacket(new MessagePacket(CmdIds.GridFightSpotLightEnterScRsp,
+        await connection.SendPacket(BasePacket.Create(CmdIds.GridFightSpotLightEnterScRsp,
             new GridFightSpotLightEnterScRsp { Retcode = open || settled != null ? 0 : (uint)Retcode.RetFail }));
     }
 }
@@ -170,7 +169,7 @@ public sealed class HandlerGridFightSpotLightReplaceCsReq : GridFightHandler<LLI
         if (success)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 manager.BuildSpotLightSync(new GridFightSpotLightChanges { CountersChanged = true }, 0)));
-        await connection.SendPacket(new MessagePacket(CmdIds.GridFightSpotLightReplaceScRsp,
+        await connection.SendPacket(BasePacket.Create(CmdIds.GridFightSpotLightReplaceScRsp,
             new GridFightSpotLightReplaceScRsp { Retcode = success ? 0 : (uint)Retcode.RetFail }));
     }
 }
@@ -184,6 +183,6 @@ public sealed class HandlerGridFightUpdateSpotLightTrackCsReq : GridFightHandler
         PlayerInstance player,
         GridFightUpdateSpotLightTrackCsReq request)
     {
-        return connection.SendPacket(new MessagePacket(CmdIds.OCNEDLGLLEA, new OCNEDLGLLEA()));
+        return connection.SendPacket(BasePacket.Create(CmdIds.OCNEDLGLLEA, new OCNEDLGLLEA()));
     }
 }

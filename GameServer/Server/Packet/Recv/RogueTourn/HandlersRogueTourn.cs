@@ -1,7 +1,6 @@
 using March7thHoney.Data;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.RogueTourn;
-using March7thHoney.GameServer.Server.Packet.Send;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
@@ -17,7 +16,7 @@ public sealed class HandlerRogueTournQueryCsReq : PlayerHandler
         var manager = player.RogueTournManager!;
         var rsp = new RogueTournQueryScRsp { LFLCDNGALME = RogueTournProtoBuilder.BuildQueryInfo(manager.Data) };
         if (manager.RunInstance != null) rsp.PHGJIJELKDB = RogueTournProtoBuilder.BuildRunInfo(manager.RunInstance);
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueTournQueryScRsp, rsp));
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournQueryScRsp, rsp));
     }
 }
 
@@ -31,7 +30,7 @@ public sealed class HandlerRogueTournStartCsReq : Handler<RogueTournStartCsReq>
         var (ret, run) = await manager.StartRun((int)req.AreaId, avatarIds);
         if (ret != Retcode.RetSucc || run == null)
         {
-            await connection.SendPacket(new MessagePacket(CmdIds.RogueTournStartScRsp,
+            await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournStartScRsp,
                 new RogueTournStartScRsp { Retcode = (uint)ret }));
             return;
         }
@@ -41,7 +40,7 @@ public sealed class HandlerRogueTournStartCsReq : Handler<RogueTournStartCsReq>
         // A new run always builds its scene fresh, even from a previous run's room on the same plane.
         if (!await manager.EnterRoomScene(run.CurRoom(), true))
         {
-            await connection.SendPacket(new MessagePacket(CmdIds.RogueTournStartScRsp,
+            await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournStartScRsp,
                 new RogueTournStartScRsp { Retcode = (uint)Retcode.RetFail }));
             return;
         }
@@ -49,7 +48,7 @@ public sealed class HandlerRogueTournStartCsReq : Handler<RogueTournStartCsReq>
         // Official order: level notify, the opening pending action, then the response mirroring it.
         await manager.SendLevelNotify();
         await manager.SendPendingNotify();
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueTournStartScRsp, new RogueTournStartScRsp
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournStartScRsp, new RogueTournStartScRsp
         {
             IDCMACCPCBH = RogueTournProtoBuilder.BuildEnterInfo(player),
             PHGJIJELKDB = RogueTournProtoBuilder.BuildRunInfo(run)
@@ -69,14 +68,14 @@ public sealed class HandlerRogueTournEnterCsReq : PlayerHandler
         var run = manager.RunInstance;
         if (run == null)
         {
-            await connection.SendPacket(new MessagePacket(CmdIds.RogueTournEnterScRsp,
+            await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournEnterScRsp,
                 new RogueTournEnterScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }));
             return;
         }
 
         // Without a scene the client has nothing to load and keeps asking before quitting the run.
         if (!RogueTournEntityLoader.IsTournRoomScene(player)) await manager.EnterRoomScene(run.CurRoom());
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueTournEnterScRsp, new RogueTournEnterScRsp
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournEnterScRsp, new RogueTournEnterScRsp
         {
             IDCMACCPCBH = RogueTournProtoBuilder.BuildEnterInfo(player),
             PHGJIJELKDB = RogueTournProtoBuilder.BuildRunInfo(run)
@@ -92,14 +91,14 @@ public sealed class HandlerRogueTournLeaveCsReq : PlayerHandler
     {
         if (!await player.RogueTournManager!.LeaveRunToLobby())
         {
-            await connection.SendPacket(new MessagePacket(CmdIds.RogueTournLeaveScRsp,
+            await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournLeaveScRsp,
                 new RogueTournLeaveScRsp { Retcode = (uint)Retcode.RetFail }));
             return;
         }
 
         // Tears the client's tourn maze state down before the entrance scene arrives.
         await connection.SendPacket(new PacketSyncServerSceneChangeNotify());
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueTournLeaveScRsp,
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournLeaveScRsp,
             new RogueTournLeaveScRsp { IDCMACCPCBH = RogueTournProtoBuilder.BuildEnterInfo(player) }));
     }
 }
@@ -114,14 +113,14 @@ public sealed class HandlerRogueTournEnterRoomCsReq : Handler<RogueTournEnterRoo
         if (ret == Retcode.RetSucc && manager.RunInstance == null) ret = Retcode.RetRogueStatusNotMatch;
         if (ret != Retcode.RetSucc)
         {
-            await connection.SendPacket(new MessagePacket(CmdIds.RogueTournEnterRoomScRsp,
+            await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournEnterRoomScRsp,
                 new RogueTournEnterRoomScRsp { Retcode = (uint)ret }));
             return;
         }
 
         await manager.EnterRoomScene(manager.RunInstance!.CurRoom());
         await manager.SendLevelNotify();
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueTournEnterRoomScRsp,
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournEnterRoomScRsp,
             new RogueTournEnterRoomScRsp { IDCMACCPCBH = RogueTournProtoBuilder.BuildEnterInfo(player) }));
     }
 }
@@ -136,14 +135,14 @@ public sealed class HandlerRogueTournEnterLayerCsReq : PlayerHandler
         if (ret == Retcode.RetSucc && manager.RunInstance == null) ret = Retcode.RetRogueStatusNotMatch;
         if (ret != Retcode.RetSucc)
         {
-            await connection.SendPacket(new MessagePacket(CmdIds.RogueTournEnterLayerScRsp,
+            await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournEnterLayerScRsp,
                 new RogueTournEnterLayerScRsp { Retcode = (uint)ret }));
             return;
         }
 
         await manager.EnterRoomScene(manager.RunInstance!.CurRoom());
         await manager.SendLevelNotify();
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueTournEnterLayerScRsp,
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournEnterLayerScRsp,
             new RogueTournEnterLayerScRsp { IDCMACCPCBH = RogueTournProtoBuilder.BuildEnterInfo(player) }));
     }
 }
@@ -163,7 +162,7 @@ public sealed class HandlerRogueTournTriggerRoomSelectCsReq : PlayerHandler
         var run = manager.RunInstance;
         if (run == null)
         {
-            await connection.SendPacket(new MessagePacket(CmdIds.RogueTournTriggerRoomSelectScRsp,
+            await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournTriggerRoomSelectScRsp,
                 new RogueTournTriggerRoomSelectScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }));
             return;
         }
@@ -177,7 +176,7 @@ public sealed class HandlerRogueTournTriggerRoomSelectCsReq : PlayerHandler
             var (ret, next, walked) = manager.SelectNextRoom();
             if (ret != Retcode.RetSucc)
             {
-                await connection.SendPacket(new MessagePacket(CmdIds.RogueTournTriggerRoomSelectScRsp,
+                await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournTriggerRoomSelectScRsp,
                     new RogueTournTriggerRoomSelectScRsp { Retcode = (uint)ret }));
                 return;
             }
@@ -200,7 +199,7 @@ public sealed class HandlerRogueTournTriggerRoomSelectCsReq : PlayerHandler
         await manager.SendLevelNotify();
         await manager.SendPendingNotify();
         await manager.SendDialogueSnapshot();
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueTournTriggerRoomSelectScRsp,
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournTriggerRoomSelectScRsp,
             new RogueTournTriggerRoomSelectScRsp()));
     }
 }
@@ -210,7 +209,7 @@ public sealed class HandlerRogueTournGetPermanentTalentInfoCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueTournGetPermanentTalentInfoScRsp,
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournGetPermanentTalentInfoScRsp,
             new RogueTournGetPermanentTalentInfoScRsp
             {
                 DPABCOHLPLH = RogueTournProtoBuilder.BuildPermanentTalentInfo(player.RogueTournManager!.Data)
@@ -223,7 +222,7 @@ public sealed class HandlerRogueTournGetSeasonTalentInfoCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueTournGetSeasonTalentInfoScRsp,
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournGetSeasonTalentInfoScRsp,
             new RogueTournGetSeasonTalentInfoScRsp
             {
                 HANICMMHJGI = RogueTournProtoBuilder.BuildSeasonTalentInfo(player.RogueTournManager!.Data)
@@ -239,7 +238,7 @@ public sealed class HandlerRogueTournGetAllArchiveCsReq : PlayerHandler
         var rsp = new RogueTournGetAllArchiveScRsp();
         foreach (var entry in player.RogueTournManager!.Data.Archives)
             rsp.MCGGPONOCKC.Add(RogueTournProtoBuilder.BuildArchive(entry));
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueTournGetAllArchiveScRsp, rsp));
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournGetAllArchiveScRsp, rsp));
     }
 }
 
@@ -249,7 +248,7 @@ public sealed class HandlerRogueTournGetArchiveRepositoryCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueTournGetArchiveRepositoryScRsp,
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournGetArchiveRepositoryScRsp,
             new RogueTournGetArchiveRepositoryScRsp()));
     }
 }
@@ -260,7 +259,7 @@ public sealed class HandlerRogueTournGetAllBuildRefCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueTournGetAllBuildRefScRsp,
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournGetAllBuildRefScRsp,
             new RogueTournGetAllBuildRefScRsp()));
     }
 }
@@ -272,7 +271,7 @@ public sealed class HandlerRogueTournGetMiscRealTimeDataCsReq : PlayerHandler
     {
         var rsp = new RogueTournGetMiscRealTimeDataScRsp();
         RogueTournProtoBuilder.FillMiscRealTimeData(rsp);
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueTournGetMiscRealTimeDataScRsp, rsp));
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournGetMiscRealTimeDataScRsp, rsp));
     }
 }
 
@@ -282,7 +281,7 @@ public sealed class HandlerRogueTournGetCurRogueCocoonInfoCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueTournGetCurRogueCocoonInfoScRsp,
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournGetCurRogueCocoonInfoScRsp,
             new RogueTournGetCurRogueCocoonInfoScRsp()));
     }
 }
@@ -296,7 +295,7 @@ public sealed class HandlerRogueTournEnterRogueCocoonSceneCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueTournEnterRogueCocoonSceneScRsp,
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournEnterRogueCocoonSceneScRsp,
             new RogueTournEnterRogueCocoonSceneScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }));
     }
 }
@@ -311,13 +310,13 @@ public sealed class HandlerRogueTournGetSettleInfoCsReq : PlayerHandler
         var run = manager.RunInstance;
         if (run == null)
         {
-            await connection.SendPacket(new MessagePacket(CmdIds.RogueTournGetSettleInfoScRsp,
+            await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournGetSettleInfoScRsp,
                 new RogueTournGetSettleInfoScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }));
             return;
         }
 
         var (score, gain, total) = manager.SettleScore();
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueTournGetSettleInfoScRsp,
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournGetSettleInfoScRsp,
             new RogueTournGetSettleInfoScRsp
             {
                 BFLLJJBHLDF = RogueTournProtoBuilder.BuildSettlePayload(run, score, gain, total)
@@ -338,13 +337,13 @@ public sealed class HandlerRogueTournSettleCsReq : PlayerHandler
         var run = manager.RunInstance;
         if (run == null)
         {
-            await connection.SendPacket(new MessagePacket(CmdIds.RogueTournSettleScRsp,
+            await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournSettleScRsp,
                 new RogueTournSettleScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }));
             return;
         }
 
         var (score, gain, total) = manager.SettleScore();
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueTournSettleScRsp, new RogueTournSettleScRsp
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournSettleScRsp, new RogueTournSettleScRsp
         {
             BFLLJJBHLDF = RogueTournProtoBuilder.BuildSettlePayload(run, score, gain, total),
             IDCMACCPCBH = RogueTournProtoBuilder.BuildEnterInfo(player)
@@ -367,7 +366,7 @@ public sealed class HandlerRogueTournConfirmSettleCsReq : Handler<RogueTournConf
         var slot = manager.SettleRun(req.Name, (int)req.NPHAJEKCBKF);
         if (slot == 0)
         {
-            await connection.SendPacket(new MessagePacket(CmdIds.RogueTournConfirmSettleScRsp,
+            await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournConfirmSettleScRsp,
                 new RogueTournConfirmSettleScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }));
             return;
         }
@@ -375,19 +374,19 @@ public sealed class HandlerRogueTournConfirmSettleCsReq : Handler<RogueTournConf
         await manager.SendLevelNotify(false);
         await manager.SendLevelNotify(false);
         if (manager.Data.Exp > 0)
-            await connection.SendPacket(new MessagePacket(CmdIds.RogueTournExpNotify,
+            await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournExpNotify,
                 new RogueTournExpNotify { Exp = (uint)manager.Data.Exp }));
 
         if (!await manager.LeaveSettledRun())
         {
-            await connection.SendPacket(new MessagePacket(CmdIds.RogueTournConfirmSettleScRsp,
+            await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournConfirmSettleScRsp,
                 new RogueTournConfirmSettleScRsp { Retcode = (uint)Retcode.RetFail }));
             return;
         }
 
         var rsp = new RogueTournConfirmSettleScRsp { IDCMACCPCBH = RogueTournProtoBuilder.BuildEnterInfo(player) };
         if (manager.ArchiveOf(slot) is { } archive) rsp.BLPDBPHMCGA = RogueTournProtoBuilder.BuildArchive(archive);
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueTournConfirmSettleScRsp, rsp));
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournConfirmSettleScRsp, rsp));
     }
 }
 
@@ -403,7 +402,7 @@ public sealed class HandlerRogueTournTakeExpRewardCsReq : Handler<RogueTournTake
         var rsp = new RogueTournTakeExpRewardScRsp { Exp = (uint)manager.Data.Exp, Reward = new ItemList() };
         rsp.FKDNANDJLGK.AddRange(levels.Select(level => (uint)level));
         foreach (var item in items) rsp.Reward.ItemList_.Add(item.ToProto());
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueTournTakeExpRewardScRsp, rsp));
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueTournTakeExpRewardScRsp, rsp));
     }
 }
 
@@ -418,7 +417,7 @@ public sealed class HandlerRogueWorkbenchGetInfoCsReq : PlayerHandler
             foreach (var funcId in bench.FuncList)
                 rsp.NJAPFMHHPPA[(uint)funcId] = WorkbenchEntry();
         player.RogueTournManager?.DiscoverWorkbench(RogueTournProtoBuilder.DefaultWorkbenchId);
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueWorkbenchGetInfoScRsp, rsp));
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueWorkbenchGetInfoScRsp, rsp));
     }
 
     // The official's first GetInfo of a run already reports {DMGJDGJMCJL:1, CLNDMEODHJE:1} for every function.
@@ -435,7 +434,7 @@ public sealed class HandlerRogueWorkbenchHandleFuncCsReq : Handler<RogueWorkbenc
     protected override async Task OnHandle(Connection connection, PlayerInstance player,
         RogueWorkbenchHandleFuncCsReq req)
     {
-        await connection.SendPacket(new MessagePacket(CmdIds.RogueWorkbenchHandleFuncScRsp,
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueWorkbenchHandleFuncScRsp,
             new RogueWorkbenchHandleFuncScRsp
             {
                 FuncId = req.FuncId,

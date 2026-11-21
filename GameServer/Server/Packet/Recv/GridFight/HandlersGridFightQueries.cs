@@ -1,5 +1,4 @@
 using March7thHoney.GameServer.Game.GridFight;
-using March7thHoney.GameServer.Server.Packet.Send;
 using March7thHoney.GameServer.Server.Packet.Send.GridFight;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.Kcp;
@@ -12,7 +11,7 @@ public sealed class HandlerGridFightGetFormationCsReq : PlayerHandler
 {
     protected override Task OnHandle(Connection connection, PlayerInstance player)
     {
-        return connection.SendPacket(new MessagePacket(
+        return connection.SendPacket(BasePacket.Create(
             CmdIds.GetGameFormationScRsp,
             new GetGameFormationScRsp()));
     }
@@ -41,7 +40,7 @@ public sealed class HandlerGridFightTraitTrackCsReq : GridFightHandler<GridFight
         if (retcode == 0)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 manager.BuildTraitTrackSync()));
-        await connection.SendPacket(new MessagePacket(
+        await connection.SendPacket(BasePacket.Create(
             CmdIds.GridFightTrackTraitScRsp,
             new GridFightTrackTraitScRsp { Retcode = retcode }));
     }

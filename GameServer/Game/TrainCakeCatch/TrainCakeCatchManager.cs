@@ -442,8 +442,7 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager<Tr
             if (target?.Connection?.IsOnline != true)
                 continue;
 
-            var packet = new BasePacket(CmdIds.SocialPlayGameplayOperationScNotify);
-            packet.SetData(playerStateNotify.Clone());
+            var packet = BasePacket.Create(CmdIds.SocialPlayGameplayOperationScNotify, playerStateNotify.Clone());
             await target.SendPacket(packet);
         }
     }
@@ -517,8 +516,7 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager<Tr
                 implicitOwnerUid = (int)roomOwnerUid;
         }
 
-        var ackPacket = new BasePacket(CmdIds.JKILAALMFIB);
-        ackPacket.SetData(new JKILAALMFIB());
+        var ackPacket = BasePacket.Create(CmdIds.JKILAALMFIB, new JKILAALMFIB());
         await Player.SendPacket(ackPacket);
 
         var notify = new SocialPlayRoomPlayerMoveScNotify
@@ -542,8 +540,7 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager<Tr
             if (target?.Connection?.IsOnline != true)
                 continue;
 
-            var packet = new BasePacket(CmdIds.SocialPlayRoomPlayerMoveScNotify);
-            packet.SetData(notify.Clone());
+            var packet = BasePacket.Create(CmdIds.SocialPlayRoomPlayerMoveScNotify, notify.Clone());
             await target.SendPacket(packet);
         }
     }
@@ -606,8 +603,7 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager<Tr
             if (target?.Connection?.IsOnline != true)
                 continue;
 
-            var packet = new BasePacket(CmdIds.SocialPlayGameplayOperationScNotify);
-            packet.SetData(new SocialPlayGameplayOperationScNotify
+            var packet = BasePacket.Create(CmdIds.SocialPlayGameplayOperationScNotify, new SocialPlayGameplayOperationScNotify
             {
                 RoomOwnerUid = roomOwnerUid,
                 OpUid = (uint)uid,
@@ -1071,14 +1067,12 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager<Tr
                 var arrivalHistoryNotify = BuildArrivalHistoryNotify(roomOwnerUid);
                 if (arrivalHistoryNotify != null)
                 {
-                    var arrivalPacket = new BasePacket(CmdIds.SocialPlayGameplayOperationScNotify);
-                    arrivalPacket.SetData(arrivalHistoryNotify);
+                    var arrivalPacket = BasePacket.Create(CmdIds.SocialPlayGameplayOperationScNotify, arrivalHistoryNotify);
                     await target.SendPacket(arrivalPacket);
                 }
             }
 
-            var packet = new BasePacket(CmdIds.SocialPlayGameplayOperationScNotify);
-            packet.SetData(notify.Clone());
+            var packet = BasePacket.Create(CmdIds.SocialPlayGameplayOperationScNotify, notify.Clone());
             await target.SendPacket(packet);
         }
     }
@@ -1105,14 +1099,12 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager<Tr
             if (target?.Connection?.IsOnline != true)
                 continue;
 
-            var packet = new BasePacket(CmdIds.SocialPlayGameplayOperationScNotify);
-            packet.SetData(notify.Clone());
+            var packet = BasePacket.Create(CmdIds.SocialPlayGameplayOperationScNotify, notify.Clone());
             await target.SendPacket(packet);
 
             // The leave popup/effect alone does not consistently despawn the actor on clients.
             // Follow it with a refreshed room roster so the remaining members reconcile state.
-            var snapshotPacket = new BasePacket(CmdIds.SocialPlayGameplayOperationScNotify);
-            snapshotPacket.SetData(new SocialPlayGameplayOperationScNotify
+            var snapshotPacket = BasePacket.Create(CmdIds.SocialPlayGameplayOperationScNotify, new SocialPlayGameplayOperationScNotify
             {
                 RoomOwnerUid = roomOwnerUid,
                 OpUid = (uint)uid,

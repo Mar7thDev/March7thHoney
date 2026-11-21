@@ -9,7 +9,6 @@ using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.RogueCommon;
 using March7thHoney.GameServer.Game.Scene;
-using March7thHoney.GameServer.Server.Packet.Send;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Kcp;
@@ -434,9 +433,9 @@ public partial class RogueTournManager : BasePlayerManager
         await Player.SendPacket(new PacketExtraLineupDestroyNotify(ExtraLineupType.LineupTournRogue));
         if (RunInstance != null)
             foreach (var id in RunInstance.Modifiers)
-                await Player.SendPacket(new MessagePacket(CmdIds.RogueModifierAddNotify,
+                await Player.SendPacket(BasePacket.Create(CmdIds.RogueModifierAddNotify,
                     new RogueModifierAddNotify { Modifier = RogueTournProtoBuilder.BuildModifierRow(id, false, false, 0) }));
-        await Player.SendPacket(new MessagePacket(CmdIds.SyncTurnFoodNotify, new SyncTurnFoodNotify()));
+        await Player.SendPacket(BasePacket.Create(CmdIds.SyncTurnFoodNotify, new SyncTurnFoodNotify()));
     }
 
     #endregion
@@ -616,7 +615,7 @@ public partial class RogueTournManager : BasePlayerManager
         OpenBuffDraft(run);
         Save();
 
-        await Player.SendPacket(new MessagePacket(CmdIds.CommonRogueVirtualItemInfoScNotify,
+        await Player.SendPacket(BasePacket.Create(CmdIds.CommonRogueVirtualItemInfoScNotify,
             RogueTournProtoBuilder.BuildVirtualItemNotify(run)));
         await SendPendingNotify();
         await SendLevelNotify();
@@ -636,14 +635,14 @@ public partial class RogueTournManager : BasePlayerManager
     public async ValueTask SendLevelNotify(bool withRoom = true)
     {
         if (RunInstance == null) return;
-        await Player.SendPacket(new MessagePacket(CmdIds.RogueTournLevelInfoUpdateScNotify,
+        await Player.SendPacket(BasePacket.Create(CmdIds.RogueTournLevelInfoUpdateScNotify,
             RogueTournProtoBuilder.BuildLevelNotify(RunInstance, withRoom)));
     }
 
     public async ValueTask SendPendingNotify()
     {
         if (RunInstance?.Pending == null) return;
-        await Player.SendPacket(new MessagePacket(CmdIds.SyncRogueCommonPendingActionScNotify,
+        await Player.SendPacket(BasePacket.Create(CmdIds.SyncRogueCommonPendingActionScNotify,
             RogueTournProtoBuilder.BuildPendingNotify(RunInstance)));
     }
 
@@ -652,7 +651,7 @@ public partial class RogueTournManager : BasePlayerManager
         if (RunInstance == null) return;
         var notify = RogueTournProtoBuilder.BuildRoomRegistrationNotify(RunInstance);
         if (notify != null)
-            await Player.SendPacket(new MessagePacket(CmdIds.SyncRogueCommonActionResultScNotify, notify));
+            await Player.SendPacket(BasePacket.Create(CmdIds.SyncRogueCommonActionResultScNotify, notify));
     }
 
     public async ValueTask SendRoomCardZone()
@@ -660,7 +659,7 @@ public partial class RogueTournManager : BasePlayerManager
         if (RunInstance == null) return;
         var notify = RogueTournProtoBuilder.BuildRoomCardZoneNotify(RunInstance);
         if (notify != null)
-            await Player.SendPacket(new MessagePacket(CmdIds.RogueTournPersonaRoomCardZoneUpdateScNotify, notify));
+            await Player.SendPacket(BasePacket.Create(CmdIds.RogueTournPersonaRoomCardZoneUpdateScNotify, notify));
     }
 
     // Blessing grants attach to the buff holder first, then every row goes out as its own result notify.
@@ -668,10 +667,10 @@ public partial class RogueTournManager : BasePlayerManager
     {
         if (results.Count == 0) return;
         foreach (var notify in RogueTournProtoBuilder.BuildBuffGrantNotifies(results))
-            await Player.SendPacket(new MessagePacket(CmdIds.SyncEntityBuffChangeListScNotify, notify));
+            await Player.SendPacket(BasePacket.Create(CmdIds.SyncEntityBuffChangeListScNotify, notify));
         foreach (var result in results)
             if (RogueTournProtoBuilder.BuildActionResult(result) is { } notify)
-                await Player.SendPacket(new MessagePacket(CmdIds.SyncRogueCommonActionResultScNotify, notify));
+                await Player.SendPacket(BasePacket.Create(CmdIds.SyncRogueCommonActionResultScNotify, notify));
     }
 
     #endregion
