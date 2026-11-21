@@ -1,3 +1,4 @@
+using March7thHoney.Data.Avatar;
 using March7thHoney.Data.Challenge;
 using March7thHoney.Data.Custom;
 using March7thHoney.Util;
