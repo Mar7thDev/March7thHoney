@@ -27,7 +27,11 @@ public class March7thHoneyListener
     /// <summary>KCP MTU. Also fixes the maximum message size — see March7thHoneyConnection.MaxPacketBytes.</summary>
     public const int KcpMtu = 1400;
 
-    // Handshake codes carried in the 20-byte UDP greeting before KCP traffic starts.
+    // Size of the UDP handshake datagrams exchanged before KCP traffic starts; the transport routes every datagram of
+    // exactly this size to HandleHandshake instead of KCP.
+    private const int HandshakeBytes = 20;
+
+    // Handshake codes carried in the UDP greeting.
     private const int HandshakeConnectCode = 0x000000FF;
     private const int HandshakeConnectCodeAlt = unchecked((int)0xC8520300); // variant sent by newer clients
     private const int HandshakeDisconnectCode = 0x00000194;
@@ -63,7 +67,7 @@ public class March7thHoneyListener
         ListenAddress = new IPEndPoint(IPAddress.Parse(ConfigManager.Config.GameServer.BindAddress), (int)PORT);
         UDPClient = new UdpClient(ListenAddress);
         if (UDPListener == null) return;
-        KCPTransport = KcpSocketTransport.CreateMultiplexConnection(UDPClient, KcpMtu);
+        KCPTransport = KcpSocketTransport.CreateMultiplexConnection(UDPClient, KcpMtu, HandshakeBytes, HandleHandshake);
         KCPTransport.Start();
         Logger.Info(I18NManager.Translate("Server.ServerInfo.ServerRunning", I18NManager.Translate("Word.Game"),
             ConfigManager.Config.GameServer.GetDisplayAddress()));
@@ -83,7 +87,7 @@ public class March7thHoneyListener
         }
     }
 
-    public static async Task HandleHandshake(UdpReceiveResult rcv)
+    private static async Task HandleHandshake(UdpReceiveResult rcv)
     {
         try
         {

@@ -7,7 +7,6 @@ namespace March7thHoney.Kcp;
 
 public class March7thHoneyConnection
 {
-    public const int HANDSHAKE_SIZE = 20;
     public static readonly ConcurrentBag<int> BannedPackets = [];
     private static readonly Logger Logger = new("GameServer");
     public static readonly ConcurrentDictionary<int, string> LogMap = [];

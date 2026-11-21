@@ -30,7 +30,7 @@ The gate runs, in order:
 - `scripts/check-comments.py`.
 - A check that the command IDs in `KcpSharp/CmdIds.cs` match those recorded in `Proto/StarRail.proto`.
 - A full Release build of the solution.
-- The Auth and Web authentication and session-security regressions, the KCP source-binding and handshake-capacity regressions (`KcpSecurityRegression`, `KcpAdmissionRegression`), the inventory cost regression (`InventoryRegression`) and `SourceGenRegression`.
+- The Auth and Web authentication and session-security regressions, the KCP source-binding, handshake-routing and handshake-capacity regressions (`KcpSecurityRegression`, `KcpAdmissionRegression`), the inventory cost regression (`InventoryRegression`) and `SourceGenRegression`.
 - The protocol generation regression, `scripts/test-proto-generation.py`.
 - The failure and rollback scenarios of the Linux update script (`scripts/test-update-server.py`), tested with isolated mock commands. It never touches a real systemd service.
 

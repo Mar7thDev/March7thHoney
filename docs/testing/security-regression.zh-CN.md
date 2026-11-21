@@ -30,7 +30,7 @@ python3 scripts/verify-security.py
 - `scripts/check-comments.py`。
 - 校验 `KcpSharp/CmdIds.cs` 中的命令号与 `Proto/StarRail.proto` 记录的一致。
 - 解决方案的完整 Release 构建。
-- Auth 与 Web 的鉴权和会话安全回归、KCP 来源绑定与握手容量回归（`KcpSecurityRegression`、`KcpAdmissionRegression`）、背包消耗回归（`InventoryRegression`）以及 `SourceGenRegression`。
+- Auth 与 Web 的鉴权和会话安全回归、KCP 来源绑定、握手分流与握手容量回归（`KcpSecurityRegression`、`KcpAdmissionRegression`）、背包消耗回归（`InventoryRegression`）以及 `SourceGenRegression`。
 - 协议生成回归 `scripts/test-proto-generation.py`。
 - Linux 更新脚本的失败与回滚场景（`scripts/test-update-server.py`），使用隔离的 mock 命令测试，绝不操作真实的 systemd 服务。
 
