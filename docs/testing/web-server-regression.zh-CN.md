@@ -34,6 +34,7 @@ dotnet run --project scripts/WebServerRegression/WebServerRegression.csproj -- -
 - `/language` 对后台控制台回复仅限玩家使用；玩家自助控制台可以固定自身语言，并以新语言回复。
 - User 角色玩家执行 `/json export` 时拒绝路径穿越和绝对路径名称，由玩家名生成的默认文件名也留在 `Config/Json` 内；`/json <路径>` 拒绝导入 `Config/Json` 之外的文件。
 - 登录保护及维护接口的内存数据。
+- 路由表中除登录、登出和会话检查以外的每个 `/admin/api` 接口，在没有会话时都以相同的 401 响应体拒绝；接口列表从运行中的应用读取，新增接口会被自动覆盖。令牌可以来自 Bearer 请求头、`X-Admin-Session` 或 `token` 查询参数，轮换管理密钥时保留调用者自己的会话。
 
 ### MUIP 与网关
 

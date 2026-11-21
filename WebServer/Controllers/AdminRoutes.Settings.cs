@@ -8,25 +8,19 @@ namespace March7thHoney.WebServer.Controllers;
 
 public static partial class AdminRoutes
 {
-    private static void MapSettingsRoutes(IEndpointRouteBuilder app)
+    private static void MapSettingsRoutes(IEndpointRouteBuilder api)
     {
-        app.MapGet("/admin/api/settings", GetSettings);
-        app.MapPut("/admin/api/settings", UpdateSettings);
+        api.MapGet("/settings", GetSettings);
+        api.MapPut("/settings", UpdateSettings);
     }
 
-    private static IResult GetSettings(HttpContext ctx)
+    private static IResult GetSettings()
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         return Success(new SettingsData(AdminSettingsRegistry.Snapshot()));
     }
 
-    private static IResult UpdateSettings(HttpContext ctx, AdminSettingsRequest? request)
+    private static IResult UpdateSettings(AdminSettingsRequest? request)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         request ??= new AdminSettingsRequest();
         if (request.values == null || request.values.Count == 0)
             return Error("Nothing to save");

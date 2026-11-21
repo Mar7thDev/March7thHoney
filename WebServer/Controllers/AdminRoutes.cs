@@ -17,12 +17,14 @@ using Microsoft.AspNetCore.Routing;
 namespace March7thHoney.WebServer.Controllers;
 
 /// <summary>
-///     Admin console API. Every /admin/api/* endpoint requires a session token issued by /admin/api/login
-///     (Bearer header or X-Admin-Session). The feature areas live in the partial files next to this one.
+///     Admin console API. Every /admin/api/* endpoint except login, logout and the session check requires a session
+///     token issued by /admin/api/login (Bearer header or X-Admin-Session); <see cref="RequireAdminSession" /> enforces
+///     it for the whole route group. The feature areas live in the partial files next to this one.
 /// </summary>
 public static partial class AdminRoutes
 {
     private static readonly DateTime ProcessStartTime = Process.GetCurrentProcess().StartTime;
+    private static readonly object AdminSessionItemKey = new();
 
     public static void MapAdminRoutes(this IEndpointRouteBuilder app)
     {
@@ -33,24 +35,49 @@ public static partial class AdminRoutes
             () => Results.Text(AdminPageRenderer.Render(ConfigManager.Config.GameServer.GameServerName),
                 "text/html; charset=utf-8"));
 
+        // These three handle a missing or stale session themselves.
         app.MapPost("/admin/api/login", Login);
         app.MapPost("/admin/api/logout", Logout);
         app.MapGet("/admin/api/session", GetSession);
-        app.MapGet("/admin/api/overview", GetOverview);
-        app.MapPost("/admin/api/registration", SetRegistration);
-        app.MapPost("/admin/api/registration-identity-limit", SetRegistrationIdentityLimit);
 
-        MapAccountRoutes(app);
-        MapPlayerRoutes(app);
-        MapMailRoutes(app);
-        MapAnnounceRoutes(app);
-        MapAccessRoutes(app);
-        MapCommandRoutes(app);
-        MapGridFightRoutes(app);
-        MapSettingsRoutes(app);
-        MapHotfixRoutes(app);
-        MapLogRoutes(app);
-        MapMaintenanceRoutes(app);
+        var api = app.MapGroup("/admin/api").AddEndpointFilter(RequireAdminSession);
+        api.MapGet("/overview", GetOverview);
+        api.MapPost("/registration", SetRegistration);
+        api.MapPost("/registration-identity-limit", SetRegistrationIdentityLimit);
+
+        MapAccountRoutes(api);
+        MapPlayerRoutes(api);
+        MapMailRoutes(api);
+        MapAnnounceRoutes(api);
+        MapAccessRoutes(api);
+        MapCommandRoutes(api);
+        MapGridFightRoutes(api);
+        MapSettingsRoutes(api);
+        MapHotfixRoutes(api);
+        MapLogRoutes(api);
+        MapMaintenanceRoutes(api);
+    }
+
+    /// <summary>
+    ///     Endpoint filter of the /admin/api group: refuses a request without a live session before its handler runs and
+    ///     hands the session to the handler through <see cref="GetAdminSession" />.
+    /// </summary>
+    private static async ValueTask<object?> RequireAdminSession(EndpointFilterInvocationContext context,
+        EndpointFilterDelegate next)
+    {
+        if (!AdminSessionManager.TryGetSession(GetAdminToken(context.HttpContext), out var session))
+            return NotAuthorized();
+
+        context.HttpContext.Items[AdminSessionItemKey] = session;
+        return await next(context);
+    }
+
+    /// <summary>The session <see cref="RequireAdminSession" /> admitted the current request with.</summary>
+    private static AdminSessionManager.AdminSession GetAdminSession(HttpContext ctx)
+    {
+        return ctx.Items[AdminSessionItemKey] is AdminSessionManager.AdminSession session
+            ? session
+            : throw new InvalidOperationException("Only endpoints in the /admin/api route group have an admin session.");
     }
 
     private static IResult Login(HttpContext ctx, AdminLoginRequest? request)
@@ -73,7 +100,7 @@ public static partial class AdminRoutes
     private static IResult GetSession(HttpContext ctx)
     {
         if (!AdminSessionManager.TryGetSession(GetAdminToken(ctx), out var session))
-            return Error("Not authorized", statusCode: StatusCodes.Status401Unauthorized);
+            return NotAuthorized();
 
         return Success(new AdminSessionData(
             session.ExpiresAt.ToUnixTimeSeconds(),
@@ -83,11 +110,8 @@ public static partial class AdminRoutes
             AdminSessionManager.ActiveSessionCount));
     }
 
-    private static IResult GetOverview(HttpContext ctx)
+    private static IResult GetOverview()
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         var accounts = GetAllAccounts()
             .Select(ToAccountSummary)
             .OrderBy(account => account.uid)
@@ -150,11 +174,8 @@ public static partial class AdminRoutes
         return Success(new OverviewData(stats, server, onlinePlayers, roleBreakdown, attention));
     }
 
-    private static IResult SetRegistration(HttpContext ctx, AdminRegistrationRequest? request)
+    private static IResult SetRegistration(AdminRegistrationRequest? request)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         request ??= new AdminRegistrationRequest();
         ConfigManager.Config.ServerOption.Auth.EnableRegistration = request.enabled;
         ConfigManager.SaveConfig();
@@ -162,11 +183,8 @@ public static partial class AdminRoutes
         return Success(new RegistrationData(ConfigManager.Config.ServerOption.Auth.EnableRegistration));
     }
 
-    private static IResult SetRegistrationIdentityLimit(HttpContext ctx, AdminRegistrationRequest? request)
+    private static IResult SetRegistrationIdentityLimit(AdminRegistrationRequest? request)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         request ??= new AdminRegistrationRequest();
         ConfigManager.Config.ServerOption.Auth.AntiAbuse.LimitRegistrationPerIdentity = request.enabled;
         ConfigManager.SaveConfig();
@@ -177,16 +195,9 @@ public static partial class AdminRoutes
 
     #region Shared helpers
 
-    private static bool IsAuthorized(HttpContext ctx, out IResult error)
+    private static IResult NotAuthorized()
     {
-        if (AdminSessionManager.IsAuthorized(GetAdminToken(ctx)))
-        {
-            error = Success(new EmptyData());
-            return true;
-        }
-
-        error = Error("Not authorized", statusCode: StatusCodes.Status401Unauthorized);
-        return false;
+        return Error("Not authorized", statusCode: StatusCodes.Status401Unauthorized);
     }
 
     private static string? GetAdminToken(HttpContext ctx)

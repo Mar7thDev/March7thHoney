@@ -9,25 +9,19 @@ namespace March7thHoney.WebServer.Controllers;
 
 public static partial class AdminRoutes
 {
-    private static void MapHotfixRoutes(IEndpointRouteBuilder app)
+    private static void MapHotfixRoutes(IEndpointRouteBuilder api)
     {
-        app.MapGet("/admin/api/hotfix", GetHotfix);
-        app.MapPut("/admin/api/hotfix", UpdateHotfix);
+        api.MapGet("/hotfix", GetHotfix);
+        api.MapPut("/hotfix", UpdateHotfix);
     }
 
-    private static IResult GetHotfix(HttpContext ctx)
+    private static IResult GetHotfix()
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         return Success(BuildHotfixData());
     }
 
-    private static IResult UpdateHotfix(HttpContext ctx, AdminHotfixRequest? request)
+    private static IResult UpdateHotfix(AdminHotfixRequest? request)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         request ??= new AdminHotfixRequest();
 
         if (request.region != null)

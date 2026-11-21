@@ -10,18 +10,15 @@ namespace March7thHoney.WebServer.Controllers;
 
 public static partial class AdminRoutes
 {
-    private static void MapAnnounceRoutes(IEndpointRouteBuilder app)
+    private static void MapAnnounceRoutes(IEndpointRouteBuilder api)
     {
-        app.MapPost("/admin/api/announce", SendAnnounce);
-        app.MapGet("/admin/api/announce/config", GetAnnounceConfig);
-        app.MapPut("/admin/api/announce/config", UpdateAnnounceConfig);
+        api.MapPost("/announce", SendAnnounce);
+        api.MapGet("/announce/config", GetAnnounceConfig);
+        api.MapPut("/announce/config", UpdateAnnounceConfig);
     }
 
-    private static async Task<IResult> SendAnnounce(HttpContext ctx, AdminAnnounceRequest? request)
+    private static async Task<IResult> SendAnnounce(AdminAnnounceRequest? request)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         request ??= new AdminAnnounceRequest();
         var content = (request.content ?? string.Empty).Replace("\r\n", "\n").Trim();
         if (string.IsNullOrWhiteSpace(content))
@@ -71,19 +68,13 @@ public static partial class AdminRoutes
         return Success(new AnnounceSendData(sent, durationSeconds, frequencySeconds));
     }
 
-    private static IResult GetAnnounceConfig(HttpContext ctx)
+    private static IResult GetAnnounceConfig()
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         return Success(BuildAnnounceConfig());
     }
 
-    private static IResult UpdateAnnounceConfig(HttpContext ctx, AdminAnnounceConfigRequest? request)
+    private static IResult UpdateAnnounceConfig(AdminAnnounceConfigRequest? request)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         request ??= new AdminAnnounceConfigRequest();
         var config = ConfigManager.Config.ServerOption.ServerAnnounce;
 

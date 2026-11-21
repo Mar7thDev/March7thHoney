@@ -34,6 +34,7 @@ None beyond the .NET SDK. The regression uses its own in-memory data and a tempo
 - `/language` answers the admin console that it is player-only; the player self-service console can pin its own language and replies in the new language.
 - `/json export` from a User-role player refuses traversal and absolute names and keeps a default name built from the player name inside `Config/Json`; `/json <path>` refuses to import a file outside `Config/Json`.
 - Login protection and the in-memory data of the maintenance endpoints.
+- Every `/admin/api` endpoint in the routing table, apart from login, logout and the session check, refuses a request without a session with the same 401 body; the list is read from the running application, so new endpoints are covered automatically. The token is accepted from a Bearer header, `X-Admin-Session` or the `token` query parameter, and rotating the admin key keeps the caller's own session.
 
 ### MUIP and gateway
 

@@ -29,6 +29,7 @@ using March7thHoney.WebServer;
 using March7thHoney.WebServer.Server;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Hosting.Server.Features;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -119,12 +120,16 @@ using (var unauthorized = await client.GetAsync("/admin/api/maintenance"))
     Check("maintenance requires authentication", unauthorized.StatusCode == HttpStatusCode.Unauthorized);
 using (var unauthorized = await client.PostAsJsonAsync("/admin/api/commands", new { command = "/help" }))
     Check("commands require authentication", unauthorized.StatusCode == HttpStatusCode.Unauthorized);
+await AdminAuthChecks.RunAnonymous(address, app.Services.GetRequiredService<EndpointDataSource>(), Check);
+string adminToken;
 using (var response = await client.PostAsJsonAsync("/admin/api/login", new { admin_key = config.MuipServer.AdminKey }))
 {
     response.EnsureSuccessStatusCode();
     using var json = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
-    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", json.RootElement.GetProperty("data").GetProperty("token").GetString());
+    adminToken = json.RootElement.GetProperty("data").GetProperty("token").GetString() ?? "";
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", adminToken);
 }
+await AdminAuthChecks.RunWithToken(address, adminToken, Check);
 
 async Task<string> Execute(string command, int? target = null)
 {

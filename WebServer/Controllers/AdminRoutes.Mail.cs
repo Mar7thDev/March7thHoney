@@ -17,26 +17,20 @@ public static partial class AdminRoutes
     private const int MaxMailRecipients = 20000;
     private const int MaxMailAttachments = 50;
 
-    private static void MapMailRoutes(IEndpointRouteBuilder app)
+    private static void MapMailRoutes(IEndpointRouteBuilder api)
     {
-        app.MapGet("/admin/api/players/{uid:int}/mail", GetMailbox);
-        app.MapDelete("/admin/api/players/{uid:int}/mail/{mailId:int}", DeleteMail);
-        app.MapPost("/admin/api/mail/send", SendMail);
+        api.MapGet("/players/{uid:int}/mail", GetMailbox);
+        api.MapDelete("/players/{uid:int}/mail/{mailId:int}", DeleteMail);
+        api.MapPost("/mail/send", SendMail);
     }
 
-    private static IResult GetMailbox(HttpContext ctx, int uid)
+    private static IResult GetMailbox(int uid)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         return Success(BuildMailbox(uid));
     }
 
-    private static IResult DeleteMail(HttpContext ctx, int uid, int mailId)
+    private static IResult DeleteMail(int uid, int mailId)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         var connection = Listener.GetActiveConnection(uid);
         if (connection?.Player?.MailManager != null)
         {
@@ -57,11 +51,8 @@ public static partial class AdminRoutes
         return Success(BuildMailbox(uid));
     }
 
-    private static async Task<IResult> SendMail(HttpContext ctx, AdminSendMailRequest? request)
+    private static async Task<IResult> SendMail(AdminSendMailRequest? request)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         request ??= new AdminSendMailRequest();
         var welcome = request.welcome.GetValueOrDefault();
         var errors = new List<string>();

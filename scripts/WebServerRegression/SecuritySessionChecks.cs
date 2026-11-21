@@ -91,6 +91,8 @@ internal static class SecuritySessionChecks
             MuipManager.AuthAdmin(rotationId, originalKey);
             using (var rotated = await client.PostAsJsonAsync("/admin/api/maintenance/rotate-admin-key", new { }))
                 check("admin rotation endpoint succeeds", rotated.IsSuccessStatusCode);
+            using (var kept = await client.GetAsync("/admin/api/session"))
+                check("admin rotation keeps the caller's own session", kept.IsSuccessStatusCode);
             check("admin rotation removes MUIP sessions", !MuipManager.Sessions.ContainsKey(rotationId));
             config.MuipServer.AdminKey = originalKey;
 

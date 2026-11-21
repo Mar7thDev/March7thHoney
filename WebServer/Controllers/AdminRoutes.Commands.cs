@@ -7,17 +7,14 @@ namespace March7thHoney.WebServer.Controllers;
 
 public static partial class AdminRoutes
 {
-    private static void MapCommandRoutes(IEndpointRouteBuilder app)
+    private static void MapCommandRoutes(IEndpointRouteBuilder api)
     {
-        app.MapPost("/admin/api/commands", ExecuteCommand);
-        app.MapGet("/admin/api/commands/catalog", GetCommandCatalog);
+        api.MapPost("/commands", ExecuteCommand);
+        api.MapGet("/commands/catalog", GetCommandCatalog);
     }
 
-    private static async Task<IResult> ExecuteCommand(HttpContext ctx, AdminExecuteCommandRequest? request)
+    private static async Task<IResult> ExecuteCommand(AdminExecuteCommandRequest? request)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         request ??= new AdminExecuteCommandRequest();
         var command = (request.command ?? string.Empty).Trim();
         if (string.IsNullOrWhiteSpace(command))
@@ -42,11 +39,8 @@ public static partial class AdminRoutes
         }
     }
 
-    private static IResult GetCommandCatalog(HttpContext ctx)
+    private static IResult GetCommandCatalog()
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         var entries = MuipManager.CommandCatalogProvider?.Invoke() ?? [];
         var commands = entries
             .Select(entry => new CommandCatalogItem(

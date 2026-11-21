@@ -13,31 +13,28 @@ namespace March7thHoney.WebServer.Controllers;
 
 public static partial class AdminRoutes
 {
-    private static void MapAccountRoutes(IEndpointRouteBuilder app)
+    private static void MapAccountRoutes(IEndpointRouteBuilder api)
     {
-        app.MapGet("/admin/api/accounts", GetAccounts);
-        app.MapPost("/admin/api/accounts", CreateAccount);
-        app.MapPost("/admin/api/accounts/bulk-delete", BulkDeleteAccounts);
-        app.MapGet("/admin/api/identity-blocks", GetIdentityBlocks);
-        app.MapPost("/admin/api/identity-blocks", BlockIdentity);
-        app.MapDelete("/admin/api/identity-blocks/{id:int}", UnblockIdentity);
-        app.MapPut("/admin/api/accounts/{uid:int}", UpdateAccount);
-        app.MapPut("/admin/api/accounts/{uid:int}/password", SetPassword);
-        app.MapPost("/admin/api/accounts/{uid:int}/email/verification", SendAccountVerificationEmail);
-        app.MapPost("/admin/api/accounts/{uid:int}/ban", BanAccount);
-        app.MapDelete("/admin/api/accounts/{uid:int}/ban", UnbanAccount);
-        app.MapPost("/admin/api/accounts/{uid:int}/tokens/revoke", RevokeAccountTokens);
-        app.MapPost("/admin/api/accounts/{uid:int}/session/kick", KickAccountSession);
-        app.MapPost("/admin/api/accounts/{uid:int}/gameplay/reset", ResetAccountGameplay);
-        app.MapDelete("/admin/api/accounts/{uid:int}/identity-keys", ClearIdentityKeys);
-        app.MapDelete("/admin/api/accounts/{uid:int}", DeleteAccount);
+        api.MapGet("/accounts", GetAccounts);
+        api.MapPost("/accounts", CreateAccount);
+        api.MapPost("/accounts/bulk-delete", BulkDeleteAccounts);
+        api.MapGet("/identity-blocks", GetIdentityBlocks);
+        api.MapPost("/identity-blocks", BlockIdentity);
+        api.MapDelete("/identity-blocks/{id:int}", UnblockIdentity);
+        api.MapPut("/accounts/{uid:int}", UpdateAccount);
+        api.MapPut("/accounts/{uid:int}/password", SetPassword);
+        api.MapPost("/accounts/{uid:int}/email/verification", SendAccountVerificationEmail);
+        api.MapPost("/accounts/{uid:int}/ban", BanAccount);
+        api.MapDelete("/accounts/{uid:int}/ban", UnbanAccount);
+        api.MapPost("/accounts/{uid:int}/tokens/revoke", RevokeAccountTokens);
+        api.MapPost("/accounts/{uid:int}/session/kick", KickAccountSession);
+        api.MapPost("/accounts/{uid:int}/gameplay/reset", ResetAccountGameplay);
+        api.MapDelete("/accounts/{uid:int}/identity-keys", ClearIdentityKeys);
+        api.MapDelete("/accounts/{uid:int}", DeleteAccount);
     }
 
-    private static IResult GetAccounts(HttpContext ctx)
+    private static IResult GetAccounts()
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         var accounts = GetAllAccounts()
             .Select(ToAccountSummary)
             .OrderBy(account => account.uid)
@@ -46,11 +43,8 @@ public static partial class AdminRoutes
         return Success(new AccountsData(accounts, accounts.Count, GetRoleNames(), NormalizeRole(null)));
     }
 
-    private static IResult CreateAccount(HttpContext ctx, AdminCreateAccountRequest? request)
+    private static IResult CreateAccount(AdminCreateAccountRequest? request)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         request ??= new AdminCreateAccountRequest();
         var username = (request.username ?? string.Empty).Trim();
         var email = (request.email ?? string.Empty).Trim();
@@ -86,9 +80,6 @@ public static partial class AdminRoutes
 
     private static async Task<IResult> UpdateAccount(HttpContext ctx, int uid, AdminUpdateAccountRequest? request)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         request ??= new AdminUpdateAccountRequest();
         var account = AccountData.GetAccountByUid(uid);
         if (account == null)
@@ -137,11 +128,8 @@ public static partial class AdminRoutes
         return Success(new AccountEmailWrap(ToAccountSummary(account), emailSent));
     }
 
-    private static IResult SetPassword(HttpContext ctx, int uid, AdminSetPasswordRequest? request)
+    private static IResult SetPassword(int uid, AdminSetPasswordRequest? request)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         request ??= new AdminSetPasswordRequest();
         var account = AccountData.GetAccountByUid(uid);
         if (account == null)
@@ -162,9 +150,6 @@ public static partial class AdminRoutes
 
     private static async Task<IResult> SendAccountVerificationEmail(HttpContext ctx, int uid)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         var account = AccountData.GetAccountByUid(uid);
         if (account == null)
             return Error("Account not found", statusCode: StatusCodes.Status404NotFound);
@@ -177,11 +162,8 @@ public static partial class AdminRoutes
         return Success(new AccountEmailWrap(ToAccountSummary(account), emailSent));
     }
 
-    private static IResult BanAccount(HttpContext ctx, int uid, AdminBanAccountRequest? request)
+    private static IResult BanAccount(int uid, AdminBanAccountRequest? request)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         request ??= new AdminBanAccountRequest();
         var account = AccountData.GetAccountByUid(uid);
         if (account == null)
@@ -197,11 +179,8 @@ public static partial class AdminRoutes
         return Success(new AccountWrap(ToAccountSummary(account)));
     }
 
-    private static IResult UnbanAccount(HttpContext ctx, int uid)
+    private static IResult UnbanAccount(int uid)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         var account = AccountData.GetAccountByUid(uid);
         if (account == null)
             return Error("Account not found", statusCode: StatusCodes.Status404NotFound);
@@ -210,11 +189,8 @@ public static partial class AdminRoutes
         return Success(new AccountWrap(ToAccountSummary(account)));
     }
 
-    private static IResult RevokeAccountTokens(HttpContext ctx, int uid)
+    private static IResult RevokeAccountTokens(int uid)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         var account = AccountData.GetAccountByUid(uid);
         if (account == null)
             return Error("Account not found", statusCode: StatusCodes.Status404NotFound);
@@ -224,11 +200,8 @@ public static partial class AdminRoutes
         return Success(new AccountWrap(ToAccountSummary(account)));
     }
 
-    private static IResult KickAccountSession(HttpContext ctx, int uid)
+    private static IResult KickAccountSession(int uid)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         var account = AccountData.GetAccountByUid(uid);
         if (account == null)
             return Error("Account not found", statusCode: StatusCodes.Status404NotFound);
@@ -239,11 +212,8 @@ public static partial class AdminRoutes
         return Success(new AccountOnlineWrap(ToAccountSummary(account), activeConnection != null));
     }
 
-    private static async Task<IResult> ResetAccountGameplay(HttpContext ctx, int uid)
+    private static async Task<IResult> ResetAccountGameplay(int uid)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         var account = AccountData.GetAccountByUid(uid);
         if (account == null)
             return Error("Account not found", statusCode: StatusCodes.Status404NotFound);
@@ -256,11 +226,8 @@ public static partial class AdminRoutes
         return Success(new AccountOnlineWrap(ToAccountSummary(account), wasOnline));
     }
 
-    private static IResult ClearIdentityKeys(HttpContext ctx, int uid)
+    private static IResult ClearIdentityKeys(int uid)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         var account = AccountData.GetAccountByUid(uid);
         if (account == null)
             return Error("Account not found", statusCode: StatusCodes.Status404NotFound);
@@ -275,11 +242,8 @@ public static partial class AdminRoutes
         return Success(new AccountWrap(ToAccountSummary(account)));
     }
 
-    private static async Task<IResult> DeleteAccount(HttpContext ctx, int uid)
+    private static async Task<IResult> DeleteAccount(int uid)
     {
-        if (!IsAuthorized(ctx, out var unauthorized))
-            return unauthorized;
-
         var account = AccountData.GetAccountByUid(uid);
         if (account == null)
             return Error("Account not found", statusCode: StatusCodes.Status404NotFound);
@@ -313,9 +277,8 @@ public static partial class AdminRoutes
         }
     }
 
-    private static async Task<IResult> BulkDeleteAccounts(HttpContext ctx, AdminBulkDeleteRequest? request)
+    private static async Task<IResult> BulkDeleteAccounts(AdminBulkDeleteRequest? request)
     {
-        if (!IsAuthorized(ctx, out var unauthorized)) return unauthorized;
         if (request?.confirm != "DELETE") return Error("Deletion confirmation is required");
         if (request.uids == null || request.uids.Count is < 1 or > 500 || request.uids.Any(uid => uid <= 0))
             return Error("Select between 1 and 500 positive UIDs");
