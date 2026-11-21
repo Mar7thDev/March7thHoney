@@ -12,6 +12,7 @@ using March7thHoney.Proto;
 using Google.Protobuf;
 using March7thHoney.Util;
 using MemoryPack;
+using March7thHoney.Enums.Item;
 
 namespace March7thHoney.GameServer.Game.Challenge;
 
@@ -222,7 +223,7 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
 
             if (rewardExcel.Hcoin > 0)
             {
-                var hcoinData = new ItemData { ItemId = 1, Count = rewardExcel.Hcoin };
+                var hcoinData = new ItemData { ItemId = (int)VirtualItemEnum.Hcoin, Count = rewardExcel.Hcoin };
                 proto.Reward.ItemList_.Add(hcoinData.ToProto());
                 data.Add(hcoinData);
             }
@@ -276,7 +277,7 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
         var items = new List<ItemData>();
         if (rewardExcel.Hcoin > 0)
         {
-            var item = new ItemData { ItemId = 1, Count = rewardExcel.Hcoin };
+            var item = new ItemData { ItemId = (int)VirtualItemEnum.Hcoin, Count = rewardExcel.Hcoin };
             reward.ItemList_.Add(item.ToProto());
             items.Add(item);
         }

@@ -11,6 +11,7 @@ using March7thHoney.GameServer.Server.Packet.Send.ChallengePeak;
 using March7thHoney.Proto;
 using March7thHoney.GameServer.Game.Challenge;
 using March7thHoney.Util;
+using March7thHoney.Enums.Item;
 
 namespace March7thHoney.GameServer.Game.ChallengePeak;
 
@@ -304,7 +305,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
 
             if (rewardExcel.Hcoin > 0)
             {
-                var hcoin = new ItemData { ItemId = 1, Count = rewardExcel.Hcoin };
+                var hcoin = new ItemData { ItemId = (int)VirtualItemEnum.Hcoin, Count = rewardExcel.Hcoin };
                 gainItems.Add(hcoin);
                 group.Reward.ItemList_.Add(hcoin.ToProto());
             }
