@@ -17,7 +17,7 @@ public class HandlerRankUpAvatarCsReq : Handler<RankUpAvatarCsReq>
             await connection.SendPacket(rejected);
             return;
         }
-        await player.InventoryManager!.RankUpAvatar((int)req.AvatarId, req.CostData);
+        await player.AvatarManager!.RankUpAvatar((int)req.AvatarId, req.CostData);
         await connection.SendPacket(CmdIds.RankUpAvatarScRsp);
     }
 }
@@ -30,7 +30,7 @@ public class HandlerActivateAvatarExRankCsReq : Handler<HIGLJHLNODG>
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, HIGLJHLNODG req)
     {
-        var result = await player.InventoryManager!.ActivateExRank(unchecked((int)req.OJFIGABCKLG));
+        var result = await player.AvatarManager!.ActivateExRank(unchecked((int)req.OJFIGABCKLG));
         var response = new BasePacket(CmdIds.ENKEIJOLCNO);
         response.SetData(new LPOLGDLAADM { Retcode = (uint)result });
         await connection.SendPacket(response);

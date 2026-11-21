@@ -1658,8 +1658,8 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
         GameData.RelicSubAffixData.ContainsKey(relic.SubAffixGroup));
     var createdSkinRelic = (await skinPlayer.InventoryManager.AddItem(skinRelicConfig.ID, 1, false, sync: false, returnRaw: true))!;
     var skinRelic = skinPlayer.InventoryManager.Data.RelicItems.Single(item => item.UniqueId == createdSkinRelic.UniqueId);
-    await skinPlayer.InventoryManager.EquipAvatar(1415, skinCone.UniqueId);
-    await skinPlayer.InventoryManager.EquipRelic(1415, skinRelic.UniqueId, 1);
+    await skinPlayer.AvatarManager!.EquipAvatar(1415, skinCone.UniqueId);
+    await skinPlayer.AvatarManager!.EquipRelic(1415, skinRelic.UniqueId, 1);
     skinPlayer.PlayerUnlockData!.Skins[1415] = [1141501];
     var skinConnection = new ProbeConnection(serverPeer) { Player = skinPlayer };
     skinPlayer.Connection = skinConnection;

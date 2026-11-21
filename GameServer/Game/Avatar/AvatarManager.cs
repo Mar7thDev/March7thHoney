@@ -20,9 +20,6 @@ public partial class AvatarManager(PlayerInstance player) : BasePlayerManager<Av
     /// <summary>March 7th: every new account starts with her, and she joins the team at character creation.</summary>
     public const int StarterCompanionAvatarId = 1001;
 
-    /// <summary>Star Rail Pass, the standard warp ticket (the cost item of the standard banner).</summary>
-    public const int PromotionRewardItemId = 101;
-
     private static readonly Logger Logger = new("Avatar");
 
     public async ValueTask<AvatarConfigExcel?> AddAvatar(int avatarId, bool sync = true, bool notify = true,
@@ -93,24 +90,6 @@ public partial class AvatarManager(PlayerInstance player) : BasePlayerManager<Av
             if (config == null) continue;
             path.GetSkillTree()[skill.Key] = Math.Min(skill.Value, config.MaxLevel); // limit skill level
         }
-    }
-
-    /// <summary>
-    ///     Claims the reward of a promotion level the avatar has already reached. Every check runs before the claim is
-    ///     recorded; on success the paid items are returned.
-    /// </summary>
-    public async ValueTask<(Retcode Retcode, List<Proto.Item> Rewards)> TakePromotionReward(int baseAvatarId,
-        int promotion)
-    {
-        var avatar = GetFormalAvatar(baseAvatarId);
-        if (avatar == null) return (Retcode.RetAvatarNotExist, []);
-        if (promotion < 0 || promotion >= avatar.Promotion) return (Retcode.RetPromotionRewardConfigNotExist, []);
-        if (avatar.HasTakenReward(promotion)) return (Retcode.RetPromotionRewardAlreadyTaken, []);
-
-        avatar.TakeReward(promotion);
-        await Player.InventoryManager!.AddItem(PromotionRewardItemId, 1, false);
-        await Player.SendPacket(new PacketPlayerSyncScNotify(avatar));
-        return (Retcode.RetSucc, [new Proto.Item { ItemId = PromotionRewardItemId, Num = 1 }]);
     }
 
     public FormalAvatarInfo? GetFormalAvatar(int avatarId)

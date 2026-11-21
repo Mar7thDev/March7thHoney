@@ -25,6 +25,26 @@ public partial class InventoryManager
         }
     }
 
+    /// <summary>
+    ///     Reads a quick-up cost list into item ID -> count, merging repeated IDs. False when an entry lacks an item ID
+    ///     or a count, or a count does not fit an int; a missing list is an empty one.
+    /// </summary>
+    internal static bool ReadQuickUpCosts(ItemCostData? data, out Dictionary<int, long> costs)
+    {
+        costs = [];
+        if (data == null) return true;
+        foreach (var cost in data.ItemList)
+        {
+            if (cost.PileItem is not { ItemId: > 0, ItemNum: > 0 } pile || pile.ItemId > int.MaxValue ||
+                pile.ItemNum > int.MaxValue)
+                return false;
+            var id = (int)pile.ItemId;
+            costs[id] = costs.GetValueOrDefault(id) + pile.ItemNum;
+            if (costs[id] > int.MaxValue) return false;
+        }
+        return true;
+    }
+
     private async ValueTask<(Retcode, List<ItemData>)> ApplyEquipmentQuickUp(EquipmentQuickUpCsReq req)
     {
         var equipment = Data.EquipmentItems.Find(item => item.UniqueId == req.EquipmentUniqueId);
