@@ -1,9 +1,11 @@
 using System.Net;
 using March7thHoney.Database.Account;
 using March7thHoney.Util;
+using March7thHoney.WebServer.Http;
 using March7thHoney.WebServer.Objects;
 using March7thHoney.WebServer.Pages;
 using Microsoft.AspNetCore.Http;
+using static March7thHoney.WebServer.Http.WebResults;
 
 namespace March7thHoney.WebServer.Handler;
 
@@ -70,7 +72,7 @@ public class AccountRecoveryHandler
         if (accountEmailMatches && !account!.IsEmailVerified)
         {
             account.ClearPasswordResetToken();
-            return Error(PasswordResetRequiresVerifiedEmailMessage, -202);
+            return Error(PasswordResetRequiresVerifiedEmailMessage, WebConstants.RetcodeInvalidData);
         }
 
         if (accountEmailMatches)
@@ -125,16 +127,6 @@ public class AccountRecoveryHandler
             return AccountData.GetAccountByLoginIdentifier(account);
 
         return null;
-    }
-
-    private static IResult Ok(string message)
-    {
-        return Results.Json(new StatusResult(0, message));
-    }
-
-    private static IResult Error(string message, int retcode = -201)
-    {
-        return Results.Json(new StatusResult(retcode, message), statusCode: StatusCodes.Status400BadRequest);
     }
 
     private static IResult VerificationPage(string title, string message, int statusCode = 200)

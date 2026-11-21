@@ -1,6 +1,7 @@
 using System.Text.Json;
 using March7thHoney.Database.Account;
 using March7thHoney.Util;
+using March7thHoney.WebServer.Http;
 using March7thHoney.WebServer.Objects;
 using Microsoft.AspNetCore.Http;
 
@@ -26,7 +27,7 @@ public class ComboTokenGranterHandler
         if (tokenData == null)
         {
             Logger.Warn($"Failed to deserialize combo login payload. raw_len={data?.Length ?? 0}");
-            res.retcode = -202;
+            res.retcode = WebConstants.RetcodeInvalidData;
             res.message = "Invalid login data";
             return Results.Json(res);
         }
@@ -34,7 +35,7 @@ public class ComboTokenGranterHandler
         if (!int.TryParse(tokenData.uid, out var uid))
         {
             Logger.Warn($"Invalid combo login uid. uid={tokenData.uid ?? "<null>"} token_len={tokenData.token?.Length ?? 0}");
-            res.retcode = -202;
+            res.retcode = WebConstants.RetcodeInvalidData;
             res.message = "Invalid login data";
             return Results.Json(res);
         }
@@ -46,7 +47,7 @@ public class ComboTokenGranterHandler
         {
             Logger.Warn(
                 $"Combo login cache validation failed. uid={uid} token_len={tokenData.token?.Length ?? 0} account_exists=False");
-            res.retcode = -201;
+            res.retcode = WebConstants.RetcodeFailed;
             res.message = "Game account cache information error";
             return Results.Json(res);
         }
@@ -57,7 +58,7 @@ public class ComboTokenGranterHandler
         {
             Logger.Warn(
                 $"Combo login cache validation failed. uid={uid} token_len={tokenData.token?.Length ?? 0} account_exists=True");
-            res.retcode = -201;
+            res.retcode = WebConstants.RetcodeFailed;
             res.message = "Game account cache information error";
             return Results.Json(res);
         }

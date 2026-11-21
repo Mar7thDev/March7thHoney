@@ -3,6 +3,7 @@ using March7thHoney.Database.Account;
 using March7thHoney.GameServer.Server;
 using March7thHoney.Kcp;
 using Microsoft.AspNetCore.Http;
+using static March7thHoney.WebServer.Http.WebResults;
 
 namespace March7thHoney.WebServer.Controllers;
 

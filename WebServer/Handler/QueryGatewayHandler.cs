@@ -14,7 +14,7 @@ internal class QueryGatewayHandler
     private static readonly string[] VersionBranches =
         ["PREbeta", "BETA", "PROD", "DEV", "PRE", "GM", "CECREATION"];
     private static readonly string[] VersionPlatforms = ["Win", "Android", "iOS"];
-    public static Logger Logger = new("GatewayServer");
+    private static readonly Logger Logger = new("GatewayServer");
     private static bool GatewayDebugEnabled => ConfigManager.Config.ServerOption.LogOption.EnableGamePacketLog;
     private static void Debug(string message)
     {

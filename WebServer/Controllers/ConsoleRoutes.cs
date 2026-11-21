@@ -8,6 +8,7 @@ using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Handler;
+using March7thHoney.WebServer.Http;
 using March7thHoney.WebServer.Pages;
 using March7thHoney.WebServer.Server;
 using Microsoft.AspNetCore.Builder;
@@ -28,7 +29,6 @@ namespace March7thHoney.WebServer.Controllers;
 public static class ConsoleRoutes
 {
     private static readonly Logger Logger = new("PlayerConsole");
-    private const int MaxCommandLength = 4096;
 
     public static void MapConsoleRoutes(this IEndpointRouteBuilder app)
     {
@@ -145,7 +145,7 @@ public static class ConsoleRoutes
                 return error;
 
             var command = Text(body, "command").Trim();
-            if (command.Length > MaxCommandLength)
+            if (command.Length > WebConstants.MaxCommandLength)
                 return ConsoleJson(1, "Command too long.", null, 400);
 
             // Use the same active-connection lookup the command pipeline uses.
@@ -327,11 +327,10 @@ public static class ConsoleRoutes
 
     private static string? ResolveToken(HttpContext ctx, JsonNode? body)
     {
-        var header = ctx.Request.Headers.Authorization.ToString();
-        if (header.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
-            return header["Bearer ".Length..].Trim();
+        if (AuthHeaders.TryGetBearerToken(ctx.Request, out var bearer))
+            return bearer;
 
-        if (ctx.Request.Headers.TryGetValue("X-Console-Session", out var sessionHeader))
+        if (ctx.Request.Headers.TryGetValue(WebConstants.ConsoleSessionHeader, out var sessionHeader))
         {
             var value = sessionHeader.ToString().Trim();
             if (value.Length > 0) return value;

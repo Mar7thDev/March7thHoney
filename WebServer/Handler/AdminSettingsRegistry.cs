@@ -1,6 +1,7 @@
 using System.Globalization;
 using March7thHoney.Configuration;
 using March7thHoney.Util;
+using March7thHoney.WebServer.Http;
 
 namespace March7thHoney.WebServer.Handler;
 
@@ -198,7 +199,7 @@ public static class AdminSettingsRegistry
 
         // --- announce ---
         yield return Bool("ServerAnnounce.EnableAnnounce", "announce", () => announce.EnableAnnounce, v => announce.EnableAnnounce = v);
-        yield return Text("ServerAnnounce.AnnounceContent", "announce", () => announce.AnnounceContent, v => announce.AnnounceContent = v, 0, 4096);
+        yield return Text("ServerAnnounce.AnnounceContent", "announce", () => announce.AnnounceContent, v => announce.AnnounceContent = v, 0, WebConstants.MaxAnnouncementLength);
         yield return Duration("ServerAnnounce.Duration", "announce", () => announce.Duration, v => announce.Duration = v);
         yield return Duration("ServerAnnounce.BannerFrequency", "announce", () => announce.BannerFrequency, v => announce.BannerFrequency = v);
 

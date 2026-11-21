@@ -4,6 +4,7 @@ using March7thHoney.Database;
 using March7thHoney.Database.Account;
 using March7thHoney.Util;
 using March7thHoney.Util.Security;
+using March7thHoney.WebServer.Http;
 using Microsoft.AspNetCore.Http;
 
 namespace March7thHoney.WebServer.Handler;
@@ -184,14 +185,14 @@ public static class AuthRateLimiter
             return false;
 
         AccountBanHelper.LogRejection($"{action}:{context.Request.Path}", null, block, identityKeys);
-        result = Results.Json(new StatusResult(-203, block.FormatLoginMessage()));
+        result = WebResults.SdkError(block.FormatLoginMessage(), WebConstants.RetcodeBlocked);
         return true;
     }
 
     private static IResult BlockedResult(long remainingSeconds)
     {
         var message = $"Too many requests. Try again in {AccountBanHelper.FormatDuration(remainingSeconds)}.";
-        return Results.Json(new StatusResult(-203, message));
+        return WebResults.SdkError(message, WebConstants.RetcodeBlocked);
     }
 
     private static RateLimitRule GetRule(AuthRateLimitAction action)

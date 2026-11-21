@@ -8,11 +8,13 @@ using March7thHoney.GameServer.Server;
 using March7thHoney.Kcp;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Handler;
+using March7thHoney.WebServer.Http;
 using March7thHoney.WebServer.Pages;
 using March7thHoney.WebServer.Server;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using static March7thHoney.WebServer.Http.WebResults;
 
 namespace March7thHoney.WebServer.Controllers;
 
@@ -202,11 +204,10 @@ public static partial class AdminRoutes
 
     private static string? GetAdminToken(HttpContext ctx)
     {
-        var authorization = ctx.Request.Headers.Authorization.ToString();
-        if (authorization.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
-            return authorization["Bearer ".Length..].Trim();
+        if (AuthHeaders.TryGetBearerToken(ctx.Request, out var bearer))
+            return bearer;
 
-        var header = ctx.Request.Headers["X-Admin-Session"].FirstOrDefault();
+        var header = ctx.Request.Headers[WebConstants.AdminSessionHeader].FirstOrDefault();
         if (!string.IsNullOrWhiteSpace(header))
             return header;
 
@@ -318,11 +319,6 @@ public static partial class AdminRoutes
     private static IResult Success<T>(T data)
     {
         return Results.Json(new AdminResult<T>(0, "OK", data));
-    }
-
-    private static IResult Error(string message, int retcode = -201, int statusCode = StatusCodes.Status400BadRequest)
-    {
-        return Results.Json(new StatusResult(retcode, message), statusCode: statusCode);
     }
 
     #endregion

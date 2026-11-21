@@ -2,9 +2,11 @@ using March7thHoney.GameServer.Server;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.Kcp;
 using March7thHoney.Util;
+using March7thHoney.WebServer.Http;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using static March7thHoney.WebServer.Http.WebResults;
 
 namespace March7thHoney.WebServer.Controllers;
 
@@ -23,7 +25,7 @@ public static partial class AdminRoutes
         var content = (request.content ?? string.Empty).Replace("\r\n", "\n").Trim();
         if (string.IsNullOrWhiteSpace(content))
             return Error("Announcement content cannot be empty");
-        if (content.Length > 4096)
+        if (content.Length > WebConstants.MaxAnnouncementLength)
             return Error("Announcement content is too long");
 
         var config = ConfigManager.Config.ServerOption.ServerAnnounce;
@@ -97,7 +99,7 @@ public static partial class AdminRoutes
         if (request.content != null)
         {
             var content = request.content.Replace("\r\n", "\n").Trim();
-            if (content.Length > 4096)
+            if (content.Length > WebConstants.MaxAnnouncementLength)
                 return Error("Announcement content is too long");
             config.AnnounceContent = content;
         }

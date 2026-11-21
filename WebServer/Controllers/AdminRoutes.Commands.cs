@@ -1,7 +1,9 @@
+using March7thHoney.WebServer.Http;
 using March7thHoney.WebServer.Server;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using static March7thHoney.WebServer.Http.WebResults;
 
 namespace March7thHoney.WebServer.Controllers;
 
@@ -19,7 +21,7 @@ public static partial class AdminRoutes
         var command = (request.command ?? string.Empty).Trim();
         if (string.IsNullOrWhiteSpace(command))
             return Error("Command cannot be empty");
-        if (command.Length > 4096)
+        if (command.Length > WebConstants.MaxCommandLength)
             return Error("Command is too long");
 
         var targetUid = request.target_uid.GetValueOrDefault();

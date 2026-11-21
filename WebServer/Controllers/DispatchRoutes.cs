@@ -5,6 +5,7 @@ using March7thHoney.Configuration;
 using March7thHoney.Proto;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Handler;
+using March7thHoney.WebServer.Http;
 using March7thHoney.WebServer.Objects;
 using March7thHoney.WebServer.Pages;
 using Microsoft.AspNetCore.Builder;
@@ -16,7 +17,7 @@ namespace March7thHoney.WebServer.Controllers;
 public static class DispatchRoutes
 {
     private static ConfigContainer Config => ConfigManager.Config;
-    public static Logger Logger = new("DispatchServer");
+    private static readonly Logger Logger = new("DispatchServer");
     private static bool DispatchDebugEnabled => Config.ServerOption.LogOption.EnableGamePacketLog;
 
     private static void Debug(string message)
@@ -395,7 +396,7 @@ public static class DispatchRoutes
         var (account, password, decryptFailed) = LoginCryptoHelper.TryDecryptCredentialsStrict(
             req.account, req.password, useRsa, requireEncryptedPassword: req.is_crypto);
         if (decryptFailed)
-            return Results.Json(LoginResJson.Error(-202, "Invalid login data"));
+            return Results.Json(LoginResJson.Error(WebConstants.RetcodeInvalidData, "Invalid login data"));
         var identityKeys = LoginIdentityContextFactory.Build(ctx.Request, req.device, req.device_id, req.device_fp);
         if (TryRejectLogin(ctx, identityKeys, account, out var limited))
             return limited;
@@ -409,7 +410,7 @@ public static class DispatchRoutes
         var (account, password, decryptFailed) = LoginCryptoHelper.TryDecryptCredentialsStrict(
             req.account, req.password, Config.WebSecurity.EnableRsaLoginDecrypt);
         if (decryptFailed)
-            return Results.Json(new StatusResult(-202, "Invalid login data"));
+            return WebResults.SdkError("Invalid login data", WebConstants.RetcodeInvalidData);
         var identityKeys = LoginIdentityContextFactory.Build(ctx.Request, req.device, req.device_id, req.device_fp);
         if (TryRejectLogin(ctx, identityKeys, account, out var limited))
             return limited;
@@ -442,7 +443,7 @@ public static class DispatchRoutes
         var (account, password, decryptFailed) = LoginCryptoHelper.TryDecryptCredentialsStrict(
             req.account, req.password, Config.WebSecurity.EnableRsaLoginDecrypt);
         if (decryptFailed)
-            return Results.Text(JsonSerializer.Serialize(PassportLoginResJson.Error(-202, "Invalid login data"),
+            return Results.Text(JsonSerializer.Serialize(PassportLoginResJson.Error(WebConstants.RetcodeInvalidData, "Invalid login data"),
                 WebJsonContext.Default.PassportLoginResJson), "application/json");
         var identityKeys = LoginIdentityContextFactory.Build(ctx.Request, req.device, req.device_id, req.device_fp);
         if (TryRejectLogin(ctx, identityKeys, account, out var limited))
