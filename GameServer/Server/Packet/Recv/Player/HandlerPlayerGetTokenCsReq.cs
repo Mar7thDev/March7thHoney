@@ -1,4 +1,3 @@
-using March7thHoney.Data;
 using March7thHoney.Database;
 using March7thHoney.Database.Account;
 using March7thHoney.Database.Player;
@@ -127,13 +126,6 @@ public class HandlerPlayerGetTokenCsReq : Handler
 
         if (DatabaseHelper.IsUidDeleted(uid) || AccountData.GetAccountByUid(uid)?.IsDeleting == true)
             return;
-
-        if (!ResourceManager.IsLoaded)
-        {
-            _logger.Warn($"PlayerGetToken accepted but resource manager is not loaded. remote={connection.RemoteEndPoint} uid={uid}");
-            // resource manager not loaded, return
-            return;
-        }
 
         var prev = Listener.GetActiveConnection(uid);
         if (prev != null)

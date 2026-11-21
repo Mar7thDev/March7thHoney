@@ -21,7 +21,6 @@ namespace March7thHoney.Data;
 public class ResourceManager
 {
     public static Logger Logger { get; } = new("ResMgr");
-    public static bool IsLoaded { get; set; }
 
     /// <summary>Absolute path of a file inside the resource tree (Config.Path.ResourcePath).</summary>
     /// <remarks>

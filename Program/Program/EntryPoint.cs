@@ -186,18 +186,6 @@ public class EntryPoint
         }
 
         Logger.Warn(I18NManager.Translate("Server.ServerInfo.WaitForAllDone"));
-        WebProgram.Main([], GetConfig().HttpServer.Port, GetConfig().HttpServer.GetBindDisplayAddress());
-        Logger.Info(I18NManager.Translate("Server.ServerInfo.ServerRunning", I18NManager.Translate("Word.Dispatch"),
-            GetConfig().HttpServer.GetDisplayAddress()));
-
-        // The packet name maps back logging and the fallback replies, so they exist before any connection.
-        March7thHoneyConnection.InitPacketNameMap();
-
-        if (ConfigManager.Config.ServerOption.ServerConfig.RunGateway)
-        {
-            March7thHoneyListener.CreateConnection = (conversation, remote) => new Connection(conversation, remote);
-            March7thHoneyListener.StartListener();
-        }
 
         var loadedFromResources = false;
         if (ConfigManager.Config.ServerOption.ServerConfig.RunGateway)
@@ -358,6 +346,21 @@ public class EntryPoint
         if (args.Contains("--upgrade-database")) DatabaseHelper.UpgradeDatabase();
 
         await protoDescriptorWarmUp;
+        // The dispatch and game ports open only now, so no client reaches a server whose game data, commands, mission
+        // handlers or save migrations are still loading.
+        WebProgram.Main([], GetConfig().HttpServer.Port, GetConfig().HttpServer.GetBindDisplayAddress());
+        Logger.Info(I18NManager.Translate("Server.ServerInfo.ServerRunning", I18NManager.Translate("Word.Dispatch"),
+            GetConfig().HttpServer.GetDisplayAddress()));
+
+        // The packet name maps back logging and the fallback replies, so they exist before any connection.
+        March7thHoneyConnection.InitPacketNameMap();
+
+        if (ConfigManager.Config.ServerOption.ServerConfig.RunGateway)
+        {
+            March7thHoneyListener.CreateConnection = (conversation, remote) => new Connection(conversation, remote);
+            March7thHoneyListener.StartListener();
+        }
+
         var elapsed = DateTime.Now - time;
         Logger.Info(I18NManager.Translate("Server.ServerInfo.ServerStarted",
             Math.Round(elapsed.TotalSeconds, 2).ToString(CultureInfo.InvariantCulture)));
@@ -365,7 +368,6 @@ public class EntryPoint
         if (GetConfig().ServerOption.EnableMission)
             Logger.Warn(I18NManager.Translate("Server.ServerInfo.MissionEnabled"));
 
-        ResourceManager.IsLoaded = true;
         await LifecycleNotifier.NotifyStartedAsync(GameConstants.GAME_VERSION);
 
         IConsole.OnConsoleExcuteCommand += command =>

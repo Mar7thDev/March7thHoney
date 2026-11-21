@@ -1,5 +1,4 @@
 using March7thHoney.Configuration;
-using March7thHoney.Data;
 using March7thHoney.Database.Account;
 using March7thHoney.Internationalization;
 using March7thHoney.Proto;
@@ -90,11 +89,6 @@ internal class QueryGatewayHandler
         else
         {
             SetEmptyHotfix(gateServer);
-        }
-
-        if (!ResourceManager.IsLoaded)
-        {
-            Logger.Warn("query_gateway requested before ResourceManager finished loading; returning retcode=0 for client compatibility");
         }
 
         Logger.Info("Client request: query_gateway");
