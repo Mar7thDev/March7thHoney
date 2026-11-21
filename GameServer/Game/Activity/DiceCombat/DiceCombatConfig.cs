@@ -1,7 +1,7 @@
 using Google.Protobuf;
 using March7thHoney.Proto;
 
-namespace March7thHoney.GameServer.Game.MultiPlayer.DiceCombat;
+namespace March7thHoney.GameServer.Game.Activity.DiceCombat;
 
 internal static class DiceCombatItems
 {
