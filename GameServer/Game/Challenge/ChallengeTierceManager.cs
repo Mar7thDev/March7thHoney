@@ -17,8 +17,8 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
 {
     public ChallengeTierceInstance? CurrentInstance { get; private set; }
 
-    public ChallengeData ChallengeData =>
-        DatabaseHelper.Instance!.GetInstanceOrCreateNew<ChallengeData>(Player.Uid);
+    // ChallengeManager owns the player's ChallengeData; every challenge mode reads it through that one instance.
+    public ChallengeData ChallengeData => Player.ChallengeManager!.ChallengeData;
 
     public async ValueTask<bool> StartChallenge(uint challengeId,
         IList<ChallengeTierceStageLineupInfo> stageInfoList)

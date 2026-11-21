@@ -20,11 +20,14 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
     private static bool RequiresKnightClears =>
         ConfigManager.Config.ServerOption.ChallengePeak?.RequireKnightClearsForNormalBoss == true;
 
+    // ChallengeManager owns the player's ChallengeData; every challenge mode reads it through that one instance.
+    private ChallengeData ChallengeData => Player.ChallengeManager!.ChallengeData;
+
     // The King boss (王棋) difficulty is persisted per group: it changes with SetChallengePeakBossHardMode and is not
     // reset by leaving or relogging, matching the official server, which tracks it by peakGroupId.
     public void SetBossHard(int groupId, bool hard)
     {
-        var data = Player.ChallengeManager!.ChallengeData;
+        var data = ChallengeData;
         data.PeakBossHardByGroup[groupId] = hard;
         DatabaseHelper.MarkDirty(Player.Uid);
         DatabaseHelper.SaveDatabaseType(data);
@@ -35,7 +38,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         if (!RequiresKnightClears) return true;
         var group = GameData.ChallengePeakGroupConfigData.GetValueOrDefault(groupId);
         if (group == null) return false;
-        var records = Player.ChallengeManager!.ChallengeData.PeakLevelDatas;
+        var records = ChallengeData.PeakLevelDatas;
         return group.PreLevelIDList.All(id => records.GetValueOrDefault(id)?.HasRecord == true);
     }
 
@@ -44,17 +47,17 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         if (!RequiresKnightClears || IsEasyBossUnlocked(groupId)) return false;
         var group = GameData.ChallengePeakGroupConfigData.GetValueOrDefault(groupId);
         if (group == null || !group.PreLevelIDList.Contains(clearedLevelId)) return false;
-        var records = Player.ChallengeManager!.ChallengeData.PeakLevelDatas;
+        var records = ChallengeData.PeakLevelDatas;
         return group.PreLevelIDList.All(id => id == clearedLevelId || records.GetValueOrDefault(id)?.HasRecord == true);
     }
 
     public bool IsBossHard(int groupId) =>
         !IsEasyBossUnlocked(groupId) ||
-        Player.ChallengeManager!.ChallengeData.PeakBossHardByGroup.GetValueOrDefault(groupId, false);
+        ChallengeData.PeakBossHardByGroup.GetValueOrDefault(groupId, false);
 
     public int GetCurrentGroupId()
     {
-        var selected = Player.ChallengeManager!.ChallengeData.CurrentPeakGroupId;
+        var selected = ChallengeData.CurrentPeakGroupId;
         return GameData.IsChallengePeakGroupAvailable(selected)
             ? selected
             : GameData.GetCurrentChallengePeakGroupId();
@@ -63,7 +66,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
     public bool TrySetCurrentGroupId(int groupId)
     {
         if (groupId != 0 && !GameData.IsChallengePeakGroupAvailable(groupId)) return false;
-        var data = Player.ChallengeManager!.ChallengeData;
+        var data = ChallengeData;
         data.CurrentPeakGroupId = groupId;
         DatabaseHelper.MarkDirty(Player.Uid);
         DatabaseHelper.SaveDatabaseType(data);
@@ -94,7 +97,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
             var levelData = GameData.ChallengePeakConfigData.GetValueOrDefault(levelId);
             if (levelData == null) continue;
 
-            Player.ChallengeManager!.ChallengeData.PeakLevelDatas.TryGetValue(levelId, out var levelPbData);
+            ChallengeData.PeakLevelDatas.TryGetValue(levelId, out var levelPbData);
             var hasRecord = levelPbData?.HasRecord == true;
             if (hasRecord) clearedPeaks++;
 
@@ -136,7 +139,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         // filler value used for unlocking.
         proto.ObtainedStars = (uint)(realProgress ? clearedPeaks : Math.Max(starNum, proto.Peaks.Count * 3));
         proto.CountOfPeaks = (uint)proto.Peaks.Count;
-        if (Player.ChallengeManager!.ChallengeData.PeakTakenRewardIds.TryGetValue(groupId, out var takenRewards))
+        if (ChallengeData.PeakTakenRewardIds.TryGetValue(groupId, out var takenRewards))
             proto.TakenStarRewards.AddRange(takenRewards.Select(x => (uint)x));
 
         // boss
@@ -146,7 +149,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         var bossLevelData = GameData.ChallengePeakBossConfigData.GetValueOrDefault(bossLevelId);
         if (bossLevelData == null) return proto;
 
-        var bossDatas = Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas;
+        var bossDatas = ChallengeData.PeakBossLevelDatas;
         bossDatas.TryGetValue((bossLevelId << 2) | 0, out var easyRec);
         bossDatas.TryGetValue((bossLevelId << 2) | 1, out var hardRec);
 
@@ -254,7 +257,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         // Real-progress mode pays only what the records earned; the default mode keeps the optimistic values.
         if (RequiresKnightClears)
         {
-            var data = Player.ChallengeManager!.ChallengeData;
+            var data = ChallengeData;
             var passedLevels = groupConfig.PreLevelIDList
                 .Select(id => data.PeakLevelDatas.GetValueOrDefault(id))
                 .Where(level => level?.HasRecord == true)
@@ -266,10 +269,10 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
             bossStars = easyRec?.HasRecord == true ? easyRec.FinishedTargetList.Count : 0;
         }
 
-        if (!Player.ChallengeManager!.ChallengeData.PeakTakenRewardIds.TryGetValue(groupId, out var takenList))
+        if (!ChallengeData.PeakTakenRewardIds.TryGetValue(groupId, out var takenList))
         {
             takenList = [];
-            Player.ChallengeManager.ChallengeData.PeakTakenRewardIds[groupId] = takenList;
+            ChallengeData.PeakTakenRewardIds[groupId] = takenList;
         }
 
         var requested = requestRewardIds.Select(x => (int)x).ToHashSet();
@@ -333,16 +336,16 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
     {
         var stars = 0;
         foreach (var levelId in groupConfig.PreLevelIDList)
-            if (Player.ChallengeManager!.ChallengeData.PeakLevelDatas.TryGetValue(levelId, out var levelData))
+            if (ChallengeData.PeakLevelDatas.TryGetValue(levelId, out var levelData))
                 stars += (int)levelData.PeakStar;
 
         if (groupConfig.BossLevelID > 0)
         {
             var easyKey = (groupConfig.BossLevelID << 2) | 0;
             var hardKey = (groupConfig.BossLevelID << 2) | 1;
-            if (Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas.TryGetValue(easyKey, out var easyData))
+            if (ChallengeData.PeakBossLevelDatas.TryGetValue(easyKey, out var easyData))
                 stars += (int)easyData.PeakStar;
-            if (Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas.TryGetValue(hardKey, out var hardData))
+            if (ChallengeData.PeakBossLevelDatas.TryGetValue(hardKey, out var hardData))
                 stars += (int)hardData.PeakStar;
         }
 
@@ -351,7 +354,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
 
     public async ValueTask SetLineupAvatars(int groupId, List<ChallengePeakLineup> lineups)
     {
-        var datas = Player.ChallengeManager!.ChallengeData.PeakLevelDatas;
+        var datas = ChallengeData.PeakLevelDatas;
         foreach (var lineup in lineups)
         {
             List<uint> avatarIds = [];
@@ -399,7 +402,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
             var levelId = ((int)peak.CurrentPeakLevelId << 2) | (isHard ? 1 : 0);
             var buffId = peak.Buffs.FirstOrDefault();
 
-            var bossDatas = Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas;
+            var bossDatas = ChallengeData.PeakBossLevelDatas;
             if (!bossDatas.TryGetValue(levelId, out var data))
             {
                 data = new ChallengePeakBossLevelData { LevelId = (int)peak.CurrentPeakLevelId, IsHard = isHard };
@@ -437,7 +440,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
             // Save level data
             var levelId = (int)peak.CurrentPeakLevelId;
 
-            var levelDatas = Player.ChallengeManager!.ChallengeData.PeakLevelDatas;
+            var levelDatas = ChallengeData.PeakLevelDatas;
             if (!levelDatas.TryGetValue(levelId, out var data))
             {
                 data = new ChallengePeakLevelData { LevelId = levelId };
@@ -472,7 +475,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
     {
         if (!GameData.ChallengePeakGroupConfigData.TryGetValue(groupId, out var groupConfig)) return;
 
-        var bossDatas = Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas;
+        var bossDatas = ChallengeData.PeakBossLevelDatas;
         bossDatas.TryGetValue(bossLevelId << 2, out var easyRec);
         bossDatas.TryGetValue((bossLevelId << 2) | 1, out var hardRec);
 
@@ -519,7 +522,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
                 BaseAvatarId = x
             }).ToList();
         else
-            lineup.BaseAvatars = Player.ChallengeManager!.ChallengeData.PeakLevelDatas.GetValueOrDefault(levelId)
+            lineup.BaseAvatars = ChallengeData.PeakLevelDatas.GetValueOrDefault(levelId)
                 ?.BaseAvatarList
                 .Select(x => new LineupAvatarInfo
                 {
@@ -567,7 +570,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
             if (team.Count > 0)
             {
                 var bossKey = (levelId << 2) | (data.Peak!.IsHard ? 1 : 0);
-                var bossDatas = Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas;
+                var bossDatas = ChallengeData.PeakBossLevelDatas;
                 if (!bossDatas.TryGetValue(bossKey, out var rec))
                     rec = new ChallengePeakBossLevelData { LevelId = levelId, IsHard = data.Peak!.IsHard };
                 rec.BaseAvatarList = team;
