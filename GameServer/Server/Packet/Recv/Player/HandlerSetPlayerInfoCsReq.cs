@@ -17,7 +17,7 @@ public class HandlerSetPlayerInfoCsReq : Handler<SetPlayerInfoCsReq>
         {
             await connection.SendPacket(new PacketSetPlayerInfoScRsp(player, req.IsModify));
             await connection.SendPacket(new PacketPlayerSyncScNotify(player.ToProto()));
-            await connection.SendWatermarkLuaAsync();
+            await connection.ClientLua.SendWatermarkAsync();
             return;
         }
 
@@ -35,6 +35,6 @@ public class HandlerSetPlayerInfoCsReq : Handler<SetPlayerInfoCsReq>
 
         await connection.SendPacket(new PacketSetPlayerInfoScRsp(player, req.IsModify));
         await connection.SendPacket(new PacketPlayerSyncScNotify(player.ToProto()));
-        await connection.SendWatermarkLuaAsync();
+        await connection.ClientLua.SendWatermarkAsync();
     }
 }

@@ -1,7 +1,7 @@
 using System.Globalization;
 using March7thHoney.Configuration;
 
-namespace March7thHoney.GameServer.Server;
+namespace March7thHoney.GameServer.Server.ClientLua;
 
 public static class NetStatusLua
 {

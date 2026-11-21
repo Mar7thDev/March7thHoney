@@ -198,9 +198,6 @@ public class March7thHoneyConnection
         await SendPacket(new BasePacket((ushort)cmdId));
     }
 
-    public virtual Task SendWatermarkLuaAsync() => Task.CompletedTask;
-    public virtual Task SendClientUiLuaAsync() => SendWatermarkLuaAsync();
-
     /// <summary>
     ///     Fills <see cref="LogMap" /> (cmdId → name) and the reverse <see cref="NameToCmdId" /> from the
     ///     generated <see cref="CmdIds" /> constants. One reflection pass at startup; the send/receive and

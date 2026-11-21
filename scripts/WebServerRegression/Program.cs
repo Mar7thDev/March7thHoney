@@ -209,7 +209,7 @@ Check("windy rejects an invalid list number", (await Execute("/windy 99", fixtur
 var ambiguousWindy = await Execute("/windy shared", fixtureUid);
 Check("windy reports ambiguous file names", ambiguousWindy.Contains("nested/shared.lua") &&
                                                    ambiguousWindy.Contains("other/shared.lua"));
-webTarget.RecordSentLuaScript("nested/beta.lua");
+webTarget.ClientLua.RecordSentScript("nested/beta.lua");
 var loadedWindy = await Execute("/windy loaded", fixtureUid);
 Check("windy lists Lua sent for the selected connection", loadedWindy.Contains("nested/beta.lua") &&
                                                                   !loadedWindy.Contains("alpha.lua"));

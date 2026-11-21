@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace March7thHoney.Util;
+namespace March7thHoney.GameServer.Server.ClientLua;
 
 public static class HoyoToonLuaPayloadBuilder
 {
