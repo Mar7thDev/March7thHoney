@@ -64,7 +64,7 @@ public sealed record GridFightRoleSwitchGroup(
 public sealed class GridFightResourceCatalog
 {
     private const uint HighestDivisionStartingHpAffixId = 4020;
-    private const uint PostBattleHealingTalentId = 1081;
+    internal const uint PostBattleHealingTalentId = 1081;
     private const int PostBattleHealingEffectIndex = 2;
     private const uint FinalBattleTurnHealingTalentId = 2011;
     private const int FinalBattleTurnThresholdEffectIndex = 1;

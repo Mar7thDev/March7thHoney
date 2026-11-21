@@ -13,7 +13,6 @@ namespace March7thHoney.GameServer.Game.GridFight;
 /// </summary>
 public sealed partial class GridFightSession
 {
-    public const uint EncounterDiamondEquipmentId = 350701;   // 财富宝钻
     public const uint AdvancedArmamentBoxForgeId = 99998;     // 进阶武装箱
     public const uint FreeUpgradeAugmentId = 103901;          // 免费升舱
     private const uint MaxEncounterRewardTier = 4;
@@ -65,7 +64,7 @@ public sealed partial class GridFightSession
                 Equipment(GridFightEquipCategoryEnum.Craftable, 1);
                 break;
             default:
-                Item(EncounterDiamondEquipmentId); Item(AdvancedArmamentBoxForgeId); Item(PrivilegeArmamentBoxForgeId);
+                Item(WealthDiamondEquipmentId); Item(AdvancedArmamentBoxForgeId); Item(PrivilegeArmamentBoxForgeId);
                 break;
         }
 

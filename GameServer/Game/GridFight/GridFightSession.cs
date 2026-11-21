@@ -228,7 +228,8 @@ public sealed partial class GridFightSession
     private const int OfficialInitialRoleCount = 4;
     private const uint OfficialInitialOrbId = 203;
     private const uint OfficialInitialConsumableId = 350101;
-    private const uint OfficialInitialTalentId = 1081;
+    // Talent 1081 carries both the opening-round reward and the post-battle healing.
+    private const uint OfficialInitialTalentId = GridFightResourceCatalog.PostBattleHealingTalentId;
     private const uint OfficialInitialTalentEffectId = 36;
     private const uint MortenaxBladeRoleId = 1507;
     private const uint MortenaxBladeTraitEffectParamValue = 106;

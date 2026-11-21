@@ -27,7 +27,7 @@ public sealed partial class GridFightSession
         }
     }
 
-    public const uint WealthDiamondEquipmentId = 350701;
+    public const uint WealthDiamondEquipmentId = 350701; // Wealth Diamond (财富宝钻)
     public const uint TeamPopulationLimit = 13;
 
     public uint WealthDiamondCount => (uint)Equipments.Count(equipment =>
