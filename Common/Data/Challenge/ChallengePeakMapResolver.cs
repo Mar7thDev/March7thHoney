@@ -1,7 +1,7 @@
 using March7thHoney.Data.Config.Scene;
 using March7thHoney.Data.Custom;
 
-namespace March7thHoney.Data;
+namespace March7thHoney.Data.Challenge;
 
 /// <summary>
 ///     Works out where a Challenge Peak (异相仲裁) season is fought when Config/Custom/ChallengePeak.json does not say.

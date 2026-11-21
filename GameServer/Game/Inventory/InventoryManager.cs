@@ -1,4 +1,5 @@
 using March7thHoney.Data;
+using March7thHoney.Data.Avatar;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Mission;

@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace March7thHoney.Data;
+namespace March7thHoney.Data.Avatar;
 
 /// <summary>
 ///     Skill-tree limits and story-trial world-level flags are not on the MemoryPack excel rows

@@ -1,3 +1,4 @@
+using March7thHoney.Data.Avatar;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 using March7thHoney.Data;

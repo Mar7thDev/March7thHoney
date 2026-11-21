@@ -1,5 +1,6 @@
 using MemoryPack;
 using March7thHoney.Data;
+using March7thHoney.Data.Avatar;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Database.Player;

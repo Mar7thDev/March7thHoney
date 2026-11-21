@@ -6,7 +6,7 @@ using March7thHoney.Data.Excel;
 using March7thHoney.Util;
 using Newtonsoft.Json.Linq;
 
-namespace March7thHoney.Data;
+namespace March7thHoney.Data.Avatar;
 
 /// <summary>
 /// ExRank (奇缘星魂) material/configuration overlay from Config/Custom/AvatarExRankMaterials.json.

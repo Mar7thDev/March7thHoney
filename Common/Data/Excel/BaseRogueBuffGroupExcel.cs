@@ -1,8 +1,7 @@
 using MemoryPack;
-using March7thHoney.Data.Excel;
 using Newtonsoft.Json;
 
-namespace March7thHoney.Data.Custom;
+namespace March7thHoney.Data.Excel;
 
 // Like BaseRogueBuffExcel, the union keeps classic vs Divergent Universe groups apart in Resource.bin.
 [MemoryPackable]

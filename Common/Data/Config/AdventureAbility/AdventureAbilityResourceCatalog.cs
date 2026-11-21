@@ -1,8 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
-using March7thHoney.Data.Config;
 using Newtonsoft.Json.Linq;
 
-namespace March7thHoney.Data;
+namespace March7thHoney.Data.Config.AdventureAbility;
 
 /// <summary>Resolves shared NPC abilities using the character's declared names, not its model filename.</summary>
 public sealed class AdventureAbilityResourceCatalog

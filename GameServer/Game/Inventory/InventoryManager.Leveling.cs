@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using March7thHoney.Data;
+using March7thHoney.Data.Avatar;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database;
 using March7thHoney.Database.Friend;

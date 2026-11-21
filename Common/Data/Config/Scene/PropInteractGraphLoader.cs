@@ -1,9 +1,8 @@
 using System.Collections.Concurrent;
-using March7thHoney.Data.Config.Scene;
 using March7thHoney.Enums.Scene;
 using Newtonsoft.Json.Linq;
 
-namespace March7thHoney.Data;
+namespace March7thHoney.Data.Config.Scene;
 
 /// <summary>
 ///     Extracts the server-side PropReqInteract fan-out of a prop's InitLevelGraph and stores it on the

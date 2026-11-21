@@ -10,6 +10,7 @@ using March7thHoney.Data.Config.Scene;
 using March7thHoney.Data.Config.SummonUnit;
 using March7thHoney.Data.Custom;
 using March7thHoney.Data.Excel;
+using March7thHoney.Data.GridFight;
 using March7thHoney.Data.Rogue;
 using March7thHoney.Enums;
 using March7thHoney.Enums.Rogue;

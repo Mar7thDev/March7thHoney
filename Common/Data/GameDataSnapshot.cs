@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using MemoryPack;
+using March7thHoney.Data.Activity;
 using March7thHoney.Data.Config;
 using March7thHoney.Data.Config.AdventureAbility;
 using March7thHoney.Data.Config.Character;

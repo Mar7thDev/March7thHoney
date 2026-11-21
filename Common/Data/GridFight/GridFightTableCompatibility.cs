@@ -1,6 +1,6 @@
 using March7thHoney.Data.Excel;
 
-namespace March7thHoney.Data;
+namespace March7thHoney.Data.GridFight;
 
 /// <summary>Materializes the split season table into the existing cached camp model.</summary>
 public static class GridFightTableCompatibility

@@ -1,3 +1,5 @@
+using March7thHoney.Data.Activity;
+using March7thHoney.Data.Challenge;
 using March7thHoney.Data.Config;
 using March7thHoney.Data.Config.AdventureAbility;
 using March7thHoney.Data.Config.Character;

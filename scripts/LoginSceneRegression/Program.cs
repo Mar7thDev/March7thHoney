@@ -11,6 +11,8 @@ using March7thHoney.Command;
 using March7thHoney.Command.Command;
 using March7thHoney.Command.Command.Cmd;
 using March7thHoney.Data;
+using March7thHoney.Data.Avatar;
+using March7thHoney.Data.Challenge;
 using March7thHoney.Data.Config.Scene;
 using March7thHoney.Data.Custom;
 using March7thHoney.Data.Excel;

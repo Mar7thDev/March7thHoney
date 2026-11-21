@@ -1,3 +1,4 @@
+using March7thHoney.Data.Avatar;
 using March7thHoney.GameServer.Game.Friend;
 using March7thHoney.GameServer.Server.Packet.Send.Friend;
 using March7thHoney.Data;

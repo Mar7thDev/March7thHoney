@@ -1,11 +1,10 @@
 using MemoryPack;
-using March7thHoney.Data.Excel;
 using March7thHoney.Enums.Rogue;
 using March7thHoney.Proto;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace March7thHoney.Data.Custom;
+namespace March7thHoney.Data.Excel;
 
 // RogueBuffData mixes classic and Divergent Universe rows; the union keeps the subtype through Resource.bin,
 // otherwise every cached row comes back as the base type and `is RogueBuffExcel` filters match nothing.

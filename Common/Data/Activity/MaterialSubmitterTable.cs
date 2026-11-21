@@ -1,7 +1,7 @@
 using March7thHoney.Util;
 using Newtonsoft.Json.Linq;
 
-namespace March7thHoney.Data;
+namespace March7thHoney.Data.Activity;
 
 /// <summary>One MaterialSubmitter.json row: the materials a "Lab Assistants In Position" slot takes and what it pays.</summary>
 public sealed record MaterialSubmitterRow(

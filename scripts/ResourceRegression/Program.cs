@@ -2,6 +2,7 @@ using System.Collections.Concurrent;
 using System.IO.Compression;
 using System.Text.Json;
 using March7thHoney.Data;
+using March7thHoney.Data.Config.AdventureAbility;
 using March7thHoney.Enums;
 using March7thHoney.Enums.GridFight;
 using March7thHoney.Internationalization;

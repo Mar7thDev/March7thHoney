@@ -1,7 +1,7 @@
 using March7thHoney.Util;
 using Newtonsoft.Json.Linq;
 
-namespace March7thHoney.Data;
+namespace March7thHoney.Data.Activity;
 
 /// <summary>
 ///     ActivityVoracityInvasionBuf.json: the ally buff ("Aha's Big Help") an invaded stage adds next to its corruption
