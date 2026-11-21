@@ -11,6 +11,7 @@ internal static class EntityParser
     public const string BaseType = "March7thHoney.Database.BaseDatabaseDataHelper";
     private const string TableAttribute = "March7thHoney.Database.DbTableAttribute";
     private const string IgnoreAttribute = "March7thHoney.Database.DbIgnoreAttribute";
+    private const string NotPlayerDataAttribute = "March7thHoney.Database.NotPlayerDataAttribute";
     private const string ProtobufMessage = "Google.Protobuf.IMessage";
 
     private static readonly Dictionary<SpecialType, (ScalarType Scalar, string Sql)> ScalarTypes = new()
@@ -54,7 +55,15 @@ internal static class EntityParser
         }
 
         return new Entity(type.FullName(), type.Name, table, columns.ToEquatableArray(),
-            formatters.ToEquatableArray(), SourceLocation.Of(type));
+            formatters.ToEquatableArray(), !IsMarkedNotPlayerData(type), SourceLocation.Of(type));
+    }
+
+    private static bool IsMarkedNotPlayerData(INamedTypeSymbol type)
+    {
+        for (var current = type; current != null; current = current.BaseType)
+            if (current.HasAttribute(NotPlayerDataAttribute))
+                return true;
+        return false;
     }
 
     private static bool DerivesFromBase(INamedTypeSymbol type)

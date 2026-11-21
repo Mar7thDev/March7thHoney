@@ -40,6 +40,35 @@ public class ResourceManager
         foreach (var file in missingFiles) Logger.WriteToFile(file);
     }
 
+    /// <summary>Marks the cache incomplete and logs a resource file that could not be read.</summary>
+    private static void ReportReadFailure(string itemName, Exception ex)
+    {
+        ResourceCache.IsComplete = false;
+        Logger.Error(
+            I18NManager.Translate("Server.ServerInfo.FailedToReadItem", itemName,
+                I18NManager.Translate("Word.Error")), ex);
+    }
+
+    /// <summary>
+    ///     Reads <paramref name="file" /> and hands its text to <paramref name="load" />. Any failure, in reading or in
+    ///     <paramref name="load" />, is reported under <paramref name="itemName" /> and marks the cache incomplete.
+    /// </summary>
+    /// <param name="normalizeTypeKey">
+    ///     Rewrites the client's <c>$type</c> discriminator to <c>Type</c>, which the polymorphic config models read.
+    /// </param>
+    private static void LoadJsonFile(FileInfo file, string itemName, bool normalizeTypeKey, Action<string> load)
+    {
+        try
+        {
+            var text = File.ReadAllText(file.FullName);
+            load(normalizeTypeKey ? text.Replace("$type", "Type") : text);
+        }
+        catch (Exception ex)
+        {
+            ReportReadFailure(itemName, ex);
+        }
+    }
+
     public static void LoadGameData()
     {
         // Route Newtonsoft polymorphic Task/Predicate deserialization through the manual LoadFromJsonObject
@@ -126,11 +155,6 @@ public class ResourceManager
     public static bool IsVersionScopedCompatibilityRow(string memberName, int id) =>
         ResourceCompatibility.ContainsOverlayKey(memberName, id);
 
-    public static List<T>? LoadSingleExcel<T>(Type cls) where T : ExcelResource, new()
-    {
-        return LoadSingleExcelResource(cls) as List<T>;
-    }
-
     public static List<ExcelResource>? LoadSingleExcelResource(Type cls)
     {
         var attribute = (ResourceEntity?)Attribute.GetCustomAttribute(cls, typeof(ResourceEntity));
@@ -160,7 +184,7 @@ public class ResourceManager
 
                 var badRecords = 0;
                 Exception? firstError = null;
-                var json = file.OpenText().ReadToEnd();
+                var json = File.ReadAllText(file.FullName);
                 using (var reader = new JsonTextReader(new StringReader(json)))
                 {
                     reader.Read();
@@ -245,10 +269,7 @@ public class ResourceManager
             }
             catch (Exception ex)
             {
-                ResourceCache.IsComplete = false;
-                Logger.Error(
-                    I18NManager.Translate("Server.ServerInfo.FailedToReadItem", fileName,
-                        I18NManager.Translate("Word.Error")), ex);
+                ReportReadFailure(fileName, ex);
             }
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(), cls.Name));
@@ -276,11 +297,8 @@ public class ResourceManager
         // Load floor infos in parallel
         Parallel.ForEach(files, file =>
         {
-            try
+            LoadJsonFile(file, file.Name, false, text =>
             {
-                using var reader = file.OpenRead();
-                using StreamReader reader2 = new(reader);
-                var text = reader2.ReadToEnd();
                 var info = JsonConvert.DeserializeObject<FloorInfo>(text);
                 var name = file.Name[..file.Name.IndexOf('.')];
                 if (info == null) return;
@@ -289,24 +307,14 @@ public class ResourceManager
                 // Load navmap infos
                 FileInfo navmapFile = new(ResourcePaths.Resource(info.NavmapConfigPath));
                 if (navmapFile.Exists)
-                    try
+                    LoadJsonFile(navmapFile, navmapFile.Name, false, navmapText =>
                     {
-                        using var navmapReader = navmapFile.OpenRead();
-                        using StreamReader navmapReader2 = new(navmapReader);
-                        var navmapText = navmapReader2.ReadToEnd();
                         var navmap = JsonConvert.DeserializeObject<MapInfo>(navmapText);
                         if (navmap != null)
                             foreach (var area in navmap.AreaList)
                             foreach (var section in area.MinimapVolume.Sections)
                                 info.MapSections.Add(section.ID);
-                    }
-                    catch (Exception ex)
-                    {
-                        ResourceCache.IsComplete = false;
-                        Logger.Error(
-                            I18NManager.Translate("Server.ServerInfo.FailedToReadItem", navmapFile.Name,
-                                I18NManager.Translate("Word.Error")), ex);
-                    }
+                    });
 
                 // Load group infos sequentially to maintain order
                 foreach (var groupInfo in info.GroupInstanceList)
@@ -316,59 +324,35 @@ public class ResourceManager
                     FileInfo groupFile = new(ResourcePaths.Resource(groupInfo.GroupPath));
                     if (!groupFile.Exists) continue;
 
-                    try
+                    LoadJsonFile(groupFile, groupFile.Name, false, groupText =>
                     {
-                        using var groupReader = groupFile.OpenRead();
-                        using StreamReader groupReader2 = new(groupReader);
-                        var groupText = groupReader2.ReadToEnd();
                         var group = JsonConvert.DeserializeObject<GroupInfo>(groupText);
-                        if (group != null)
+                        if (group == null) return;
+
+                        group.Id = groupInfo.ID;
+                        // The common map carries the authoritative per-instance SaveType/Category.
+                        info.StampCommonMapFields(group);
+                        info.Groups[groupInfo.ID] = group;
+
+                        // A group graph failure is reported against the group file.
+                        var graphFile = new FileInfo(ResourcePaths.Resource(group.LevelGraph));
+                        if (graphFile.Exists)
                         {
-                            group.Id = groupInfo.ID;
-                            // The common map carries the authoritative per-instance SaveType/Category.
-                            info.StampCommonMapFields(group);
-                            // Use a sorted collection or maintain order manually
-                            info.Groups[groupInfo.ID] = group;
-
-                            // Load graph
-                            var graphPath = ResourcePaths.Resource(group.LevelGraph);
-                            var graphFile = new FileInfo(graphPath);
-                            if (graphFile.Exists)
-                            {
-                                using var graphReader = graphFile.OpenRead();
-                                using StreamReader graphReader2 = new(graphReader);
-                                var graphText = graphReader2.ReadToEnd().Replace("$type", "Type");
-                                var graphObj = JObject.Parse(graphText);
-                                var graphInfo = LevelGraphConfigInfo.LoadFromJsonObject(graphObj);
-                                group.LevelGraphConfig = graphInfo;
-                            }
-
-                            group.Load();
-                            // Prop InitLevelGraph fan-out (PropReqInteract) - must run while the props still
-                            // hold their ValueSource / InitLevelGraph (FloorInfo.OnLoad clears both).
-                            PropInteractGraphLoader.Populate(group, ConfigManager.Config.Path.ResourcePath);
+                            var graphText = File.ReadAllText(graphFile.FullName).Replace("$type", "Type");
+                            group.LevelGraphConfig = LevelGraphConfigInfo.LoadFromJsonObject(JObject.Parse(graphText));
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        ResourceCache.IsComplete = false;
-                        Logger.Error(
-                            I18NManager.Translate("Server.ServerInfo.FailedToReadItem", groupFile.Name,
-                                I18NManager.Translate("Word.Error")), ex);
-                    }
+
+                        group.Load();
+                        // Prop InitLevelGraph fan-out (PropReqInteract) - must run while the props still
+                        // hold their ValueSource / InitLevelGraph (FloorInfo.OnLoad clears both).
+                        PropInteractGraphLoader.Populate(group, ConfigManager.Config.Path.ResourcePath);
+                    });
                 }
 
                 if (info.Groups.Count == 0) missingGroupInfos = true;
 
                 info.OnLoad();
-            }
-            catch (Exception ex)
-            {
-                ResourceCache.IsComplete = false;
-                Logger.Error(
-                    I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
-                        I18NManager.Translate("Word.Error")), ex);
-            }
+            });
         });
 
         if (missingGroupInfos)
@@ -420,25 +404,17 @@ public class ResourceManager
                 var partialPath =
                     ResourcePaths.Resource($"Config/Level/Mission/{missionExcel.Key}/MissionInfo_{missionExcel.Key}.partial.json");
                 if (missionInfo != null && File.Exists(partialPath))
-                    try
-                    {
-                        var partialJson = File.ReadAllText(partialPath);
-                        var partialMissionInfo = JsonConvert.DeserializeObject<MissionInfo>(partialJson);
-                        if (partialMissionInfo?.SubMissionList is { Count: > 0 })
-                            missionInfo.SubMissionList = partialMissionInfo.SubMissionList;
-                    }
-                    catch (Exception ex)
-                    {
-                        ResourceCache.IsComplete = false;
-                        Logger.Error(
-                            I18NManager.Translate("Server.ServerInfo.FailedToReadItem",
-                                $"MissionInfo_{missionExcel.Key}.partial.json", I18NManager.Translate("Word.Error")),
-                            ex);
-                    }
+                    LoadJsonFile(new FileInfo(partialPath), $"MissionInfo_{missionExcel.Key}.partial.json", false,
+                        partialJson =>
+                        {
+                            var partialMissionInfo = JsonConvert.DeserializeObject<MissionInfo>(partialJson);
+                            if (partialMissionInfo?.SubMissionList is { Count: > 0 })
+                                missionInfo.SubMissionList = partialMissionInfo.SubMissionList;
+                        });
                 if (missionInfo != null)
                 {
                     GameData.MainMissionData[missionExcel.Key].SetMissionInfo(missionInfo);
-                    count++;
+                    Interlocked.Increment(ref count);
                 }
                 else
                 {
@@ -447,11 +423,8 @@ public class ResourceManager
             }
             catch (Exception ex)
             {
-                ResourceCache.IsComplete = false;
                 missingMissionInfos = true;
-                Logger.Error(
-                    I18NManager.Translate("Server.ServerInfo.FailedToReadItem",
-                        $"MissionInfo_{missionExcel.Key}.json", I18NManager.Translate("Word.Error")), ex);
+                ReportReadFailure($"MissionInfo_{missionExcel.Key}.json", ex);
             }
         });
 
@@ -634,20 +607,7 @@ public class ResourceManager
             return customFile;
         }
 
-        try
-        {
-            using var reader = file.OpenRead();
-            using StreamReader reader2 = new(reader);
-            var text = reader2.ReadToEnd();
-            customFile = JsonConvert.DeserializeObject<T>(text);
-        }
-        catch (Exception ex)
-        {
-            ResourceCache.IsComplete = false;
-            Logger.Error(
-                I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
-                    I18NManager.Translate("Word.Error")), ex);
-        }
+        LoadJsonFile(file, file.Name, false, text => customFile = JsonConvert.DeserializeObject<T>(text));
 
         switch (customFile)
         {
@@ -695,6 +655,19 @@ public class ResourceManager
         var adventureAbilityLock = new object();
         var npcAbilityCatalog = new Lazy<AdventureAbilityResourceCatalog>(() =>
             new AdventureAbilityResourceCatalog(ConfigManager.Config.Path.ResourcePath));
+        void LoadAbilityFile(int id, FileInfo file, string adventurePath) =>
+            LoadJsonFile(file, adventurePath, true, text =>
+            {
+                var info = AdventureAbilityConfigListInfo.LoadFromJsonObject(JObject.Parse(text));
+
+                lock (adventureAbilityLock)
+                {
+                    GameData.AdventureAbilityConfigListData.TryAdd(id, info);
+                }
+
+                Interlocked.Increment(ref count);
+            });
+
         Parallel.ForEach(GameData.AdventurePlayerData.Values, adventure =>
         {
             var adventurePath = adventure.PlayerJsonPath.Replace("_Config.json", "_Ability.json")
@@ -711,29 +684,8 @@ public class ResourceManager
 
                 return;
             }
-            try
-            {
-                using var reader = file.OpenRead();
-                using StreamReader reader2 = new(reader);
-                var text = reader2.ReadToEnd().Replace("$type", "Type");
-                var obj = JObject.Parse(text);
 
-                var info = AdventureAbilityConfigListInfo.LoadFromJsonObject(obj);
-
-                lock (adventureAbilityLock)
-                {
-                    GameData.AdventureAbilityConfigListData.TryAdd(adventure.ID, info);
-                }
-
-                Interlocked.Increment(ref count);
-            }
-            catch (Exception ex)
-            {
-                ResourceCache.IsComplete = false;
-                Logger.Error(
-                    I18NManager.Translate("Server.ServerInfo.FailedToReadItem", adventurePath,
-                        I18NManager.Translate("Word.Error")), ex);
-            }
+            LoadAbilityFile(adventure.ID, file, adventurePath);
         });
 
         Parallel.ForEach(GameData.NpcMonsterDataData.Values, adventure =>
@@ -776,29 +728,8 @@ public class ResourceManager
 
                 return;
             }
-            try
-            {
-                using var reader = file.OpenRead();
-                using StreamReader reader2 = new(reader);
-                var text = reader2.ReadToEnd().Replace("$type", "Type");
-                var obj = JObject.Parse(text);
 
-                var info = AdventureAbilityConfigListInfo.LoadFromJsonObject(obj);
-
-                lock (adventureAbilityLock)
-                {
-                    GameData.AdventureAbilityConfigListData.TryAdd(adventure.ID, info);
-                }
-
-                Interlocked.Increment(ref count);
-            }
-            catch (Exception ex)
-            {
-                ResourceCache.IsComplete = false;
-                Logger.Error(
-                    I18NManager.Translate("Server.ServerInfo.FailedToReadItem", adventurePath,
-                        I18NManager.Translate("Word.Error")), ex);
-            }
+            LoadAbilityFile(adventure.ID, file, adventurePath);
         });
 
         if (missingCount > 0)
@@ -829,25 +760,12 @@ public class ResourceManager
 
                 return;
             }
-            try
-            {
-                using var reader = file.OpenRead();
-                using StreamReader reader2 = new(reader);
-                var text = reader2.ReadToEnd().Replace("$type", "Type");
 
-                var obj = JObject.Parse(text);
-                var info = SummonUnitConfigInfo.LoadFromJsonObject(obj);
-
-                summonUnit.ConfigInfo = info;
-                count++;
-            }
-            catch (Exception ex)
+            LoadJsonFile(file, summonUnit.JsonPath, true, text =>
             {
-                ResourceCache.IsComplete = false;
-                Logger.Error(
-                    I18NManager.Translate("Server.ServerInfo.FailedToReadItem", summonUnit.JsonPath,
-                        I18NManager.Translate("Word.Error")), ex);
-            }
+                summonUnit.ConfigInfo = SummonUnitConfigInfo.LoadFromJsonObject(JObject.Parse(text));
+                Interlocked.Increment(ref count);
+            });
         });
 
         if (missingCount > 0)
@@ -877,25 +795,16 @@ public class ResourceManager
 
                 return;
             }
-            try
+
+            LoadJsonFile(file, file.Name, true, text =>
             {
-                using var reader = file.OpenRead();
-                using StreamReader reader2 = new(reader);
-                var text = reader2.ReadToEnd().Replace("$type", "Type");
                 var dialogueInfo = JsonConvert.DeserializeObject<RogueNPCConfigInfo>(text);
                 if (dialogueInfo == null) return;
                 dialogue.RogueNpcConfig = dialogueInfo;
-                count++;
+                Interlocked.Increment(ref count);
                 dialogueInfo.Loaded();
                 LoadRogueTournDialogueGraph(dialogue.RogueNPCID, dialogueInfo);
-            }
-            catch (Exception ex)
-            {
-                ResourceCache.IsComplete = false;
-                Logger.Error(
-                    I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
-                        I18NManager.Translate("Word.Error")), ex);
-            }
+            });
         });
 
         if (missingCount > 0)
@@ -929,9 +838,7 @@ public class ResourceManager
         }
         catch (Exception ex)
         {
-            ResourceCache.IsComplete = false;
-            Logger.Error(I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
-                I18NManager.Translate("Word.Error")), ex);
+            ReportReadFailure(file.Name, ex);
         }
     }
 
@@ -941,65 +848,28 @@ public class ResourceManager
             I18NManager.Translate("Word.PerformanceInfo")));
         var count = 0;
 
-        Parallel.ForEach(GameData.PerformanceEData.Values, performance =>
+        // An empty path is a performance without an act graph and still counts as loaded.
+        void LoadPerformance(string performancePath, Action<LevelGraphConfigInfo> assign)
         {
-            if (performance.PerformancePath == "")
+            if (performancePath == "")
             {
-                count++;
+                Interlocked.Increment(ref count);
                 return;
             }
 
-            var path = ResourcePaths.Resource(performance.PerformancePath);
-            var file = new FileInfo(path);
+            var file = new FileInfo(ResourcePaths.Resource(performancePath));
             if (!file.Exists) return;
-            try
+            LoadJsonFile(file, file.Name, true, text =>
             {
-                using var reader = file.OpenRead();
-                using StreamReader reader2 = new(reader);
-                var text = reader2.ReadToEnd().Replace("$type", "Type");
-                var obj = JObject.Parse(text);
-                var info = LevelGraphConfigInfo.LoadFromJsonObject(obj);
-                performance.ActInfo = info;
-                count++;
-            }
-            catch (Exception ex)
-            {
-                ResourceCache.IsComplete = false;
-                Logger.Error(
-                    I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
-                        I18NManager.Translate("Word.Error")), ex);
-            }
-        });
+                assign(LevelGraphConfigInfo.LoadFromJsonObject(JObject.Parse(text)));
+                Interlocked.Increment(ref count);
+            });
+        }
 
-        Parallel.ForEach(GameData.PerformanceDData.Values, performance =>
-        {
-            if (performance.PerformancePath == "")
-            {
-                count++;
-                return;
-            }
-
-            var path = ResourcePaths.Resource(performance.PerformancePath);
-            var file = new FileInfo(path);
-            if (!file.Exists) return;
-            try
-            {
-                using var reader = file.OpenRead();
-                using StreamReader reader2 = new(reader);
-                var text = reader2.ReadToEnd().Replace("$type", "Type");
-                var obj = JObject.Parse(text);
-                var info = LevelGraphConfigInfo.LoadFromJsonObject(obj);
-                performance.ActInfo = info;
-                count++;
-            }
-            catch (Exception ex)
-            {
-                ResourceCache.IsComplete = false;
-                Logger.Error(
-                    I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
-                        I18NManager.Translate("Word.Error")), ex);
-            }
-        });
+        Parallel.ForEach(GameData.PerformanceEData.Values,
+            performance => LoadPerformance(performance.PerformancePath, info => performance.ActInfo = info));
+        Parallel.ForEach(GameData.PerformanceDData.Values,
+            performance => LoadPerformance(performance.PerformancePath, info => performance.ActInfo = info));
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.PerformanceInfo")));
@@ -1017,23 +887,11 @@ public class ResourceManager
             var path = ResourcePaths.Resource(subMission.SubMissionInfo.MissionJsonPath);
             var file = new FileInfo(path);
             if (!file.Exists) return;
-            try
+            LoadJsonFile(file, file.Name, true, text =>
             {
-                using var reader = file.OpenRead();
-                using StreamReader reader2 = new(reader);
-                var text = reader2.ReadToEnd().Replace("$type", "Type");
-                var obj = JObject.Parse(text);
-                var info = LevelGraphConfigInfo.LoadFromJsonObject(obj);
-                subMission.SubMissionTaskInfo = info;
-                count++;
-            }
-            catch (Exception ex)
-            {
-                ResourceCache.IsComplete = false;
-                Logger.Error(
-                    I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
-                        I18NManager.Translate("Word.Error")), ex);
-            }
+                subMission.SubMissionTaskInfo = LevelGraphConfigInfo.LoadFromJsonObject(JObject.Parse(text));
+                Interlocked.Increment(ref count);
+            });
         });
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
@@ -1062,25 +920,13 @@ public class ResourceManager
 
             var file = new FileInfo(path);
             if (!file.Exists) continue;
-            try
+            LoadJsonFile(file, file.Name, false, text =>
             {
-                using var reader = file.OpenRead();
-                using StreamReader reader2 = new(reader);
-                var text = reader2.ReadToEnd();
                 var map = JsonConvert.DeserializeObject<RogueChestMapInfo>(text);
-                if (map != null)
-                {
-                    board.MapInfo = map;
-                    count++;
-                }
-            }
-            catch (Exception ex)
-            {
-                ResourceCache.IsComplete = false;
-                Logger.Error(
-                    I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
-                        I18NManager.Translate("Word.Error")), ex);
-            }
+                if (map == null) return;
+                board.MapInfo = map;
+                count++;
+            });
         }
 
         if (count < boardList.Count)
@@ -1114,27 +960,16 @@ public class ResourceManager
         var files = directory.GetFiles();
 
         foreach (var file in files)
-            try
+            LoadJsonFile(file, file.Name, true, text =>
             {
-                using var reader = file.OpenRead();
-                using StreamReader reader2 = new(reader);
-                var text = reader2.ReadToEnd().Replace("$type", "Type");
-                var obj = JObject.Parse(text);
-                var info = AdventureModifierLookupTableConfig.LoadFromJObject(obj);
+                var info = AdventureModifierLookupTableConfig.LoadFromJObject(JObject.Parse(text));
 
                 foreach (var config in info.ModifierMap)
                 {
                     GameData.AdventureModifierData.Add(config.Key, config.Value);
                     count++;
                 }
-            }
-            catch (Exception ex)
-            {
-                ResourceCache.IsComplete = false;
-                Logger.Error(
-                    I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
-                        I18NManager.Translate("Word.Error")), ex);
-            }
+            });
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.AdventureModifierInfo")));
@@ -1150,28 +985,17 @@ public class ResourceManager
             var path = ResourcePaths.Resource(excel.PlayerJsonPath);
             var file = new FileInfo(path);
             if (!file.Exists) return;
-            try
+            LoadJsonFile(file, excel.PlayerJsonPath, true, text =>
             {
-                using var reader = file.OpenRead();
-                using StreamReader reader2 = new(reader);
-                var text = reader2.ReadToEnd().Replace("$type", "Type");
-
                 var info = JsonConvert.DeserializeObject<CharacterConfigInfo>(text);
                 if (info == null) return;
 
                 GameData.CharacterConfigInfoData.TryAdd(excel.ID, info);
-                count++;
-            }
-            catch (Exception ex)
-            {
-                ResourceCache.IsComplete = false;
-                Logger.Error(
-                    I18NManager.Translate("Server.ServerInfo.FailedToReadItem", excel.PlayerJsonPath,
-                        I18NManager.Translate("Word.Error")), ex);
-            }
+                Interlocked.Increment(ref count);
+            });
         });
 
-        if (count < GameData.SummonUnitDataData.Count)
+        if (count < GameData.AdventurePlayerData.Count)
             Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
                 I18NManager.Translate("Word.LocalPlayerCharacterInfo"),
                 ResourcePaths.Resource("Config/ConfigCharacter"),
@@ -1201,72 +1025,15 @@ public class ResourceManager
             return;
         }
 
-        try
+        LoadJsonFile(file, file.Name, false, text =>
         {
-            using var reader = file.OpenRead();
-            using StreamReader reader2 = new(reader);
-            var text = reader2.ReadToEnd();
             var rooms = JsonConvert.DeserializeObject<List<ChessRogueRoomConfig>>(text) ??
                         throw new InvalidDataException("Failed to deserialize ChessRogueRoomGen.json");
             count = ChessRogueRoomPools.Rebuild(rooms);
-        }
-        catch (Exception ex)
-        {
-            ResourceCache.IsComplete = false;
-            Logger.Error(
-                I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
-                    I18NManager.Translate("Word.Error")), ex);
-        }
+        });
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.ChessRogueRoomInfo")));
-    }
-
-    public static void LoadRogueTournRoomData()
-    {
-        Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem",
-            I18NManager.Translate("Word.RogueTournRoomInfo")));
-        var count = 0;
-
-        FileInfo file = new(ConfigManager.Config.Path.ConfigPath + "/TournRogueRoomGen.json");
-
-        if (!file.Exists)
-        {
-            Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
-                I18NManager.Translate("Word.RogueTournRoomInfo"),
-                $"{ConfigManager.Config.Path.ConfigPath}/TournRogueRoomGen.json",
-                I18NManager.Translate("Word.RogueTournRoom")));
-            return;
-        }
-
-        try
-        {
-            using var reader = file.OpenRead();
-            using StreamReader reader2 = new(reader);
-            var text = reader2.ReadToEnd();
-            var json = JsonConvert.DeserializeObject<List<RogueTournRoomConfig>>(text);
-            if (json == null) throw new Exception("Failed to deserialize TournRogueRoomGen.json");
-
-            foreach (var room in json.Clone())
-                if (room.RoomType == RogueTournRoomTypeEnum.Event)
-                {
-                    json.Add(room.Clone(RogueTournRoomTypeEnum.Reward));
-                    json.Add(room.Clone(RogueTournRoomTypeEnum.Encounter));
-                }
-
-            GameData.RogueTournRoomGenData = json;
-            count = json.Count;
-        }
-        catch (Exception ex)
-        {
-            ResourceCache.IsComplete = false;
-            Logger.Error(
-                I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
-                    I18NManager.Translate("Word.Error")), ex);
-        }
-
-        Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
-            I18NManager.Translate("Word.RogueTournRoomInfo")));
     }
 
     public static void LoadRogueMagicRoomData()
@@ -1287,25 +1054,15 @@ public class ResourceManager
             return;
         }
 
-        try
+        LoadJsonFile(file, file.Name, false, text =>
         {
-            using var reader = file.OpenRead();
-            using StreamReader reader2 = new(reader);
-            var text = reader2.ReadToEnd();
             var json = JsonConvert.DeserializeObject<List<RogueMagicRoomConfig>>(text);
             if (json == null) throw new Exception("Failed to deserialize RogueMagicRoomGen.json");
 
             RogueMagicRoomPools.AddEventRoomVariants(json);
             GameData.RogueMagicRoomGenData = json;
             count = json.Count;
-        }
-        catch (Exception ex)
-        {
-            ResourceCache.IsComplete = false;
-            Logger.Error(
-                I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
-                    I18NManager.Translate("Word.Error")), ex);
-        }
+        });
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.RogueMagicRoomInfo")));
@@ -1333,85 +1090,16 @@ public class ResourceManager
             return;
         }
 
-        try
+        LoadJsonFile(file, file.Name, false, text =>
         {
-            using var reader = file.OpenRead();
-            using StreamReader reader2 = new(reader);
-            var text = reader2.ReadToEnd();
             var json = JsonConvert.DeserializeObject<Dictionary<int, ChessRogueDiceSurfaceEffectConfig>>(text);
             if (json == null) throw new Exception("Failed to deserialize ChessRogueDiceSurfaceEffect.json");
 
             GameData.ChessRogueDiceSurfaceEffectData = json;
             count = json.Count;
-        }
-        catch (Exception ex)
-        {
-            ResourceCache.IsComplete = false;
-            Logger.Error(
-                I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
-                    I18NManager.Translate("Word.Error")), ex);
-        }
+        });
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.RogueDiceSurfaceInfo")));
-    }
-
-    public static void LoadRogueDialogueEventData()
-    {
-        Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem",
-            I18NManager.Translate("Word.DialogueInfo")));
-        var count = 0;
-
-        FileInfo cosmosRogue = new(ConfigManager.Config.Path.ConfigPath + "/Rogue/Dialogue/CosmosRogueEvent.json");
-        FileInfo tournRogue = new(ConfigManager.Config.Path.ConfigPath + "/Rogue/Dialogue/Tourn2RogueEvent.json");
-        FileInfo swarmRogue = new(ConfigManager.Config.Path.ConfigPath + "/Rogue/Dialogue/SwarmRogueEvent.json");
-        FileInfo nousRogue = new(ConfigManager.Config.Path.ConfigPath + "/Rogue/Dialogue/NousRogueEvent.json");
-        FileInfo magicRogue = new(ConfigManager.Config.Path.ConfigPath + "/Rogue/Dialogue/MagicRogueEvent.json");
-
-        if (!cosmosRogue.Exists || !tournRogue.Exists)
-        {
-            Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
-                I18NManager.Translate("Word.DialogueInfo"),
-                $"{ConfigManager.Config.Path.ConfigPath}/Rogue/Dialogue/",
-                I18NManager.Translate("Word.Dialogue")));
-
-            return;
-        }
-
-        Dictionary<FileInfo, Dictionary<uint, RogueDialogueEventConfig>> files = new()
-        {
-            { cosmosRogue, GameData.CosmosRogueDialogueEventConfig },
-            { tournRogue, GameData.TournRogueDialogueEventConfig },
-            { swarmRogue, GameData.SwarmRogueDialogueEventConfig },
-            { nousRogue, GameData.NousRogueDialogueEventConfig },
-            { magicRogue, GameData.MagicRogueDialogueEventConfig }
-        };
-
-        foreach (var file in files)
-        {
-            try
-            {
-                using var reader = file.Key.OpenRead();
-                using StreamReader reader2 = new(reader);
-                var text = reader2.ReadToEnd();
-                var json = JsonConvert.DeserializeObject<List<RogueDialogueEventConfig>>(text);
-                if (json == null) throw new Exception($"Failed to deserialize {file.Key.Name}");
-
-                foreach (var conf in json)
-                    file.Value.Add(RogueDialogueEventConfig.TableKey(conf.NpcId, conf.Progress), conf);
-
-                count += json.Count;
-            }
-            catch (Exception ex)
-            {
-                ResourceCache.IsComplete = false;
-                Logger.Error(
-                    I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Key.Name,
-                        I18NManager.Translate("Word.Error")), ex);
-            }
-        }
-
-        Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
-            I18NManager.Translate("Word.DialogueInfo")));
     }
 }

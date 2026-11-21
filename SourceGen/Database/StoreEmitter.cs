@@ -204,7 +204,7 @@ internal static class StoreEmitter
                         code.Line($"c => {{ var r = new List<{EntityBase}>(); foreach (var x in {store}.LoadAll(c)) r.Add(x); return r; }},");
                         code.Line($"(c, e) => {store}.Insert(c, ({entity.TypeName})e),");
                         code.Line($"(c, e) => {store}.Update(c, ({entity.TypeName})e),");
-                        code.Line($"{store}.Delete),");
+                        code.Line($"{store}.Delete, {(entity.IsPlayerData ? "true" : "false")}),");
                     }
                 }
             }

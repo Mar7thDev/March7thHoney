@@ -92,143 +92,87 @@ public static class ResourceCache
         GameData.ApplySnapshot(new GameDataSnapshot());
     }
 
-    private static bool ValidateLoadedCache()
-    {
-        var validates45ProdData = GameConstants.IsVersion("4.5.0");
+    /// <summary>
+    ///     A check that rejects a loaded cache built before a resource model or loader change.
+    /// </summary>
+    /// <param name="RawTable">
+    ///     The raw excel table to rebuild from. When set, the rule only applies while that table is available, so
+    ///     deployments that intentionally ship a cache without the raw resources keep working.
+    /// </param>
+    /// <param name="IsStale">True when the loaded data shows the cache predates the change.</param>
+    /// <param name="Reason">What is missing, logged after "Resource cache is stale: ".</param>
+    private sealed record StaleCacheRule(string? RawTable, Func<bool> IsStale, string Reason);
 
-        // The split camp table also identifies the native role-skill layout.
-        // Older caches have unscoped camps and no native-skill marker; rebuild
-        // only when raw resources are present, preserving cache-only deployments.
-        var hasGridFightCampSeason = ResourcePaths.FindExcel("GridFightCampSeason.json") != null;
-        if (hasGridFightCampSeason &&
-            (GameData.GridFightCampData.Values.Any(row => row.SeasonID == 0) ||
-             GameData.GridFightRoleBasicInfoData.Values.Any(row =>
-                 row.RoleSavedValueList.Count == 0 && !row.UsesNativeSkillOverrides)))
-        {
-            Logger.Warn("Resource cache is stale: GridFight split season tables and native role skills require a rebuild.");
-            return false;
-        }
-
-        // 4.5 moved content-package entrances (including the Divergent Universe lobby) into
-        // MapEntranceLD.json. Reject an old cache only when the matching raw table is available,
-        // so deployments that intentionally ship cache-only resources keep working.
-        var hasMapEntranceLd = ResourcePaths.FindExcel("MapEntranceLD.json") != null;
-        if (validates45ProdData && hasMapEntranceLd && GameData.ContentPackageConfigData.Values.Any(package =>
-                (package.InitEntranceID != 0 && !GameData.MapEntranceData.ContainsKey(package.InitEntranceID)) ||
-                (package.AfterGuideEntranceID != 0 &&
-                 !GameData.MapEntranceData.ContainsKey(package.AfterGuideEntranceID))))
-        {
-            Logger.Warn("Resource cache is stale: MapEntranceLD content-package entrances are missing.");
-            return false;
-        }
-
-        // Caches built before RogueTournArea's obfuscated-key mapping collapse every area onto id 0.
-        if (validates45ProdData &&
-            (GameData.RogueTournAreaData.ContainsKey(0) ||
-             GameData.RogueTournAreaData.Count > 0 && GameData.RoguePersonaTalentData.Count == 0))
-        {
-            Logger.Warn("Resource cache is stale: RogueTourn area/persona tables are missing.");
-            return false;
-        }
+    // Checked in order; the first stale rule rejects the cache.
+    private static readonly StaleCacheRule[] StaleCacheRules =
+    [
+        // The split camp table also identifies the native role-skill layout. Older caches have unscoped camps
+        // and no native-skill marker.
+        new("GridFightCampSeason.json",
+            () => GameData.GridFightCampData.Values.Any(row => row.SeasonID == 0) ||
+                  GameData.GridFightRoleBasicInfoData.Values.Any(row =>
+                      row.RoleSavedValueList.Count == 0 && !row.UsesNativeSkillOverrides),
+            "GridFight split season tables and native role skills require a rebuild."),
 
         // Caches built before the 4.5 RogueBuffGroup key mapping collapse every classic Simulated Universe group
         // onto id 0, and caches built before the buff/group unions lose the classic RogueBuff subtype, so no
-        // blessing draft pool resolves. Only rejected when the raw table is available to rebuild from.
-        var hasRogueBuffGroup = ResourcePaths.FindExcel("RogueBuffGroup.json") != null;
-        if (hasRogueBuffGroup && (GameData.RogueBuffGroupData.ContainsKey(0) ||
-                                  !GameData.RogueBuffData.Values.Any(buff => buff is RogueBuffExcel) ||
-                                  !GameData.RogueBuffGroupData.Values.Any(group =>
-                                      group is RogueBuffGroupExcel && group.BuffList.Any(buff => buff is RogueBuffExcel))))
-        {
-            Logger.Warn("Resource cache is stale: classic Simulated Universe blessing groups are missing.");
-            return false;
-        }
-
-        // Caches built before RogueMagicRoomGen.json was loaded, or before the 4.5 scepter lock-unit key mapping.
-        if (validates45ProdData && ((GameData.RogueMagicRoomGenData.Count == 0 &&
-             File.Exists(ConfigManager.Config.Path.ConfigPath + "/RogueMagicRoomGen.json")) ||
-            GameData.RogueMagicScepterData.Values.Any(scepter => scepter.LockMagicUnit.Any(unit => unit.MagicUnitId == 0))))
-        {
-            Logger.Warn("Resource cache is stale: RogueMagic room/scepter data is missing.");
-            return false;
-        }
-
-        // Caches built while the ChessRogue room/dice configs and chessboard maps were not loaded, or before the
-        // 4.5 RogueDLCArea score-map keys were mapped.
-        if (validates45ProdData && GameData.RogueSwarmChessBoardData.Count > 0 &&
-            (GameData.ChessRogueRoomData.Count == 0 || GameData.ChessRogueDiceSurfaceEffectData.Count == 0 ||
-             GameData.RogueSwarmChessBoardData.Values.SelectMany(boards => boards).All(board => board.MapInfo == null) ||
-             GameData.RogueDLCAreaData.Values.Any(area =>
-                 area.AreaScoreMap.Count > 0 && area.AreaScoreMap.All(score => score.Layer == 0))))
-        {
-            Logger.Warn("Resource cache is stale: ChessRogue room/dice/chessboard data is missing.");
-            return false;
-        }
-
-        if (validates45ProdData && GameData.FloorInfoData.Values.Any(floor => floor.Groups.Values.Any(group =>
-                group.LoadSide != Enums.Scene.GroupLoadSideEnum.Client &&
-                group.Category == Enums.Scene.GroupCategoryEnum.Atmosphere && group.IsHoyoGroup == null)))
-        {
-            Logger.Warn("Resource cache is stale: scene IsHoyoGroup metadata is missing. " +
-                        "Deploy the matching Resource.bin or upgrade it with scripts/SceneCacheUpgrade.");
-            return false;
-        }
+        // blessing draft pool resolves.
+        new("RogueBuffGroup.json",
+            () => GameData.RogueBuffGroupData.ContainsKey(0) ||
+                  !GameData.RogueBuffData.Values.Any(buff => buff is RogueBuffExcel) ||
+                  !GameData.RogueBuffGroupData.Values.Any(group =>
+                      group is RogueBuffGroupExcel && group.BuffList.Any(buff => buff is RogueBuffExcel)),
+            "classic Simulated Universe blessing groups are missing."),
 
         // Caches built before AvatarDemoConfig.StageType/SPList were modelled deserialize with empty values,
-        // which would make every Role Trial stage look like a non-trial row. Like MapEntranceLD above, only
-        // reject when the raw table is available to rebuild from.
-        var hasAvatarDemoConfig = ResourcePaths.FindExcel("AvatarDemoConfig.json") != null;
-        if (hasAvatarDemoConfig && GameData.AvatarDemoConfigData.Count > 0 &&
-            GameData.AvatarDemoConfigData.Values.All(stage => string.IsNullOrEmpty(stage.StageType)))
-        {
-            Logger.Warn("Resource cache is stale: AvatarDemoConfig StageType/SPList are missing.");
-            return false;
-        }
+        // which would make every Role Trial stage look like a non-trial row.
+        new("AvatarDemoConfig.json",
+            () => GameData.AvatarDemoConfigData.Count > 0 &&
+                  GameData.AvatarDemoConfigData.Values.All(stage => string.IsNullOrEmpty(stage.StageType)),
+            "AvatarDemoConfig StageType/SPList are missing."),
 
-        // Caches built before ItemComposeConfig.FormulaType/RelicList/SpecialMaterialCost were modelled: without them
-        // relic and special-material synthesis would be rejected. Only rejected when the raw table is available.
-        var hasItemComposeConfig = ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
-            File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "ItemComposeConfig.json")));
-        if (hasItemComposeConfig && GameData.ItemComposeConfigData.Count > 0 &&
-            GameData.ItemComposeConfigData.Values.All(compose => string.IsNullOrEmpty(compose.FormulaType)))
-        {
-            Logger.Warn("Resource cache is stale: ItemComposeConfig formula columns are missing.");
-            return false;
-        }
+        // Caches built before ItemComposeConfig.FormulaType/RelicList/SpecialMaterialCost were modelled: without
+        // them relic and special-material synthesis would be rejected.
+        new("ItemComposeConfig.json",
+            () => GameData.ItemComposeConfigData.Count > 0 &&
+                  GameData.ItemComposeConfigData.Values.All(compose => string.IsNullOrEmpty(compose.FormulaType)),
+            "ItemComposeConfig formula columns are missing."),
 
         // Caches built before the daily-training tables (DailyQuest / DailyMissionData / DailyMissionCount) and
-        // the CocoonConfig type columns were loaded. Only rejected when the raw table is available to rebuild from.
-        var hasDailyQuest = ResourcePaths.FindExcel("DailyQuest.json") != null;
-        if (hasDailyQuest && (GameData.DailyQuestData.Count == 0 ||
-                              (GameData.CocoonConfigData.Count > 0 &&
-                               GameData.CocoonConfigData.Values.All(cocoon => cocoon.FarmType == 0))))
+        // the CocoonConfig type columns were loaded.
+        new("DailyQuest.json",
+            () => GameData.DailyQuestData.Count == 0 ||
+                  (GameData.CocoonConfigData.Count > 0 &&
+                   GameData.CocoonConfigData.Values.All(cocoon => cocoon.FarmType == 0)),
+            "daily training tables are missing."),
+
+        // Caches built before the Divergent Universe Persona tables / blessing-pool TournMode were loaded;
+        // scripts/RogueTournCacheUpgrade adds them in place.
+        new("RoguePersonaLayerRoom.json",
+            () => GameData.RoguePersonaLayerRoomData.Count == 0 ||
+                  !GameData.RogueBuffGroupData.Values.OfType<RogueTournBuffGroupExcel>()
+                      .Any(group => group.TournMode != Enums.TournRogue.RogueTournModeEnum.Permanent),
+            "Divergent Universe Persona tables are missing."),
+
+        new(null, () => GameData.EquipmentConfigData.Count == 0, "EquipmentConfigData is missing."),
+
+        new(null,
+            () => GameData.EquipmentConfigData.Values
+                .Any(config => config.Release && (config.ExpProvide <= 0 || config.CoinCost <= 0)),
+            "EquipmentConfigData is missing Light Cone EXP/cost fields.")
+    ];
+
+    private static bool ValidateLoadedCache()
+    {
+        foreach (var rule in StaleCacheRules)
         {
-            Logger.Warn("Resource cache is stale: daily training tables are missing.");
+            if (rule.RawTable != null && ResourcePaths.FindExcel(rule.RawTable) == null) continue;
+            if (!rule.IsStale()) continue;
+
+            Logger.Warn($"Resource cache is stale: {rule.Reason}");
             return false;
         }
 
-        // Caches built before the Divergent Universe Persona tables / blessing-pool TournMode were loaded. Only
-        // rejected when the raw table is available to rebuild from; scripts/RogueTournCacheUpgrade adds them in place.
-        var hasPersonaLayerRoom = ResourcePaths.FindExcel("RoguePersonaLayerRoom.json") != null;
-        if (hasPersonaLayerRoom && (GameData.RoguePersonaLayerRoomData.Count == 0 ||
-                                    !GameData.RogueBuffGroupData.Values.OfType<RogueTournBuffGroupExcel>()
-                                        .Any(group => group.TournMode != Enums.TournRogue.RogueTournModeEnum.Permanent)))
-        {
-            Logger.Warn("Resource cache is stale: Divergent Universe Persona tables are missing.");
-            return false;
-        }
-
-        if (GameData.EquipmentConfigData.Count == 0)
-        {
-            Logger.Warn("Resource cache is stale: EquipmentConfigData is missing.");
-            return false;
-        }
-
-        var staleEquipmentConfig = GameData.EquipmentConfigData.Values
-            .Any(config => config.Release && (config.ExpProvide <= 0 || config.CoinCost <= 0));
-        if (!staleEquipmentConfig) return true;
-
-        Logger.Warn("Resource cache is stale: EquipmentConfigData is missing Light Cone EXP/cost fields.");
-        return false;
+        return true;
     }
 }

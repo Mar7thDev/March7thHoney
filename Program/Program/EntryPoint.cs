@@ -10,7 +10,6 @@ using March7thHoney.GameServer.Server;
 using March7thHoney.GameServer.Server.Packet;
 using March7thHoney.Internationalization;
 using March7thHoney.Kcp;
-using March7thHoney.Program.Generator;
 using March7thHoney.Program.Handbook;
 using March7thHoney.Util;
 using March7thHoney.WebServer;
@@ -155,13 +154,6 @@ public class EntryPoint
                     e);
                 WaitForEnterIfInteractive();
                 return StartupFailedExitCode;
-            }
-
-            // check option
-            if (args.Contains("-generate-tourn"))
-            {
-                TournRoomGenerator.GenerateFile("RogueTournRoom.json");
-                return 0;
             }
         }
 
