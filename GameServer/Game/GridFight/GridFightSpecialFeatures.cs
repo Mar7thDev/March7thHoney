@@ -203,8 +203,7 @@ public static class GridFightSpecialFeatures
     public static bool CanMaterializeOrb(uint orbItemId)
     {
         // These Currency War orb IDs are capture-confirmed in 4.4 but can be absent from an
-        // older server Resource.bin. Keep the compatibility knowledge in code so it also works
-        // on the binary-cache startup path where Config/Custom is not re-read.
+        // older server Resource.bin, and GridFightBasicOrbRewards.json need not list them.
         if (orbItemId is 103 or 303 or 200002 or 200003 or 200004 or 200006 or 200019) return true;
         if (orbItemId is >= 101000 and < 102000 &&
             GameData.GridFightRoleBasicInfoData.ContainsKey(orbItemId - 100000)) return true;
