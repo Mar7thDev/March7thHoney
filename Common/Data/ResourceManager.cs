@@ -1,4 +1,7 @@
 using System.Reflection;
+using March7thHoney.Data.Activity;
+using March7thHoney.Data.Avatar;
+using March7thHoney.Data.Challenge;
 using March7thHoney.Data.Config;
 using March7thHoney.Data.Config.AdventureAbility;
 using March7thHoney.Data.Config.Character;
@@ -7,6 +10,7 @@ using March7thHoney.Data.Config.Scene;
 using March7thHoney.Data.Config.SummonUnit;
 using March7thHoney.Data.Custom;
 using March7thHoney.Data.Excel;
+using March7thHoney.Data.Rogue;
 using March7thHoney.Enums;
 using March7thHoney.Enums.Rogue;
 using March7thHoney.Enums.RogueMagic;
@@ -56,13 +60,13 @@ public class ResourceManager
         var t7 = Task.Run(LoadRogueChestMapInfo);
         var t8 = Task.Run(LoadAdventureModifier);
         var t9 = Task.Run(LoadLocalPlayer);
-        var t10 = Task.Run(LoadFinalityBattleTurnLimit);
+        var t10 = Task.Run(FinalityBattleTurnLimit.Load);
         CustomConfigFiles.Load(CustomConfigPass.ResourceLoad);
 
         Task.WaitAll(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10);
 
         // After the floors: seasons missing from ChallengePeak.json are derived from their placeholder groups.
-        ApplyChallengePeakOverrides();
+        ChallengePeakOverrides.Apply();
 
         // copy modifiers
         foreach (var value in GameData.AdventureAbilityConfigListData.Values)
@@ -680,58 +684,6 @@ public class ResourceManager
         return customFile;
     }
 
-    public static void ApplyChallengePeakOverrides()
-    {
-        // Idempotent: a cache boot applies the cached overrides first and the operator's file again afterwards,
-        // so clear what an earlier pass left on the rows before applying the current set.
-        foreach (var level in GameData.ChallengePeakConfigData.Values)
-        {
-            level.OverrideMapEntranceId = 0;
-            level.OverrideMazeGroupId = 0;
-            level.OverrideNpcMonsterId = 0;
-        }
-
-        // Seasons ChallengePeak.json leaves out get their map from the resources (needs the floors loaded).
-        GameData.ChallengePeakDerivedGroups = [];
-        if (!GameData.FloorInfoData.IsEmpty)
-            foreach (var derived in ChallengePeakMapResolver.Derive(GameData.ChallengePeakOverrideConfig.ChallengePeak))
-            {
-                Logger.Info($"ChallengePeak season {derived.GroupId} has no entry in ChallengePeak.json; derived from the " +
-                            $"resources: map entrance {derived.MapEntranceId} (floor {derived.FloorId}), knight group " +
-                            $"{derived.KnightMazeGroupId}, king group {derived.KingMazeGroupId}.");
-                GameData.ChallengePeakDerivedGroups.Add(ChallengePeakMapResolver.ToOverride(derived));
-            }
-
-        foreach (var group in GameData.ChallengePeakGroups)
-        {
-            if (GameData.ChallengePeakGroupConfigData.TryGetValue(group.GroupId, out var groupExcel))
-            {
-                var firstStage = group.Stages.Values.FirstOrDefault();
-                if (firstStage != null && firstStage.MapEntranceId > 0)
-                {
-                    groupExcel.MapEntranceID = firstStage.MapEntranceId;
-                    groupExcel.MapEntranceBoss = firstStage.MapEntranceId;
-                }
-            }
-
-            foreach (var stage in group.Stages)
-            {
-                if (!int.TryParse(stage.Key, out var levelId)) continue;
-                if (!GameData.ChallengePeakConfigData.TryGetValue(levelId, out var levelExcel)) continue;
-
-                levelExcel.OverrideMapEntranceId = stage.Value.MapEntranceId;
-                levelExcel.OverrideMazeGroupId = stage.Value.MazeGroupId;
-                levelExcel.OverrideNpcMonsterId = stage.Value.NpcMonsterId > 0
-                    ? stage.Value.NpcMonsterId
-                    : group.NpcMonsterIdDefault;
-            }
-        }
-
-        foreach (var level in GameData.ChallengePeakConfigData.Values) level.RebuildChallengeMonsters();
-
-        GameData.SyncCurrentChallengePeakGroupId();
-    }
-
     public static void LoadMazeSkill()
     {
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem",
@@ -1140,25 +1092,6 @@ public class ResourceManager
             I18NManager.Translate("Word.RogueChestMapInfo")));
     }
 
-    // Reads the lose-side round limit of FinalityBattle_TurnLimit so settle records can derive remaining rounds.
-    public static void LoadFinalityBattleTurnLimit()
-    {
-        var path = ResourcePaths.Resource("Config/ConfigAbility/FinalityBattle/Avatar_FinalityBattle_BattleTarget_Ability.json");
-        if (!File.Exists(path)) return;
-        try
-        {
-            var obj = JObject.Parse(File.ReadAllText(path));
-            var ability = obj["AbilityList"]?.FirstOrDefault(x => x["Name"]?.ToString() == "FinalityBattle_TurnLimit");
-            var task = ability?["OnAdd"]?.FirstOrDefault(x => x["$type"]?.ToString().EndsWith("SetLevelChallengeTurnLimit") == true);
-            var value = task?["LimitCount"]?["FixedValue"]?["Value"]?.Value<double>();
-            if (value != null) GameData.FinalityBattleTurnLimit = (int)value.Value;
-        }
-        catch (Exception ex)
-        {
-            Logger.Error(I18NManager.Translate("Server.ServerInfo.FailedToReadItem", path, ""), ex);
-        }
-    }
-
     public static void LoadAdventureModifier()
     {
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem",
@@ -1257,7 +1190,6 @@ public class ResourceManager
         FileInfo file = new(File.Exists(customRoomGen)
             ? customRoomGen
             : ConfigManager.Config.Path.ConfigPath + "/ChessRogueRoomGen.json");
-        List<ChessRogueRoomConfig>? customFile;
         if (!file.Exists)
         {
             Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
@@ -1273,45 +1205,9 @@ public class ResourceManager
             using var reader = file.OpenRead();
             using StreamReader reader2 = new(reader);
             var text = reader2.ReadToEnd();
-            var json = JsonConvert.DeserializeObject<List<ChessRogueRoomConfig>>(text);
-            customFile = json;
-
-            // This file is also overlaid after a cache load. Replace the cached pool instead of appending
-            // duplicate rooms every time the loader is invoked.
-            GameData.ChessRogueRoomData.Clear();
-            foreach (var room in customFile!)
-                switch (room.BlockType)
-                {
-                    case RogueDLCBlockTypeEnum.MonsterNormal:
-                        AddRoomToGameData(RogueDLCBlockTypeEnum.MonsterNormal, room);
-                        AddRoomToGameData(RogueDLCBlockTypeEnum.MonsterSwarm, room);
-                        count += 2;
-                        break;
-                    case RogueDLCBlockTypeEnum.MonsterBoss:
-                        AddRoomToGameData(RogueDLCBlockTypeEnum.MonsterBoss, room);
-                        AddRoomToGameData(RogueDLCBlockTypeEnum.MonsterNousBoss, room);
-                        AddRoomToGameData(RogueDLCBlockTypeEnum.MonsterSwarmBoss, room);
-                        count += 3;
-                        break;
-                    case RogueDLCBlockTypeEnum.Event:
-                        AddRoomToGameData(RogueDLCBlockTypeEnum.Event, room);
-                        AddRoomToGameData(RogueDLCBlockTypeEnum.Reward, room);
-                        AddRoomToGameData(RogueDLCBlockTypeEnum.Adventure, room); // adventure is not this type
-                        AddRoomToGameData(RogueDLCBlockTypeEnum.NousSpecialEvent, room);
-                        AddRoomToGameData(RogueDLCBlockTypeEnum.SwarmEvent, room);
-                        AddRoomToGameData(RogueDLCBlockTypeEnum.NousEvent, room);
-                        count += 6;
-                        break;
-                    case RogueDLCBlockTypeEnum.Trade:
-                        AddRoomToGameData(RogueDLCBlockTypeEnum.Trade, room);
-                        AddRoomToGameData(RogueDLCBlockTypeEnum.BlackMarket, room);
-                        count += 2;
-                        break;
-                    default:
-                        AddRoomToGameData(room.BlockType, room);
-                        count++;
-                        break;
-                }
+            var rooms = JsonConvert.DeserializeObject<List<ChessRogueRoomConfig>>(text) ??
+                        throw new InvalidDataException("Failed to deserialize ChessRogueRoomGen.json");
+            count = ChessRogueRoomPools.Rebuild(rooms);
         }
         catch (Exception ex)
         {
@@ -1398,13 +1294,7 @@ public class ResourceManager
             var json = JsonConvert.DeserializeObject<List<RogueMagicRoomConfig>>(text);
             if (json == null) throw new Exception("Failed to deserialize RogueMagicRoomGen.json");
 
-            foreach (var room in json.Clone())
-                if (room.RoomType == RogueMagicRoomTypeEnum.Event)
-                {
-                    json.Add(room.Clone(RogueMagicRoomTypeEnum.Reward));
-                    json.Add(room.Clone(RogueMagicRoomTypeEnum.Encounter));
-                }
-
+            RogueMagicRoomPools.AddEventRoomVariants(json);
             GameData.RogueMagicRoomGenData = json;
             count = json.Count;
         }
@@ -1507,9 +1397,7 @@ public class ResourceManager
                 if (json == null) throw new Exception($"Failed to deserialize {file.Key.Name}");
 
                 foreach (var conf in json)
-                {
-                    file.Value.Add(conf.NpcId << 2 | conf.Progress, conf);
-                }
+                    file.Value.Add(RogueDialogueEventConfig.TableKey(conf.NpcId, conf.Progress), conf);
 
                 count += json.Count;
             }
@@ -1524,13 +1412,5 @@ public class ResourceManager
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.DialogueInfo")));
-    }
-
-    public static void AddRoomToGameData(RogueDLCBlockTypeEnum type, ChessRogueRoomConfig room)
-    {
-        if (GameData.ChessRogueRoomData.TryGetValue(type, out var list))
-            list.Add(room);
-        else
-            GameData.ChessRogueRoomData.Add(type, [room]);
     }
 }

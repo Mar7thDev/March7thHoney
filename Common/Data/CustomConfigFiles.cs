@@ -1,3 +1,4 @@
+using March7thHoney.Data.Challenge;
 using March7thHoney.Data.Custom;
 using March7thHoney.Util;
 
@@ -154,7 +155,7 @@ public static class CustomConfigFiles
                 LoadFiles(_ => true);
                 LinkGridFightRewards();
                 // Seasons ChallengePeak.json leaves out are derived from the floors in the cache.
-                ResourceManager.ApplyChallengePeakOverrides();
+                ChallengePeakOverrides.Apply();
                 // Chessboard maps come from the raw tree; a cache-only deployment keeps the cached ones.
                 ResourceManager.LoadRogueChestMapInfo();
                 FinishLoad();

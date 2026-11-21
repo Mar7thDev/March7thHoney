@@ -1,5 +1,7 @@
 using System.IO.Compression;
 using MemoryPack;
+using March7thHoney.Data.Avatar;
+using March7thHoney.Data.Challenge;
 using March7thHoney.Data.Excel;
 using March7thHoney.Internationalization;
 using March7thHoney.Util;
@@ -74,7 +76,7 @@ public static class ResourceCache
         // `ChallengeMonsters` dictionaries they populate can't round-trip through MemoryPack — re-derive
         // them here, otherwise endgame bosses fail to spawn: ChallengePeak normal mode, and the 3rd/tierce
         // node of MOC / Pure Fiction / Apocalyptic Shadow.
-        ResourceManager.ApplyChallengePeakOverrides();
+        ChallengePeakOverrides.Apply();
         foreach (var tierce in GameData.ChallengeMazeTierceConfigData.Values)
             tierce.RebuildChallengeMonsters();
 
