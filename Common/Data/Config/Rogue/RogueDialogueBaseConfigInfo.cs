@@ -20,7 +20,7 @@ public partial class RogueDialogueBaseConfigInfo
         var logger = Logger.GetByClassName();
         if (!string.IsNullOrEmpty(OptionPath))
         {
-            var path = ConfigManager.Config.Path.ResourcePath + "/" + OptionPath;
+            var path = Path.Combine(ConfigManager.Config.Path.ResourcePath, OptionPath);
             var file = new FileInfo(path);
             if (!file.Exists) return;
             try
@@ -41,7 +41,7 @@ public partial class RogueDialogueBaseConfigInfo
 
         if (!string.IsNullOrEmpty(DialoguePath))
         {
-            var path = ConfigManager.Config.Path.ResourcePath + "/" + DialoguePath;
+            var path = Path.Combine(ConfigManager.Config.Path.ResourcePath, DialoguePath);
             var file = new FileInfo(path);
             if (!file.Exists) return;
             try

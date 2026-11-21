@@ -5,8 +5,14 @@ namespace March7thHoney.Kcp;
 
 public class BasePacket(ushort cmdId)
 {
-    private const uint HEADER_CONST = 0x9d74c714;
-    private const uint TAIL_CONST = 0xd7a152c8;
+    /// <summary>Magic word opening every game packet frame; validated on receive.</summary>
+    public const uint HeaderMagic = 0x9d74c714;
+
+    /// <summary>Magic word closing every game packet frame.</summary>
+    public const uint TailMagic = 0xd7a152c8;
+
+    /// <summary>Fixed part of a frame before the header payload: magic + cmdId + headerLen + payloadLen.</summary>
+    public const int MinFrameBytes = 12;
 
     public ushort CmdId { get; set; } = cmdId;
     public byte[] Data { get; set; } = [];
@@ -33,13 +39,13 @@ public class BasePacket(ushort cmdId)
         using BinaryWriter? bw = new(ms);
 
         head ??= [];
-        bw.WriteUInt32BE(HEADER_CONST);
+        bw.WriteUInt32BE(HeaderMagic);
         bw.WriteUInt16BE(CmdId);
         bw.WriteUInt16BE((ushort)head.Length);
         bw.WriteUInt32BE((uint)Data.Length);
         if (head.Length > 0) bw.Write(head);
         if (Data.Length > 0) bw.Write(Data);
-        bw.WriteUInt32BE(TAIL_CONST);
+        bw.WriteUInt32BE(TailMagic);
 
         var packet = ms.ToArray();
 

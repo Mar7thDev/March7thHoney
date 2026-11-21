@@ -23,6 +23,14 @@ public class ResourceManager
     public static Logger Logger { get; } = new("ResMgr");
     public static bool IsLoaded { get; set; }
 
+    /// <summary>Absolute path of a file inside the resource tree (Config.Path.ResourcePath).</summary>
+    /// <remarks>
+    ///     Paths read from excel and level data may be null or empty, and a leading separator is stripped so a
+    ///     stray "/Config/..." still resolves inside the resource tree instead of escaping it.
+    /// </remarks>
+    private static string ResPath(string? relative) =>
+        Path.Combine(ConfigManager.Config.Path.ResourcePath, (relative ?? string.Empty).TrimStart('/', '\\'));
+
     private static void LogPartialMissingSummary(string itemName, int missingCount, List<string> missingFiles)
     {
         if (missingCount <= 0) return;
@@ -292,14 +300,14 @@ public class ResourceManager
     public static void LoadFloorInfo()
     {
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", I18NManager.Translate("Word.FloorInfo")));
-        DirectoryInfo directory = new(ConfigManager.Config.Path.ResourcePath + "/Config/LevelOutput/RuntimeFloor/");
+        DirectoryInfo directory = new(ResPath("Config/LevelOutput/RuntimeFloor/"));
         var missingGroupInfos = false;
 
         if (!directory.Exists)
         {
             Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
                 I18NManager.Translate("Word.FloorInfo"),
-                $"{ConfigManager.Config.Path.ResourcePath}/Config/LevelOutput/RuntimeFloor",
+                ResPath("Config/LevelOutput/RuntimeFloor"),
                 I18NManager.Translate("Word.FloorMissingResult")));
             return;
         }
@@ -307,7 +315,7 @@ public class ResourceManager
         var files = directory.GetFiles();
 
         // Load floor infos in parallel
-        var res = Parallel.ForEach(files, file =>
+        Parallel.ForEach(files, file =>
         {
             try
             {
@@ -320,7 +328,7 @@ public class ResourceManager
                 GameData.FloorInfoData[name] = info;
 
                 // Load navmap infos
-                FileInfo navmapFile = new(ConfigManager.Config.Path.ResourcePath + "/" + info.NavmapConfigPath);
+                FileInfo navmapFile = new(ResPath(info.NavmapConfigPath));
                 if (navmapFile.Exists)
                     try
                     {
@@ -346,7 +354,7 @@ public class ResourceManager
                 {
                     if (groupInfo.IsDelete) continue;
                     if (groupInfo.GroupPath.Contains("_D100")) continue;
-                    FileInfo groupFile = new(ConfigManager.Config.Path.ResourcePath + "/" + groupInfo.GroupPath);
+                    FileInfo groupFile = new(ResPath(groupInfo.GroupPath));
                     if (!groupFile.Exists) continue;
 
                     try
@@ -364,7 +372,7 @@ public class ResourceManager
                             info.Groups[groupInfo.ID] = group;
 
                             // Load graph
-                            var graphPath = ConfigManager.Config.Path.ResourcePath + "/" + group.LevelGraph;
+                            var graphPath = ResPath(group.LevelGraph);
                             var graphFile = new FileInfo(graphPath);
                             if (graphFile.Exists)
                             {
@@ -404,13 +412,10 @@ public class ResourceManager
             }
         });
 
-        // wait it done
-        while (!res.IsCompleted) Thread.Sleep(10);
-
         if (missingGroupInfos)
             Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
                 I18NManager.Translate("Word.FloorGroupInfo"),
-                $"{ConfigManager.Config.Path.ResourcePath}/Config/LevelOutput/SharedRuntimeGroup",
+                ResPath("Config/LevelOutput/SharedRuntimeGroup"),
                 I18NManager.Translate("Word.FloorGroupMissingResult")));
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", GameData.FloorInfoData.Count.ToString(),
@@ -420,12 +425,12 @@ public class ResourceManager
     public static void LoadMissionInfo()
     {
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", I18NManager.Translate("Word.MissionInfo")));
-        DirectoryInfo directory = new(ConfigManager.Config.Path.ResourcePath + "/Config/Level/Mission");
+        DirectoryInfo directory = new(ResPath("Config/Level/Mission"));
         if (!directory.Exists)
         {
             Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
                 I18NManager.Translate("Word.MissionInfo"),
-                $"{ConfigManager.Config.Path.ResourcePath}/Config/Level/Mission",
+                ResPath("Config/Level/Mission"),
                 I18NManager.Translate("Word.Mission")));
             return;
         }
@@ -434,12 +439,12 @@ public class ResourceManager
         var missingCount = 0;
         var missingFiles = new List<string>();
         var count = 0;
-        var res = Parallel.ForEach(GameData.MainMissionData, missionExcel =>
+        Parallel.ForEach(GameData.MainMissionData, missionExcel =>
         {
             try
             {
                 var path =
-                    $"{ConfigManager.Config.Path.ResourcePath}/Config/Level/Mission/{missionExcel.Key}/MissionInfo_{missionExcel.Key}.json";
+                    ResPath($"Config/Level/Mission/{missionExcel.Key}/MissionInfo_{missionExcel.Key}.json");
                 if (!File.Exists(path))
                 {
                     missingMissionInfos = true;
@@ -454,7 +459,7 @@ public class ResourceManager
                 var json = File.ReadAllText(path);
                 var missionInfo = JsonConvert.DeserializeObject<MissionInfo>(json);
                 var partialPath =
-                    $"{ConfigManager.Config.Path.ResourcePath}/Config/Level/Mission/{missionExcel.Key}/MissionInfo_{missionExcel.Key}.partial.json";
+                    ResPath($"Config/Level/Mission/{missionExcel.Key}/MissionInfo_{missionExcel.Key}.partial.json");
                 if (missionInfo != null && File.Exists(partialPath))
                     try
                     {
@@ -490,9 +495,6 @@ public class ResourceManager
                         $"MissionInfo_{missionExcel.Key}.json", I18NManager.Translate("Word.Error")), ex);
             }
         });
-
-        // wait it done
-        while (!res.IsCompleted) Thread.Sleep(10);
 
         if (missingMissionInfos)
             LogPartialMissingSummary(I18NManager.Translate("Word.MissionInfo"), missingCount, missingFiles);
@@ -788,11 +790,11 @@ public class ResourceManager
         var adventureAbilityLock = new object();
         var npcAbilityCatalog = new Lazy<AdventureAbilityResourceCatalog>(() =>
             new AdventureAbilityResourceCatalog(ConfigManager.Config.Path.ResourcePath));
-        var res = Parallel.ForEach(GameData.AdventurePlayerData.Values, adventure =>
+        Parallel.ForEach(GameData.AdventurePlayerData.Values, adventure =>
         {
             var adventurePath = adventure.PlayerJsonPath.Replace("_Config.json", "_Ability.json")
                 .Replace("ConfigCharacter", "ConfigAdventureAbility");
-            var path = ConfigManager.Config.Path.ResourcePath + "/" + adventurePath;
+            var path = ResPath(adventurePath);
             var file = new FileInfo(path);
             if (!file.Exists)
             {
@@ -829,18 +831,18 @@ public class ResourceManager
             }
         });
 
-        var res2 = Parallel.ForEach(GameData.NpcMonsterDataData.Values, adventure =>
+        Parallel.ForEach(GameData.NpcMonsterDataData.Values, adventure =>
         {
             // The client retains unused development rows whose WhiteBox
             // character/ability assets are not shipped. Do not derive a skill
             // filename from an empty path or require those development assets.
             if (adventure.JsonPath.StartsWith("Config/ConfigCharacter/WhiteBox/", StringComparison.Ordinal)
-                && !File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, adventure.JsonPath))) return;
+                && !File.Exists(ResPath(adventure.JsonPath))) return;
             var adventurePath = adventure.ConfigEntityPath.Replace("_Entity.json", "_Ability.json")
                 .Replace("_Config.json", "_Ability.json")
                 .Replace("ConfigEntity", "ConfigAdventureAbility");
 
-            var path = ConfigManager.Config.Path.ResourcePath + "/" + adventurePath;
+            var path = ResPath(adventurePath);
             var file = new FileInfo(path);
             if (!file.Exists)
             {
@@ -894,9 +896,6 @@ public class ResourceManager
             }
         });
 
-        // wait it done
-        while (!res.IsCompleted || !res2.IsCompleted) Thread.Sleep(10);
-
         if (missingCount > 0)
             LogPartialMissingSummary(I18NManager.Translate("Word.MazeSkillInfo"), missingCount, missingFiles);
 
@@ -911,9 +910,9 @@ public class ResourceManager
         var count = 0;
         var missingCount = 0;
         var missingFiles = new List<string>();
-        var res = Parallel.ForEach(GameData.SummonUnitDataData.Values, summonUnit =>
+        Parallel.ForEach(GameData.SummonUnitDataData.Values, summonUnit =>
         {
-            var path = ConfigManager.Config.Path.ResourcePath + "/" + summonUnit.JsonPath;
+            var path = ResPath(summonUnit.JsonPath);
             var file = new FileInfo(path);
             if (!file.Exists)
             {
@@ -946,9 +945,6 @@ public class ResourceManager
             }
         });
 
-        // wait it done
-        while (!res.IsCompleted) Thread.Sleep(10);
-
         if (missingCount > 0)
             LogPartialMissingSummary(I18NManager.Translate("Word.SummonUnitInfo"), missingCount, missingFiles);
 
@@ -962,9 +958,9 @@ public class ResourceManager
         var count = 0;
         var missingCount = 0;
         var missingFiles = new List<string>();
-        var res = Parallel.ForEach(GameData.RogueNPCData.Values, dialogue =>
+        Parallel.ForEach(GameData.RogueNPCData.Values, dialogue =>
         {
-            var path = ConfigManager.Config.Path.ResourcePath + "/" + dialogue.NPCJsonPath;
+            var path = ResPath(dialogue.NPCJsonPath);
             var file = new FileInfo(path);
             if (!file.Exists)
             {
@@ -997,9 +993,6 @@ public class ResourceManager
             }
         });
 
-        // wait it done
-        while (!res.IsCompleted) Thread.Sleep(10);
-
         if (missingCount > 0)
             LogPartialMissingSummary(I18NManager.Translate("Word.DialogueInfo"), missingCount, missingFiles);
 
@@ -1018,7 +1011,7 @@ public class ResourceManager
         if (entry == null || !entry.DialoguePath.Contains("RogueEventTourn", StringComparison.Ordinal)) return;
 
         // Some official builds pad their resource paths with trailing whitespace.
-        var file = new FileInfo(ConfigManager.Config.Path.ResourcePath + "/" + entry.DialoguePath.Trim());
+        var file = new FileInfo(ResPath(entry.DialoguePath.Trim()));
         if (!file.Exists) return;
         try
         {
@@ -1043,7 +1036,7 @@ public class ResourceManager
             I18NManager.Translate("Word.PerformanceInfo")));
         var count = 0;
 
-        var res = Parallel.ForEach(GameData.PerformanceEData.Values, performance =>
+        Parallel.ForEach(GameData.PerformanceEData.Values, performance =>
         {
             if (performance.PerformancePath == "")
             {
@@ -1051,7 +1044,7 @@ public class ResourceManager
                 return;
             }
 
-            var path = ConfigManager.Config.Path.ResourcePath + "/" + performance.PerformancePath;
+            var path = ResPath(performance.PerformancePath);
             var file = new FileInfo(path);
             if (!file.Exists) return;
             try
@@ -1073,7 +1066,7 @@ public class ResourceManager
             }
         });
 
-        var res2 = Parallel.ForEach(GameData.PerformanceDData.Values, performance =>
+        Parallel.ForEach(GameData.PerformanceDData.Values, performance =>
         {
             if (performance.PerformancePath == "")
             {
@@ -1081,7 +1074,7 @@ public class ResourceManager
                 return;
             }
 
-            var path = ConfigManager.Config.Path.ResourcePath + "/" + performance.PerformancePath;
+            var path = ResPath(performance.PerformancePath);
             var file = new FileInfo(path);
             if (!file.Exists) return;
             try
@@ -1102,9 +1095,6 @@ public class ResourceManager
                         I18NManager.Translate("Word.Error")), ex);
             }
         });
-
-        // wait it done
-        while (!(res.IsCompleted && res2.IsCompleted)) Thread.Sleep(10);
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.PerformanceInfo")));
@@ -1115,11 +1105,11 @@ public class ResourceManager
         Logger.Info(
             I18NManager.Translate("Server.ServerInfo.LoadingItem", I18NManager.Translate("Word.SubMissionInfo")));
         var count = 0;
-        var res = Parallel.ForEach(GameData.SubMissionInfoData.Values, subMission =>
+        Parallel.ForEach(GameData.SubMissionInfoData.Values, subMission =>
         {
             if (subMission.SubMissionInfo == null || subMission.SubMissionInfo.MissionJsonPath == "") return;
 
-            var path = ConfigManager.Config.Path.ResourcePath + "/" + subMission.SubMissionInfo.MissionJsonPath;
+            var path = ResPath(subMission.SubMissionInfo.MissionJsonPath);
             var file = new FileInfo(path);
             if (!file.Exists) return;
             try
@@ -1140,9 +1130,6 @@ public class ResourceManager
                         I18NManager.Translate("Word.Error")), ex);
             }
         });
-
-        // wait it done
-        while (!res.IsCompleted) Thread.Sleep(10);
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.SubMissionInfo")));
@@ -1166,7 +1153,7 @@ public class ResourceManager
                 continue;
             }
 
-            var path = ConfigManager.Config.Path.ResourcePath + "/" + board.ChessBoardConfiguration;
+            var path = ResPath(board.ChessBoardConfiguration);
 
             var file = new FileInfo(path);
             if (!file.Exists) continue;
@@ -1194,7 +1181,7 @@ public class ResourceManager
         if (count < boardList.Count)
             Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
                 I18NManager.Translate("Word.RogueChestMapInfo"),
-                $"{ConfigManager.Config.Path.ResourcePath}/Config/Gameplays/RogueDLC",
+                ResPath("Config/Gameplays/RogueDLC"),
                 I18NManager.Translate("Word.RogueChestMap")));
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
@@ -1204,7 +1191,7 @@ public class ResourceManager
     // Reads the lose-side round limit of FinalityBattle_TurnLimit so settle records can derive remaining rounds.
     public static void LoadFinalityBattleTurnLimit()
     {
-        var path = $"{ConfigManager.Config.Path.ResourcePath}/Config/ConfigAbility/FinalityBattle/Avatar_FinalityBattle_BattleTarget_Ability.json";
+        var path = ResPath("Config/ConfigAbility/FinalityBattle/Avatar_FinalityBattle_BattleTarget_Ability.json");
         if (!File.Exists(path)) return;
         try
         {
@@ -1227,12 +1214,12 @@ public class ResourceManager
         var count = 0;
 
         // list the files in folder
-        var directory = new DirectoryInfo($"{ConfigManager.Config.Path.ResourcePath}/Config/ConfigAdventureModifier");
+        var directory = new DirectoryInfo(ResPath("Config/ConfigAdventureModifier"));
         if (!directory.Exists)
         {
             Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
                 I18NManager.Translate("Word.AdventureModifierInfo"),
-                $"{ConfigManager.Config.Path.ResourcePath}/Config/ConfigAdventureModifier",
+                ResPath("Config/ConfigAdventureModifier"),
                 I18NManager.Translate("Word.Buff")));
 
             return;
@@ -1272,9 +1259,9 @@ public class ResourceManager
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem",
             I18NManager.Translate("Word.LocalPlayerCharacter")));
         var count = 0;
-        var res = Parallel.ForEach(GameData.AdventurePlayerData.Values, excel =>
+        Parallel.ForEach(GameData.AdventurePlayerData.Values, excel =>
         {
-            var path = ConfigManager.Config.Path.ResourcePath + "/" + excel.PlayerJsonPath;
+            var path = ResPath(excel.PlayerJsonPath);
             var file = new FileInfo(path);
             if (!file.Exists) return;
             try
@@ -1298,13 +1285,10 @@ public class ResourceManager
             }
         });
 
-        // wait it done
-        while (!res.IsCompleted) Thread.Sleep(10);
-
         if (count < GameData.SummonUnitDataData.Count)
             Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
                 I18NManager.Translate("Word.LocalPlayerCharacterInfo"),
-                $"{ConfigManager.Config.Path.ResourcePath}/Config/ConfigCharacter",
+                ResPath("Config/ConfigCharacter"),
                 I18NManager.Translate("Word.LocalPlayerCharacter")));
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),

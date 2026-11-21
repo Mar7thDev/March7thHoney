@@ -11,6 +11,7 @@ public class March7thHoneyConnection
     public static readonly ConcurrentBag<int> BannedPackets = [];
     private static readonly Logger Logger = new("GameServer");
     public static readonly ConcurrentDictionary<int, string> LogMap = [];
+    private static readonly ConcurrentDictionary<string, int> NameToCmdId = new(StringComparer.Ordinal);
 
     public static readonly ConcurrentBag<int> IgnoreLog =
     [
@@ -32,8 +33,6 @@ public class March7thHoneyConnection
         RemoteEndPoint = remote;
         CancelToken = new CancellationTokenSource();
         if (ConfigManager.Config.GameServer.UsePacketEncryption) XorKey = Crypto.ClientSecretKey!.GetXorKey();
-
-        Start();
     }
 
     public byte[]? XorKey { get; set; }
@@ -43,6 +42,10 @@ public class March7thHoneyConnection
 
     public SessionStateEnum State { get; set; } = SessionStateEnum.INACTIVE;
 
+    /// <summary>
+    ///     Activates the connection. Called by the listener once the connection is registered — never from
+    ///     the constructor, so overrides start no I/O before the object is fully built and reachable.
+    /// </summary>
     public virtual void Start()
     {
         Logger.Info($"New connection from {RemoteEndPoint}.");
@@ -67,46 +70,59 @@ public class March7thHoneyConnection
     public void LogPacket(string sendOrRecv, ushort opcode, byte[] payload)
     {
         if (!ConfigManager.Config.ServerOption.LogOption.EnableGamePacketLog) return;
+        if (IgnoreLog.Contains(opcode)) return;
 
         try
         {
-            if (IgnoreLog.Contains(opcode)) return;
-
-            if (ConfigManager.Config.ServerOption.LogOption.DisableLogDetailPacket) throw new Exception();
-
-            var asJson = PacketLogHelper.ConvertPacketToJson(opcode, payload);
-            var output = $"{sendOrRecv}: {LogMap[opcode]}({opcode})\r\n{asJson}";
-
-            if (ConfigManager.Config.ServerOption.LogOption.LogPacketToConsole)
-                Logger.Debug(output);
-
-            if (DebugFile == "" || !ConfigManager.Config.ServerOption.LogOption.SavePersonalDebugFile) return;
-            var sw = GetWriter();
-            sw.WriteLine($"[{DateTime.Now:HH:mm:ss}] [GameServer] [DEBUG] " + output);
-            sw.Flush();
+            WritePacketLog(BuildPacketLogLine(sendOrRecv, opcode, payload));
         }
         catch
         {
-            // DisableLogDetailPacket deliberately uses this fallback; log write failures must not stop the server.
+            // A failure to write the log (typically a full disk) must never bring down the game server process.
             try
             {
-                var output = $"{sendOrRecv}: {LogMap.GetValueOrDefault(opcode, "UnknownPacket")}({opcode})";
-
-                if (ConfigManager.Config.ServerOption.LogOption.LogPacketToConsole)
-                    Logger.Debug(output);
-
-                if (DebugFile != "" && ConfigManager.Config.ServerOption.LogOption.SavePersonalDebugFile)
-                {
-                    var sw = GetWriter();
-                    sw.WriteLine($"[{DateTime.Now:HH:mm:ss}] [GameServer] [DEBUG] " + output);
-                    sw.Flush();
-                }
+                WritePacketLog(ShortPacketLogLine(sendOrRecv, opcode));
             }
             catch
             {
                 // Swallowed on purpose: losing one packet log entry is far better than aborting the server process.
             }
         }
+    }
+
+    private static string BuildPacketLogLine(string sendOrRecv, ushort opcode, byte[] payload)
+    {
+        if (ConfigManager.Config.ServerOption.LogOption.DisableLogDetailPacket)
+            return ShortPacketLogLine(sendOrRecv, opcode);
+        if (!LogMap.TryGetValue(opcode, out var name))
+            return ShortPacketLogLine(sendOrRecv, opcode);
+
+        try
+        {
+            var asJson = PacketLogHelper.ConvertPacketToJson(opcode, payload);
+            return $"{sendOrRecv}: {name}({opcode})\r\n{asJson}";
+        }
+        catch
+        {
+            // Unknown or unparseable payloads degrade to the short line instead of failing the send/recv path.
+            return ShortPacketLogLine(sendOrRecv, opcode);
+        }
+    }
+
+    private static string ShortPacketLogLine(string sendOrRecv, ushort opcode)
+    {
+        return $"{sendOrRecv}: {LogMap.GetValueOrDefault(opcode, "UnknownPacket")}({opcode})";
+    }
+
+    private void WritePacketLog(string output)
+    {
+        if (ConfigManager.Config.ServerOption.LogOption.LogPacketToConsole)
+            Logger.Debug(output);
+
+        if (DebugFile == "" || !ConfigManager.Config.ServerOption.LogOption.SavePersonalDebugFile) return;
+        var sw = GetWriter();
+        sw.WriteLine($"[{DateTime.Now:HH:mm:ss}] [GameServer] [DEBUG] " + output);
+        sw.Flush();
     }
 
     private StreamWriter GetWriter()
@@ -168,13 +184,14 @@ public class March7thHoneyConnection
         var packetBytes = packet.BuildPacket(requestPacketId != 0 ? PacketHead.Encode(requestPacketId) : null);
 
         await SendPacket(packetBytes, packet.CmdId);
-
-        if (packet.CmdId == CmdIds.SetClientPausedScRsp)
-        {
-            await SendClientUiLuaAsync();
-        }
-
+        await OnPacketSentAsync(packet);
     }
+
+    /// <summary>
+    ///     Runs after a packet has been handed to the transport. Game features that must react to a
+    ///     specific outbound packet hook here instead of hard-coding their cmdId in the base send path.
+    /// </summary>
+    protected virtual Task OnPacketSentAsync(BasePacket packet) => Task.CompletedTask;
 
     public async Task SendPacket(int cmdId)
     {
@@ -183,4 +200,26 @@ public class March7thHoneyConnection
 
     public virtual Task SendWatermarkLuaAsync() => Task.CompletedTask;
     public virtual Task SendClientUiLuaAsync() => SendWatermarkLuaAsync();
+
+    /// <summary>
+    ///     Fills <see cref="LogMap" /> (cmdId → name) and the reverse <see cref="NameToCmdId" /> from the
+    ///     generated <see cref="CmdIds" /> constants. One reflection pass at startup; the send/receive and
+    ///     fallback-reply paths then work on plain dictionary lookups.
+    /// </summary>
+    public static void InitPacketNameMap()
+    {
+        foreach (var field in typeof(CmdIds).GetFields())
+        {
+            if (field.FieldType != typeof(int)) continue;
+            var value = (int)field.GetValue(null)!;
+            LogMap.TryAdd(value, field.Name);
+            NameToCmdId.TryAdd(field.Name, value);
+        }
+    }
+
+    /// <summary>Resolve a packet name to its cmdId in O(1); false when the name is unknown.</summary>
+    public static bool TryGetCmdIdByName(string packetName, out int cmdId)
+    {
+        return NameToCmdId.TryGetValue(packetName, out cmdId);
+    }
 }

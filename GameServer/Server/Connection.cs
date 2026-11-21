@@ -65,7 +65,7 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
         if (!IsOnline) return;
 
         Player?.TrainCakeCatchManager?.LeaveSocialPlayRoom();
-        Player?.OnLogoutAsync();
+        Player?.OnLogout();
         March7thHoneyListener.UnregisterConnection(this);
         base.Stop();
     }
@@ -273,12 +273,12 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
             while (br.BaseStream.Position < br.BaseStream.Length)
             {
                 // Length
-                if (br.BaseStream.Length - br.BaseStream.Position < 12) return;
+                if (br.BaseStream.Length - br.BaseStream.Position < BasePacket.MinFrameBytes) return;
                 // Packet sanity check
                 var magic1 = br.ReadUInt32BE();
-                if (magic1 != 0x9D74C714)
+                if (magic1 != BasePacket.HeaderMagic)
                 {
-                    Logger.Error($"Bad Data Package Received: got 0x{magic1:X}, expect 0x9D74C714");
+                    Logger.Error($"Bad Data Package Received: got 0x{magic1:X}, expect 0x{BasePacket.HeaderMagic:X}");
                     return; // Bad packet
                 }
 
@@ -333,8 +333,10 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
                 {
                     case PacketActionTypeEnum.SendPacket:
                     {
-                        var sendPacket = new BasePacket((ushort)LogMap.FirstOrDefault(x =>
-                            x.Value == action.Param.PacketName).Key);
+                        var sendPacket = new BasePacket(
+                            TryGetCmdIdByName(action.Param.PacketName, out var actionCmdId)
+                                ? (ushort)actionCmdId
+                                : (ushort)0);
 
                         sendPacket.SetData(action.Param.PacketData);
 
@@ -382,21 +384,16 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
 
                 // get the packet rsp and set retCode to Retcode.RetFail
                 var curPacket = LogMap.GetValueOrDefault(opcode);
-                if (curPacket == null) return;
-
-                var rspName = curPacket.Replace("Cs", "Sc").Replace("Req", "Rsp"); // Get the response packet name
-                if (rspName == curPacket) return; // do not send rsp when resp name = recv name
-                if (!TryGetOpcodeByName(rspName, out var rspOpcode)) return;
+                if (curPacket == null || !TryDeriveResponseName(curPacket, out var rspName)) return;
+                if (!TryGetCmdIdByName(rspName, out var rspOpcode)) return;
 
                 // get proto class
                 // Because of the cmdid aliases (cmdid-aliases.txt), a name in LogMap may not be a message that really
                 // exists in the proto. If a type is not found, give up on the fallback reply: another exception thrown
                 // here would take down the receive loop.
-                var protoTypes = AppDomain.CurrentDomain.GetAssemblies()
-                    .SingleOrDefault(assembly => assembly.GetName().Name == "March7thHoney.Proto")!.GetTypes();
-                var typ = protoTypes.FirstOrDefault(t => t.Name == rspName); //get the type using the packet name
-                var curTyp = protoTypes.FirstOrDefault(t => t.Name == curPacket); //get the type using the packet name
-                if (typ == null || curTyp == null) return;
+                var protoTypes = ProtoTypeMap.Value;
+                if (!protoTypes.TryGetValue(rspName, out var typ) ||
+                    !protoTypes.TryGetValue(curPacket, out var curTyp)) return;
 
                 // create the response packet
                 if (Activator.CreateInstance(typ) is not IMessage rsp) return;
@@ -438,20 +435,43 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
             opcode == CmdIds.UnlockTutorialCsReq) return;
 
         // get the packet name
-        if (packetName == null) return;
-
-        var respName = packetName.Replace("Cs", "Sc").Replace("Req", "Rsp"); // Get the response packet name
-        if (respName == packetName) return; // do not send rsp when resp name = recv name
-        if (!TryGetOpcodeByName(respName, out var respOpcode)) return;
+        if (packetName == null || !TryDeriveResponseName(packetName, out var respName)) return;
+        if (!TryGetCmdIdByName(respName, out var respOpcode)) return;
 
         // Send Rsp
         await SendPacket(respOpcode);
     }
 
-    private static bool TryGetOpcodeByName(string packetName, out int opcode)
+    /// <summary>GetXxxCsReq → GetXxxScRsp; false when the name carries no Cs/Req markers (notifies etc.).</summary>
+    private static bool TryDeriveResponseName(string requestName, out string responseName)
     {
-        var match = LogMap.FirstOrDefault(x => x.Value == packetName);
-        opcode = match.Key;
-        return match.Value != null && opcode > 0;
+        responseName = requestName.Replace("Cs", "Sc").Replace("Req", "Rsp");
+        return responseName != requestName;
+    }
+
+    // Name → proto message type, built once so the RetFail fallback does not enumerate the Proto assembly on
+    // every handler exception.
+    private static readonly Lazy<Dictionary<string, Type>> ProtoTypeMap = new(() =>
+    {
+        try
+        {
+            return typeof(PlayerGetTokenCsReq).Assembly.GetTypes()
+                .GroupBy(t => t.Name)
+                .ToDictionary(g => g.Key, g => g.First(), StringComparer.Ordinal);
+        }
+        catch (Exception e)
+        {
+            // A type that fails to load (trimmed publish) must not take down the receive loop; the fallback
+            // replies are disabled instead.
+            Logger.Warn($"Proto type map unavailable, fallback replies disabled: {e.Message}");
+            return new Dictionary<string, Type>(StringComparer.Ordinal);
+        }
+    });
+
+    // The 4.x client repaints its version/watermark overlay after the SetClientPaused answer lands.
+    protected override async Task OnPacketSentAsync(BasePacket packet)
+    {
+        if (packet.CmdId == CmdIds.SetClientPausedScRsp)
+            await SendClientUiLuaAsync();
     }
 }

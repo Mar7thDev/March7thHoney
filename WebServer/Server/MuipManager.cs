@@ -248,9 +248,7 @@ public static class MuipManager
             }
 
             var result = new Dictionary<int, PlayerData>();
-            var sync = Task.Run(() => OnGetServerInformation?.Invoke(result));
-
-            sync.Wait();
+            OnGetServerInformation?.Invoke(result);
 
             return new ServerInformationResponse(0, "Success", new ServerInformationData
             {
@@ -290,9 +288,7 @@ public static class MuipManager
             var status = PlayerStatusEnum.Offline;
             var subStatus = PlayerSubStatusEnum.None;
 
-            var statusSync = Task.Run(() => OnGetPlayerStatus?.Invoke(player.Uid, out status, out subStatus));
-
-            statusSync.Wait();
+            OnGetPlayerStatus?.Invoke(player.Uid, out status, out subStatus);
 
             var avatarData = DatabaseHelper.Instance!.GetInstance<AvatarData>(player.Uid)!;
             var lineupData = DatabaseHelper.Instance!.GetInstance<LineupData>(player.Uid)!;

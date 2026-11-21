@@ -57,7 +57,9 @@ public class DatabaseHelper
         {
             case "sqlite":
                 SQLitePCL.Batteries_V2.Init();
-                var f = new FileInfo(config.Path.DatabasePath + "/" + config.Database.DatabaseName);
+                // The database name always lives inside DatabasePath, even when written with a leading separator.
+                var f = new FileInfo(Path.Combine(config.Path.DatabasePath,
+                    config.Database.DatabaseName.TrimStart('/', '\\')));
                 if (!f.Exists && f.Directory is { Exists: false }) f.Directory.Create();
                 _mysql = false;
                 _connString = $"Data Source={f.FullName}";

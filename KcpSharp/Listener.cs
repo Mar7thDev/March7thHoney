@@ -27,6 +27,14 @@ public class March7thHoneyListener
     /// <summary>KCP MTU. Also fixes the maximum message size — see March7thHoneyConnection.MaxPacketBytes.</summary>
     public const int KcpMtu = 1400;
 
+    // Handshake codes carried in the 20-byte UDP greeting before KCP traffic starts.
+    private const int HandshakeConnectCode = 0x000000FF;
+    private const int HandshakeConnectCodeAlt = unchecked((int)0xC8520300); // variant sent by newer clients
+    private const int HandshakeDisconnectCode = 0x00000194;
+    private const int HandshakeResponseCode = 0x00000145;
+    private const int HandshakeResponseTail = 0x14514545;
+    private const int HandshakeDisconnectTail = 0x19419494;
+
     private static readonly KcpConversationOptions ConvOpt = new()
     {
         StreamMode = false,
@@ -55,7 +63,7 @@ public class March7thHoneyListener
         ListenAddress = new IPEndPoint(IPAddress.Parse(ConfigManager.Config.GameServer.BindAddress), (int)PORT);
         UDPClient = new UdpClient(ListenAddress);
         if (UDPListener == null) return;
-        KCPTransport = KcpSocketTransport.CreateMultiplexConnection(UDPClient, 1400);
+        KCPTransport = KcpSocketTransport.CreateMultiplexConnection(UDPClient, KcpMtu);
         KCPTransport.Start();
         Logger.Info(I18NManager.Translate("Server.ServerInfo.ServerRunning", I18NManager.Translate("Word.Game"),
             ConfigManager.Config.GameServer.GetDisplayAddress()));
@@ -89,7 +97,8 @@ public class March7thHoneyListener
             br.ReadUInt32();
             switch (code)
             {
-                case 0x000000FF:
+                case HandshakeConnectCode:
+                case HandshakeConnectCodeAlt:
                     if (con != null)
                     {
                         Logger.Info($"Duplicate handshake from {con.RemoteEndPoint}");
@@ -98,7 +107,7 @@ public class March7thHoneyListener
 
                     await AcceptConnection(rcv, enet);
                     break;
-                case 0x00000194:
+                case HandshakeDisconnectCode:
                     if (con == null)
                     {
                         Logger.Info($"Inexistent connection asked for disconnect from {rcv.RemoteEndPoint}");
@@ -106,15 +115,6 @@ public class March7thHoneyListener
                     }
 
                     await SendDisconnectPacket(con, 5);
-                    break;
-                case -934149376:
-                    if (con != null)
-                    {
-                        Logger.Info($"Duplicate handshake from {con.RemoteEndPoint}");
-                        return;
-                    }
-
-                    await AcceptConnection(rcv, enet);
                     break;
                 default:
                     Logger.Error($"Invalid handshake code received {code}");
@@ -157,9 +157,13 @@ public class March7thHoneyListener
                     return;
                 }
                 Connections.Add(con.ConversationId.Value, con);
+                // Activation is explicit: the connection is registered (and therefore reachable for
+                // lookups and disconnects) before its receive loop sees any traffic.
+                con.Start();
             }
             catch
             {
+                Connections.Remove(convId);
                 multiplex.UnregisterConversation(convId);
                 convo.Dispose();
                 throw;
@@ -176,10 +180,10 @@ public class March7thHoneyListener
         var convId = user.ConversationId.Value;
         await using MemoryStream? ms = new();
         await using BinaryWriter? bw = new(ms);
-        bw.WriteInt32BE(0x00000145);
+        bw.WriteInt32BE(HandshakeResponseCode);
         bw.WriteConvID(convId);
         bw.WriteInt32BE(enet);
-        bw.WriteInt32BE(0x14514545);
+        bw.WriteInt32BE(HandshakeResponseTail);
         var data = ms.ToArray();
         await UDPClient.SendAsync(data, data.Length, user.RemoteEndPoint);
     }
@@ -190,10 +194,10 @@ public class March7thHoneyListener
         var convId = user.ConversationId.Value;
         await using MemoryStream? ms = new();
         await using BinaryWriter? bw = new(ms);
-        bw.WriteInt32BE(0x00000194);
+        bw.WriteInt32BE(HandshakeDisconnectCode);
         bw.WriteConvID(convId);
         bw.WriteInt32BE(code);
-        bw.WriteInt32BE(0x19419494);
+        bw.WriteInt32BE(HandshakeDisconnectTail);
         var data = ms.ToArray();
         await UDPClient.SendAsync(data, data.Length, user.RemoteEndPoint);
     }

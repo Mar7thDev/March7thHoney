@@ -27,7 +27,6 @@ public class EntryPoint
 {
     private static readonly Logger Logger = new("Program");
     public static readonly DatabaseHelper DatabaseHelper = new();
-    public static readonly Listener Listener = new();
     public static readonly CommandManager CommandManager = new();
     private static PosixSignalRegistration? _sigtermRegistration;
 
@@ -82,7 +81,7 @@ public class EntryPoint
                 if (oldFile.Exists)
                 {
                     var zipFileName = fileName + ".zip";
-                    var zipFile = new FileInfo(GetConfig().Path.LogPath + $"/{zipFileName}");
+                    var zipFile = new FileInfo(Path.Combine(GetConfig().Path.LogPath, zipFileName));
                     if (zipFile.Exists) zipFile.Delete();
                     using (var zip = ZipFile.Open(zipFile.FullName, ZipArchiveMode.Create))
                     {
@@ -105,15 +104,18 @@ public class EntryPoint
         FileInfo zi;
         while (true)
         {
-            file = new FileInfo(GetConfig().Path.LogPath + $"/{DateTime.Now:yyyy-MM-dd}-{++counter}.log");
-            zi = new FileInfo(GetConfig().Path.LogPath + $"/{DateTime.Now:yyyy-MM-dd}-{counter}.zip");
+            file = new FileInfo(Path.Combine(GetConfig().Path.LogPath,
+                $"{DateTime.Now:yyyy-MM-dd}-{++counter}.log"));
+            zi = new FileInfo(Path.Combine(GetConfig().Path.LogPath,
+                $"{DateTime.Now:yyyy-MM-dd}-{counter}.zip"));
             if (file is not { Exists: false, Directory: not null }) continue;
             if (zi is not { Exists: false, Directory: not null }) continue;
             file.Directory.Create();
             break;
         }
 
-        var debugFile = new FileInfo(GetConfig().Path.LogPath + $"/{DateTime.Now:yyyy-MM-dd}-{counter}-debug.log");
+        var debugFile = new FileInfo(Path.Combine(GetConfig().Path.LogPath,
+            $"{DateTime.Now:yyyy-MM-dd}-{counter}-debug.log"));
 
         Logger.SetLogFile(file);
         Logger.SetDebugLogFile(debugFile);
@@ -160,7 +162,7 @@ public class EntryPoint
                 if (databaseInitTask.IsFaulted)
                     databaseInitTask.GetAwaiter().GetResult();
 
-                Thread.Sleep(100);
+                await Task.Delay(100);
             }
 
             Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItem",
@@ -189,16 +191,14 @@ public class EntryPoint
         Logger.Info(I18NManager.Translate("Server.ServerInfo.ServerRunning", I18NManager.Translate("Word.Dispatch"),
             GetConfig().HttpServer.GetDisplayAddress()));
 
+        // The packet name maps back logging and the fallback replies, so they exist before any connection.
+        March7thHoneyConnection.InitPacketNameMap();
+
         if (ConfigManager.Config.ServerOption.ServerConfig.RunGateway)
         {
-            var handler =
-                new March7thHoneyListener.ConnectionCreatedHandler((conversation, remote) =>
-                    new Connection(conversation, remote));
-            March7thHoneyListener.CreateConnection = handler;
+            March7thHoneyListener.CreateConnection = (conversation, remote) => new Connection(conversation, remote);
             March7thHoneyListener.StartListener();
         }
-
-        GenerateLogMap();
 
         var loadedFromResources = false;
         if (ConfigManager.Config.ServerOption.ServerConfig.RunGateway)
@@ -332,23 +332,22 @@ public class EntryPoint
         MuipManager.CommandCatalogProvider = CommandManager.BuildCatalog;
         MuipManager.OnGetServerInformation += x =>
         {
-            foreach (var con in March7thHoneyListener.GetSnapshot())
-                if ((con as Connection)?.Player != null)
-                    x.Add((con as Connection)!.Player!.Uid, (con as Connection)!.Player!.Data);
+            foreach (var (_, player) in Listener.GetPlayerConnections())
+                x.Add(player.Uid, player.Data);
         };
         MuipManager.OnGetPlayerStatus += (int uid, out PlayerStatusEnum status, out PlayerSubStatusEnum subStatus) =>
         {
             subStatus = PlayerSubStatusEnum.None;
-            foreach (var con in March7thHoneyListener.GetSnapshot())
-                if ((con as Connection)!.Player != null && (con as Connection)!.Player!.Uid == uid)
+            foreach (var (_, player) in Listener.GetPlayerConnections())
+                if (player.Uid == uid)
                 {
                     // TODO: a player in a challenge is not reported as such; that check was suspended during the 4.3
                     // migration.
-                    if ((con as Connection)!.Player!.RaidManager?.Data.CurRaidId != 0)
+                    if (player.RaidManager?.Data.CurRaidId != 0)
                     {
                         status = PlayerStatusEnum.Raid;
                     }
-                    else if ((con as Connection)!.Player!.StoryLineManager?.StoryLineData.CurStoryLineId != 0)
+                    else if (player.StoryLineManager?.StoryLineData.CurStoryLineId != 0)
                     {
                         status = PlayerStatusEnum.StoryLine;
                     }
@@ -357,7 +356,7 @@ public class EntryPoint
                         status = PlayerStatusEnum.Explore;
                     }
 
-                    if ((con as Connection)!.Player!.BattleInstance != null) subStatus = PlayerSubStatusEnum.Battle;
+                    if (player.BattleInstance != null) subStatus = PlayerSubStatusEnum.Battle;
 
                     return;
                 }
@@ -387,7 +386,7 @@ public class EntryPoint
                     if (databaseInitTask.IsFaulted)
                         databaseInitTask.GetAwaiter().GetResult();
 
-                    Thread.Sleep(100);
+                    await Task.Delay(100);
                 }
             }
             catch (Exception e)
@@ -455,7 +454,7 @@ public class EntryPoint
                 avatarData.FormalAvatars.Add(formalAvatar);
             }
 
-            avatarData.DatabaseVersion = "20250430";
+            avatarData.DatabaseVersion = GameConstants.AvatarDbVersion;
             updated = true;
             DatabaseHelper.MarkDirty(avatarData.Uid);
         }
@@ -523,17 +522,5 @@ public class EntryPoint
         catch (Exception e) { Logger.Error("Cleanup: failed to stop connections", e); }
         DatabaseHelper.SaveDatabase();
         notificationTask.GetAwaiter().GetResult();
-    }
-
-    private static void GenerateLogMap()
-    {
-        // get opcode from CmdIds
-        var opcodes = typeof(CmdIds).GetFields().Where(x => x.FieldType == typeof(int)).ToList();
-        foreach (var opcode in opcodes)
-        {
-            var name = opcode.Name;
-            var value = (int)opcode.GetValue(null)!;
-            March7thHoneyConnection.LogMap.TryAdd(value, name);
-        }
     }
 }

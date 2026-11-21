@@ -501,7 +501,8 @@ public partial class PlayerInstance(PlayerData data)
         DatabaseHelper.MarkDirty(Uid);
     }
 
-    public void OnLogoutAsync()
+    /// <summary>Synchronous logout bookkeeping: stamps the active time and flushes manager state.</summary>
+    public void OnLogout()
     {
         Data.LastActiveTime = Extensions.GetUnixSec();
         DatabaseHelper.MarkDirty(Uid);

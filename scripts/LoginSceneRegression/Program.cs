@@ -3557,7 +3557,7 @@ Check("PetMarbleGetDataScRsp ships its data present",
     Present(CmdIds.PetMarbleGetDataScRsp, new PetMarbleGetDataScRsp()).BJBJLBIOPKA != null);
 Check("PetMarbleGetCycleTrialPetsScRsp ships its trial pet data present",
     Present(CmdIds.PetMarbleGetCycleTrialPetsScRsp, new PetMarbleGetCycleTrialPetsScRsp()).ACCGIILHFKL != null);
-if (HandlerManager.handlers.Count == 0) HandlerManager.Init();
+if (HandlerManager.Handlers.Count == 0) HandlerManager.Init();
 Check("presence handlers are registered for the three requests", new[]
     {
         CmdIds.SocialPlayGetDataCsReq, CmdIds.PetMarbleGetDataCsReq, CmdIds.PetMarbleGetCycleTrialPetsCsReq

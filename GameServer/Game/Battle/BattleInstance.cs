@@ -413,10 +413,9 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
                 proto.BattleAvatarList.Add(ToBattleAvatar(avatar, own));
         }
 
-        System.Threading.Tasks.Task.Run(async () =>
-        {
-            await PrepareSceneBuffs(avatars);
-        }).Wait();
+        // ToProto is synchronous, so the buff preparation is waited on here. AsTask() keeps the blocking wait
+        // within the ValueTask contract, and the caller sees the original exception.
+        PrepareSceneBuffs(avatars).AsTask().GetAwaiter().GetResult();
 
         foreach (var buff in Buffs.Clone())
             if (Enum.IsDefined(typeof(DamageTypeEnum), buff.BuffID))

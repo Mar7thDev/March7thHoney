@@ -204,9 +204,9 @@ public class CommandManager
             {
                 if (IsTargetToken(cmd))
                 {
+                    // IsTargetToken already established the suffix parses as an int uid.
                     var target = cmd[1..];
-                    if (March7thHoneyListener.GetSnapshot()
-                            .Find(item => (item as Connection)?.Player?.Uid.ToString() == target) is Connection con)
+                    if (Listener.GetPlayerConnection(int.Parse(target)) is { } con)
                     {
                         if (split.Count == 1)
                         {
@@ -254,8 +254,7 @@ public class CommandManager
                 {
                     if (!IsTargetToken(split[i])) continue;
                     var target = split[i][1..];
-                    if (March7thHoneyListener.GetSnapshot()
-                            .Find(item => (item as Connection)?.Player?.Uid.ToString() == target) is Connection con)
+                    if (Listener.GetPlayerConnection(int.Parse(target)) is { } con)
                     {
                         tempTarget = con;
                         isTargetExplicit = true;
