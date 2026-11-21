@@ -109,7 +109,7 @@ public class Connection : March7thHoneyConnection
     private async Task ProcessMessageAsync(Memory<byte> data)
     {
         var gamePacket = data.ToArray();
-        if (ConfigManager.Config.GameServer.UsePacketEncryption)
+        if (Crypto.PacketEncryptionEnabled)
             Crypto.Xor(gamePacket, XorKey!);
 
         try

@@ -2,7 +2,7 @@ using Spectre.Console;
 
 namespace March7thHoney.Util
 {
-    public static class IConsole
+    public static class ServerConsole
     {
         public const string PrefixContent = "March7thHoney > ";
         private const string RedColor = "\e[38;2;255;0;0m";
@@ -29,7 +29,7 @@ namespace March7thHoney.Util
         private static int HistoryIndex = -1;
         private static readonly object ConsoleSync = new();
 
-        public static event Action<string>? OnConsoleExcuteCommand;
+        public static event Action<string>? OnConsoleExecuteCommand;
 
         public static void InitConsole()
         {
@@ -240,7 +240,7 @@ namespace March7thHoney.Util
             HistoryIndex = InputHistory.Count;
 
             if (input.StartsWith('/')) input = input[1..].Trim();
-            OnConsoleExcuteCommand?.Invoke(input);
+            OnConsoleExecuteCommand?.Invoke(input);
             IsCommandValid = true;
         }
 

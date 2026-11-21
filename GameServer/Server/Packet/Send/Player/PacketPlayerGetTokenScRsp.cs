@@ -15,7 +15,7 @@ public class PacketPlayerGetTokenScRsp : BasePacket
             Uid = (uint)(connection.Player?.Uid ?? 0)
         };
 
-        if (ConfigManager.Config.GameServer.UsePacketEncryption)
+        if (Crypto.PacketEncryptionEnabled)
         {
             var tempRandom = new MT19937((ulong)DateTimeOffset.Now.ToUnixTimeSeconds());
             rsp.SecretKeySeed = connection.ClientSecretKeySeed = tempRandom.NextUInt64();
