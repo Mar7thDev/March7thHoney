@@ -1,5 +1,4 @@
 using March7thHoney.GameServer.Server;
-using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.Kcp;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Http;
@@ -58,14 +57,8 @@ public static partial class AdminRoutes
             recipients = Listener.GetConnections();
         }
 
-        var sent = 0;
-        foreach (var connection in recipients)
-        {
-            if (!connection.IsOnline || connection.Player == null) continue;
-            await connection.SendPacket(new PacketServerAnnounceNotify(content, durationSeconds,
-                (uint)frequencySeconds));
-            sent++;
-        }
+        var sent = await AnnounceBroadcaster.SendAsync(recipients, content, durationSeconds,
+            (uint)frequencySeconds);
 
         return Success(new AnnounceSendData(sent, durationSeconds, frequencySeconds));
     }
