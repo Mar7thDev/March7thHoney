@@ -39,6 +39,9 @@ public class March7thHoneyListener
     private const int HandshakeResponseTail = 0x14514545;
     private const int HandshakeDisconnectTail = 0x19419494;
 
+    // Reason code written into the disconnect datagram that answers a client-initiated disconnect handshake.
+    private const int ClientDisconnectReasonCode = 5;
+
     private static readonly KcpConversationOptions ConvOpt = new()
     {
         StreamMode = false,
@@ -118,7 +121,7 @@ public class March7thHoneyListener
                         return;
                     }
 
-                    await SendDisconnectPacket(con, 5);
+                    await SendDisconnectPacket(con, ClientDisconnectReasonCode);
                     break;
                 default:
                     Logger.Error($"Invalid handshake code received {code}");
