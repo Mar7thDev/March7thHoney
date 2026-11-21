@@ -13,6 +13,7 @@ using March7thHoney.GameServer.Game.DailyActive;
 using March7thHoney.GameServer.Game.Mission.FinishAction;
 using March7thHoney.GameServer.Game.Mission.FinishType;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Game.LevelTasks;
 using March7thHoney.GameServer.Server.Packet.Send.HeartDial;
