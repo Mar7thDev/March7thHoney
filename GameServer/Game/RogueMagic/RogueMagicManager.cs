@@ -7,7 +7,7 @@ using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
-using March7thHoney.GameServer.Server.Packet.Send.RogueMagic;
+using March7thHoney.GameServer.Server.Packet.Send;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 using March7thHoney.Util;
@@ -500,7 +500,7 @@ public class RogueMagicManager : BasePlayerManager
         var run = RunInstance;
         var layer = run?.CurLayer();
         if (run == null || layer == null) return;
-        await Player.SendPacket(new PacketRogueMagic(CmdIds.RogueMagicLevelInfoUpdateScNotify,
+        await Player.SendPacket(new MessagePacket(CmdIds.RogueMagicLevelInfoUpdateScNotify,
             RogueMagicProtoBuilder.BuildLevelNotify(run, layer, roomIndexes)));
     }
 
@@ -508,14 +508,14 @@ public class RogueMagicManager : BasePlayerManager
     {
         var run = RunInstance;
         if (run == null || run.PendingActions.Count == 0) return;
-        await Player.SendPacket(new PacketRogueMagic(CmdIds.SyncRogueCommonPendingActionScNotify,
+        await Player.SendPacket(new MessagePacket(CmdIds.SyncRogueCommonPendingActionScNotify,
             RogueMagicProtoBuilder.BuildPendingNotify(run)));
     }
 
     public async ValueTask SendCoinNotify()
     {
         if (RunInstance == null) return;
-        await Player.SendPacket(new PacketRogueMagic(CmdIds.CommonRogueVirtualItemInfoScNotify,
+        await Player.SendPacket(new MessagePacket(CmdIds.CommonRogueVirtualItemInfoScNotify,
             RogueMagicProtoBuilder.BuildCoinNotify(RunInstance)));
     }
 

@@ -1,6 +1,6 @@
 using March7thHoney.Database.RogueTourn;
 using March7thHoney.Enums.TournRogue;
-using March7thHoney.GameServer.Server.Packet.Send.RogueTourn;
+using March7thHoney.GameServer.Server.Packet.Send;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 
@@ -68,7 +68,7 @@ public partial class RogueTournManager
     {
         var notify = new SyncRogueCommonDialogueDataScNotify();
         notify.DialogueList.AddRange(LiveDialogues(run).Select(RogueTournProtoBuilder.BuildDialogueRow));
-        await Player.SendPacket(new PacketRogueTourn(CmdIds.SyncRogueCommonDialogueDataScNotify, notify));
+        await Player.SendPacket(new MessagePacket(CmdIds.SyncRogueCommonDialogueDataScNotify, notify));
     }
 
     // The client's dialogue pull (also the reconnect path); null when no run owns it.
@@ -113,7 +113,7 @@ public partial class RogueTournManager
             Save();
         }
 
-        await Player.SendPacket(new PacketRogueTourn(CmdIds.SyncRogueCommonDialogueOptionFinishScNotify,
+        await Player.SendPacket(new MessagePacket(CmdIds.SyncRogueCommonDialogueOptionFinishScNotify,
             new SyncRogueCommonDialogueOptionFinishScNotify
             {
                 AIAFEKGBFIF = (uint)handle,

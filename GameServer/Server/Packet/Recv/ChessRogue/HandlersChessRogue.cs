@@ -1,6 +1,6 @@
 using March7thHoney.GameServer.Game.ChessRogue;
 using March7thHoney.GameServer.Game.Player;
-using March7thHoney.GameServer.Server.Packet.Send.ChessRogue;
+using March7thHoney.GameServer.Server.Packet.Send;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
@@ -13,7 +13,7 @@ public sealed class HandlerChessRogueQueryCsReq : PlayerHandler
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
         var manager = player.ChessRogueManager!;
-        await connection.SendPacket(new PacketChessRogue(CmdIds.ChessRogueQueryScRsp, new ChessRogueQueryScRsp
+        await connection.SendPacket(new MessagePacket(CmdIds.ChessRogueQueryScRsp, new ChessRogueQueryScRsp
         {
             IHNENEGKEPO = ChessRogueProtoBuilder.BuildQueryInfo(manager),
             LFLCDNGALME = ChessRogueProtoBuilder.BuildGetInfo(manager),
@@ -27,7 +27,7 @@ public sealed class HandlerGetChessRogueNousStoryInfoCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.SendPacket(new PacketChessRogue(CmdIds.GetChessRogueNousStoryInfoScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.GetChessRogueNousStoryInfoScRsp,
             ChessRogueProtoBuilder.BuildNousStoryInfo()));
     }
 }
@@ -37,7 +37,7 @@ public sealed class HandlerChessRogueNousGetRogueTalentInfoCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.SendPacket(new PacketChessRogue(CmdIds.ChessRogueNousGetRogueTalentInfoScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.ChessRogueNousGetRogueTalentInfoScRsp,
             new ChessRogueNousGetRogueTalentInfoScRsp { JCOBJAMPOAL = ChessRogueProtoBuilder.BuildTalentInfo() }));
     }
 }
@@ -49,7 +49,7 @@ public sealed class HandlerChessRogueNousEnableRogueTalentCsReq : Handler<ChessR
     protected override async Task OnHandle(Connection connection, PlayerInstance player,
         ChessRogueNousEnableRogueTalentCsReq req)
     {
-        await connection.SendPacket(new PacketChessRogue(CmdIds.ChessRogueNousEnableRogueTalentScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.ChessRogueNousEnableRogueTalentScRsp,
             new ChessRogueNousEnableRogueTalentScRsp { JCOBJAMPOAL = ChessRogueProtoBuilder.BuildTalentInfo() }));
     }
 }
@@ -62,7 +62,7 @@ public sealed class HandlerChessRogueNousEditDiceCsReq : Handler<IACEIJKMLLN>
     protected override async Task OnHandle(Connection connection, PlayerInstance player, IACEIJKMLLN req)
     {
         var dice = player.ChessRogueManager!.EditDice(req.JPJPDLBENDH);
-        await connection.SendPacket(new PacketChessRogue(CmdIds.ChessRogueNousEditDiceScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.ChessRogueNousEditDiceScRsp,
             dice == null
                 ? new ChessRogueNousEditDiceScRsp { Retcode = (uint)Retcode.RetFail }
                 : new ChessRogueNousEditDiceScRsp { IOCCACNJIGD = dice }));
@@ -83,13 +83,13 @@ public sealed class HandlerChessRogueStartCsReq : Handler<ChessRogueStartCsReq>
         var run = manager.RunInstance;
         if (ret != Retcode.RetSucc || run == null)
         {
-            await connection.SendPacket(new PacketChessRogue(CmdIds.ChessRogueStartScRsp,
+            await connection.SendPacket(new MessagePacket(CmdIds.ChessRogueStartScRsp,
                 new ChessRogueStartScRsp { Retcode = (uint)(ret == Retcode.RetSucc ? Retcode.RetFail : ret) }));
             return;
         }
 
         await connection.SendPacket(new PacketSyncLineupNotify(player.LineupManager!.GetCurLineup()!));
-        await connection.SendPacket(new PacketChessRogue(CmdIds.ChessRogueStartScRsp, new ChessRogueStartScRsp
+        await connection.SendPacket(new MessagePacket(CmdIds.ChessRogueStartScRsp, new ChessRogueStartScRsp
         {
             StageInfo = ChessRogueProtoBuilder.BuildStage(player),
             Info = manager.BuildGameInfo(),
@@ -104,7 +104,7 @@ public sealed class HandlerChessRogueRollDiceCsReq : PlayerHandler
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
         var dice = await player.ChessRogueManager!.RollDice();
-        await connection.SendPacket(new PacketChessRogue(CmdIds.ChessRogueRollDiceScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.ChessRogueRollDiceScRsp,
             dice == null
                 ? new ChessRogueRollDiceScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }
                 : new ChessRogueRollDiceScRsp { POHEPEEFBOA = dice }));
@@ -117,7 +117,7 @@ public sealed class HandlerChessRogueReRollDiceCsReq : PlayerHandler
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
         var dice = await player.ChessRogueManager!.RerollDice();
-        await connection.SendPacket(new PacketChessRogue(CmdIds.ChessRogueReRollDiceScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.ChessRogueReRollDiceScRsp,
             dice == null
                 ? new ChessRogueReRollDiceScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }
                 : new ChessRogueReRollDiceScRsp { POHEPEEFBOA = dice }));
@@ -131,7 +131,7 @@ public sealed class HandlerChessRogueCheatRollCsReq : Handler<ChessRogueCheatRol
     protected override async Task OnHandle(Connection connection, PlayerInstance player, ChessRogueCheatRollCsReq req)
     {
         var dice = await player.ChessRogueManager!.CheatDice((int)req.AMPFBGKHJBF);
-        await connection.SendPacket(new PacketChessRogue(CmdIds.ChessRogueCheatRollScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.ChessRogueCheatRollScRsp,
             dice == null
                 ? new ChessRogueCheatRollScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }
                 : new ChessRogueCheatRollScRsp { POHEPEEFBOA = dice }));
@@ -144,7 +144,7 @@ public sealed class HandlerChessRogueConfirmRollCsReq : PlayerHandler
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
         var dice = await player.ChessRogueManager!.ConfirmDice();
-        await connection.SendPacket(new PacketChessRogue(CmdIds.ChessRogueConfirmRollScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.ChessRogueConfirmRollScRsp,
             dice == null
                 ? new ChessRogueConfirmRollScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }
                 : new ChessRogueConfirmRollScRsp { POHEPEEFBOA = dice }));
@@ -157,7 +157,7 @@ public sealed class HandlerChessRogueSelectCellCsReq : Handler<ChessRogueSelectC
     protected override async Task OnHandle(Connection connection, PlayerInstance player, ChessRogueSelectCellCsReq req)
     {
         var ret = await player.ChessRogueManager!.SelectCell((int)req.IHAOMLEPHOM);
-        await connection.SendPacket(new PacketChessRogue(CmdIds.ChessRogueSelectCellScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.ChessRogueSelectCellScRsp,
             new ChessRogueSelectCellScRsp { Retcode = (uint)ret }));
     }
 }
@@ -170,12 +170,12 @@ public sealed class HandlerChessRogueEnterCellCsReq : Handler<ChessRogueEnterCel
         var manager = player.ChessRogueManager!;
         if (!await manager.EnterCell((int)req.IHAOMLEPHOM, (int)req.LOFMJHJOELO))
         {
-            await connection.SendPacket(new PacketChessRogue(CmdIds.ChessRogueEnterCellScRsp,
+            await connection.SendPacket(new MessagePacket(CmdIds.ChessRogueEnterCellScRsp,
                 new ChessRogueEnterCellScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }));
             return;
         }
 
-        await connection.SendPacket(new PacketChessRogue(CmdIds.ChessRogueEnterCellScRsp, new ChessRogueEnterCellScRsp
+        await connection.SendPacket(new MessagePacket(CmdIds.ChessRogueEnterCellScRsp, new ChessRogueEnterCellScRsp
         {
             StageInfo = ChessRogueProtoBuilder.BuildStage(player),
             Info = manager.BuildGameInfo()
@@ -190,7 +190,7 @@ public sealed class HandlerRogueModifierSelectCellCsReq : Handler<RogueModifierS
         RogueModifierSelectCellCsReq req)
     {
         var ret = await player.ChessRogueManager!.ApplyModifier((int)req.IHAOMLEPHOM);
-        await connection.SendPacket(new PacketChessRogue(CmdIds.RogueModifierSelectCellScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.RogueModifierSelectCellScRsp,
             new RogueModifierSelectCellScRsp { Retcode = (uint)ret }));
     }
 }
@@ -205,12 +205,12 @@ public sealed class HandlerChessRogueEnterNextLayerCsReq : PlayerHandler
         var run = manager.RunInstance;
         if (ret != Retcode.RetSucc || run == null)
         {
-            await connection.SendPacket(new PacketChessRogue(CmdIds.ChessRogueEnterNextLayerScRsp,
+            await connection.SendPacket(new MessagePacket(CmdIds.ChessRogueEnterNextLayerScRsp,
                 new ChessRogueEnterNextLayerScRsp { Retcode = (uint)ret }));
             return;
         }
 
-        await connection.SendPacket(new PacketChessRogue(CmdIds.ChessRogueEnterNextLayerScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.ChessRogueEnterNextLayerScRsp,
             new ChessRogueEnterNextLayerScRsp
             {
                 StageInfo = ChessRogueProtoBuilder.BuildStage(player),
@@ -228,12 +228,12 @@ public sealed class HandlerChessRogueLeaveCsReq : PlayerHandler
         var manager = player.ChessRogueManager!;
         if (await manager.EndRun() == null)
         {
-            await connection.SendPacket(new PacketChessRogue(CmdIds.ChessRogueLeaveScRsp,
+            await connection.SendPacket(new MessagePacket(CmdIds.ChessRogueLeaveScRsp,
                 new ChessRogueLeaveScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }));
             return;
         }
 
-        await connection.SendPacket(new PacketChessRogue(CmdIds.ChessRogueLeaveScRsp, new ChessRogueLeaveScRsp
+        await connection.SendPacket(new MessagePacket(CmdIds.ChessRogueLeaveScRsp, new ChessRogueLeaveScRsp
         {
             StageInfo = ChessRogueProtoBuilder.BuildStage(player),
             IHNENEGKEPO = ChessRogueProtoBuilder.BuildQueryInfo(manager),
@@ -253,12 +253,12 @@ public sealed class HandlerChessRogueQuitCsReq : PlayerHandler
         var run = await manager.EndRun();
         if (run == null)
         {
-            await connection.SendPacket(new PacketChessRogue(CmdIds.ChessRogueQuitScRsp,
+            await connection.SendPacket(new MessagePacket(CmdIds.ChessRogueQuitScRsp,
                 new ChessRogueQuitScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }));
             return;
         }
 
-        await connection.SendPacket(new PacketChessRogue(CmdIds.ChessRogueQuitScRsp, new ChessRogueQuitScRsp
+        await connection.SendPacket(new MessagePacket(CmdIds.ChessRogueQuitScRsp, new ChessRogueQuitScRsp
         {
             MINFCKLKLNJ = ChessRogueProtoBuilder.BuildFinishInfo(run, player),
             OEIBHLMDJKA = levelInfo,

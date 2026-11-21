@@ -3,7 +3,7 @@ using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.GridFight;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
-using static March7thHoney.GameServer.Server.Packet.Recv.GridFight.GridFightPacketFactory;
+using March7thHoney.GameServer.Server.Packet.Send;
 
 namespace March7thHoney.GameServer.Server.Packet.Recv.GridFight;
 
@@ -21,7 +21,7 @@ public sealed class HandlerGridFightEquipDressCsReq : GridFightHandler<GridFight
         if (result.Success)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 manager.BuildEquipDressSync(result)));
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightEquipDressScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightEquipDressScRsp,
             new GridFightEquipDressScRsp
             {
                 Retcode = result.Success ? 0 : (uint)Retcode.RetFail,
@@ -47,7 +47,7 @@ public sealed class HandlerGridFightEquipCraftCsReq : GridFightHandler<GridFight
         if (result.Success)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 manager.BuildEquipCraftSync(result)));
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightEquipCraftScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightEquipCraftScRsp,
             new GridFightEquipCraftScRsp
             {
                 Retcode = result.Success ? 0 : (uint)Retcode.RetFail,
@@ -74,7 +74,7 @@ public sealed class HandlerGridFightUseConsumableCsReq : GridFightHandler<GridFi
                 await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildConsumableUseSync(spot)));
                 await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildSpotLightSync(null, 0)));
             }
-            await connection.SendPacket(CreatePacket(CmdIds.GridFightUseConsumableScRsp,
+            await connection.SendPacket(new MessagePacket(CmdIds.GridFightUseConsumableScRsp,
                 new GridFightUseConsumableScRsp { Retcode = spot.Success ? 0 : (uint)Retcode.RetFail }));
             return;
         }
@@ -94,7 +94,7 @@ public sealed class HandlerGridFightUseConsumableCsReq : GridFightHandler<GridFi
         if (result.Success)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 manager.BuildConsumableUseSync(result)));
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightUseConsumableScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightUseConsumableScRsp,
             new GridFightUseConsumableScRsp
             {
                 Retcode = result.Success ? 0 : (uint)Retcode.RetFail,
@@ -116,7 +116,7 @@ public sealed class HandlerGridFightUpdateEquipTrackCsReq : GridFightHandler<Gri
         if (retcode == 0)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 manager.BuildEquipmentTrackSync()));
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightUpdateEquipTrackScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightUpdateEquipTrackScRsp,
             new GridFightUpdateEquipTrackScRsp { Retcode = retcode }));
     }
 }

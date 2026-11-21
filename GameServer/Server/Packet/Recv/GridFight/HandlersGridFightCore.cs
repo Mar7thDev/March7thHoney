@@ -7,7 +7,7 @@ using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.GridFight;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
-using static March7thHoney.GameServer.Server.Packet.Recv.GridFight.GridFightPacketFactory;
+using March7thHoney.GameServer.Server.Packet.Send;
 
 namespace March7thHoney.GameServer.Server.Packet.Recv.GridFight;
 
@@ -52,7 +52,7 @@ public sealed class HandlerGridFightStartGamePlayCsReq : GridFightHandler<GridFi
             Retcode = success ? 0 : (uint)Retcode.RetFail,
         };
         if (success) response.CurrentInfo = manager.BuildCurrentInfo();
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightStartGamePlayScRsp, response));
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightStartGamePlayScRsp, response));
     }
 }
 
@@ -63,7 +63,7 @@ public sealed class HandlerGridFightResumeGamePlayCsReq : GridFightHandler<GridF
     {
         var manager = player.GridFightManager!;
         var success = manager.Session?.UniqueId == request.UniqueId;
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightResumeGamePlayScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightResumeGamePlayScRsp,
             new GridFightResumeGamePlayScRsp
             {
                 Retcode = success ? 0 : (uint)Retcode.RetFail,
@@ -81,7 +81,7 @@ public sealed class HandlerGridFightQuitSettleCsReq : GridFightHandler<GridFight
         if (session == null)
         {
             // A run the server already settled (victory, or squad HP reached 0) has nothing left to settle.
-            await connection.SendPacket(CreatePacket(CmdIds.GridFightQuitSettleScRsp,
+            await connection.SendPacket(new MessagePacket(CmdIds.GridFightQuitSettleScRsp,
                 new GridFightQuitSettleScRsp
                 {
                     Retcode = manager.HasSettledSession ? 0 : (uint)Retcode.RetFail,
@@ -90,11 +90,11 @@ public sealed class HandlerGridFightQuitSettleCsReq : GridFightHandler<GridFight
         }
 
         var settle = manager.BuildSettleNotify(GridFightSettleReason.Quit);
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightSyncKeepWinCntNotify,
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightSyncKeepWinCntNotify,
             new GridFightSyncKeepWinCntNotify { KeepWinCount = session.KeepWinCount }));
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightSettleNotify, settle));
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightSettleNotify, settle));
         manager.ClearSession();
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightQuitSettleScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightQuitSettleScRsp,
             new GridFightQuitSettleScRsp()));
         await manager.RecordGameFinished(session);
     }
@@ -105,7 +105,7 @@ public sealed class HandlerGridFightQuitLeaveGamePlayCsReq : GridFightHandler<Gr
 {
     protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightQuitLeaveGamePlayCsReq request)
     {
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightQuitLeaveGamePlayScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightQuitLeaveGamePlayScRsp,
             new GridFightQuitLeaveGamePlayScRsp()));
     }
 }
@@ -395,7 +395,7 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : GridFightHandler<
 
     private static Task SendResponse(Connection connection, uint queuePosition, bool success)
     {
-        return connection.SendPacket(CreatePacket(CmdIds.GridFightHandlePendingActionScRsp,
+        return connection.SendPacket(new MessagePacket(CmdIds.GridFightHandlePendingActionScRsp,
             new GridFightHandlePendingActionScRsp
             {
                 Retcode = success ? 0 : (uint)Retcode.RetFail,
@@ -427,7 +427,7 @@ public sealed class HandlerGridFightUpdateEliteBranchSelectCsReq : GridFightHand
         if (success)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 manager.BuildEncounterSelectionUpdateSync(request.EliteBranchId)));
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightUpdateEliteBranchSelectScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightUpdateEliteBranchSelectScRsp,
             new GridFightUpdateEliteBranchSelectScRsp
             {
                 Retcode = success ? 0 : (uint)Retcode.RetFail,
@@ -444,7 +444,7 @@ public sealed class HandlerGridFightGetOrbCsReq : GridFightHandler<GridFightGetO
         var session = manager.Session;
         if (session == null)
         {
-            await connection.SendPacket(CreatePacket(CmdIds.GridFightGetOrbScRsp,
+            await connection.SendPacket(new MessagePacket(CmdIds.GridFightGetOrbScRsp,
                 new GridFightGetOrbScRsp { Retcode = (uint)Retcode.RetFail }));
             return;
         }
@@ -458,7 +458,7 @@ public sealed class HandlerGridFightGetOrbCsReq : GridFightHandler<GridFightGetO
                     includeGold: true,
                     includeShop: true,
                     includePending: true)));
-            await connection.SendPacket(CreatePacket(CmdIds.GridFightGetOrbScRsp,
+            await connection.SendPacket(new MessagePacket(CmdIds.GridFightGetOrbScRsp,
                 new GridFightGetOrbScRsp { Retcode = initialSuccess ? 0 : (uint)Retcode.RetFail }));
             return;
         }
@@ -466,14 +466,14 @@ public sealed class HandlerGridFightGetOrbCsReq : GridFightHandler<GridFightGetO
         var applications = session.OpenOrbs(request.OrbUniqueIdList.ToList(), request.TakeAll);
         foreach (var application in applications)
         {
-            await connection.SendPacket(CreatePacket(
+            await connection.SendPacket(new MessagePacket(
                 CmdIds.GridFightOpenOrbResultScNotify,
                 manager.BuildOpenOrbResult(application)));
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 manager.BuildOrbOpenSync(application)));
         }
         var success = applications.Count > 0;
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightGetOrbScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightGetOrbScRsp,
             new GridFightGetOrbScRsp { Retcode = success ? 0 : (uint)Retcode.RetFail }));
     }
 }
@@ -498,7 +498,7 @@ public sealed class HandlerGridFightBuyGoodsCsReq : GridFightHandler<GridFightBu
                 Retcode = purchases.Count > 0 ? 0 : (uint)Retcode.RetFail,
             };
             specialResponse.GoodsIndexList.Add(indices);
-            await connection.SendPacket(CreatePacket(CmdIds.GridFightBuyGoodsScRsp, specialResponse));
+            await connection.SendPacket(new MessagePacket(CmdIds.GridFightBuyGoodsScRsp, specialResponse));
             return;
         }
         var acquisition = manager.Session?.BuyGoods(indices) ?? GridFightRoleAcquisitionResult.Failed;
@@ -507,7 +507,7 @@ public sealed class HandlerGridFightBuyGoodsCsReq : GridFightHandler<GridFightBu
                 manager.BuildBuyGoodsSync(indices, acquisition)));
         var response = new GridFightBuyGoodsScRsp { Retcode = acquisition.Success ? 0 : (uint)Retcode.RetFail };
         response.GoodsIndexList.Add(indices);
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightBuyGoodsScRsp, response));
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightBuyGoodsScRsp, response));
     }
 }
 
@@ -525,7 +525,7 @@ public sealed class HandlerGridFightUseHackOptionCsReq : GridFightHandler<GridFi
         if (result.Success)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 manager.BuildHackOptionSync(result)));
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightUseHackOptionScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightUseHackOptionScRsp,
             new GridFightUseHackOptionScRsp
             {
                 Retcode = result.Success ? 0 : (uint)Retcode.RetFail,
@@ -543,7 +543,7 @@ public sealed class HandlerGridFightRefreshShopCsReq : GridFightHandler<GridFigh
         if (success)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 manager.BuildRefreshShopSync()));
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightRefreshShopScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightRefreshShopScRsp,
             new GridFightRefreshShopScRsp { Retcode = success ? 0 : (uint)Retcode.RetFail }));
     }
 }
@@ -560,7 +560,7 @@ public sealed class HandlerGridFightRecycleRoleCsReq : GridFightHandler<GridFigh
                 GridFightUpdateSrcType.KgridFightSrcRecycleRole,
                 change,
                 includeGold: true)));
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightRecycleRoleScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightRecycleRoleScRsp,
             new GridFightRecycleRoleScRsp { Retcode = change.Success ? 0 : (uint)Retcode.RetFail }));
     }
 }
@@ -581,7 +581,7 @@ public sealed class HandlerGridFightBuyExpCsReq : GridFightHandler<GridFightBuyE
                 includeShop: true,
                 includeLevel: true,
                 levelChanged: session!.PlayerLevel != previousLevel)));
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightBuyExpScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightBuyExpScRsp,
             new GridFightBuyExpScRsp { Retcode = success ? 0 : (uint)Retcode.RetFail }));
     }
 }
@@ -602,7 +602,7 @@ public sealed class HandlerGridFightUpdatePosCsReq : GridFightHandler<GridFightU
             Retcode = change.Success ? 0 : change.FailureRetcode,
         };
         response.PosInfoList.Add(request.PosInfoList);
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightUpdatePosScRsp, response));
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightUpdatePosScRsp, response));
     }
 }
 
@@ -620,7 +620,7 @@ public sealed class HandlerGridFightUseForgeCsReq : GridFightHandler<GridFightUs
         if (result.Success)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 manager.BuildForgeUseSync(result)));
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightUseForgeScRsp,
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightUseForgeScRsp,
             new GridFightUseForgeScRsp { Retcode = result.Success ? 0 : (uint)Retcode.RetFail }));
     }
 }
@@ -668,17 +668,7 @@ public sealed class HandlerGridFightBackToPrepareCsReq : GridFightHandler<GridFi
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(entry));
 
         // 4.5v3 cmd 8680 (LFDIMJCMNDJ) is the empty BackToPrepare response seen in captures.
-        await connection.SendPacket(CreatePacket(CmdIds.LFDIMJCMNDJ, new LFDIMJCMNDJ()));
-    }
-}
-
-internal static class GridFightPacketFactory
-{
-    public static BasePacket CreatePacket(int cmdId, Google.Protobuf.IMessage data)
-    {
-        var packet = new BasePacket((ushort)cmdId);
-        packet.SetData(data);
-        return packet;
+        await connection.SendPacket(new MessagePacket(CmdIds.LFDIMJCMNDJ, new LFDIMJCMNDJ()));
     }
 }
 
@@ -691,7 +681,7 @@ public sealed class HandlerGridFightShopLockCsReq : GridFightHandler<GridFightLo
         var success = manager.Session?.SetShopLocked(request.IsLock) == true;
         if (success)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildShopLockSync()));
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightLockShopScRsp, new GridFightLockShopScRsp
+        await connection.SendPacket(new MessagePacket(CmdIds.GridFightLockShopScRsp, new GridFightLockShopScRsp
         {
             Retcode = success ? 0 : (uint)Retcode.RetFail,
         }));
