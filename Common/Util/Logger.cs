@@ -112,7 +112,7 @@ public class Logger(string moduleName)
             var colored = $"[grey70][[{entry.Time}]][/] [#60BAEE][[{Markup.Escape(entry.Module)}]][/] " +
                           $"[{levelColor}]{entry.Level}[/] {Markup.Escape(entry.Message)}";
             var plain = $"[{entry.Time}] [{entry.Module}] {entry.Level} {entry.Message}";
-            IConsole.WriteExternalLine(() => AnsiConsole.MarkupLine(colored), plain);
+            ServerConsole.WriteExternalLine(() => AnsiConsole.MarkupLine(colored), plain);
         }
         catch
         {

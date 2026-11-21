@@ -33,8 +33,8 @@ public class EntryPoint
 
     public static async Task<int> Main(string[] args)
     {
-        IConsole.InitConsole();
-        IConsole.RedrawInput(IConsole.Input);
+        ServerConsole.InitConsole();
+        ServerConsole.RedrawInput(ServerConsole.Input);
         // Capture log output from the very first line so the admin console's log viewer has the boot history.
         AdminLogBuffer.Attach();
         AppDomain.CurrentDomain.ProcessExit += (_, _) =>
@@ -254,13 +254,13 @@ public class EntryPoint
 
         await LifecycleNotifier.NotifyStartedAsync(GameConstants.GAME_VERSION);
 
-        IConsole.OnConsoleExcuteCommand += command =>
+        ServerConsole.OnConsoleExecuteCommand += command =>
         {
             CommandManager.HandleCommand(command, new ConsoleCommandSender(Logger));
-            IConsole.RedrawInput(IConsole.Input);
+            ServerConsole.RedrawInput(ServerConsole.Input);
         };
 
-        IConsole.ListenConsole();
+        ServerConsole.ListenConsole();
         GC.KeepAlive(_sigtermRegistration);
         return 0;
     }
