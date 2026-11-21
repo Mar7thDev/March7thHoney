@@ -3,7 +3,7 @@ using March7thHoney.Configuration;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Http;
 
-namespace March7thHoney.WebServer.Handler;
+namespace March7thHoney.WebServer.Services;
 
 /// <summary>
 ///     Explicit, reflection-free map between the admin console's settings form and <see cref="ConfigContainer" />.

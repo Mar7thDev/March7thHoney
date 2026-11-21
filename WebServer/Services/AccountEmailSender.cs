@@ -6,7 +6,7 @@ using March7thHoney.Database.Account;
 using March7thHoney.Util;
 using MimeKit;
 
-namespace March7thHoney.WebServer.Handler;
+namespace March7thHoney.WebServer.Services;
 
 internal static class AccountEmailSender
 {

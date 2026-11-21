@@ -4,7 +4,7 @@ using System.Text;
 using March7thHoney.Util;
 using March7thHoney.Util.Security;
 
-namespace March7thHoney.WebServer.Handler;
+namespace March7thHoney.WebServer.Services;
 
 public static class AdminSessionManager
 {
