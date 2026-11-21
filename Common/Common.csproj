@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EastAsianWidth" />
     <PackageReference Include="Google.Protobuf" />
-    <PackageReference Include="Google.Protobuf.Tools" />
     <PackageReference Include="MemoryPack" />
     <PackageReference Include="Microsoft.Data.Sqlite" />
     <!-- Override transitive SQLitePCLRaw 2.1.x (vulnerable native SQLite, GHSA-2m69-gcr7-jv3q) with the 3.x line. -->

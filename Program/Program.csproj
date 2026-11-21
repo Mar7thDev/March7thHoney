@@ -65,7 +65,6 @@
 
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" />
-    <PackageReference Include="Google.Protobuf.Tools" />
   </ItemGroup>
 
   <ItemGroup>

@@ -33,7 +33,6 @@
     <ProjectReference Include="..\Proto\Proto.csproj" />
     <ProjectReference Include="..\SourceGen\SourceGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     <PackageReference Include="Google.Protobuf" />
-    <PackageReference Include="Google.Protobuf.Tools" />
   </ItemGroup>
 
 </Project>
