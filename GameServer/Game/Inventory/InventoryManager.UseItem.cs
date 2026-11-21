@@ -3,6 +3,7 @@ using March7thHoney.Database.Inventory;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 using March7thHoney.Proto;
+using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Inventory;
 
@@ -41,8 +42,8 @@ public partial class InventoryManager
                     if (useConfig.PreviewHPRecoveryPercent != 0)
                     {
                         avatar.SetCurHp(
-                            Math.Min(Math.Max(avatar.GetCurHp(extraLineup) + (int)(useConfig.PreviewHPRecoveryPercent * 10000), 0),
-                                10000), extraLineup);
+                            Math.Min(Math.Max(avatar.GetCurHp(extraLineup) + (int)(useConfig.PreviewHPRecoveryPercent * GameConstants.FULL_HP), 0),
+                                GameConstants.FULL_HP), extraLineup);
 
                         await Player.SendPacket(new PacketSyncLineupNotify(Player.LineupManager.GetCurLineup()!));
                     }
@@ -50,7 +51,7 @@ public partial class InventoryManager
                     if (useConfig.PreviewHPRecoveryValue != 0)
                     {
                         avatar.SetCurHp(
-                            Math.Min(Math.Max(avatar.GetCurHp(extraLineup) + (int)useConfig.PreviewHPRecoveryValue, 0), 10000),
+                            Math.Min(Math.Max(avatar.GetCurHp(extraLineup) + (int)useConfig.PreviewHPRecoveryValue, 0), GameConstants.FULL_HP),
                             extraLineup);
 
                         await Player.SendPacket(new PacketSyncLineupNotify(Player.LineupManager.GetCurLineup()!));
@@ -71,7 +72,7 @@ public partial class InventoryManager
                     // team use
                     if (useConfig.PreviewHPRecoveryPercent != 0)
                     {
-                        Player.LineupManager!.GetCurLineup()!.Heal((int)(useConfig.PreviewHPRecoveryPercent * 10000),
+                        Player.LineupManager!.GetCurLineup()!.Heal((int)(useConfig.PreviewHPRecoveryPercent * GameConstants.FULL_HP),
                             true);
 
                         await Player.SendPacket(new PacketSyncLineupNotify(Player.LineupManager.GetCurLineup()!));

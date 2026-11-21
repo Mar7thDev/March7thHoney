@@ -384,7 +384,7 @@ public class LineupManager : BasePlayerManager<LineupData>
         }
         else
         {
-            if (lineup.BaseAvatars!.Count >= 4) return;
+            if (lineup.BaseAvatars!.Count >= GameConstants.MAX_LINEUP_AVATAR_COUNT) return;
 
             var baseAvatarId = avatarId;
             if (GameData.MultiplePathAvatarConfigData.TryGetValue(baseAvatarId, out var multiPathAvatar))
@@ -460,8 +460,8 @@ public class LineupManager : BasePlayerManager<LineupData>
 
         foreach (var lineup in Data.Lineups)
         {
-            if (lineup.Value.BaseAvatars!.Count >= 5)
-                lineup.Value.BaseAvatars = lineup.Value.BaseAvatars.GetRange(0, 4);
+            if (lineup.Value.BaseAvatars!.Count > GameConstants.MAX_LINEUP_AVATAR_COUNT)
+                lineup.Value.BaseAvatars = lineup.Value.BaseAvatars.GetRange(0, GameConstants.MAX_LINEUP_AVATAR_COUNT);
 
             foreach (var avatar in lineup.Value.BaseAvatars!)
                 if (avatar.BaseAvatarId > 10000)
@@ -490,7 +490,7 @@ public class LineupManager : BasePlayerManager<LineupData>
             var avatarData = Player.AvatarManager!.GetFormalAvatar(avatar.BaseAvatarId);
             if (avatarData is { CurrentHp: <= 0 })
                 // revive
-                avatarData.CurrentHp = 2000;
+                avatarData.CurrentHp = GameConstants.REVIVE_HP;
         }
     }
 
@@ -529,7 +529,8 @@ public class LineupManager : BasePlayerManager<LineupData>
         }
         else
         {
-            if (lineup.BaseAvatars!.Count >= 4) lineup.BaseAvatars!.RemoveAt(3); // remove last avatar
+            if (lineup.BaseAvatars!.Count >= GameConstants.MAX_LINEUP_AVATAR_COUNT)
+                lineup.BaseAvatars!.RemoveAt(GameConstants.MAX_LINEUP_AVATAR_COUNT - 1);
             lineup.BaseAvatars?.Add(new LineupAvatarInfo
                 { BaseAvatarId = specialAvatar.AvatarID, SpecialAvatarId = specialAvatar.SpecialAvatarID });
             Data.Lineups[Data.GetCurLineupIndex()] = lineup;
@@ -567,7 +568,7 @@ public class LineupManager : BasePlayerManager<LineupData>
         }
         else
         {
-            if (members.Count >= 4) members.RemoveAt(members.Count - 1);
+            if (members.Count >= GameConstants.MAX_LINEUP_AVATAR_COUNT) members.RemoveAt(members.Count - 1);
             members.Add(slot);
         }
 
@@ -772,7 +773,7 @@ public class LineupManager : BasePlayerManager<LineupData>
         var existing = lineup.BaseAvatars.FindIndex(avatar => avatar.AssistUid != 0);
         if (existing >= 0)
             lineup.BaseAvatars[existing] = slot;
-        else if (lineup.BaseAvatars.Count < 4)
+        else if (lineup.BaseAvatars.Count < GameConstants.MAX_LINEUP_AVATAR_COUNT)
             lineup.BaseAvatars.Add(slot);
         else
             lineup.BaseAvatars[^1] = slot;

@@ -14,6 +14,17 @@ public static class GameConstants
     public const int INVENTORY_MAX_RELIC = 3000;
     public const int INVENTORY_MAX_MATERIAL = 2000;
     public const int MAX_LINEUP_COUNT = 9;
+    public const int MAX_LINEUP_AVATAR_COUNT = 4;
+
+    /// <summary>Avatar HP is stored as a ratio of this value, which is a full bar.</summary>
+    public const int FULL_HP = 10000;
+
+    /// <summary>HP (20%) an HP recovery prop heals every avatar in the lineup by.</summary>
+    public const int PROP_HP_RECOVER = 2000;
+
+    /// <summary>HP (20%) a downed avatar is revived with.</summary>
+    public const int REVIVE_HP = 2000;
+
     public const int LAST_TRAIN_WORLD_ID = 501;
     public const int AMBUSH_BUFF_ID = 1000102;
     public const int CHALLENGE_ENTRANCE = 100000103;

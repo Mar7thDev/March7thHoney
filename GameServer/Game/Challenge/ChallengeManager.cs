@@ -10,6 +10,7 @@ using March7thHoney.GameServer.Server.Packet.Send.Challenge;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Proto;
 using Google.Protobuf;
+using March7thHoney.Util;
 using MemoryPack;
 
 namespace March7thHoney.GameServer.Game.Challenge;
@@ -546,7 +547,7 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
 
         foreach (var avatar in avatars)
         {
-            avatar.AvatarInfo.SetCurHp(10000, true);
+            avatar.AvatarInfo.SetCurHp(GameConstants.FULL_HP, true);
             avatar.AvatarInfo.SetCurSp(5000, true);
         }
 

@@ -178,7 +178,7 @@ public class SummonUnitLevelTask
             }
             else if (prop.Excel.IsHpRecover)
             {
-                prop.Scene.Player.LineupManager!.GetCurLineup()!.Heal(2000, false);
+                prop.Scene.Player.LineupManager!.GetCurLineup()!.Heal(GameConstants.PROP_HP_RECOVER, false);
                 await prop.Scene.Player.SendPacket(
                     new PacketSyncLineupNotify(prop.Scene.Player.LineupManager!.GetCurLineup()!));
             }

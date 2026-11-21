@@ -221,7 +221,7 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
             }
             else if (prop.Excel.IsHpRecover)
             {
-                Player.LineupManager!.GetCurLineup()!.Heal(2000, false);
+                Player.LineupManager!.GetCurLineup()!.Heal(GameConstants.PROP_HP_RECOVER, false);
                 await Player.SendPacket(new PacketSyncLineupNotify(Player.LineupManager.GetCurLineup()!));
             }
 
