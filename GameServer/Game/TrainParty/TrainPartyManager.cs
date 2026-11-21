@@ -2,6 +2,7 @@ using March7thHoney.Data;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Database.TrainParty;
+using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
@@ -530,7 +531,7 @@ public class TrainPartyManager(PlayerInstance player) : BasePlayerManager<TrainD
         var items = new List<ItemData>();
         foreach (var reward in rows.Select(row => GameData.RewardDataData[row.RewardID]))
         {
-            if (reward.Hcoin > 0) items.Add(new ItemData { ItemId = 1, Count = reward.Hcoin });
+            if (reward.Hcoin > 0) items.Add(new ItemData { ItemId = (int)VirtualItemEnum.Hcoin, Count = reward.Hcoin });
             items.AddRange(reward.GetItems().Select(item => new ItemData { ItemId = item.Item1, Count = item.Item2 }));
         }
 

@@ -16,6 +16,7 @@ using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Game.LevelTasks;
+using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Server.Packet.Send.HeartDial;
 using March7thHoney.GameServer.Server.Packet.Send.Mission;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
@@ -641,13 +642,13 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
             if (res != null) itemList.Add(res);
         }
 
-        var hCoin = await Player.InventoryManager!.AddItem(1, reward?.Hcoin ?? 0, false);
+        var hCoin = await Player.InventoryManager!.AddItem((int)VirtualItemEnum.Hcoin, reward?.Hcoin ?? 0, false);
         if (hCoin != null) itemList.Add(hCoin);
 
         foreach (var i in mainMission.SubRewardList)
         {
             GameData.RewardDataData.TryGetValue(i, out var rewardDataExcel);
-            var hCoin2 = await Player.InventoryManager!.AddItem(1, rewardDataExcel?.Hcoin ?? 0, false); // hcoin
+            var hCoin2 = await Player.InventoryManager!.AddItem((int)VirtualItemEnum.Hcoin, rewardDataExcel?.Hcoin ?? 0, false); // hcoin
             if (hCoin2 != null) itemList.Add(hCoin2);
             foreach (var item in rewardDataExcel?.GetItems() ?? []) // items
             {

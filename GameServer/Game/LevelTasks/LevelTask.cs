@@ -11,6 +11,7 @@ using March7thHoney.GameServer.Game.Avatar;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.LevelTasks;
