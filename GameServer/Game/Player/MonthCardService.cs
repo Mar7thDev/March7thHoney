@@ -2,6 +2,7 @@ using March7thHoney.Database;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Database.Player;
 using March7thHoney.Enums.Item;
+using March7thHoney.GameServer.Game.DailyActive;
 using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Player;
@@ -9,7 +10,10 @@ namespace March7thHoney.GameServer.Game.Player;
 /// <summary>
 ///     Express Supply Pass state. The pass is no longer switched on by the server: it only runs while a purchase made
 ///     through the recharge shop (RechargeConfig gift type PRODUCT_GIFT_MONTH_CARD, see <see cref="RechargeService" />)
-///     covers the current time. Each purchase adds <see cref="ActiveDaysPerPurchase" /> days on top of what is left.
+///     covers the current time. Days are the client's daily windows (<see cref="DailyResetClock" />): each purchase adds
+///     <see cref="ActiveDaysPerPurchase" /> windows, the day of purchase included, on top of what is left.
+///     Days left are whole days until the expiry, rounded down, which is what the shop shows: a pass bought today shows
+///     29, and a pass that ends on a reset loses one at every reset.
 /// </summary>
 public static class MonthCardService
 {
@@ -19,8 +23,9 @@ public static class MonthCardService
     public const int PurchaseRewardAmount = 300;
     public const int ActiveDaysPerPurchase = 30;
 
-    // The shop refuses another pass once the remaining days would go past 180, i.e. above 150 days left.
-    public const int MaxRemainingDays = 180;
+    // The client's pass rules (4.7 TextMap 14763198289797068476): another pass can be bought only while fewer than
+    // 179 days are left, so the longest pass runs 178 + 30 = 208 days past today.
+    public const int PurchaseBelowRemainingDays = 179;
 
     private const long SecondsPerDay = 24 * 60 * 60;
 
@@ -44,16 +49,21 @@ public static class MonthCardService
         return outDate > ServerTimeProvider.GetServerUnixSec(data);
     }
 
-    /// <summary>Whole days left on the pass, counting a started day as a full one (0 when expired).</summary>
+    /// <summary>Whole days until the pass ends, rounded down as the shop shows them (0 on its last day).</summary>
     public static int GetRemainingDays(PlayerData data)
     {
-        var left = GetMonthCardOutDateTime(data) - ServerTimeProvider.GetServerUnixSec(data);
-        return left <= 0 ? 0 : (int)((left + SecondsPerDay - 1) / SecondsPerDay);
+        return CountRemainingDays(GetMonthCardOutDateTime(data), ServerTimeProvider.GetServerUnixSec(data));
+    }
+
+    public static int CountRemainingDays(long outDateTime, long now)
+    {
+        if (outDateTime <= now) return 0;
+        return (int)Math.Min((outDateTime - now) / SecondsPerDay, int.MaxValue);
     }
 
     /// <summary>
-    ///     Adds one purchase worth of days. Fails, leaving the pass untouched, when the pass is disabled or the new
-    ///     total would exceed <see cref="MaxRemainingDays" />.
+    ///     Adds one purchase worth of days. Fails, leaving the pass untouched, when the pass is disabled or
+    ///     <see cref="PurchaseBelowRemainingDays" /> or more days remain.
     /// </summary>
     public static bool TryExtend(PlayerData data, out long newOutDateTime)
     {
@@ -61,10 +71,13 @@ public static class MonthCardService
         {
             newOutDateTime = GetMonthCardOutDateTime(data);
             if (!ConfigManager.Config.ServerOption.EnableMonthCard) return false;
-            if (GetRemainingDays(data) + ActiveDaysPerPurchase > MaxRemainingDays) return false;
+            if (GetRemainingDays(data) >= PurchaseBelowRemainingDays) return false;
 
+            // A new or lapsed pass starts at the current window, so the day of purchase is one of its days and the
+            // expiry falls on a daily reset.
             var now = ServerTimeProvider.GetServerUnixSec(data);
-            var from = Math.Max(data.MonthCardExpireTime, now);
+            var windowStart = DailyResetClock.WindowStart(now, DailyResetClock.UtcOffsetHours, DailyResetClock.ResetHour);
+            var from = Math.Max(data.MonthCardExpireTime, windowStart);
             data.MonthCardExpireTime = from + ActiveDaysPerPurchase * SecondsPerDay;
             newOutDateTime = data.MonthCardExpireTime;
         }
@@ -73,7 +86,7 @@ public static class MonthCardService
         return true;
     }
 
-    /// <summary>Claims today's Stellar Jade at most once per local day while the pass is active.</summary>
+    /// <summary>Claims the Stellar Jade of the current daily window at most once while the pass is active.</summary>
     public static bool TryClaimDailyReward(PlayerData data, out ItemData reward)
     {
         reward = null!;
@@ -81,7 +94,7 @@ public static class MonthCardService
         {
             if (!IsActive(data)) return false;
 
-            var today = GetLocalDayStamp(ServerTimeProvider.GetServerUnixSec(data));
+            var today = DailyResetClock.Today(data);
             if (data.LastMonthCardRewardDate == today) return false;
             data.LastMonthCardRewardDate = today;
         }
@@ -93,11 +106,5 @@ public static class MonthCardService
             Count = DailyRewardAmount
         };
         return true;
-    }
-
-    private static int GetLocalDayStamp(long unixSeconds)
-    {
-        var localDate = DateTimeOffset.FromUnixTimeSeconds(unixSeconds).ToLocalTime().Date;
-        return localDate.Year * 10000 + localDate.Month * 100 + localDate.Day;
     }
 }
