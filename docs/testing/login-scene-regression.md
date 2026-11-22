@@ -196,6 +196,13 @@ Code: `scripts/LoginSceneRegression/SharedConfigRegression.cs`.
 - Takes the message section with the lowest ID in the cache whose opening message has follow-up items. After starting the section, the player's pending list is a copy of the configured `NextItemIDList`; completing a pending message leaves the configured list unchanged, and another player starting the same section still gets the original pending items (the old logic handed the configured list to the player and cleared it while advancing).
 - The default Train Party areas of two new players are independent objects; DIY slots and build steps written by one player do not appear for the other player or for players created later (the old logic put the static default area instance straight into player data).
 
+### New-player creation
+
+Code: `scripts/LoginSceneRegression/NewPlayerBatchRegression.cs`.
+
+- A new player's rows are created in one transaction (`DatabaseHelper.CreateBatch`). A SQLite trigger makes the insert of the last row fail: the bootstrap reports the error, the avatar row written earlier is rolled back, and only the player record stays in memory. The next login from that record writes all rows. The old logic committed each row on its own, which left the earlier rows behind and, on a disk with slow flushes, delayed the first `PlayerGetTokenScRsp` past the client's timeout.
+- A player reset (`DeleteUidGameplayData`, used by `PlayerResetHelper`) between queueing a new player's rows and inserting them makes the insert fail and leaves no row behind; the rows can then be created again. Inserting them after the reset would leave rows that nothing in memory owns, and the next creation of the same row would fail on the duplicate key.
+
 ### Save data compatibility
 
 - `LineupInfo.IsFavourite` is appended after the original five MemoryPack members. An independent old five-member contract verifies that old saves read with the default `false`, plus the SQLite round trip. The later `IsVirtual` and `PlaneId` (virtual lineups for story/Raid trials) are verified the same way with data truncated before those members. A `LineupInfo` saved before the favourite flag still deserialises.

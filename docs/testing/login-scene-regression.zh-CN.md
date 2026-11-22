@@ -196,6 +196,13 @@ dotnet run --project scripts/LoginSceneRegression/LoginSceneRegression.csproj -c
 - 取缓存中 ID 最小、开场消息带后续项的短信小节。开始小节后，玩家的待选列表是配置 `NextItemIDList` 的副本；完成一条待选消息后该配置列表不变，另一名玩家开始同一小节仍得到原始待选项（旧逻辑把配置列表直接交给玩家，并在推进时清空改写）。
 - 两名新玩家的列车派对默认区域是各自独立的对象；一名玩家写入的 DIY 槽位和建造步骤不会出现在另一名玩家及之后新建的玩家身上（旧逻辑把静态的默认区域实例直接放进玩家数据）。
 
+### 新玩家创建
+
+代码：`scripts/LoginSceneRegression/NewPlayerBatchRegression.cs`。
+
+- 新玩家的各行数据在同一个事务中创建（`DatabaseHelper.CreateBatch`）。用 SQLite 触发器让最后一行的插入失败：初始化报告错误，之前写入的角色行被回滚，内存中只保留玩家记录；之后从该记录再次登录会写入全部数据行。旧逻辑每行单独提交，失败时会留下之前的行；在刷盘较慢的磁盘上，还会使首个 `PlayerGetTokenScRsp` 晚于客户端超时。
+- 在新玩家的数据行排队之后、写入之前重置玩家（`DeleteUidGameplayData`，由 `PlayerResetHelper` 调用），写入会失败且不留下任何行，之后可以重新创建这些行。若在重置后仍写入，这些行在内存中没有对应对象，下次创建同一行会因主键重复而失败。
+
 ### 存档兼容
 
 - `LineupInfo.IsFavourite` 追加在 MemoryPack 原有的五个成员之后。使用独立的旧五成员契约验证旧存档可读且默认值为 `false`，并验证 SQLite 往返。之后追加的 `IsVirtual`、`PlaneId`（剧情/Raid 试用的虚拟队伍）同样以截去尾部成员的旧数据验证默认值。加收藏标记之前保存的 `LineupInfo` 仍可反序列化。
