@@ -31,6 +31,7 @@ using March7thHoney.GameServer.Command;
 using March7thHoney.Enums.Mission;
 using March7thHoney.Enums.Server;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.DailyActive;
 using March7thHoney.GameServer.Game.Mission;
 using March7thHoney.Database.DiceyDungeon;
 using March7thHoney.GameServer.Server.Packet.Recv.DiceyDungeon;
@@ -3871,6 +3872,24 @@ var coinProduct = GameData.RechargeConfigData.GetValueOrDefault("rpgglbcoin60tie
 Check("cache has the month card and 60-shard recharge products",
     cardProduct is { GiftType: (int)ProductGiftType.ProductGiftMonthCard }
     && coinProduct is { GiftType: (int)ProductGiftType.ProductGiftCoin, FirstCharge: 60 });
+// 2026-09-24 04:00 at UTC+8, a daily reset.
+var passReset = new DateTimeOffset(2026, 9, 23, 20, 0, 0, TimeSpan.Zero).ToUnixTimeSeconds();
+Check("a daily window runs from one reset to the next",
+    DailyResetClock.WindowStart(passReset - 1, 8, 4) == passReset - 86400
+    && DailyResetClock.WindowStart(passReset, 8, 4) == passReset
+    && DailyResetClock.WindowStart(passReset + 86399, 8, 4) == passReset);
+Check("supply pass days left round down to whole days",
+    MonthCardService.CountRemainingDays(passReset + 30 * 86400, passReset + 3600) == 29
+    && MonthCardService.CountRemainingDays(passReset + 30 * 86400, passReset) == 30
+    && MonthCardService.CountRemainingDays(passReset + 86400, passReset + 3600) == 0
+    && MonthCardService.CountRemainingDays(passReset - 10, passReset) == 0);
+// An OSBETAWin4.7.51 client's shop showed 179, 178 and 177 days for this expiry at these server times
+// (UTC-6, /faketime).
+const long observedOutDate = 1810864167;
+Check("days left match what the shop showed for a pass that does not end on a reset",
+    MonthCardService.CountRemainingDays(observedOutDate, 1795314600) == 179
+    && MonthCardService.CountRemainingDays(observedOutDate, 1795413600) == 178
+    && MonthCardService.CountRemainingDays(observedOutDate, 1795500000) == 177);
 var cardPlayer = new PlayerInstance(60030);
 await cardPlayer.InitializeAsync();
 var savedMonthCard = config.ServerOption.EnableMonthCard;
@@ -3909,6 +3928,7 @@ using (var cardClientPeer = new KcpConversation(endpoint, cardInbound, options))
 
     var cardData = cardPlayer.Data;
     var now = ServerTimeProvider.GetServerUnixSec(cardData);
+    var cardWindow = DailyResetClock.WindowStart(now, DailyResetClock.UtcOffsetHours, DailyResetClock.ResetHour);
     var products = QueryProductInfoScRsp.Parser.ParseFrom(
         new March7thHoney.GameServer.Server.Packet.Send.Player.PacketQueryProductInfoScRsp(cardData).Data);
     Check("a fresh account has no supply pass and querying the shop does not switch one on",
@@ -3924,12 +3944,14 @@ using (var cardClientPeer = new KcpConversation(endpoint, cardInbound, options))
     var succ = RechargeSuccNotify.Parser.ParseFrom(firstBuy.Last(p => p.Id == CmdIds.RechargeSuccNotify).Body);
     var daily = MonthCardRewardNotify.Parser.ParseFrom(firstBuy.Single(p => p.Id == CmdIds.MonthCardRewardNotify).Body);
     var firstOutDate = cardData.MonthCardExpireTime;
-    Check("buying the supply pass opens 30 days and announces the expiry with 300 Oneiric Shards",
-        firstResult == RechargeResult.Granted && firstOutDate >= now + 30 * 86400 && firstOutDate <= now + 30 * 86400 + 60
+    Check("buying the supply pass covers 30 days from today's reset, shows 29 left and grants 300 Oneiric Shards",
+        firstResult == RechargeResult.Granted && firstOutDate == cardWindow + 30 * 86400
+        && MonthCardService.GetRemainingDays(cardData) == 29
         && (long)succ.MonthCardOutDateTime == firstOutDate && succ.ProductId == "rpgglbmonthcardtier5"
         && succ.ItemList.ItemList_.Single() is { ItemId: 3, Num: 300 } && cardData.Mcoin == shardsBefore + 300);
-    Check("the day of purchase pays its 90 Stellar Jade once",
+    Check("the day of purchase pays its 90 Stellar Jade once, keyed to the daily reset",
         daily.Reward.ItemList_.Single() is { ItemId: 1, Num: 90 } && cardData.Hcoin == jadeBefore + 90
+        && cardData.LastMonthCardRewardDate == DailyResetClock.Today(cardData)
         && !MonthCardService.TryClaimDailyReward(cardData, out _));
 
     RechargeResult secondResult = default;
@@ -3939,11 +3961,20 @@ using (var cardClientPeer = new KcpConversation(endpoint, cardInbound, options))
         && secondBuy.All(p => p.Id != CmdIds.MonthCardRewardNotify) && cardData.Hcoin == jadeBefore + 90);
 
     for (var i = 0; i < 4; i++) await RechargeService.Purchase(cardPlayer, cardProduct!);
+    var refusedAt179 = await RechargeService.Purchase(cardPlayer, cardProduct!);
+    Check("six passes bought on one day leave 179 days and a seventh is refused without changes",
+        MonthCardService.GetRemainingDays(cardData) == 179 && refusedAt179 == RechargeResult.MonthCardLimit
+        && cardData.MonthCardExpireTime == cardWindow + 180 * 86400 && cardData.Mcoin == shardsBefore + 6 * 300);
+
+    // A day later the same pass shows 178 days left, which still allows a purchase.
+    cardData.MonthCardExpireTime -= 86400;
+    var at178 = await RechargeService.Purchase(cardPlayer, cardProduct!);
     var fullOutDate = cardData.MonthCardExpireTime;
-    var refused = await RechargeService.Purchase(cardPlayer, cardProduct!);
-    Check("the pass stops at 180 days and a further purchase is refused without changes",
-        MonthCardService.GetRemainingDays(cardData) == 180 && refused == RechargeResult.MonthCardLimit
-        && cardData.MonthCardExpireTime == fullOutDate && cardData.Mcoin == shardsBefore + 6 * 300);
+    var refusedAt208 = await RechargeService.Purchase(cardPlayer, cardProduct!);
+    Check("a pass with 178 days left extends to 208 and no further",
+        at178 == RechargeResult.Granted && fullOutDate == cardWindow + 209 * 86400
+        && MonthCardService.GetRemainingDays(cardData) == 208 && refusedAt208 == RechargeResult.MonthCardLimit
+        && cardData.MonthCardExpireTime == fullOutDate);
 
     var shardsBeforeCoin = cardData.Mcoin;
     var coinResult = await RechargeService.Purchase(cardPlayer, coinProduct!);
