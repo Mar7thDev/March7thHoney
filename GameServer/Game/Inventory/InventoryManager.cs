@@ -378,6 +378,8 @@ public partial class InventoryManager(PlayerInstance player) : BasePlayerManager
             case ItemMainTypeEnum.Material:
             case ItemMainTypeEnum.Pet:
             case ItemMainTypeEnum.Usable:
+            // PutItem stores mission items here too; without this, ItemNum steps never see them.
+            case ItemMainTypeEnum.Mission:
                 return Data.MaterialItems.Find(x => x.ItemId == itemId);
             case ItemMainTypeEnum.Equipment:
                 return uniqueId > 0

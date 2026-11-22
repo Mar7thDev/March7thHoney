@@ -24,6 +24,7 @@ using March7thHoney.Database.Player;
 using March7thHoney.Database.Quests;
 using March7thHoney.Enums;
 using March7thHoney.Enums.Avatar;
+using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Scene;
 using March7thHoney.Enums.Task;
 using March7thHoney.GameServer.Game.Battle;
@@ -1900,6 +1901,41 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
         fortPlayer.Data.EntryId == 101010102 &&
         fortPlayer.MissionManager.GetSubMissionStatus(101020114) == MissionPhaseEnum.Finish);
     fortPlayer.Connection = null;
+
+    // The Herta access cards are mission items; their ItemNum steps gate 2000107's console hand-in.
+    int[] accessCards = [140084, 140085, 140086];
+    if (GameData.MainMissionData.ContainsKey(2000106) && GameData.MainMissionData.ContainsKey(2000107) &&
+        accessCards.All(id => GameData.ItemConfigData.TryGetValue(id, out var card) &&
+                              card.ItemMainType == ItemMainTypeEnum.Mission))
+    {
+        var accessPlayer = new PlayerInstance(60072);
+        await accessPlayer.InitializeAsync();
+        var accessMissions = accessPlayer.MissionManager!;
+        accessMissions.Data.EnableMissionOverride = true;
+        accessPlayer.Connection = new ProbeConnection(serverPeer) { Player = accessPlayer };
+        await accessMissions.AcceptMainMission(2000106, false);
+        foreach (var card in accessCards[..2]) await accessPlayer.InventoryManager!.AddItem(card, 1, false);
+        await accessMissions.HandleAllFinishType();
+        Check("mission items are found in the inventory they are stored in",
+            accessPlayer.InventoryManager!.GetItem(140084)?.Count == 1);
+        Check("held access cards close their ItemNum steps while the missing card keeps its step open",
+            accessMissions.GetSubMissionStatus(200010611) == MissionPhaseEnum.Finish &&
+            accessMissions.GetSubMissionStatus(200010612) == MissionPhaseEnum.Finish &&
+            accessMissions.GetSubMissionStatus(200010613) == MissionPhaseEnum.Accept &&
+            accessMissions.GetMainMissionStatus(2000106) == MissionPhaseEnum.Accept &&
+            accessMissions.GetMainMissionStatus(2000107) == MissionPhaseEnum.None);
+        await accessPlayer.InventoryManager.AddItem(accessCards[2], 1, false);
+        await accessMissions.HandleAllFinishType();
+        Check("the third access card finishes 2000106 and arms the console hand-in 200010602",
+            accessMissions.GetMainMissionStatus(2000106) == MissionPhaseEnum.Finish &&
+            accessMissions.GetMainMissionStatus(2000107) == MissionPhaseEnum.Accept &&
+            accessMissions.GetSubMissionStatus(200010602) == MissionPhaseEnum.Accept);
+        accessPlayer.Connection = null;
+    }
+    else
+    {
+        Console.WriteLine("SKIP access-card chain needs missions 2000106/2000107 and mission items 140084-140086.");
+    }
 
     // Official 4.6 seq 36813/36822/36827 pair quick-up request EKLIDIDKFHC with PMEMIDKDAFG.
     // Later versions keep those identities but move the commands (4.7: 355/341, 4.8: 332/395) and reshuffle
