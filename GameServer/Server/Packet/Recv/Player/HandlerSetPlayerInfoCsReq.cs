@@ -9,9 +9,6 @@ namespace March7thHoney.GameServer.Server.Packet.Recv.Player;
 [Opcode(CmdIds.SetPlayerInfoCsReq)]
 public class HandlerSetPlayerInfoCsReq : Handler<SetPlayerInfoCsReq>
 {
-    /// <summary>The prologue sub-mission that waits for the nickname and gender choice.</summary>
-    private const int NameAndGenderSubMissionId = 100010134;
-
     protected override async Task OnHandle(Connection connection, PlayerInstance player, SetPlayerInfoCsReq req)
     {
         if (req == null) return;
@@ -31,7 +28,7 @@ public class HandlerSetPlayerInfoCsReq : Handler<SetPlayerInfoCsReq>
             : TrailblazerAvatar.MaleDestructionId;
         await player.LineupManager!.AddAvatarToRealTeam(heroAvatarId);
         await player.LineupManager!.AddAvatarToRealTeam(AvatarManager.StarterCompanionAvatarId);
-        await player.MissionManager!.FinishSubMission(NameAndGenderSubMissionId);
+        await player.MissionManager!.FinishSubMission(AvatarManager.NameAndGenderSubMissionId);
 
         await connection.SendPacket(new PacketSetPlayerInfoScRsp(player, req.IsModify));
         await connection.SendPacket(new PacketPlayerSyncScNotify(player.ToProto()));

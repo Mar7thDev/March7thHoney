@@ -1,6 +1,7 @@
 using March7thHoney.Data;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Enums.Avatar;
+using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.Proto;
@@ -10,10 +11,30 @@ namespace March7thHoney.GameServer.Game.Avatar;
 /// <summary>Trailblazer path and gender handling.</summary>
 public partial class AvatarManager
 {
+    /// <summary>The opening main mission, which holds the nickname and gender prompt.</summary>
+    public const int OpeningMainMissionId = 1000101;
+
+    /// <summary>The prologue sub-mission that waits for the nickname and gender choice.</summary>
+    public const int NameAndGenderSubMissionId = 100010134;
+
     public FormalAvatarInfo? GetHero()
     {
         return Data.FormalAvatars.Find(avatar => avatar.BaseAvatarId == TrailblazerAvatar.BaseAvatarId);
     }
+
+    /// <summary>
+    ///     Story mode before the gender prompt: the opening mission is running, its name and gender step is not
+    ///     finished, and no team holds the Trailblazer. The client keeps every Trailblazer path it is shown for the
+    ///     rest of the session, so until the choice the Trailblazer is left out of the avatar data and the choice
+    ///     announces it with the chosen path only. A Trailblazer already in a team (a replayed prologue) stays
+    ///     visible, since the client cannot build a team member it has no path data for.
+    /// </summary>
+    public bool IsHeroGenderPending =>
+        Player.MissionEnabled &&
+        Player.MissionManager!.GetMainMissionStatus(OpeningMainMissionId) == MissionPhaseEnum.Accept &&
+        Player.MissionManager.GetSubMissionStatus(NameAndGenderSubMissionId) != MissionPhaseEnum.Finish &&
+        !Player.LineupManager!.GetAllLineup().Any(lineup =>
+            lineup.BaseAvatars?.Any(avatar => avatar.BaseAvatarId == TrailblazerAvatar.BaseAvatarId) == true);
 
     /// <summary>
     ///     Corrects the Trailblazer's current path before login (yuukisr_go a532fa0): <c>cur_multi_path_avatar_type</c>
@@ -29,9 +50,9 @@ public partial class AvatarManager
         if (hero == null) return false;
 
         var gender = Player.Data.CurrentGender;
-        // With missions enabled and no gender chosen yet, the client has not decided the protagonist's look, so the
-        // default gender must not drive a correction.
-        var genderKnown = gender is Gender.Man or Gender.Woman && (Player.Data.IsGenderSet || !Player.MissionEnabled);
+        // Before the story's gender prompt the client has not decided the protagonist's look, so the default gender
+        // must not drive a correction.
+        var genderKnown = gender is Gender.Man or Gender.Woman && !IsHeroGenderPending;
         var cur = hero.AvatarId;
 
         if (!TrailblazerAvatar.IsPath(cur))
@@ -119,14 +140,37 @@ public partial class AvatarManager
 
     /// <summary>
     ///     The gender chosen when the account names its Trailblazer: records it and puts the Trailblazer on that
-    ///     gender's Destruction path. Any choice other than female counts as male.
+    ///     gender's Destruction path. Any choice other than female counts as male. When the Trailblazer was still
+    ///     hidden (<see cref="IsHeroGenderPending" />), the path is set without a path-change notify and one sync
+    ///     introduces the Trailblazer with only the chosen path.
     /// </summary>
     public async ValueTask SetHeroGenderAtCreation(Gender gender)
     {
+        var heroHidden = IsHeroGenderPending;
         RecordHeroGender(gender == Gender.Woman ? Gender.Woman : Gender.Man);
-        await ChangePathType(TrailblazerAvatar.BaseAvatarId, MultiPathAvatarTypeEnum.Warrior);
+        if (!heroHidden)
+        {
+            await ChangePathType(TrailblazerAvatar.BaseAvatarId, MultiPathAvatarTypeEnum.Warrior);
+            return;
+        }
+
+        var hero = GetHero();
+        if (hero == null) return;
+        var pathId = TrailblazerAvatar.NormalizePathId(TrailblazerAvatar.MaleDestructionId, Player.Data.CurrentGender);
+        Player.Data.CurBasicType = pathId;
+        hero.AvatarId = pathId;
+        hero.SetCurSp(0, Player.LineupManager!.GetCurLineup()!.IsExtraLineup());
+        hero.CheckPathSkillTree();
+        MarkDirty();
+        await Player.SendPacket(new PacketPlayerSyncScNotify(hero));
     }
 
+    /// <summary>
+    ///     Switches the Trailblazer to <paramref name="gender" />, keeping the current path. Before the story's gender
+    ///     prompt only the saved data changes, so the prompt can still introduce the Trailblazer cleanly. Afterwards
+    ///     the client keeps the previous gender's path next to the new one until the next login; no known packet
+    ///     makes it drop a path.
+    /// </summary>
     public async ValueTask SetHeroGender(Gender gender)
     {
         if (gender is not (Gender.Man or Gender.Woman)) return;
@@ -142,9 +186,9 @@ public partial class AvatarManager
                 ? TrailblazerAvatar.FemaleDestructionId
                 : TrailblazerAvatar.MaleDestructionId;
 
+        var heroHidden = IsHeroGenderPending;
         RecordHeroGender(gender);
         Player.Data.CurBasicType = newId;
-        await Player.SendPacket(new PacketGetBasicInfoScRsp(Player));
 
         var hero = GetHero();
         if (hero != null)
@@ -152,13 +196,18 @@ public partial class AvatarManager
             hero.AvatarId = newId;
             hero.CheckPathSkillTree();
             hero.SetCurSp(0, Player.LineupManager!.GetCurLineup()?.IsExtraLineup() ?? false);
+        }
 
+        MarkDirty();
+        if (heroHidden) return;
+
+        await Player.SendPacket(new PacketGetBasicInfoScRsp(Player));
+        if (hero != null)
+        {
             await Player.SendPacket(new PacketAvatarPathChangedNotify(TrailblazerAvatar.BaseAvatarId,
                 (MultiPathAvatarType)newId));
             await Player.SendPacket(new PacketPlayerSyncScNotify(hero));
         }
-
-        MarkDirty();
 
         // Reload in place so the client rebuilds the Trailblazer with the new model.
         if (Player.SceneInstance != null && Player.Data.Pos != null && Player.Data.Rot != null)
