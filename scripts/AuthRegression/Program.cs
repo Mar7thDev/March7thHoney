@@ -380,11 +380,22 @@ await using (var proxyApp = WebProgram.BuildWebApp([], 0, "http://127.0.0.1:0"))
     await proxyApp.StopAsync();
 }
 
-auth.ExternalRegistrationUrl = "https://example.test/register";
 using (var noRedirect = new HttpClient(new HttpClientHandler { AllowAutoRedirect = false }) { BaseAddress = new Uri(address) })
-using (var response = await noRedirect.GetAsync("/login-platform/register.html"))
+{
+    const string loginPlatformQuery = "?lang=zh-CN&from=launcher";
+    foreach (var path in new[] { "/login-platform", "/login-platform/" })
+    {
+        using var redirect = await noRedirect.GetAsync(path + loginPlatformQuery);
+        Check($"{path} redirects to the login platform index and preserves the query",
+            redirect.StatusCode == HttpStatusCode.Redirect &&
+            redirect.Headers.Location?.ToString() == "/login-platform/index.html" + loginPlatformQuery);
+    }
+
+    auth.ExternalRegistrationUrl = "https://example.test/register";
+    using var response = await noRedirect.GetAsync("/login-platform/register.html");
     Check("closed registration page points at the external sign-up site",
         response.StatusCode == HttpStatusCode.Redirect && response.Headers.Location?.ToString() == auth.ExternalRegistrationUrl);
+}
 auth.ExternalRegistrationUrl = "";
 auth.EnableRegistration = true;
 

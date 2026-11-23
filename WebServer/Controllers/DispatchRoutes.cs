@@ -46,7 +46,6 @@ public static class DispatchRoutes
             () => Json("{\"retcode\":0,\"message\":\"OK\",\"data\":{\"id\":\"none\",\"action\":\"ACTION_NONE\",\"geetest\":null}}"));
 
         app.MapGet("/login-platform", (HttpContext ctx) => LoginPlatform(ctx, null));
-        app.MapGet("/login-platform/", (HttpContext ctx) => LoginPlatform(ctx, null));
         app.MapGet("/login-platform/{*pagePath}", (HttpContext ctx, string? pagePath) => LoginPlatform(ctx, pagePath));
 
         // === AUTHENTICATION ===
