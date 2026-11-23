@@ -159,7 +159,7 @@ public partial class AvatarManager
         var pathId = TrailblazerAvatar.NormalizePathId(TrailblazerAvatar.MaleDestructionId, Player.Data.CurrentGender);
         Player.Data.CurBasicType = pathId;
         hero.AvatarId = pathId;
-        hero.SetCurSp(0, Player.LineupManager!.GetCurLineup()!.IsExtraLineup());
+        hero.SetCurSp(0, Player.LineupManager!.GetCurLineup()?.IsExtraLineup() ?? false);
         hero.CheckPathSkillTree();
         MarkDirty();
         await Player.SendPacket(new PacketPlayerSyncScNotify(hero));
