@@ -13,7 +13,7 @@ namespace March7thHoney.GameServer.Game.Scene;
 public partial class SceneInstance
 {
     /// <summary>
-    ///     Opens every minimap hint marker whose watched prop is already finished, and returns the markers it moved.
+    ///     Opens every minimap hint marker whose watched prop is already finished.
     /// </summary>
     /// <remarks>
     ///     Official 4.7: a looted chest ships its marker at Open in the same refresh (11 of 11 loots, e.g. floor
@@ -22,9 +22,8 @@ public partial class SceneInstance
     ///     finished the puzzle before markers were cleared stops showing the pin. Only markers whose own state list
     ///     declares Open are moved.
     /// </remarks>
-    public async ValueTask<List<EntityProp>> OpenSolvedMapMarkers(bool sendPacket)
+    public async ValueTask OpenSolvedMapMarkers(bool sendPacket)
     {
-        var opened = new List<EntityProp>();
         foreach (var marker in Entities.Values.OfType<EntityProp>().ToList())
         {
             if (marker.IsGmSpawned || marker.State == PropStateEnum.Open) continue;
@@ -36,10 +35,7 @@ public partial class SceneInstance
             if (watched == null || !CountsAsSolved(watched)) continue;
 
             await marker.SetState(PropStateEnum.Open, sendPacket);
-            opened.Add(marker);
         }
-
-        return opened;
     }
 
     /// <summary>

@@ -18,7 +18,8 @@ public partial class MissionManager
     ///     follows opens floor 20222001 g10/300001 (the corridor Door_01 no interaction ever touches). A prop that is
     ///     already there - the usual case, since the sub's gate watches it - is left alone. A prop outside the live
     ///     scene is saved for the next build of the floor the sub names. Checkpoint subs are skipped: their handler
-    ///     finishes them without the checkpoint being reached, and forcing it would unlock the waypoint.
+    ///     finishes them without the checkpoint being reached, and forcing it would unlock the waypoint. Scenes whose
+    ///     props are rebuilt per run (rogue rooms and their tutorial) keep their own prop rules.
     /// </remarks>
     private async ValueTask ApplyPropStateFinishEffect(SubMissionInfo? info)
     {
@@ -33,6 +34,7 @@ public partial class MissionManager
 
         if (scene != null && scene.FloorId == floorId)
         {
+            if (!scene.PersistsPropState) return;
             var prop = scene.GetEntitiesInGroup<EntityProp>(info.ParamInt1)
                 .FirstOrDefault(p => p.InstId == info.ParamInt2 && !p.IsGmSpawned);
             if (prop != null)
@@ -40,8 +42,6 @@ public partial class MissionManager
                 if (prop.State != target) await prop.SetState(target);
                 return;
             }
-
-            if (!scene.PersistsPropState) return;
         }
 
         var planeId = info.LevelPlaneID;
