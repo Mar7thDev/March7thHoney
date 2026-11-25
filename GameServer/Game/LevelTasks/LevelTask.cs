@@ -91,10 +91,18 @@ public class LevelTask(PlayerInstance player)
     // AsyncLocal, because TriggerTask does not await the tasks it starts.
     private static readonly AsyncLocal<bool> ClientArmedDispatch = new();
 
-    private static void RunClientArmed(Action dispatch)
+    private static void RunClientArmed(Action dispatch) => RunDispatch(dispatch, true);
+
+    /// <summary>
+    ///     Runs an accepted sub's own graph as a mission graph, also when the accept happened inside a
+    ///     client-armed dispatch (a prop closed by an act string finishing a PropState sub).
+    /// </summary>
+    public static void RunMissionGraph(Action dispatch) => RunDispatch(dispatch, false);
+
+    private static void RunDispatch(Action dispatch, bool clientArmed)
     {
         var outer = ClientArmedDispatch.Value;
-        ClientArmedDispatch.Value = true;
+        ClientArmedDispatch.Value = clientArmed;
         try
         {
             dispatch();
