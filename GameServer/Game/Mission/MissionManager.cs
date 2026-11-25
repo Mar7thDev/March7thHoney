@@ -797,17 +797,67 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
 
         GameData.SubMissionInfoData.TryGetValue(missionId, out var subMission);
         if (subMission == null) return;
-        var mainMissionId = subMission.MainMissionId;
-        GameData.MainMissionData.TryGetValue(mainMissionId, out var mainMission);
+        GameData.MainMissionData.TryGetValue(subMission.MainMissionId, out var mainMission);
         if (mainMission == null) return;
 
+        await ApplyCustomValues(mainMission, values, true);
+    }
+
+    /// <summary>
+    ///     UpdateMainMissionCustomValueCsReq: the client's act-level SetMissionCustomValue reports a choice
+    ///     against the main directly (official 4.4 {main_mission_id, value, BGDFHBAANLB "LoadGroup_1"}). Acts that
+    ///     branch on ByCompareMissionCustomValue read the stored value back, so a dropped report leaves the
+    ///     next choice talk open with nobody speaking.
+    /// </summary>
+    public async ValueTask<Retcode> UpdateMainMissionCustomValue(int mainMissionId, uint value, string name)
+    {
+        if (!Enabled) return Retcode.RetSucc;
+        if (!GameData.MainMissionData.TryGetValue(mainMissionId, out var mainMission))
+            return Retcode.RetMissionNotExist;
+        if (GetMainMissionStatus(mainMissionId) != MissionPhaseEnum.Accept) return Retcode.RetMissionNotDoing;
+        if (name.Length == 0) return Retcode.RetMissionCustomValueNotValid;
+
+        // The request carries no slot index. Resolve it from the main's declared values when the cache knows
+        // their names; otherwise the record is name-keyed only and the index-addressed gates are skipped.
+        var slot = mainMission.MissionInfo?.MissionCustomValueList.Find(x => x.Name == name);
+
+        // The name is client input and not every reported name is declared, so bound the distinct records
+        // one main can collect instead of rejecting undeclared names.
+        var stored = Data.MainMissionCustomValues.GetValueOrDefault(mainMissionId) ?? [];
+        if (stored.All(x => x.Key != name) && stored.Count >= MaxCustomValuesPerMain)
+            return Retcode.RetMissionCustomValueNotValid;
+
+        var record = new MissionCustomValue { CustomValue = value, BGDFHBAANLB = name };
+        if (slot != null) record.Index = (uint)slot.Index;
+        await ApplyCustomValues(mainMission, [record], slot != null);
+        MarkDirty();
+        return Retcode.RetSucc;
+    }
+
+    private const int MaxCustomValuesPerMain = 16;
+
+    /// <summary>The main's stored custom values, as GetMainMissionCustomValueScRsp and the update reply carry them.</summary>
+    public IReadOnlyList<MissionCustomValueRecord> GetMainMissionCustomValues(int mainMissionId)
+    {
+        return Data.MainMissionCustomValues.GetValueOrDefault(mainMissionId) ?? [];
+    }
+
+    /// <summary>
+    ///     Stores reported custom values and accepts the main's CustomValue-gated subs they satisfy.
+    ///     <paramref name="indexed" /> is false when the values carry no trustworthy slot index, so only the
+    ///     name-addressed TakeParamStrList gates may accept.
+    /// </summary>
+    private async ValueTask ApplyCustomValues(MainMissionExcel mainMission, List<MissionCustomValue> values,
+        bool indexed)
+    {
+        var mainMissionId = mainMission.MainMissionID;
         var sync = new MissionSync();
         foreach (var mission in mainMission.MissionInfo?.SubMissionList ?? [])
             if (mission.TakeType == SubMissionTakeTypeEnum.CustomValue &&
                 GetSubMissionStatus(mission.ID) == MissionPhaseEnum.None)
             {
                 var accept = CustomValueStrGateSatisfied(mission, values);
-                if (!accept)
+                if (!accept && indexed)
                 {
                     List<List<int>> list = [mission.TakeParamIntList ?? []];
                     if (mission.TakeParamIntList?.Count > 5)

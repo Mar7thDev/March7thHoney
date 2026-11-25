@@ -61,6 +61,17 @@ public partial class CustomValueInfo
 {
     public int Index { get; set; }
     public List<int> ValidValueParamList { get; set; } = [];
+
+    // Append-only below (MemoryPack member order). The declared value name ("OldValue_0"), which
+    // UpdateMainMissionCustomValueCsReq reports instead of a slot index.
+    public string Name { get; set; } = "";
+
+    // A cache written before Name existed reads it back as null.
+    [MemoryPackOnDeserialized]
+    private void FillMissingName()
+    {
+        Name ??= "";
+    }
 }
 
 [MemoryPackable]
