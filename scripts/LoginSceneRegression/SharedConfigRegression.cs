@@ -14,7 +14,9 @@ internal static class SharedConfigRegression
     private static async Task MessageOffersStayOutOfTheConfig(Action<string, bool> check)
     {
         // A section whose opening item offers a follow-up with a different continuation: finishing that follow-up
-        // replaces the offered list, which is where a list shared with the config would be rewritten.
+        // replaces the offered list, which is where a list shared with the config would be rewritten. The follow-up
+        // must wait for the player (a choice, or a single reply): a single line the server plays itself is advanced
+        // past when the section starts, and a mission card cannot be picked.
         var found = GameData.MessageSectionConfigData.Values.OrderBy(section => section.ID)
             .Select(section => (Section: section, Start: section.StartMessageItemIDList.Count == 0
                 ? null
@@ -23,6 +25,8 @@ internal static class SharedConfigRegression
                                     start.SectionID == pair.Section.ID &&
                                     GameData.MessageItemConfigData.TryGetValue(start.NextItemIDList[0], out var next) &&
                                     next.SectionID == pair.Section.ID &&
+                                    (start.NextItemIDList.Count > 1 || next.WaitsForClient()) &&
+                                    !next.IsMissionCard() &&
                                     !next.NextItemIDList.SequenceEqual(start.NextItemIDList));
         check("the resource cache has a message section whose opening item offers a follow-up", found.Start != null);
         if (found.Start == null) return;
