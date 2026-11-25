@@ -67,6 +67,7 @@ public class SceneEntityLoader(SceneInstance scene)
             await Scene.ReapplyFinishedRoguePropUnlocks();
         await Scene.RepairFanOutFogDoors();
         await Scene.UnlockSolvedPuzzleConsoles();
+        await Scene.OpenSimpleDoorGates();
         await Scene.OpenSolvedMapMarkers(false);
         if (Scene.Excel.PlaneType == PlaneTypeEnum.Raid)
             await Scene.ReopenFinishedRaidPortals();

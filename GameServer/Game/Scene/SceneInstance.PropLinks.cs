@@ -137,6 +137,32 @@ public partial class SceneInstance
     private static bool IsLiftPosition(PropStateEnum state) =>
         state is >= PropStateEnum.Elevator1 and <= PropStateEnum.Elevator3;
 
+    /// <summary>
+    ///     A <c>BaseConsole_*_Control_SimpleDoor</c> console at Open must have its doors Open too. Its client graph
+    ///     animates the door open when the console reaches Open and has no close path, so a save carrying the
+    ///     console's Open without the door's rebuilt the gate shut with no way to reopen it (floor 20123001: console
+    ///     8/300005 Open, gate 8/300004 Closed, blocking "Follow Perkins the robot"). Official 4.5 ships console and
+    ///     gate Open together and keeps both. Only a Closed door whose state list declares Open moves.
+    /// </summary>
+    public async ValueTask OpenSimpleDoorGates()
+    {
+        foreach (var console in Entities.Values.OfType<EntityProp>().ToList())
+        {
+            if (console.State != PropStateEnum.Open ||
+                console.PropInfo.InitLevelGraph?.Contains("Control_SimpleDoor", StringComparison.Ordinal) != true)
+                continue;
+
+            foreach (var (groupId, instIds) in console.PropInfo.UnlockDoorID)
+            foreach (var instId in instIds)
+            {
+                var door = FindProp(groupId, instId);
+                if (door is not { State: PropStateEnum.Closed } ||
+                    !door.Excel.PropStateList.Contains(PropStateEnum.Open)) continue;
+                await door.SetState(PropStateEnum.Open, false);
+            }
+        }
+    }
+
     // Only a console still Locked moves, so a later step that already opened it is never reset.
     private async ValueTask UnlockLockedConsole(int groupId, int instId, bool sendPacket)
     {
