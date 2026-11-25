@@ -24,7 +24,8 @@ public static class StoryTrialTables
         HasSkillLimits = false;
         HasSpecialAvatarFlags = false;
 
-        if (LoadSkillTree("AvatarSkillTreeConfig.json") | LoadSkillTree("AvatarSkillTreeConfigLD.json"))
+        if (LoadSkillTree("AvatarSkillTreeConfig.json") | LoadSkillTree("AvatarSkillTreeConfigLD.json") |
+            LoadSkillTree("AvatarSkillTreeConfigTrial.json"))
             HasSkillLimits = SkillNodes.Count > 0;
         if (LoadSpecialAvatars("SpecialAvatar.json"))
             HasSpecialAvatarFlags = UseWorldLevel.Count > 0;

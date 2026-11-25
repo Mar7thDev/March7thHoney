@@ -40,7 +40,7 @@ public partial class MissionManager
             foreach (var subId in main.SubMissionIds)
             {
                 Data.SetSubMissionStatus(subId, MissionPhaseEnum.None);
-                Data.SubMissionProgressDict.Remove(subId);
+                Data.SubMissionProgressDict.TryRemove(subId, out _);
             }
             Data.SetMainMissionStatus(id, MissionPhaseEnum.None);
         }
