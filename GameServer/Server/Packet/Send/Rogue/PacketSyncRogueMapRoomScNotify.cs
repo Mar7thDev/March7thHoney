@@ -15,4 +15,14 @@ public class PacketSyncRogueMapRoomScNotify : BasePacket
 
         SetData(proto);
     }
+
+    // A room other than the current one, at its own status: the next room's Unlock after a clear.
+    public PacketSyncRogueMapRoomScNotify(int mapId, RogueRoomData room) : base(CmdIds.SyncRogueMapRoomScNotify)
+    {
+        SetData(new SyncRogueMapRoomScNotify
+        {
+            MapId = (uint)mapId,
+            HNEANMNJHDB = RogueManager.BuildRoom(room, room.Status)
+        });
+    }
 }

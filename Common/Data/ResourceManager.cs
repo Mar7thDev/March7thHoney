@@ -857,14 +857,16 @@ public class ResourceManager
     }
 
     /// <summary>
-    ///     Divergent Universe event NPCs (RogueTournNPC, RogueEventTourn* dialogues) are played by a client-side Act
-    ///     graph. The generic LevelGraph model drops the option/event lists the server answers with, so the graph is
-    ///     flattened into <see cref="RogueTournDialogueGraph" /> as well. A missing graph file is a legitimate state.
+    ///     Divergent Universe event NPCs (RogueTournNPC, RogueEventTourn* dialogues) and classic Simulated Universe
+    ///     Occurrence events (RogueNPC, RogueDialogue/Event* dialogues) are played by a client-side Act graph. The
+    ///     generic LevelGraph model drops the option/event lists the server answers with, so the graph is flattened into
+    ///     <see cref="RogueTournDialogueGraph" /> as well. A missing graph file is a legitimate state.
     /// </summary>
     public static void LoadRogueTournDialogueGraph(int npcId, RogueNPCConfigInfo config)
     {
         var entry = config.DialogueList.FirstOrDefault();
-        if (entry == null || !entry.DialoguePath.Contains("RogueEventTourn", StringComparison.Ordinal)) return;
+        if (entry == null || !entry.DialoguePath.Contains("RogueEventTourn", StringComparison.Ordinal) &&
+            !entry.DialoguePath.Contains("RogueDialogue/Event", StringComparison.Ordinal)) return;
 
         // Some official builds pad their resource paths with trailing whitespace.
         var file = new FileInfo(ResourcePaths.Resource(entry.DialoguePath.Trim()));

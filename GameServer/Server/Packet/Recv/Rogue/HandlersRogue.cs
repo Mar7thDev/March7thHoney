@@ -70,6 +70,10 @@ public sealed class HandlerStartRogueCsReq : Handler<StartRogueCsReq>
         await connection.SendPacket(new PacketSyncServerSceneChangeNotify());
         await connection.SendPacket(new PacketSyncRogueMapRoomScNotify(inst));
         await connection.SendPacket(new PacketSyncLineupNotify(player.LineupManager!.GetCurLineup()!));
+        // The Trailblaze Blessing offer rides its own notify before the response (official 4.7), which carries it too.
+        if (inst.BonusOffer.Count > 0)
+            await connection.SendPacket(
+                new PacketSyncRogueCommonPendingActionScNotify(RogueManager.BuildPendingAction(inst)));
         await connection.SendPacket(BasePacket.Create(CmdIds.StartRogueScRsp, new StartRogueScRsp
         {
             RogueGameInfo = manager.BuildRogueGameInfo(),
@@ -77,6 +81,34 @@ public sealed class HandlerStartRogueCsReq : Handler<StartRogueCsReq>
             Scene = RogueResponseParts.BuildScene(player)
         }));
         await connection.SendPacket(new PacketCommonRogueUpdateScNotify(inst.AreaId));
+    }
+}
+
+[Opcode(CmdIds.EnterRogueCsReq)]
+public sealed class HandlerEnterRogueCsReq : PlayerHandler
+{
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
+    {
+        var manager = player.RogueManager!;
+        var ret = await manager.ResumeRun();
+        if (ret != Retcode.RetSucc || manager.RogueInstance is not { } inst)
+        {
+            await connection.SendPacket(BasePacket.Create(CmdIds.EnterRogueScRsp,
+                new EnterRogueScRsp { Retcode = (uint)(ret == Retcode.RetSucc ? Retcode.RetFail : ret) }));
+            return;
+        }
+
+        // Official 4.5 resume order, all before the response: lineup, run status, scene change, area update.
+        await connection.SendPacket(new PacketSyncLineupNotify(player.LineupManager!.GetCurLineup()!));
+        await connection.SendPacket(new PacketSyncRogueStatusScNotify(inst.Status));
+        await connection.SendPacket(new PacketSyncServerSceneChangeNotify());
+        await connection.SendPacket(new PacketCommonRogueUpdateScNotify(inst.AreaId));
+        await connection.SendPacket(BasePacket.Create(CmdIds.EnterRogueScRsp, new EnterRogueScRsp
+        {
+            RogueGameInfo = manager.BuildRogueGameInfo(),
+            Lineup = RogueResponseParts.BuildLineup(player),
+            Scene = RogueResponseParts.BuildScene(player)
+        }));
     }
 }
 
@@ -97,6 +129,8 @@ public sealed class HandlerEnterRogueMapRoomCsReq : Handler<EnterRogueMapRoomCsR
 
         await connection.SendPacket(new PacketSyncRogueMapRoomScNotify(manager.RogueInstance));
         await connection.SendPacket(new PacketSyncLineupNotify(player.LineupManager!.GetCurLineup()!));
+        // An Occurrence's talk is announced one packet before the room's response (official 4.7).
+        await manager.AnnounceRoomDialogue();
         await connection.SendPacket(BasePacket.Create(CmdIds.EnterRogueMapRoomScRsp, new EnterRogueMapRoomScRsp
         {
             ANHDBMOPGDC = (uint)room.SiteId,
@@ -243,6 +277,14 @@ public sealed class HandlerHandleRogueCommonPendingActionCsReq : Handler<OFEDNNJ
         }
 
         var manager = player.RogueManager!;
+
+        // The run-start Trailblaze Blessing answer is its own arm and carries no queue position (official 4.7).
+        if (req.ILHBOODLNOH != null && await manager.AnswerBonus((int)req.ILHBOODLNOH.OOMKNHFIGAF) is { } bonusRsp)
+        {
+            await connection.SendPacket(BasePacket.Create(CmdIds.HandleRogueCommonPendingActionScRsp, bonusRsp));
+            return;
+        }
+
         var rsp = new HandleRogueCommonPendingActionScRsp();
 
         // Outside a Simulated Universe scene an unclaimed parameterless answer is another mode's arm, not a reroll.
@@ -268,7 +310,7 @@ public sealed class HandlerHandleRogueCommonPendingActionCsReq : Handler<OFEDNNJ
 
         // Field 1588 is the buff-select answer (yuukisr OPDCGJEKEKP); other arms are unrelated actions.
         var buffId = req.DLKIKBIDJDB?.BAOFIGFFMLN ?? 0;
-        var ret = manager.SelectBuff((int)buffId);
+        var ret = await manager.SelectBuff((int)buffId);
 
         if (ret is { } retcode and not Retcode.RetSucc)
         {
@@ -316,19 +358,41 @@ public sealed class HandlerGetRogueBuffEnhanceInfoCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
+        // The generated name "retcode" is wrong: field 11 is the enhance list container (official 4.5 and 4.7 list
+        // one row per enhanceable blessing with its Cosmic Fragment price there).
+        var list = new HFGBCEKGFHK();
+        foreach (var (buffId, cost) in player.RogueManager!.GetEnhanceableBuffs())
+            list.EMAGFIBLNCJ.Add(new AEFFOCFJNBF
+            {
+                BuffId = (uint)buffId,
+                CostData = new ItemCostData
+                {
+                    ItemList = { new ItemCost { PileItem = new PileItem { ItemId = 31, ItemNum = (uint)cost } } }
+                }
+            });
         await connection.SendPacket(BasePacket.Create(CmdIds.GetRogueBuffEnhanceInfoScRsp,
-            new GetRogueBuffEnhanceInfoScRsp()));
+            new GetRogueBuffEnhanceInfoScRsp { Retcode = list }));
     }
 }
 
 // Classic Simulated Universe enhance is the 18xx pair (obf CINMCBDCBMJ / NAHANHPHGGF); EnhanceRogueBuffCsReq/ScRsp
 // is the ChessRogue one.
 [Opcode(CmdIds.SimulatedRogueEnhanceRogueBuffCsReq)]
-public sealed class HandlerEnhanceRogueBuffCsReq : PlayerHandler
+public sealed class HandlerEnhanceRogueBuffCsReq : Handler<SimulatedRogueEnhanceRogueBuffCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player,
+        SimulatedRogueEnhanceRogueBuffCsReq req)
     {
-        await connection.SendPacket(BasePacket.Create(CmdIds.RogueEnhanceRogueBuffScRsp, new RogueEnhanceRogueBuffScRsp()));
+        var (ret, level) = await player.RogueManager!.EnhanceBuff((int)req.MazeBuffId);
+        // Official 4.7: {KGKEJAKKLDP: true, CNEFDJCKAPL: {level, buff_id}} after the charge and grant notifies.
+        var rsp = ret == Retcode.RetSucc
+            ? new RogueEnhanceRogueBuffScRsp
+            {
+                KGKEJAKKLDP = true,
+                CNEFDJCKAPL = new ABOFJEIMLLJ { BuffId = req.MazeBuffId, Level = (uint)level }
+            }
+            : new RogueEnhanceRogueBuffScRsp { Retcode = (uint)ret };
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueEnhanceRogueBuffScRsp, rsp));
     }
 }
 
@@ -360,9 +424,11 @@ public sealed class HandlerGetRogueCommonDialogueDataCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        // A live Divergent Universe run answers with its Event-room talks (also the reconnect path).
+        // A live Divergent Universe run answers with its Event-room talks, a classic run with its Occurrence talk
+        // (also the reconnect path).
         await connection.SendPacket(BasePacket.Create(CmdIds.GetRogueCommonDialogueDataScRsp,
-            player.RogueTournManager?.GetDialogueData() ?? new GetRogueCommonDialogueDataScRsp()));
+            player.RogueTournManager?.GetDialogueData() ?? player.RogueManager?.GetDialogueData() ??
+            new GetRogueCommonDialogueDataScRsp()));
     }
 }
 
@@ -374,11 +440,39 @@ public sealed class HandlerSelectRogueCommonDialogueOptionCsReq : Handler<Select
     {
         var tourn = player.RogueTournManager;
         var rsp = tourn == null ? null : await tourn.SelectDialogueOption((int)req.AIAFEKGBFIF, (int)req.HAFOKMHCGFM);
+        if (tourn != null && rsp != null)
+        {
+            await connection.SendPacket(BasePacket.Create(CmdIds.SelectRogueCommonDialogueOptionScRsp, rsp));
+            // A pick that ended the talk clears it from the client's set and releases the room after the response.
+            await tourn.FlushDialogueClose();
+            return;
+        }
+
+        var rogue = player.RogueManager;
+        rsp = rogue == null ? null : await rogue.SelectDialogueOption((int)req.AIAFEKGBFIF, (int)req.HAFOKMHCGFM);
         await connection.SendPacket(BasePacket.Create(CmdIds.SelectRogueCommonDialogueOptionScRsp,
             rsp ?? new SelectRogueCommonDialogueOptionScRsp()));
-        // A pick that ended the talk clears it from the client's set and releases the room after the response.
-        if (rsp != null) await tourn!.FlushDialogueClose();
+        // A closing pick closes the classic talk after the response, then finishes the room.
+        if (rogue != null && rsp != null) await rogue.FlushDialoguePick();
     }
+}
+
+// The client's "talk over" for a classic Occurrence; official 4.7 answers it with the room's progress, not a response.
+[Opcode(CmdIds.FinishRogueCommonDialogueCsReq)]
+public sealed class HandlerFinishRogueCommonDialogueCsReq : Handler<FinishRogueCommonDialogueCsReq>
+{
+    protected override async Task OnHandle(Connection connection, PlayerInstance player,
+        FinishRogueCommonDialogueCsReq req)
+    {
+        if (player.RogueManager != null) await player.RogueManager.FinishDialogue((int)req.AIAFEKGBFIF);
+    }
+}
+
+// The client removes the finished event NPC itself; official 4.7 sends nothing back.
+[Opcode(CmdIds.RogueNpcDisappearCsReq)]
+public sealed class HandlerRogueNpcDisappearCsReq : PlayerHandler
+{
+    protected override Task OnHandle(Connection connection, PlayerInstance player) => Task.CompletedTask;
 }
 
 [Opcode(CmdIds.GetRogueEndlessActivityDataCsReq)]

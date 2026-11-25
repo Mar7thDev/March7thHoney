@@ -263,10 +263,21 @@ public class LevelTask(PlayerInstance player)
             ? (PropStateEnum)info.ParamInt3
             : null;
 
+        var serverOnlyTarget = false;
         foreach (var entity in Player.SceneInstance.Entities.Values)
             if (entity is EntityProp prop && prop.GroupId == groupId && prop.InstId == instId)
                 try
                 {
+                    // Placed directly and never stepped: once the prop sits on the sub's state, the heuristic
+                    // below would answer Closed again and every scene rebuild would undo the sub's own target.
+                    if (ServerOnlyPropTarget(subMission.SubMissionInfo, prop, Player.SceneInstance.FloorId) is
+                        { } placed)
+                    {
+                        serverOnlyTarget = true;
+                        await prop.SetState(placed);
+                        continue;
+                    }
+
                     var (target, viaClosed) = StepToClosedOrNext(prop.Excel.PropStateList, prop.State);
                     if (!viaClosed &&
                         OneShotAdvanceTarget(prop.Excel.PropStateList, prop.PropInfo.State, prop.State, awaited) is
@@ -289,6 +300,42 @@ public class LevelTask(PlayerInstance player)
                 {
                     // ignored
                 }
+
+        // Nothing but this placement can satisfy the sub, so its gate runs now (also when a save already holds the
+        // state): official 4.5 places the entrance and finishes sub 403000395 in the same burst.
+        if (serverOnlyTarget) await Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.PropState);
+    }
+
+    /// <summary>
+    ///     The state a PropState sub's target must be placed on by the server because nothing else can move it, or
+    ///     null when the ordinary step applies. The shape: the sub expects a state the prop declares, the prop's own
+    ///     graph has no PropStateExecute branch (the client has no mover), and <see cref="StepToClosedOrNext" /> is a
+    ///     no-op on the prop's authored state, so the ChangePropState task can never reach the expectation.
+    /// </summary>
+    /// <remarks>
+    ///     Measured over the cached 4.8 missions: of the 82 PropState subs that run a ChangePropState task, only
+    ///     403000395 ("Simulated Universe (I)") has this shape. Its target is the Simulated Universe entrance in
+    ///     Herta's Office (floor 80112001 group 15 inst 300002, MazeProp 1003, authored Closed, expected Open); its
+    ///     graph only toasts "complete Long Wait for the Blade's Edge first", so the main mission never advanced.
+    ///     The authored state is the key, never the live one: a prop authored Locked does move (Locked to Closed)
+    ///     and keeps the step, and the live state is already the expectation after the placement. CheckPoint
+    ///     expectations are finished by the PropState handler without a placement.
+    /// </remarks>
+    private static PropStateEnum? ServerOnlyPropTarget(SubMissionInfo? info, EntityProp prop, int floorId)
+    {
+        if (info is not { FinishType: MissionFinishTypeEnum.PropState, ParamInt3: > 0 } ||
+            prop.GroupId != info.ParamInt1 || prop.InstId != info.ParamInt2 ||
+            info.LevelFloorID != 0 && info.LevelFloorID != floorId) return null;
+
+        var want = (PropStateEnum)info.ParamInt3;
+        if (want is PropStateEnum.CheckPointDisable or PropStateEnum.CheckPointEnable ||
+            !prop.Excel.PropStateList.Contains(want)) return null;
+
+        var graph = prop.PropInfo;
+        if (string.IsNullOrEmpty(graph.InitLevelGraph) || graph.GraphHasOpenBranch || graph.GraphHasLockedBranch ||
+            graph.GraphHasRealClosedBranch) return null;
+
+        return StepToClosedOrNext(prop.Excel.PropStateList, graph.State).State == graph.State ? want : null;
     }
 
     /// <summary>
