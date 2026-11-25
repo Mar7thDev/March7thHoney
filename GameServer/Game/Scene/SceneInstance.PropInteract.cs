@@ -184,7 +184,11 @@ public partial class SceneInstance
                          GetEntitiesInGroup<EntityProp>(id.Key)
                              .Where(p => id.Value.Contains(p.PropInfo.ID))))
             {
-                await p.SetState(PropStateEnum.Open);
+                // A Shifting Screen's UnlockTarget link names its paired board, which follows the pressed board's
+                // new state (official 4.7: board 72/300001 → 101 ships 72/300003 at 101). Its graph has no Open branch.
+                await p.SetState(p.Excel.PropType == PropTypeEnum.PROP_MAZE_PUZZLE
+                    ? config.TargetState
+                    : PropStateEnum.Open);
                 await Player.MissionManager!.OnPlayerInteractWithProp();
             }
 
@@ -192,6 +196,9 @@ public partial class SceneInstance
         // the PropState gate that waits on that chest is checked.
         if (FloorInfo?.Groups.TryGetValue(prop.GroupId, out var interactedGroup) == true)
             await RevealAuthoredChest(interactedGroup);
+        await RevealPuzzleChest(prop);
+
+        await OpenSolvedMapMarkers(true);
 
         // for mission
         await Player.MissionManager!.OnPlayerInteractWithProp();

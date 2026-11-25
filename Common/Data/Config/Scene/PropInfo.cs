@@ -69,6 +69,24 @@ public partial class PropInfo : PositionInfo
 
     [JsonIgnore] public int FogDoorInstId { get; set; }
 
+    /// <summary>
+    ///     Reward chest a puzzle board names in its own ValueSource key "TargetChest" (the Hexanexus / RubikCube and
+    ///     BlockProjection boards). The official reveals it in the same refresh as the board's state change (4.7:
+    ///     floor 20212001 board 106/300001 press ships chest 106/300003 Hidden → ChestClosed). Zero: no target.
+    /// </summary>
+    [JsonIgnore] public int PuzzleChestGroupId { get; set; }
+
+    [JsonIgnore] public int PuzzleChestInstId { get; set; }
+
+    /// <summary>
+    ///     The prop a minimap hint marker watches: ValueSource "Chest" (treasure, compass and Hexanexus markers) or
+    ///     "InsertionID" (Shifting Screen markers). The marker (MazeProp 211) never changes its own state in its
+    ///     client graph; the official moves it to Open in the beat its watched prop finishes. Zero: not a marker.
+    /// </summary>
+    [JsonIgnore] public int MapMarkerWatchGroupId { get; set; }
+
+    [JsonIgnore] public int MapMarkerWatchInstId { get; set; }
+
     public bool HasEditorOnlyLevelGraph()
     {
         return IsOverrideInitLevelGraph &&
@@ -90,6 +108,19 @@ public partial class PropInfo : PositionInfo
         if (Name.StartsWith("Button_") &&
             ValueSource.Values.Find(x => x["Key"]?.ToString() == "AnchorName") != null)
             IsLevelBtn = true;
+
+        if (TryReadLink("TargetChest", out var chestGroup, out var chestInst))
+        {
+            PuzzleChestGroupId = chestGroup;
+            PuzzleChestInstId = chestInst;
+        }
+
+        if (TryReadLink("Chest", out var watchGroup, out var watchInst) ||
+            TryReadLink("InsertionID", out watchGroup, out watchInst))
+        {
+            MapMarkerWatchGroupId = watchGroup;
+            MapMarkerWatchInstId = watchInst;
+        }
 
         foreach (var v in ValueSource.Values)
         {
@@ -168,6 +199,27 @@ public partial class PropInfo : PositionInfo
                 }
             }
         }
+    }
+
+    /// <summary>
+    ///     Reads the "group,inst" pair stored under one exact ValueSource key. A malformed or zero pair is a miss
+    ///     rather than a guess.
+    /// </summary>
+    private bool TryReadLink(string key, out int groupId, out int instId)
+    {
+        groupId = 0;
+        instId = 0;
+        var value = ValueSource?.Values.Find(x => x["Key"]?.ToString() == key)?["Value"]?.ToString();
+        var parts = value?.Split(',');
+        if (parts is not { Length: 2 } ||
+            !int.TryParse(parts[0].Trim(), out var parsedGroup) ||
+            !int.TryParse(parts[1].Trim(), out var parsedInst) ||
+            parsedGroup <= 0 || parsedInst <= 0)
+            return false;
+
+        groupId = parsedGroup;
+        instId = parsedInst;
+        return true;
     }
 }
 
