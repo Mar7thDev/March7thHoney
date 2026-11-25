@@ -26,11 +26,8 @@ public class SceneEntityLoader(SceneInstance scene)
     // The Astral Express boarding prop stays Closed until main 1000401 finishes.
     private const int StarTrainArrivalMain = 1000401;
 
-    // Simulated Universe lobby. Inert server groups on this plane are client scenery.
-    private const int SuLobbyPlaneId = 80112;
-
     private bool DropInertServerGroups() =>
-        Scene.PlaneId == SuLobbyPlaneId || Scene.Excel.PlaneType == PlaneTypeEnum.Raid;
+        SceneCompatRules.DropsInertServerGroups(Scene.PlaneId, Scene.Excel.PlaneType);
 
     private bool RejectGroup(GroupInfo group) =>
         group.OnlyEditorBackupProps() || group.OrphanedMissionGroup() ||

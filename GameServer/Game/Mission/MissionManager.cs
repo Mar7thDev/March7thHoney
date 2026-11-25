@@ -515,6 +515,7 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
         await Player.SendPacket(new PacketStartFinishSubMissionScNotify(missionId));
         if (!killSub && Player.SceneInstance != null)
             await Player.SceneInstance.OpenRaidDomainPortals(missionId, true);
+        await ApplyPropStateFinishEffect(subMission.SubMissionInfo);
 
         if (mainMission.MissionInfo != null)
             await HandleFinishAction(mainMission.MissionInfo, missionId);
