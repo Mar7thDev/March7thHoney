@@ -358,8 +358,12 @@ public class SceneEntityLoader(SceneInstance scene)
             if (Scene.Excel.PlaneType == PlaneTypeEnum.Raid)
                 prop.State = info.State;
             else
-                // elevator
-                prop.State = prop.Excel.PropType == PropTypeEnum.PROP_ELEVATOR ? PropStateEnum.Elevator1 : info.State;
+                // A lift ships its authored State: official 4.7 floor 20212001 g3/300001 authors Elevator2 and ships
+                // 15, platform lifts authored Open ship 1. An omitted State reads back as Closed, so only that case
+                // keeps the Elevator1 fallback.
+                prop.State = prop.Excel.PropType == PropTypeEnum.PROP_ELEVATOR && info.State == PropStateEnum.Closed
+                    ? PropStateEnum.Elevator1
+                    : info.State;
 
             // The Express stays off the prologue platform until main 1000401 finishes. Missions off
             // keeps the docked train (the same Open the lite scene ships).
