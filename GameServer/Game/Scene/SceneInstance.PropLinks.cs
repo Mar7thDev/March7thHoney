@@ -1,3 +1,4 @@
+using March7thHoney.Data;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
 
@@ -93,6 +94,48 @@ public partial class SceneInstance
         foreach (var (groupId, instId) in links)
             await UnlockLockedConsole(groupId, instId, false);
     }
+
+    /// <summary>
+    ///     A lift press names the LIFT, never the call console the player pressed. A Chap02 call console holds the
+    ///     player in the interact pose until it reaches Open itself ("Cannot redirect"), so the pressed console moves
+    ///     to Open and the lift's other call consoles back to Closed, which re-arms them. Official 4.7: press 115140
+    ///     on floor 20222001 g51 ships lift → 14, console 300003 → 1 and 300002 → 0; press 114150 the reverse. The
+    ///     Chap01 / Chap00 consoles release on their own and are never moved (official 4.5 refreshes only the lift).
+    /// </summary>
+    public async ValueTask ApplyLiftCallConsoles(EntityProp lift, int interactId)
+    {
+        if (lift.Excel.PropType != PropTypeEnum.PROP_ELEVATOR || interactId == 0) return;
+        foreach (var (console, interactIds) in LiftCallConsoles(lift))
+        {
+            var target = interactIds.Contains(interactId) ? PropStateEnum.Open : PropStateEnum.Closed;
+            if (console.State != target) await console.SetState(target);
+        }
+    }
+
+    /// <summary>
+    ///     The call consoles of one lift: props of the lift's group whose graph releases the interact on Open and
+    ///     which request lift-position interacts on that lift, with the interact ids each one sends.
+    /// </summary>
+    private List<(EntityProp Console, List<int> InteractIds)> LiftCallConsoles(EntityProp lift)
+    {
+        var consoles = new List<(EntityProp, List<int>)>();
+        foreach (var console in GetEntitiesInGroup<EntityProp>(lift.GroupId))
+        {
+            if (console == lift || console.IsGmSpawned || !console.PropInfo.GraphReleasesInteractOnOpen) continue;
+            var interactIds = console.PropInfo.InteractOnOpenLinks
+                .Where(link => link.GroupId == lift.GroupId && link.InstId == lift.InstId &&
+                               GameData.InteractConfigData.TryGetValue(link.InteractId, out var row) &&
+                               IsLiftPosition(row.SrcState) && IsLiftPosition(row.TargetState))
+                .Select(link => link.InteractId)
+                .ToList();
+            if (interactIds.Count > 0) consoles.Add((console, interactIds));
+        }
+
+        return consoles;
+    }
+
+    private static bool IsLiftPosition(PropStateEnum state) =>
+        state is >= PropStateEnum.Elevator1 and <= PropStateEnum.Elevator3;
 
     // Only a console still Locked moves, so a later step that already opened it is never reset.
     private async ValueTask UnlockLockedConsole(int groupId, int instId, bool sendPacket)

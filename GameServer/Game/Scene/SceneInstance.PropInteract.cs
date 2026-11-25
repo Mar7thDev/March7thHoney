@@ -198,6 +198,7 @@ public partial class SceneInstance
             await RevealAuthoredChest(interactedGroup);
         await RevealPuzzleChest(prop);
         await UnlockLinkedConsole(prop);
+        await ApplyLiftCallConsoles(prop, interactId);
 
         await OpenSolvedMapMarkers(true);
 

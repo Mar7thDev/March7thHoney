@@ -96,6 +96,25 @@ public partial class PropInfo : PositionInfo
 
     [JsonIgnore] public int LockedConsoleInstId { get; set; }
 
+    /// <summary>
+    ///     Every EndPropInteract of the prop's own graph waits for the prop to reach Open (the Chap02 lift call
+    ///     consoles): the client keeps the player in the interact pose until the server moves the console.
+    /// </summary>
+    [JsonIgnore] public bool GraphReleasesInteractOnOpen { get; set; }
+
+    /// <summary>
+    ///     Every PropReqInteract edge of a <see cref="GraphReleasesInteractOnOpen" /> graph, guards ignored. Read by
+    ///     the lift call console rule to learn which lift interacts each console sends.
+    /// </summary>
+    [JsonIgnore] public List<PropInteractLink> InteractOnOpenLinks { get; set; } = [];
+
+    // A cache written before the list existed reads it back as null.
+    [MemoryPackOnDeserialized]
+    private void FillMissingLinks()
+    {
+        InteractOnOpenLinks ??= [];
+    }
+
     public bool HasEditorOnlyLevelGraph()
     {
         return IsOverrideInitLevelGraph &&
