@@ -3,7 +3,11 @@ using March7thHoney.Data.Config;
 
 namespace March7thHoney.Data.Excel;
 
-[ResourceEntity("AvatarSkillTreeConfig.json,AvatarSkillTreeConfigLD.json", true)]
+// The story-variant trial bases (7xxx, e.g. Imbibitor Lunae 7213 behind trial 1021213) keep their skill
+// trees only in the Trial table; without it those battle avatars went out with an empty skilltree_list
+// (official 4.7 sends points 7213001-7213202). Its point IDs do not overlap the main tables.
+[ResourceEntity("AvatarSkillTreeConfig.json,AvatarSkillTreeConfigLD.json,AvatarSkillTreeConfigTrial.json", true,
+    OptionalFileNames = "AvatarSkillTreeConfigTrial.json")]
 [MemoryPackable]
 public partial class AvatarSkillTreeConfigExcel : ExcelResource
 {
