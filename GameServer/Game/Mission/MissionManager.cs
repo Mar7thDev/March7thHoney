@@ -791,6 +791,42 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
         return handled;
     }
 
+    /// <summary>
+    ///     Finishes the running subs whose own graph waits on a custom string that a mission graph just fired
+    ///     (a WaitCustomString paired with the sub's FinishPerformanceMission in one task list).
+    /// </summary>
+    /// <remarks>
+    ///     Official 4.7: the whisper beat of main 2020103 fires "202010306_Finish" ... "202010309_Finish" from
+    ///     sub 202010360's graph and the server closes the leftover transcribe-ladder sub (202010308, a Talk
+    ///     sub) with no client report. Without this the ladder sub stayed Doing forever and kept a dead
+    ///     "N/500" objective in the tracker. Finishing one step can accept the next one waiting on the same
+    ///     string, so the lookup repeats until nothing new matches.
+    ///     <paramref name="firingSubMissionId" /> is never resolved: a sub whose graph fires and waits on its
+    ///     own string (the Vidyadhara seal position talks 102150104-106) completes on the player's action,
+    ///     and resolving it at accept removed the three seal markers from the minimap.
+    /// </remarks>
+    public async ValueTask FinishCustomStringWaiters(string value, int firingSubMissionId)
+    {
+        if (!Enabled || value.Length == 0) return;
+
+        var tried = new HashSet<int>();
+        while (true)
+        {
+            var waiters = GetRunningSubMissionIdList()
+                .Where(id => id != firingSubMissionId && !tried.Contains(id))
+                .Where(id => GameData.SubMissionInfoData.GetValueOrDefault(id)?.SubMissionTaskInfo
+                    ?.FinishesOnCustomString(value, $"Mission_{id}") == true)
+                .ToList();
+            if (waiters.Count == 0) return;
+
+            foreach (var id in waiters)
+            {
+                tried.Add(id);
+                await FinishSubMission(id);
+            }
+        }
+    }
+
     public async ValueTask HandleCustomValue(List<MissionCustomValue> values, int missionId)
     {
         if (!Enabled) return;

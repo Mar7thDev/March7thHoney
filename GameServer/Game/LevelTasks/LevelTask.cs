@@ -85,6 +85,26 @@ public class LevelTask(PlayerInstance player)
 
     private readonly ConcurrentDictionary<string, ExecuteTask> _cachedTasks = [];
 
+    // Set while tasks the client fires itself are dispatched: PropSetupUITrigger button callbacks (a real
+    // press) and performance acts (the client plays them and only then fires their strings). The server runs
+    // them early, at accept, so a custom string reached through them must not complete other subs. An
+    // AsyncLocal, because TriggerTask does not await the tasks it starts.
+    private static readonly AsyncLocal<bool> ClientArmedDispatch = new();
+
+    private static void RunClientArmed(Action dispatch)
+    {
+        var outer = ClientArmedDispatch.Value;
+        ClientArmedDispatch.Value = true;
+        try
+        {
+            dispatch();
+        }
+        finally
+        {
+            ClientArmedDispatch.Value = outer;
+        }
+    }
+
     #endregion
 
     #region Task
@@ -112,6 +132,13 @@ public class LevelTask(PlayerInstance player)
     {
         if (act is TriggerCustomString triggerCustomString)
         {
+            // Only a mission graph's own strings complete waiting subs; group graphs pass a group and a sub
+            // without SubMissionInfo. This runs first so a finished ladder step accepts its successor before
+            // the first packet send can yield, ahead of the next string in the same task list.
+            if (group == null && subMission.SubMissionInfo is { } firing && !ClientArmedDispatch.Value)
+                await Player.MissionManager!.FinishCustomStringWaiters(triggerCustomString.CustomString.Value,
+                    firing.ID);
+
             foreach (var groupInfo in Player.SceneInstance?.FloorInfo?.Groups ?? [])
                 if (groupInfo.Value.PropTriggerCustomString.TryGetValue(triggerCustomString.CustomString.Value,
                         out var list))
@@ -146,15 +173,18 @@ public class LevelTask(PlayerInstance player)
     public async ValueTask<object?> TriggerPerformance(TaskConfigInfo act, SubMissionData subMission,
         GroupInfo? group = null)
     {
+        // An act ends with the client's own strings ("404021501_Finish" after a choice talk); resolving them here
+        // finished the running choice talk at accept, before the player made the choice.
         if (act is TriggerPerformance triggerPerformance)
-        {
-            if (triggerPerformance.PerformanceType == ELevelPerformanceTypeEnum.E)
-                Player.TaskManager?.PerformanceTrigger.TriggerPerformanceE(triggerPerformance.PerformanceID,
-                    subMission);
-            else if (triggerPerformance.PerformanceType == ELevelPerformanceTypeEnum.D)
-                Player.TaskManager?.PerformanceTrigger.TriggerPerformanceD(triggerPerformance.PerformanceID,
-                    subMission);
-        }
+            RunClientArmed(() =>
+            {
+                if (triggerPerformance.PerformanceType == ELevelPerformanceTypeEnum.E)
+                    Player.TaskManager?.PerformanceTrigger.TriggerPerformanceE(triggerPerformance.PerformanceID,
+                        subMission);
+                else if (triggerPerformance.PerformanceType == ELevelPerformanceTypeEnum.D)
+                    Player.TaskManager?.PerformanceTrigger.TriggerPerformanceD(triggerPerformance.PerformanceID,
+                        subMission);
+            });
 
         await ValueTask.CompletedTask;
 
@@ -454,8 +484,11 @@ public class LevelTask(PlayerInstance player)
         GroupInfo? group = null)
     {
         if (act is PropSetupUITrigger propSetupUiTrigger)
-            foreach (var task in propSetupUiTrigger.ButtonCallback)
-                TriggerTask(task, subMission, group);
+            RunClientArmed(() =>
+            {
+                foreach (var task in propSetupUiTrigger.ButtonCallback)
+                    TriggerTask(task, subMission, group);
+            });
 
         await ValueTask.CompletedTask;
 
