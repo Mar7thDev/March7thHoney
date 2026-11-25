@@ -291,6 +291,7 @@ public partial class PlayerInstance(PlayerData data)
             // Runs on every load, not just once: a save can stall at any point in the chain, and the
             // pass is a no-op when every accepted main already has a running sub-mission.
             await MissionManager.RepairStalledMainMissions(false);
+            await MissionManager.StartRunningMessageSections();
         }
 
         FriendManager!.PruneExpiredDevelopmentRecords();

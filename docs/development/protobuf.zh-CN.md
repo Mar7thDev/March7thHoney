@@ -54,7 +54,7 @@ dotnet run --project Proto/Tool/ProtoOrganizer -c Release -- cmdids
 
 别名指向常量名而不是数值，命令号变化时不需要改别名文件。`cmdids --check` 只比较、不写入，`scripts/verify-security.py` 用它确认常量与 schema 一致。
 
-命令枚举名不一定等于 protobuf 消息类型名，处理器绑定当前命令常量并解析真实消息类型；仅按枚举名搜索同名 `message` 会漏掉现有结构。请求没有处理器时框架自动发送空成功响应，不能用该响应判断功能已执行。
+命令枚举名不一定等于 protobuf 消息类型名，处理器绑定当前命令常量并解析真实消息类型；仅按枚举名搜索同名 `message` 会漏掉现有结构。请求没有处理器时框架自动发送空成功响应：按名称（`XxxCsReq` 对应 `XxxScRsp`）查找，响应另有名称的请求则取 `GameServer/Server/UnhandledRequestResponder.cs` 中列出的配对；不能用该响应判断功能已执行。
 
 ## 升级到新版本的客户端
 

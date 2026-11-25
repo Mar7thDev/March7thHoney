@@ -11,7 +11,8 @@ namespace March7thHoney.GameServer.Server;
 /// <summary>
 ///     Answers requests that no handler answered, so the client is not left waiting for a reply: a RetFail response
 ///     when the handler threw, and an empty response when the request has no handler at all. The response is found by
-///     name (XxxCsReq to XxxScRsp); notifies and requests without a response get nothing.
+///     name (XxxCsReq to XxxScRsp), or in a short list for requests whose response is named differently; notifies and
+///     requests without a response get nothing.
 /// </summary>
 internal static class UnhandledRequestResponder
 {
@@ -24,6 +25,20 @@ internal static class UnhandledRequestResponder
     {
         CmdIds.GetTutorialCsReq, CmdIds.GetTutorialGuideCsReq, CmdIds.UnlockTutorialCsReq
     }.ToFrozenSet();
+
+    // Requests whose response is not named after them, so the XxxCsReq → XxxScRsp lookup finds nothing and the
+    // client re-sends the request with its loading spinner up. The pairs come from the official 4.7 captures
+    // (yuukisr_go 22e0398, 72ec530: the official server answers each request with that response); the obfuscated
+    // names are unchanged in 4.8, as the handlers here for GMHGNOPOONF, MGCJKEEOPEC and CKMHMAJPJEP from the same
+    // list show. EJBNBFIIBGM is the login-time badge query, answered with no badges.
+    private static readonly FrozenDictionary<int, int> ResponseAliases = new Dictionary<int, int>
+    {
+        [CmdIds.EIEOFMBKAHM] = CmdIds.CAFIDFIIEKE,
+        [CmdIds.CPCHHBHCGOO] = CmdIds.DCNIDBKPPCK,
+        [CmdIds.MLNNHJKKMNC] = CmdIds.OMEAEOLPGGM,
+        [CmdIds.NEPFEJKFFGB] = CmdIds.IDMPBCFCKMA,
+        [CmdIds.EJBNBFIIBGM] = CmdIds.GetBadgeInfoScRsp
+    }.ToFrozenDictionary();
 
     // Name → proto message type, built once so the RetFail fallback does not enumerate the Proto assembly on
     // every handler exception.
@@ -91,6 +106,11 @@ internal static class UnhandledRequestResponder
     public static async Task SendEmptyResponseAsync(Connection connection, ushort opcode)
     {
         if (SilentRequests.Contains(opcode)) return;
+        if (ResponseAliases.TryGetValue(opcode, out var aliasOpcode))
+        {
+            await connection.SendPacket(aliasOpcode);
+            return;
+        }
 
         var packetName = March7thHoneyConnection.LogMap.GetValueOrDefault(opcode);
         if (packetName == null || !TryDeriveResponseName(packetName, out var respName)) return;

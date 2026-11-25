@@ -1,4 +1,7 @@
 using March7thHoney.Data;
+using March7thHoney.Data.Avatar;
+using March7thHoney.Database;
+using March7thHoney.Database.Avatar;
 using March7thHoney.Enums.Avatar;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
@@ -286,5 +289,75 @@ public class CommandAvatar : ICommand
         await arg.Target.SendPacket(new PacketAvatarPathChangedNotify((uint)avatar.BaseAvatarId,
             (MultiPathAvatarType)storedId));
         await arg.Target.SendPacket(new PacketPlayerSyncScNotify(avatar));
+    }
+
+    /// <summary>
+    ///     Activates or clears ExRank (Affinitive Eidolon) without the material, the operator switch for testing it.
+    ///     Activation in game consumes the material; this writes the same per-avatar state and syncs the avatars.
+    /// </summary>
+    [CommandMethod("exrank")]
+    public async ValueTask SetExRank(CommandArg arg)
+    {
+        if (arg.Target == null)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.PlayerNotFound"));
+            return;
+        }
+
+        var mode = arg.Args.Count > 1 ? arg.Args[1].ToLowerInvariant() : "";
+        if (mode is not ("unlock" or "lock"))
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
+            return;
+        }
+
+        if (AvatarExRankMaterials.Definitions.Count == 0)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Avatar.ExRankUnavailable"));
+            return;
+        }
+
+        var manager = arg.Target.Player!.AvatarManager!;
+        var avatarId = arg.BasicArgs.Count > 0 ? arg.GetInt(0) : -1;
+        var selected = avatarId == -1 ? null : manager.GetFormalAvatar(avatarId);
+        if (avatarId != -1 && selected == null)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Avatar.AvatarNotFound"));
+            return;
+        }
+
+        var unlock = mode == "unlock";
+        var changed = 0;
+        var changedAvatars = new HashSet<int>();
+        foreach (var definition in AvatarExRankMaterials.Definitions.Values.OrderBy(definition => definition.Id))
+        {
+            // An ExRank belongs to one path of one avatar; never activate another character's.
+            var owned = manager.GetFormalAvatar(definition.AvatarId);
+            if (owned == null || owned.GetPathInfo(definition.AvatarId) == null) continue;
+            if (selected != null && selected.BaseAvatarId != owned.BaseAvatarId) continue;
+
+            var current = manager.Data.ExRankIds.GetValueOrDefault(owned.BaseAvatarId) ?? [];
+            if (current.Contains(definition.Id) == unlock) continue;
+            // A new list, as ActivateExRank does: avatars bound earlier keep the list they were given.
+            List<int> next = unlock ? [.. current, definition.Id] : current.Where(id => id != definition.Id).ToList();
+            if (next.Count == 0) manager.Data.ExRankIds.Remove(owned.BaseAvatarId);
+            else manager.Data.ExRankIds[owned.BaseAvatarId] = next;
+            changed++;
+            changedAvatars.Add(owned.BaseAvatarId);
+        }
+
+        if (changed == 0)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Avatar.ExRankNoChange"));
+            return;
+        }
+
+        DatabaseHelper.MarkDirty(arg.Target.Player.Uid);
+        // GetFormalAvatar binds the new ExRank list before the path data is serialized.
+        var synced = changedAvatars.Select(manager.GetFormalAvatar).OfType<FormalAvatarInfo>().ToList();
+        await arg.Target.SendPacket(new PacketPlayerSyncScNotify(synced));
+        await arg.SendMsg(I18NManager.Translate(unlock
+            ? "Game.Command.Avatar.ExRankUnlocked"
+            : "Game.Command.Avatar.ExRankLocked", changed.ToString()));
     }
 }

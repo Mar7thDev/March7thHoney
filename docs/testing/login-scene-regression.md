@@ -194,7 +194,7 @@ Code: `scripts/LoginSceneRegression/CustomConfigFilesRegression.cs`; it runs las
 
 Code: `scripts/LoginSceneRegression/SharedConfigRegression.cs`.
 
-- Takes the message section with the lowest ID in the cache whose opening message has follow-up items. After starting the section, the player's pending list is a copy of the configured `NextItemIDList`; completing a pending message leaves the configured list unchanged, and another player starting the same section still gets the original pending items (the old logic handed the configured list to the player and cleared it while advancing).
+- Takes the message section with the lowest ID in the cache whose opening message has follow-up items that wait for the player (a choice, or a single player reply; a single line the server plays itself is advanced past when the section starts, and a mission card is never picked). After starting the section, the player's pending list is a copy of the configured `NextItemIDList`; completing a pending message leaves the configured list unchanged, and another player starting the same section still gets the original pending items (the old logic handed the configured list to the player and cleared it while advancing).
 - The default Train Party areas of two new players are independent objects; DIY slots and build steps written by one player do not appear for the other player or for players created later (the old logic put the static default area instance straight into player data).
 
 ### New-player creation
