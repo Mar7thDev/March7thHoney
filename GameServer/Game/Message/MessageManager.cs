@@ -126,6 +126,19 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
         return GetMessageSectionData(sectionId) != null;
     }
 
+    /// <summary>
+    ///     Drops the stored state of one message group. The offer and the history are derived from the config and
+    ///     the client's picks, so a section saved in a shape no client can render (for example a mission card in its
+    ///     history and nothing offered) cannot be patched in place; the next AddMessageSection rebuilds it.
+    /// </summary>
+    /// <returns>The sections the group had, empty when the player never started it.</returns>
+    public List<int> ResetGroup(int groupId)
+    {
+        if (!Data.Groups.Remove(groupId, out var group)) return [];
+        MarkDirty();
+        return group.Sections.Select(section => section.SectionId).ToList();
+    }
+
     public async ValueTask AddMessageItem(int itemId, bool sendPacket = true)
     {
         GameData.MessageItemConfigData.TryGetValue(itemId, out var itemConfig);
