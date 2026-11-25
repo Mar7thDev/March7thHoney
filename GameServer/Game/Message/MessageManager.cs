@@ -110,17 +110,20 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
 
     #region Action
 
-    public async ValueTask AddMessageSection(int sectionId)
+    /// <summary>Starts a section from its opening items; a section the player already has is left alone.</summary>
+    /// <returns>Whether the section was started by this call.</returns>
+    public async ValueTask<bool> AddMessageSection(int sectionId, bool sendPacket = true)
     {
         GameData.MessageSectionConfigData.TryGetValue(sectionId, out var sectionConfig);
-        if (sectionConfig == null) return;
+        if (sectionConfig == null) return false;
 
         if (Data.Groups.TryGetValue(sectionConfig.GroupID, out var group) &&
             group.Sections.Find(x => x.SectionId == sectionId) != null)
             // already exist
-            return;
+            return false;
 
-        foreach (var item in sectionConfig.StartMessageItemIDList) await AddMessageItem(item);
+        foreach (var item in sectionConfig.StartMessageItemIDList) await AddMessageItem(item, sendPacket);
+        return GetMessageSectionData(sectionId) != null;
     }
 
     public async ValueTask AddMessageItem(int itemId, bool sendPacket = true)

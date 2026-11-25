@@ -96,6 +96,19 @@ public class LevelTask(PlayerInstance player)
         return null;
     }
 
+    /// <summary>
+    ///     Arms a story raid (RaidID, IsSkipUI). The client enters the raid itself later, with StartRaidCsReq at the
+    ///     act's screen transfer, so nothing is entered here: entering now would move the player off the floor before
+    ///     the dialogue. What the server owes at this point is the message section the sub's act opens - the chat the
+    ///     client shows before the transfer (sub 102030121: Dan Heng, section 1200000).
+    /// </summary>
+    public async ValueTask<object?> OpenRaid(TaskConfigInfo act, SubMissionData subMission, GroupInfo? group = null)
+    {
+        await Player.MissionManager!.StartActMessageSections(subMission.MissionId, true);
+
+        return null;
+    }
+
     public async ValueTask<object?> DestroyProp(TaskConfigInfo act, SubMissionData subMission, GroupInfo? group = null)
     {
         if (act is DestroyProp destroyProp)
