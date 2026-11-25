@@ -55,4 +55,51 @@ public partial class SceneInstance
             _ => false
         };
     }
+
+    /// <summary>
+    ///     A solved puzzle board (now Open) unlocks the console its ValueSource "LockedConsole" names, Locked → Closed.
+    ///     Official 4.7: the coil board press on floor 20222001 45/300002 ships the board Open and console 10/300013
+    ///     Closed in one refresh; left Locked, the console only shows "Unable to operate Central Console at the
+    ///     moment" and the "Return to the Creation Furnace" objective soft-locks.
+    /// </summary>
+    public async ValueTask UnlockLinkedConsole(EntityProp puzzle)
+    {
+        if (puzzle.State != PropStateEnum.Open) return;
+        await UnlockLockedConsole(puzzle.PropInfo.LockedConsoleGroupId, puzzle.PropInfo.LockedConsoleInstId, true);
+    }
+
+    /// <summary>
+    ///     Scene-build twin of <see cref="UnlockLinkedConsole" />. The defect left no saved state on the console, so
+    ///     the signal is the board: a live board at Open, or a saved Open board whose group is not loaded any more (the
+    ///     coil board's group unloads once its subs finish, so by the time the player reaches the console only its
+    ///     saved state remains).
+    /// </summary>
+    public async ValueTask UnlockSolvedPuzzleConsoles()
+    {
+        var links = new HashSet<(int GroupId, int InstId)>();
+        foreach (var prop in Entities.Values.OfType<EntityProp>())
+            if (prop.State == PropStateEnum.Open && prop.PropInfo.LockedConsoleGroupId != 0)
+                links.Add((prop.PropInfo.LockedConsoleGroupId, prop.PropInfo.LockedConsoleInstId));
+
+        if (FloorInfo != null && Player.SceneData?.ScenePropData.TryGetValue(FloorId, out var floorProps) == true)
+            foreach (var (groupId, savedProps) in floorProps)
+            {
+                if (!FloorInfo.Groups.TryGetValue(groupId, out var group)) continue;
+                foreach (var saved in savedProps.Where(saved => saved.State == PropStateEnum.Open))
+                    if (group.PropList.Find(prop => prop.ID == saved.PropId) is { LockedConsoleGroupId: not 0 } info)
+                        links.Add((info.LockedConsoleGroupId, info.LockedConsoleInstId));
+            }
+
+        foreach (var (groupId, instId) in links)
+            await UnlockLockedConsole(groupId, instId, false);
+    }
+
+    // Only a console still Locked moves, so a later step that already opened it is never reset.
+    private async ValueTask UnlockLockedConsole(int groupId, int instId, bool sendPacket)
+    {
+        if (groupId == 0 || instId == 0) return;
+        var console = FindProp(groupId, instId);
+        if (console is not { State: PropStateEnum.Locked }) return;
+        await console.SetState(PropStateEnum.Closed, sendPacket);
+    }
 }

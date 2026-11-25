@@ -197,6 +197,7 @@ public partial class SceneInstance
         if (FloorInfo?.Groups.TryGetValue(prop.GroupId, out var interactedGroup) == true)
             await RevealAuthoredChest(interactedGroup);
         await RevealPuzzleChest(prop);
+        await UnlockLinkedConsole(prop);
 
         await OpenSolvedMapMarkers(true);
 

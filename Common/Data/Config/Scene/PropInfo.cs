@@ -87,6 +87,15 @@ public partial class PropInfo : PositionInfo
 
     [JsonIgnore] public int MapMarkerWatchInstId { get; set; }
 
+    /// <summary>
+    ///     Console a puzzle board unlocks when it is solved (ValueSource "LockedConsole"; the third Ambrosial-Arbor
+    ///     coil board 45/300002 on floor 20222001 names console 10/300013). The console's graph answers a press while
+    ///     Locked with a toast and no packet, so only the server can unlock it. Zero: no link.
+    /// </summary>
+    [JsonIgnore] public int LockedConsoleGroupId { get; set; }
+
+    [JsonIgnore] public int LockedConsoleInstId { get; set; }
+
     public bool HasEditorOnlyLevelGraph()
     {
         return IsOverrideInitLevelGraph &&
@@ -120,6 +129,12 @@ public partial class PropInfo : PositionInfo
         {
             MapMarkerWatchGroupId = watchGroup;
             MapMarkerWatchInstId = watchInst;
+        }
+
+        if (TryReadLink("LockedConsole", out var consoleGroup, out var consoleInst))
+        {
+            LockedConsoleGroupId = consoleGroup;
+            LockedConsoleInstId = consoleInst;
         }
 
         foreach (var v in ValueSource.Values)
