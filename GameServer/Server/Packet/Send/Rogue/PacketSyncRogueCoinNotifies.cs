@@ -47,15 +47,17 @@ public static class RogueActionResultRows
     };
 
     /// <summary>
-    ///     Fragments an action charged, on the second money arm (CONDGFPOFKD): the enhance machine's price (official
-    ///     4.7, source 2).
+    ///     Fragments on the second money arm (CONDGFPOFKD): the enhance machine's price (official 4.7, source 2, no
+    ///     display type) and an Occurrence option's payout (source 4, display type 1, as on the one official dialogue
+    ///     payout, a 4.6 Divergent Universe event pick).
     /// </summary>
-    public static MAOKMPOELCO MoneyCharge(NHHMEPILLHL source, int queuePosition, int amount) => new()
-    {
-        Source = source,
-        QueuePosition = (uint)queuePosition,
-        Detail = new PKHKEEKIODC { CONDGFPOFKD = new NPCIGEBNOFG { Num = (uint)amount } }
-    };
+    public static MAOKMPOELCO MoneyCharge(NHHMEPILLHL source, int queuePosition, int amount, uint displayType = 0) =>
+        new()
+        {
+            Source = source,
+            QueuePosition = (uint)queuePosition,
+            Detail = new PKHKEEKIODC { CONDGFPOFKD = new NPCIGEBNOFG { Num = (uint)amount, DisplayType = displayType } }
+        };
 
     /// <summary>A blessing granted at its level (the buff-grant arm).</summary>
     public static MAOKMPOELCO BuffGrant(NHHMEPILLHL source, int queuePosition, int buffId, int level) => new()

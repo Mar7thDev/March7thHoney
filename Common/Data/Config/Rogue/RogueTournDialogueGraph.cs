@@ -7,7 +7,8 @@ namespace March7thHoney.Data.Config.Rogue;
 ///     The parts of a Divergent Universe event's Act graph (RogueDialogue/RogueEventTourn*/Event*/Act*.json) the server
 ///     needs to answer the RogueCommon dialogue: every branch with the custom string that wakes it, the strings it
 ///     fires, the options it shows, the dialogue events it accepts and whether it ends the graph. The client runs the
-///     graph itself; the per-event Opt*.json is absent from the 4.6 dump, so this is the only option source.
+///     graph itself; the per-event Opt*.json is absent from the 4.6 dump, so this is the only option source. Classic
+///     Simulated Universe Occurrence events (RogueDialogue/Event*/Act*.json) share the grammar and are read the same way.
 /// </summary>
 [MemoryPackable]
 public partial class RogueTournDialogueGraph
@@ -54,15 +55,22 @@ public partial class RogueTournDialogueGraph
                     if (fired.Length > 0) branch.Triggers.Add(fired);
                     break;
                 case OptionNode:
-                    foreach (var option in (task["OptionList"] as JArray ?? []).OfType<JObject>())
+                    var options = (task["OptionList"] as JArray ?? []).OfType<JObject>().ToList();
+                    var narration = options.All(option => (option["RogueOptionID"]?.Value<int>() ?? 0) == 0);
+                    foreach (var option in options)
                     {
                         var optionId = option["RogueOptionID"]?.Value<int>() ?? 0;
-                        if (optionId == 0) continue;
-                        branch.Options.Add(new RogueTournDialogueOption
+                        var trigger = option["TriggerCustomString"]?.Value<string>() ?? "";
+                        // A list of narration lines (TalkSentenceID only) is played and passed by the client on its
+                        // own, so its triggers are edges of the graph: classic event 40398 reaches its end only
+                        // through them.
+                        if (optionId == 0)
                         {
-                            OptionId = optionId,
-                            Trigger = option["TriggerCustomString"]?.Value<string>() ?? ""
-                        });
+                            if (narration && trigger.Length > 0) branch.Triggers.Add(trigger);
+                            continue;
+                        }
+
+                        branch.Options.Add(new RogueTournDialogueOption { OptionId = optionId, Trigger = trigger });
                     }
 
                     break;

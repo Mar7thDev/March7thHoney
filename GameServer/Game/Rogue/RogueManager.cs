@@ -85,6 +85,7 @@ public partial class RogueManager : BasePlayerManager
         // A run that already won but was never left is dropped: resuming it strands the client on a finished run.
         if (inst is { Status: RogueStatus.Doing, IsWin: false })
         {
+            RestoreDialogueDraft(inst);
             RogueInstance = inst;
             return;
         }
@@ -298,6 +299,7 @@ public partial class RogueManager : BasePlayerManager
     private async ValueTask<bool> EnterRoomScene(RogueRoomData room)
     {
         if (!GameData.RogueRoomData.TryGetValue(room.RoomId, out var roomExcel)) return false;
+        if (RogueInstance != null) OpenRoomDialogue(RogueInstance, room);
 
         // Spawn at the room's group anchor; the entrance's own start anchor is a positionless placeholder.
         await Player.EnterSceneByEntranceId(roomExcel.MapEntrance, roomExcel.GroupID, 1, false);
@@ -336,7 +338,7 @@ public partial class RogueManager : BasePlayerManager
     public async ValueTask<bool> OpenRoomExit()
     {
         if (RogueInstance is not { Status: RogueStatus.Doing } inst || inst.BuffSelect?.HasSelection == true ||
-            IsTutorial(inst) && !IsTutorialRoomCleared(inst))
+            IsTutorial(inst) && !IsTutorialRoomCleared(inst) || HasOpenRoomDialogue())
             return false;
         var scene = Player.SceneInstance;
         var roomExcel = scene == null ? null : GetActiveRoomExcel(scene.EntryId);
@@ -618,6 +620,8 @@ public partial class RogueManager : BasePlayerManager
         // A drafted blessing the run already holds is enhanced instead, so report the level it now has.
         var level = inst.Buffs.GetValueOrDefault(chosen.MazeBuffID)?.Level ?? chosen.MazeBuffLevel;
         await SendBuffGranted(chosen.MazeBuffID, level);
+        // Official 4.5: the grants, then the finish notify of the Occurrence option that opened this draft.
+        await TakeDeferredDialogueFinish(inst);
         return Retcode.RetSucc;
     }
 

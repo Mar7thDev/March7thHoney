@@ -77,6 +77,8 @@ public static class CustomConfigFiles
         VideoKeys,
         Json<Dictionary<int, List<int>>>("RogueMapGen", "Rogue Map", value => GameData.RogueMapGenData = value, true),
         Json<Dictionary<int, int>>("RogueAreaMap", "Rogue Area Map", value => GameData.RogueAreaMapData = value),
+        Json<RogueDialogueEffectConfig>("RogueDialogueEffects", "Rogue Dialogue Effects",
+            value => GameData.RogueDialogueEffectConfig = value),
         Json<QueryProductInfoConfig>("QueryProductInfoConfig", "QueryProductInfo",
             value => GameData.QueryProductInfoConfig = value, true),
         Json<DiceyDungeonConfig>("DiceyDungeon", "DiceyDungeon", value => GameData.DiceyDungeonConfig = value, true),

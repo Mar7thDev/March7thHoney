@@ -31,6 +31,12 @@ public class RogueBuffSelectMenu
         return menu;
     }
 
+    /// <summary>A draft whose cards were dealt before a relog: the same cards, with the reroll available again.</summary>
+    public static RogueBuffSelectMenu Restore(List<BaseRogueBuffExcel> pool, List<BaseRogueBuffExcel> offer)
+    {
+        return new RogueBuffSelectMenu { Pool = pool, RerollLimit = DefaultRerollLimit, SelectBuffs = offer };
+    }
+
     public bool Reroll(RogueInstance inst)
     {
         if (!HasSelection || !CanRoll) return false;

@@ -129,6 +129,8 @@ public sealed class HandlerEnterRogueMapRoomCsReq : Handler<EnterRogueMapRoomCsR
 
         await connection.SendPacket(new PacketSyncRogueMapRoomScNotify(manager.RogueInstance));
         await connection.SendPacket(new PacketSyncLineupNotify(player.LineupManager!.GetCurLineup()!));
+        // An Occurrence's talk is announced one packet before the room's response (official 4.7).
+        await manager.AnnounceRoomDialogue();
         await connection.SendPacket(BasePacket.Create(CmdIds.EnterRogueMapRoomScRsp, new EnterRogueMapRoomScRsp
         {
             ANHDBMOPGDC = (uint)room.SiteId,
@@ -422,9 +424,11 @@ public sealed class HandlerGetRogueCommonDialogueDataCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        // A live Divergent Universe run answers with its Event-room talks (also the reconnect path).
+        // A live Divergent Universe run answers with its Event-room talks, a classic run with its Occurrence talk
+        // (also the reconnect path).
         await connection.SendPacket(BasePacket.Create(CmdIds.GetRogueCommonDialogueDataScRsp,
-            player.RogueTournManager?.GetDialogueData() ?? new GetRogueCommonDialogueDataScRsp()));
+            player.RogueTournManager?.GetDialogueData() ?? player.RogueManager?.GetDialogueData() ??
+            new GetRogueCommonDialogueDataScRsp()));
     }
 }
 
@@ -436,11 +440,39 @@ public sealed class HandlerSelectRogueCommonDialogueOptionCsReq : Handler<Select
     {
         var tourn = player.RogueTournManager;
         var rsp = tourn == null ? null : await tourn.SelectDialogueOption((int)req.AIAFEKGBFIF, (int)req.HAFOKMHCGFM);
+        if (tourn != null && rsp != null)
+        {
+            await connection.SendPacket(BasePacket.Create(CmdIds.SelectRogueCommonDialogueOptionScRsp, rsp));
+            // A pick that ended the talk clears it from the client's set and releases the room after the response.
+            await tourn.FlushDialogueClose();
+            return;
+        }
+
+        var rogue = player.RogueManager;
+        rsp = rogue == null ? null : await rogue.SelectDialogueOption((int)req.AIAFEKGBFIF, (int)req.HAFOKMHCGFM);
         await connection.SendPacket(BasePacket.Create(CmdIds.SelectRogueCommonDialogueOptionScRsp,
             rsp ?? new SelectRogueCommonDialogueOptionScRsp()));
-        // A pick that ended the talk clears it from the client's set and releases the room after the response.
-        if (rsp != null) await tourn!.FlushDialogueClose();
+        // A closing pick closes the classic talk after the response, then finishes the room.
+        if (rogue != null && rsp != null) await rogue.FlushDialoguePick();
     }
+}
+
+// The client's "talk over" for a classic Occurrence; official 4.7 answers it with the room's progress, not a response.
+[Opcode(CmdIds.FinishRogueCommonDialogueCsReq)]
+public sealed class HandlerFinishRogueCommonDialogueCsReq : Handler<FinishRogueCommonDialogueCsReq>
+{
+    protected override async Task OnHandle(Connection connection, PlayerInstance player,
+        FinishRogueCommonDialogueCsReq req)
+    {
+        if (player.RogueManager != null) await player.RogueManager.FinishDialogue((int)req.AIAFEKGBFIF);
+    }
+}
+
+// The client removes the finished event NPC itself; official 4.7 sends nothing back.
+[Opcode(CmdIds.RogueNpcDisappearCsReq)]
+public sealed class HandlerRogueNpcDisappearCsReq : PlayerHandler
+{
+    protected override Task OnHandle(Connection connection, PlayerInstance player) => Task.CompletedTask;
 }
 
 [Opcode(CmdIds.GetRogueEndlessActivityDataCsReq)]
