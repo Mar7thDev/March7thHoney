@@ -80,6 +80,34 @@ public sealed class HandlerStartRogueCsReq : Handler<StartRogueCsReq>
     }
 }
 
+[Opcode(CmdIds.EnterRogueCsReq)]
+public sealed class HandlerEnterRogueCsReq : PlayerHandler
+{
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
+    {
+        var manager = player.RogueManager!;
+        var ret = await manager.ResumeRun();
+        if (ret != Retcode.RetSucc || manager.RogueInstance is not { } inst)
+        {
+            await connection.SendPacket(BasePacket.Create(CmdIds.EnterRogueScRsp,
+                new EnterRogueScRsp { Retcode = (uint)(ret == Retcode.RetSucc ? Retcode.RetFail : ret) }));
+            return;
+        }
+
+        // Official 4.5 resume order, all before the response: lineup, run status, scene change, area update.
+        await connection.SendPacket(new PacketSyncLineupNotify(player.LineupManager!.GetCurLineup()!));
+        await connection.SendPacket(new PacketSyncRogueStatusScNotify(inst.Status));
+        await connection.SendPacket(new PacketSyncServerSceneChangeNotify());
+        await connection.SendPacket(new PacketCommonRogueUpdateScNotify(inst.AreaId));
+        await connection.SendPacket(BasePacket.Create(CmdIds.EnterRogueScRsp, new EnterRogueScRsp
+        {
+            RogueGameInfo = manager.BuildRogueGameInfo(),
+            Lineup = RogueResponseParts.BuildLineup(player),
+            Scene = RogueResponseParts.BuildScene(player)
+        }));
+    }
+}
+
 [Opcode(CmdIds.EnterRogueMapRoomCsReq)]
 public sealed class HandlerEnterRogueMapRoomCsReq : Handler<EnterRogueMapRoomCsReq>
 {
@@ -268,7 +296,7 @@ public sealed class HandlerHandleRogueCommonPendingActionCsReq : Handler<OFEDNNJ
 
         // Field 1588 is the buff-select answer (yuukisr OPDCGJEKEKP); other arms are unrelated actions.
         var buffId = req.DLKIKBIDJDB?.BAOFIGFFMLN ?? 0;
-        var ret = manager.SelectBuff((int)buffId);
+        var ret = await manager.SelectBuff((int)buffId);
 
         if (ret is { } retcode and not Retcode.RetSucc)
         {
@@ -316,19 +344,41 @@ public sealed class HandlerGetRogueBuffEnhanceInfoCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
+        // The generated name "retcode" is wrong: field 11 is the enhance list container (official 4.5 and 4.7 list
+        // one row per enhanceable blessing with its Cosmic Fragment price there).
+        var list = new HFGBCEKGFHK();
+        foreach (var (buffId, cost) in player.RogueManager!.GetEnhanceableBuffs())
+            list.EMAGFIBLNCJ.Add(new AEFFOCFJNBF
+            {
+                BuffId = (uint)buffId,
+                CostData = new ItemCostData
+                {
+                    ItemList = { new ItemCost { PileItem = new PileItem { ItemId = 31, ItemNum = (uint)cost } } }
+                }
+            });
         await connection.SendPacket(BasePacket.Create(CmdIds.GetRogueBuffEnhanceInfoScRsp,
-            new GetRogueBuffEnhanceInfoScRsp()));
+            new GetRogueBuffEnhanceInfoScRsp { Retcode = list }));
     }
 }
 
 // Classic Simulated Universe enhance is the 18xx pair (obf CINMCBDCBMJ / NAHANHPHGGF); EnhanceRogueBuffCsReq/ScRsp
 // is the ChessRogue one.
 [Opcode(CmdIds.SimulatedRogueEnhanceRogueBuffCsReq)]
-public sealed class HandlerEnhanceRogueBuffCsReq : PlayerHandler
+public sealed class HandlerEnhanceRogueBuffCsReq : Handler<SimulatedRogueEnhanceRogueBuffCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player,
+        SimulatedRogueEnhanceRogueBuffCsReq req)
     {
-        await connection.SendPacket(BasePacket.Create(CmdIds.RogueEnhanceRogueBuffScRsp, new RogueEnhanceRogueBuffScRsp()));
+        var (ret, level) = await player.RogueManager!.EnhanceBuff((int)req.MazeBuffId);
+        // Official 4.7: {KGKEJAKKLDP: true, CNEFDJCKAPL: {level, buff_id}} after the charge and grant notifies.
+        var rsp = ret == Retcode.RetSucc
+            ? new RogueEnhanceRogueBuffScRsp
+            {
+                KGKEJAKKLDP = true,
+                CNEFDJCKAPL = new ABOFJEIMLLJ { BuffId = req.MazeBuffId, Level = (uint)level }
+            }
+            : new RogueEnhanceRogueBuffScRsp { Retcode = (uint)ret };
+        await connection.SendPacket(BasePacket.Create(CmdIds.RogueEnhanceRogueBuffScRsp, rsp));
     }
 }
 

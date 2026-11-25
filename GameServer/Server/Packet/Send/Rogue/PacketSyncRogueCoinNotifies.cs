@@ -45,6 +45,25 @@ public static class RogueActionResultRows
         QueuePosition = (uint)queuePosition,
         Detail = new PKHKEEKIODC { DDCLCNPONOH = new NPCIGEBNOFG { Num = (uint)gain, DisplayType = 1 } }
     };
+
+    /// <summary>
+    ///     Fragments an action charged, on the second money arm (CONDGFPOFKD): the enhance machine's price (official
+    ///     4.7, source 2).
+    /// </summary>
+    public static MAOKMPOELCO MoneyCharge(NHHMEPILLHL source, int queuePosition, int amount) => new()
+    {
+        Source = source,
+        QueuePosition = (uint)queuePosition,
+        Detail = new PKHKEEKIODC { CONDGFPOFKD = new NPCIGEBNOFG { Num = (uint)amount } }
+    };
+
+    /// <summary>A blessing granted at its level (the buff-grant arm).</summary>
+    public static MAOKMPOELCO BuffGrant(NHHMEPILLHL source, int queuePosition, int buffId, int level) => new()
+    {
+        Source = source,
+        QueuePosition = (uint)queuePosition,
+        Detail = new PKHKEEKIODC { IFOOEPKGGAG = new KJAMNOGFAMJ { BuffId = (uint)buffId, HAGDKKBAAKK = (uint)level } }
+    };
 }
 
 public class PacketSyncRogueVirtualItemInfoScNotify : BasePacket

@@ -248,6 +248,25 @@ public partial class RogueManager : BasePlayerManager
             inst.IsWin && !(HasPendingTutorialSettlement(inst) && inst.GetCurrentRoom()?.Status == RogueRoomStatus.Finish) ||
             inst.BaseAvatarIds.Count == 0 || GetActiveRoomExcel(Player.Data.EntryId) == null) return false;
 
+        return await RestoreRunLineup(inst);
+    }
+
+    /// <summary>
+    ///     Resumes the live run from the lobby: the run overview's Continue sends EnterRogueCsReq, and official 4.5
+    ///     answers it by returning the player to the current room with the run lineup. Unhandled, the client retried
+    ///     the request forever.
+    /// </summary>
+    public async ValueTask<Retcode> ResumeRun()
+    {
+        if (RogueInstance is not { Status: RogueStatus.Doing, IsWin: false } inst ||
+            inst.GetCurrentRoom() is not { } room || inst.BaseAvatarIds.Count == 0 || !await RestoreRunLineup(inst))
+            return Retcode.RetRogueStatusNotMatch;
+
+        return await EnterRoomScene(room) ? Retcode.RetSucc : Retcode.RetFail;
+    }
+
+    private async ValueTask<bool> RestoreRunLineup(RogueInstance inst)
+    {
         var lineupManager = Player.LineupManager!;
         var lineup = lineupManager.GetExtraLineup(ExtraLineupType.LineupRogue);
         if (lineup?.BaseAvatars == null || !lineup.BaseAvatars
@@ -499,7 +518,7 @@ public partial class RogueManager : BasePlayerManager
         if (room.NextSiteIds.Count == 0 && (!IsTutorial(inst) || IsTutorialRoomCleared(inst)))
             inst.IsWin = true;
 
-        var coinGained = false;
+        var coinGain = 0;
         if (room.RoomType == RoomTypeBoss || tutorialBossWin)
         {
             inst.BuffSelect = null;
@@ -507,8 +526,8 @@ public partial class RogueManager : BasePlayerManager
         }
         else
         {
-            inst.Coin += Random.Shared.Next(20, 41) * Math.Max(1, battle.EntityMonsters.Count);
-            coinGained = true;
+            coinGain = Random.Shared.Next(20, 41) * Math.Max(1, battle.EntityMonsters.Count);
+            inst.Coin += coinGain;
 
             var pool = ResolveDraftPool(room, battle);
             if (pool.Count == 0)
@@ -532,6 +551,15 @@ public partial class RogueManager : BasePlayerManager
         }
         SaveRun();
 
+        // Official 4.5 World 1: a won battle reports its pay (the money row with the gain, then the coin total) ahead
+        // of the draft; with only a late coin sync the HUD lagged a room behind.
+        if (coinGain > 0)
+        {
+            await Player.SendPacket(new PacketSyncRogueCommonActionResultScNotify(
+                RogueActionResultRows.MoneyGain(inst.ActionSeq, coinGain), DICEONDKEFF.Nlcdgipgfdj));
+            await Player.SendPacket(new PacketSyncRogueVirtualItemInfoScNotify(inst.Coin));
+        }
+
         if (inst.BuffSelect?.HasSelection == true)
         {
             // The 4.5 client needs the identical draft notify twice to arm RogueSelectBuffPage.
@@ -543,8 +571,6 @@ public partial class RogueManager : BasePlayerManager
             // A win with nothing to draft clears the room on the spot; a draft opens the exit when it resolves.
             await OpenRoomExit();
         }
-
-        if (coinGained) await Player.SendPacket(new PacketSyncRogueVirtualItemInfoScNotify(inst.Coin));
 
         if (inst is { IsWin: true, ExploreWin: true })
         {
@@ -577,13 +603,16 @@ public partial class RogueManager : BasePlayerManager
             : [];
     }
 
-    public Retcode? SelectBuff(int buffId)
+    public async ValueTask<Retcode?> SelectBuff(int buffId)
     {
-        if (RogueInstance?.BuffSelect is not { HasSelection: true } menu) return null;
-        if (buffId == 0 || menu.Select(RogueInstance, buffId) == null) return Retcode.RetRogueSelectBuffNotExist;
+        if (RogueInstance is not { BuffSelect: { HasSelection: true } menu } inst) return null;
+        if (buffId == 0 || menu.Select(inst, buffId) is not { } chosen) return Retcode.RetRogueSelectBuffNotExist;
 
-        TryOfferAeonBuff(RogueInstance);
+        TryOfferAeonBuff(inst);
         SaveRun();
+        // A drafted blessing the run already holds is enhanced instead, so report the level it now has.
+        var level = inst.Buffs.GetValueOrDefault(chosen.MazeBuffID)?.Level ?? chosen.MazeBuffLevel;
+        await SendBuffGranted(chosen.MazeBuffID, level);
         return Retcode.RetSucc;
     }
 
