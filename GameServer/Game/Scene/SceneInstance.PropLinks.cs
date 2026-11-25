@@ -1,5 +1,6 @@
 using March7thHoney.Data;
 using March7thHoney.Data.Config.Scene;
+using March7thHoney.Enums.Mission;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
 
@@ -137,6 +138,69 @@ public partial class SceneInstance
 
     private static bool IsLiftPosition(PropStateEnum state) =>
         state is >= PropStateEnum.Elevator1 and <= PropStateEnum.Elevator3;
+
+    /// <summary>
+    ///     Story-lift unlock beat: the sub whose finish dismisses a floor's escort unlocks the lifts that are still on
+    ///     their authored Locked state. Each such lift takes the state its story-dimension variants agree on, the call
+    ///     console nearest the cabin opens and the lift's other call consoles close.
+    /// </summary>
+    /// <remarks>
+    ///     Official 4.7, floor 20231001 (main 1021201): finishing 102120113 unloads the escort group g20, then ships
+    ///     lift groups g30 and g31 with the lift at Elevator2 (15) and the 2F call console Open, states that survive
+    ///     relogs. Before the beat both lifts are Locked and every console press shows "Not authorized to use the
+    ///     lift" with no packet. The beat sub is the one the escort group's UnloadCondition finishes on and its NPC's
+    ///     follow-player AI file is named after. Only a lift still on its authored Locked state moves, so a cabin the
+    ///     player has ridden is never touched.
+    /// </remarks>
+    public async ValueTask ApplyStoryLiftUnlock(int subMissionId, int levelFloorId, bool sendPacket)
+    {
+        if (levelFloorId != FloorId || FloorInfo == null ||
+            !FloorInfo.Groups.Values.Any(group => group.EscortDismissalSubMissions.Contains(subMissionId))) return;
+
+        foreach (var lift in Entities.Values.OfType<EntityProp>().ToList())
+        {
+            if (lift.IsGmSpawned || lift.Excel.PropType != PropTypeEnum.PROP_ELEVATOR ||
+                lift.PropInfo.State != PropStateEnum.Locked || lift.State != PropStateEnum.Locked ||
+                lift.PropInfo.DimensionVariantState is not { } unlocked || !IsLiftPosition(unlocked)) continue;
+
+            await lift.SetState(unlocked, sendPacket);
+
+            var consoles = LiftCallConsoles(lift);
+            if (consoles.Count == 0) continue;
+            var nearest = consoles.MinBy(entry => DistanceSq(entry.Console.PropInfo, lift.PropInfo)).Console;
+            foreach (var (console, _) in consoles)
+            {
+                var target = console == nearest ? PropStateEnum.Open : PropStateEnum.Closed;
+                if (console.State != target) await console.SetState(target, sendPacket);
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Scene-build twin of <see cref="ApplyStoryLiftUnlock" />: a save whose beat sub finished before the beat
+    ///     existed still carries its lifts Locked.
+    /// </summary>
+    public async ValueTask ApplyFinishedStoryLiftUnlocks()
+    {
+        if (FloorInfo == null || Player.MissionManager == null) return;
+        foreach (var subMissionId in FloorInfo.Groups.Values.SelectMany(group => group.EscortDismissalSubMissions)
+                     .Distinct().ToList())
+        {
+            if (Player.MissionManager.GetSubMissionStatus(subMissionId) != MissionPhaseEnum.Finish) continue;
+            if (!GameData.SubMissionInfoData.TryGetValue(subMissionId, out var sub) || sub.SubMissionInfo == null)
+                continue;
+            await ApplyStoryLiftUnlock(subMissionId, sub.SubMissionInfo.LevelFloorID, false);
+        }
+    }
+
+    // The console on the floor the cabin stands on is the one nearest the cabin's authored position.
+    private static float DistanceSq(PositionInfo a, PositionInfo b)
+    {
+        var dx = a.PosX - b.PosX;
+        var dy = a.PosY - b.PosY;
+        var dz = a.PosZ - b.PosZ;
+        return dx * dx + dy * dy + dz * dz;
+    }
 
     /// <summary>
     ///     A <c>BaseConsole_*_Control_SimpleDoor</c> console at Open must have its doors Open too. Its client graph

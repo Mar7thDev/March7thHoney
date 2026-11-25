@@ -132,6 +132,13 @@ public partial class PropInfo : PositionInfo
 
     [JsonIgnore] public List<PropLinkTarget> SequenceLightSiblings { get; set; } = [];
 
+    /// <summary>
+    ///     The state every story-dimension variant ("_D100x" group files) of the group agrees on for this prop, kept
+    ///     only for lifts authored Locked in the base file: the Alchemy Commission lifts author Locked in the base and
+    ///     Elevator2 in every variant, the state the official ships once the story unlocks them. Null: no such state.
+    /// </summary>
+    [JsonIgnore] public PropStateEnum? DimensionVariantState { get; set; }
+
     // A cache written before these lists existed reads them back as null.
     [MemoryPackOnDeserialized]
     private void FillMissingLinks()

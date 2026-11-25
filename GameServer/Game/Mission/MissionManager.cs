@@ -516,6 +516,9 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
         if (!killSub && Player.SceneInstance != null)
             await Player.SceneInstance.OpenRaidDomainPortals(missionId, true);
         await ApplyPropStateFinishEffect(subMission.SubMissionInfo);
+        if (Player.SceneInstance != null)
+            await Player.SceneInstance.ApplyStoryLiftUnlock(missionId, subMission.SubMissionInfo?.LevelFloorID ?? 0,
+                true);
 
         if (mainMission.MissionInfo != null)
             await HandleFinishAction(mainMission.MissionInfo, missionId);
