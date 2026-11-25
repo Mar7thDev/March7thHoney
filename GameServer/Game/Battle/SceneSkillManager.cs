@@ -245,6 +245,9 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
                 if (items.Count > 0) await Player.InventoryManager.AddItems(items);
             }
 
+            // A Simulated Universe room destructible pays the run before its removal refresh (official order).
+            if (Player.RogueManager != null) await Player.RogueManager.GrantDestructFragments();
+
             // Destruct props should disappear from scene instead of being refreshed as opened state.
             await Player.SceneInstance.RemoveEntity(prop, false);
             await Player.SendPacket(new PacketSceneGroupRefreshScNotify(

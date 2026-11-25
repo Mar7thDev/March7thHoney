@@ -20,10 +20,17 @@ public partial class RogueManager : BasePlayerManager
 {
     // Official 4.4 capture grants 50 (Java/C# references say 100).
     private const int StartCoinCount = 50;
+    private const int CoinItemId = 31;
     private const int TalentCoinItemId = 32;
+
+    // No table prices a smashed room destructible; official 4.5 World 1 pays 12 Cosmic Fragments for each of the two
+    // destructs in room 301.
+    private const int DestructFragmentCount = 12;
 
     // The official login capture lists aeons 1..7 although RogueAeon has 9 rows.
     private const int AeonLimit = 7;
+    private const int RoomTypeOccurrence = 3;
+    private const int RoomTypeRespite = 5;
     private const int RoomTypeElite = 6;
     private const int RoomTypeBoss = 7;
     // A query type is the field number of its CCKJAEDDDCL oneof arm, and versions renumber the arms (4.5 put the
@@ -324,7 +331,69 @@ public partial class RogueManager : BasePlayerManager
             door.State = ScenePropRules.RogueDoorOpenState(door.Excel, PropStateEnum.Open);
         await Player.SendPacket(new PacketSceneGroupRefreshScNotify(Player, doors.Cast<BaseGameEntity>().ToList(),
             null, SceneGroupRefreshType.Afibfmafncc));
+        await FinishCurrentRoom(inst);
         return true;
+    }
+
+    /// <summary>
+    ///     Marks the cleared room Finish and announces the rooms after it as Unlock. The official always sends the pair
+    ///     right after the exit portal appears (4.7 World 1-3 run: 646 portal, 647 Finish, 648 next room Unlock); without
+    ///     the Unlock the next domain's map icon stays grey.
+    /// </summary>
+    private async ValueTask FinishCurrentRoom(RogueInstance inst)
+    {
+        if (inst.GetCurrentRoom() is not { } room || room.Status == RogueRoomStatus.Finish) return;
+
+        room.Status = RogueRoomStatus.Finish;
+        await Player.SendPacket(new PacketSyncRogueMapRoomScNotify(inst));
+        foreach (var siteId in room.NextSiteIds)
+            if (inst.Rooms.TryGetValue(siteId, out var next))
+            {
+                next.Status = RogueRoomStatus.Unlock;
+                await Player.SendPacket(new PacketSyncRogueMapRoomScNotify(inst.MapId, next));
+            }
+
+        SaveRun();
+    }
+
+    /// <summary>
+    ///     The portal the exit must render, chosen by the DESTINATION room type: Occurrence 1022 (the blue "?" gate),
+    ///     Respite 1023, any other room 1021. Measured on all 22 portal refreshes of an official 4.7 World 1-3 run;
+    ///     the level groups mostly author 1000 (AetherDividePortal), which renders the wrong gate.
+    /// </summary>
+    internal static MazePropExcel? PortalPropFor(int roomId)
+    {
+        if (!GameData.RogueRoomData.TryGetValue(roomId, out var room)) return null;
+        var propId = room.RogueRoomType switch
+        {
+            RoomTypeOccurrence => 1022,
+            RoomTypeRespite => 1023,
+            _ => 1021
+        };
+        return GameData.MazePropData.TryGetValue(propId, out var excel) && excel.PropType == PropTypeEnum.PROP_ROGUE_DOOR
+            ? excel
+            : null;
+    }
+
+    /// <summary>
+    ///     Pays a smashed room destructible into the live run, in the official order (4.5 World 1, both destructs of
+    ///     room 301): the money row with the gain, the coin total, then a plane event naming Cosmic Fragments; the
+    ///     caller's removal refresh follows.
+    /// </summary>
+    public async ValueTask GrantDestructFragments()
+    {
+        if (RogueInstance is not { Status: RogueStatus.Doing } inst || Player.SceneInstance is not { } scene ||
+            GetActiveRoomExcel(scene.EntryId) == null) return;
+
+        inst.Coin += DestructFragmentCount;
+        SaveRun();
+        await Player.SendPacket(new PacketSyncRogueCommonActionResultScNotify(
+            RogueActionResultRows.MoneyGain(inst.ActionSeq, DestructFragmentCount), DICEONDKEFF.Icfoncmfnlg));
+        await Player.SendPacket(new PacketSyncRogueVirtualItemInfoScNotify(inst.Coin));
+        await Player.SendPacket(new PacketScenePlaneEventScNotify(new ItemList
+        {
+            ItemList_ = { new Item { ItemId = CoinItemId } }
+        }));
     }
 
     public int GetCurrentMonsterLevel()

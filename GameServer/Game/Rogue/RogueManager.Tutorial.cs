@@ -3,7 +3,6 @@ using March7thHoney.Enums.Mission;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
-using March7thHoney.Kcp;
 using March7thHoney.GameServer.Server.Packet.Send.Rogue;
 using March7thHoney.Proto;
 
@@ -153,17 +152,8 @@ public partial class RogueManager
 
     private async ValueTask FinishTutorialRoom(RogueInstance inst)
     {
-        if (inst.MapId != 2 || !IsTutorialRoomCleared(inst) || inst.GetCurrentRoom() is not { } room ||
-            room.Status == RogueRoomStatus.Finish) return;
-        room.Status = RogueRoomStatus.Finish;
-        await Player.SendPacket(new PacketSyncRogueMapRoomScNotify(inst));
-        foreach (var siteId in room.NextSiteIds)
-            if (inst.Rooms.TryGetValue(siteId, out var next))
-            {
-                next.Status = RogueRoomStatus.Unlock;
-                await Player.SendPacket(BasePacket.Create(March7thHoney.Kcp.CmdIds.SyncRogueMapRoomScNotify,
-                    new SyncRogueMapRoomScNotify { MapId = (uint)inst.MapId, HNEANMNJHDB = BuildRoom(next, next.Status) }));
-            }
+        if (inst.MapId != 2 || !IsTutorialRoomCleared(inst)) return;
+        await FinishCurrentRoom(inst);
     }
 
     public async ValueTask ResumeTutorialVictoryNotification()
