@@ -1,4 +1,5 @@
 using March7thHoney.Data;
+using March7thHoney.Data.Config.Scene;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
 
@@ -213,6 +214,51 @@ public partial class SceneInstance
     public async ValueTask ClearDousedFogVolumes()
     {
         foreach (var groupId in Groups.ToList()) await ApplyFogVolumeClear(groupId, false);
+    }
+
+    /// <summary>
+    ///     Pressing a sequence-light seal controller lights its two flame pillars and its OWN lamp; the shared bridge
+    ///     opens only once every sibling seal's lamp is Open too. Official 4.7, floor 20232001: each seal ships its
+    ///     pillars and its lamp (58/300003 for seal 2, 58/300004 for seal 3), and the bridge 58/300001 appears only
+    ///     with the last lamp. Opening the bridge through the door links lit it on the first seal.
+    /// </summary>
+    public async ValueTask ApplySequenceLightPress(EntityProp controller)
+    {
+        var info = controller.PropInfo;
+        if (info.SequenceLightMappingGroupId == 0) return;
+
+        foreach (var pillar in info.SequenceLightPillars)
+            await OpenLinkedProp(pillar.GroupId, pillar.InstId);
+        await OpenLinkedProp(info.SequenceLightMappingGroupId, info.SequenceLightMappingInstId);
+
+        if (info.SequenceLightBridgeGroupId != 0 && SequenceLightLampsLit(info))
+            await OpenLinkedProp(info.SequenceLightBridgeGroupId, info.SequenceLightBridgeInstId);
+    }
+
+    // The controller's own lamp and every sibling controller's lamp are Open. Siblings resolve through the live
+    // controllers' own MappingProp links, so no floor or id table is needed.
+    private bool SequenceLightLampsLit(PropInfo controller)
+    {
+        if (FindProp(controller.SequenceLightMappingGroupId, controller.SequenceLightMappingInstId) is not
+            { State: PropStateEnum.Open }) return false;
+
+        foreach (var sibling in controller.SequenceLightSiblings)
+        {
+            var other = FindProp(sibling.GroupId, sibling.InstId);
+            if (other == null) return false;
+            if (other.PropInfo.SequenceLightMappingGroupId == 0) continue;
+            if (FindProp(other.PropInfo.SequenceLightMappingGroupId, other.PropInfo.SequenceLightMappingInstId) is
+                not { State: PropStateEnum.Open }) return false;
+        }
+
+        return true;
+    }
+
+    private async ValueTask OpenLinkedProp(int groupId, int instId)
+    {
+        var prop = FindProp(groupId, instId);
+        if (prop == null || prop.State == PropStateEnum.Open) return;
+        await prop.SetState(PropStateEnum.Open);
     }
 
     // Only a console still Locked moves, so a later step that already opened it is never reset.

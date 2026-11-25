@@ -114,11 +114,31 @@ public partial class PropInfo : PositionInfo
     /// </summary>
     [JsonIgnore] public bool GraphLockedBranchIsInert { get; set; }
 
-    // A cache written before the list existed reads it back as null.
+    /// <summary>
+    ///     Sequence-light seal controller (ValueSource "MappingProp"): its own cutscene lamp. The three Vidyadhara
+    ///     seals of floor 20232001 each name their own lamp (58/300002..300004), the shared bridge ("Bridge",
+    ///     58/300001), their two flame pillars ("Target1"/"Target2") and their sibling controllers
+    ///     ("OtherPuzzle*"). Zero: not a seal controller.
+    /// </summary>
+    [JsonIgnore] public int SequenceLightMappingGroupId { get; set; }
+
+    [JsonIgnore] public int SequenceLightMappingInstId { get; set; }
+
+    [JsonIgnore] public int SequenceLightBridgeGroupId { get; set; }
+
+    [JsonIgnore] public int SequenceLightBridgeInstId { get; set; }
+
+    [JsonIgnore] public List<PropLinkTarget> SequenceLightPillars { get; set; } = [];
+
+    [JsonIgnore] public List<PropLinkTarget> SequenceLightSiblings { get; set; } = [];
+
+    // A cache written before these lists existed reads them back as null.
     [MemoryPackOnDeserialized]
     private void FillMissingLinks()
     {
         InteractOnOpenLinks ??= [];
+        SequenceLightPillars ??= [];
+        SequenceLightSiblings ??= [];
     }
 
     public bool HasEditorOnlyLevelGraph()
@@ -160,6 +180,28 @@ public partial class PropInfo : PositionInfo
         {
             LockedConsoleGroupId = consoleGroup;
             LockedConsoleInstId = consoleInst;
+        }
+
+        if (TryReadLink("MappingProp", out var lampGroup, out var lampInst))
+        {
+            SequenceLightMappingGroupId = lampGroup;
+            SequenceLightMappingInstId = lampInst;
+            if (TryReadLink("Bridge", out var bridgeGroup, out var bridgeInst))
+            {
+                SequenceLightBridgeGroupId = bridgeGroup;
+                SequenceLightBridgeInstId = bridgeInst;
+            }
+
+            foreach (var v in ValueSource.Values)
+            {
+                var key = v["Key"]?.ToString() ?? "";
+                if (key is not ("Target1" or "Target2") && !key.StartsWith("OtherPuzzle", StringComparison.Ordinal))
+                    continue;
+                if (!TryReadLink(key, out var linkGroup, out var linkInst)) continue;
+                var link = new PropLinkTarget { GroupId = linkGroup, InstId = linkInst };
+                if (key.StartsWith("OtherPuzzle", StringComparison.Ordinal)) SequenceLightSiblings.Add(link);
+                else SequenceLightPillars.Add(link);
+            }
         }
 
         foreach (var v in ValueSource.Values)
@@ -216,6 +258,10 @@ public partial class PropInfo : PositionInfo
                      key.ToString().Contains("Rootcontamination") ||
                      key.ToString().Contains("Portal"))
             {
+                // A sequence-light seal controller is not a door opener: its "Bridge" is shared by every seal and
+                // opens only once all of them are lit. SceneInstance.ApplySequenceLightPress owns its links.
+                if (SequenceLightMappingGroupId != 0) continue;
+
                 var parts = value.ToString().Split(',');
                 if (parts.Length >= 2 &&
                     int.TryParse(parts[0], out var keyId) &&
@@ -261,6 +307,14 @@ public partial class PropInfo : PositionInfo
         instId = parsedInst;
         return true;
     }
+}
+
+/// <summary>A prop another prop's ValueSource names, resolved to its group and instance.</summary>
+[MemoryPackable]
+public partial class PropLinkTarget
+{
+    public int GroupId { get; set; }
+    public int InstId { get; set; }
 }
 
 [MemoryPackable]

@@ -192,6 +192,8 @@ public partial class SceneInstance
                 await Player.MissionManager!.OnPlayerInteractWithProp();
             }
 
+        await ApplySequenceLightPress(prop);
+
         // Pad-puzzle groups reveal the hidden chest their ValueSource names on a real interaction, before
         // the PropState gate that waits on that chest is checked.
         if (FloorInfo?.Groups.TryGetValue(prop.GroupId, out var interactedGroup) == true)
