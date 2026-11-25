@@ -505,6 +505,13 @@ public static partial class GameData
     public static Dictionary<int, RogueManagerExcel> RogueManagerData { get; private set; } = [];
     public static Dictionary<int, Dictionary<int, RogueMapExcel>> RogueMapData { get; private set; } = [];
     public static Dictionary<int, List<int>> RogueMapGenData { get; set; } = [];
+
+    /// <summary>
+    ///     Simulated Universe areas whose run map is not AreaProgress * 100 + Difficulty, from
+    ///     Config/Custom/RogueAreaMap.json. Read on every boot like the other operator files and kept out of Resource.bin.
+    /// </summary>
+    public static Dictionary<int, int> RogueAreaMapData { get; set; } = [];
+
     public static Dictionary<int, RogueMazeBuffExcel> RogueMazeBuffData { get; private set; } = [];
     public static Dictionary<int, RogueMiracleExcel> RogueMiracleData { get; private set; } = [];
     public static RogueMiracleEffectConfig RogueMiracleEffectData { get; set; } = new();

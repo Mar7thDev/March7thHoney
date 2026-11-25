@@ -220,6 +220,14 @@ public partial class RogueManager : BasePlayerManager
 
     private int ResolveRunMapId(RogueAreaConfigExcel area)
     {
+        // The formula is not the official rule for every area: World 1 (area 110) runs the authored seven-room map 3
+        // (official 4.5 StartRogueScRsp). Its formula map 101 has no RogueRoom rows, so the shared site pools left
+        // most of its sites without a room and the run could not leave the first one. World 2 (area 120) runs map 200
+        // (official 4.6 and 4.7), not 201.
+        if (GameData.RogueAreaMapData.TryGetValue(area.RogueAreaID, out var mapped) &&
+            GameData.RogueMapData.ContainsKey(mapped))
+            return mapped;
+
         var tier = RogueData.AreaDifficulty.GetValueOrDefault(area.RogueAreaID);
         if (tier == 0) tier = Math.Max(1, area.Difficulty);
         var mapId = area.AreaProgress * 100 + tier;
