@@ -114,19 +114,24 @@ public partial class SceneInstance
 
                 break;
             case PropTypeEnum.PROP_MAZE_PUZZLE:
+                // A solved puzzle drives only the graph-less members of its group: official 4.7 compass press on
+                // floor 20221001 g114/300002 ships the cargo ship 300003 (no InitLevelGraph) Open in the same refresh
+                // and leaves every graph-owning prop (map markers, waypoint controllers, HideShip) untouched. A
+                // chest is revealed only from Hidden/ChestLocked, so a looted one is never re-armed.
                 if (newState is PropStateEnum.Closed or PropStateEnum.Open)
                     foreach (var p in GetEntitiesInGroup<EntityProp>(prop.GroupId))
                     {
+                        if (!string.IsNullOrEmpty(p.PropInfo.InitLevelGraph) ||
+                            p.Excel.PropType == prop.Excel.PropType) continue;
+
                         if (p.Excel.PropType == PropTypeEnum.PROP_TREASURE_CHEST)
                         {
+                            if (p.State is not (PropStateEnum.Hidden or PropStateEnum.ChestLocked)) continue;
                             await p.SetState(PropStateEnum.ChestClosed);
-                        }
-                        else if (p.Excel.PropType == prop.Excel.PropType)
-                        {
-                            // Skip
                         }
                         else
                         {
+                            if (!p.Excel.PropStateList.Contains(PropStateEnum.Open)) continue;
                             await p.SetState(PropStateEnum.Open);
                         }
 
