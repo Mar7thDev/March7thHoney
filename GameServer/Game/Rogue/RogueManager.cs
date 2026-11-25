@@ -117,6 +117,7 @@ public partial class RogueManager : BasePlayerManager
         };
         inst.InitRooms();
         if (inst.StartSiteId == 0 || inst.Rooms.Count == 0) return Retcode.RetRogueAreaInvalid;
+        RollBonusOffer(inst);
 
         if (!await ActivateRogueLineup(avatarIds)) return Retcode.RetRogueStatusNotMatch;
 
@@ -340,6 +341,10 @@ public partial class RogueManager : BasePlayerManager
         var scene = Player.SceneInstance;
         var roomExcel = scene == null ? null : GetActiveRoomExcel(scene.EntryId);
         if (scene == null || roomExcel == null) return false;
+        // A room can draft while another of its monster groups still stands (official tutorial room 201 drafts after
+        // its group-4 fight with the group-19 one alive); opening the exit then would let the player walk past the
+        // fight, and the run-start blessing draft would open the first room before any.
+        if (scene.Entities.Values.OfType<EntityMonster>().Any(monster => monster.IsAlive)) return false;
 
         var doors = scene.GetEntitiesInGroup<EntityProp>(roomExcel.GroupID)
             .Where(door => door.RogueDoorTarget != null && door.State != PropStateEnum.Open)
@@ -407,7 +412,7 @@ public partial class RogueManager : BasePlayerManager
         inst.Coin += DestructFragmentCount;
         SaveRun();
         await Player.SendPacket(new PacketSyncRogueCommonActionResultScNotify(
-            RogueActionResultRows.MoneyGain(inst.ActionSeq, DestructFragmentCount), DICEONDKEFF.Icfoncmfnlg));
+            RogueActionResultRows.MoneyGain(NHHMEPILLHL.Nlcdgipgfdj, inst.ActionSeq, DestructFragmentCount), DICEONDKEFF.Icfoncmfnlg));
         await Player.SendPacket(new PacketSyncRogueVirtualItemInfoScNotify(inst.Coin));
         await Player.SendPacket(new PacketScenePlaneEventScNotify(new ItemList
         {
@@ -556,7 +561,7 @@ public partial class RogueManager : BasePlayerManager
         if (coinGain > 0)
         {
             await Player.SendPacket(new PacketSyncRogueCommonActionResultScNotify(
-                RogueActionResultRows.MoneyGain(inst.ActionSeq, coinGain), DICEONDKEFF.Nlcdgipgfdj));
+                RogueActionResultRows.MoneyGain(NHHMEPILLHL.Nlcdgipgfdj, inst.ActionSeq, coinGain), DICEONDKEFF.Nlcdgipgfdj));
             await Player.SendPacket(new PacketSyncRogueVirtualItemInfoScNotify(inst.Coin));
         }
 
@@ -813,6 +818,15 @@ public partial class RogueManager : BasePlayerManager
     public static INHBMHCJJCN BuildPendingAction(RogueInstance inst)
     {
         var action = new INHBMHCJJCN();
+        // The run-start offer is answered before any draft exists (official 4.7 queue position 2).
+        if (inst.BonusOffer.Count > 0)
+        {
+            action.QueuePosition = (uint)inst.ActionSeq;
+            action.Detail = new DCFPEIMAMCN { JIPEPMDMCMB = new INKPGECIDNE() };
+            action.Detail.JIPEPMDMCMB.KPJPABDIOJB.AddRange(inst.BonusOffer.Select(id => (uint)id));
+            return action;
+        }
+
         if (inst.BuffSelect is not { HasSelection: true } menu) return action;
 
         action.QueuePosition = (uint)inst.ActionSeq;

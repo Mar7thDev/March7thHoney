@@ -36,12 +36,12 @@ public class PacketSyncRogueCommonActionResultScNotify : BasePacket
 public static class RogueActionResultRows
 {
     /// <summary>
-    ///     Fragments an action paid (a won battle, a smashed destructible): money_result with the gain, never the
-    ///     total (official 4.5 World 1: num 12 while the coin rides 74 to 86), source 0.
+    ///     Fragments an action paid: money_result with the gain, never the total (official 4.5 World 1: num 12 while
+    ///     the coin rides 74 to 86). Source 0 for a won battle or a smashed destructible, 5 for the run-start bonus.
     /// </summary>
-    public static MAOKMPOELCO MoneyGain(int queuePosition, int gain) => new()
+    public static MAOKMPOELCO MoneyGain(NHHMEPILLHL source, int queuePosition, int gain) => new()
     {
-        Source = NHHMEPILLHL.Nlcdgipgfdj,
+        Source = source,
         QueuePosition = (uint)queuePosition,
         Detail = new PKHKEEKIODC { DDCLCNPONOH = new NPCIGEBNOFG { Num = (uint)gain, DisplayType = 1 } }
     };

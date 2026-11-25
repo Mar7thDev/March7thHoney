@@ -40,6 +40,18 @@ public partial class RogueInstance
     // One-shot flag for SyncRogueExploreWinScNotify on the run-final battle win.
     [MemoryPackIgnore] public bool ExploreWin { get; set; }
 
+    // Append-only below (MemoryPack member order).
+
+    // The unanswered run-start Trailblaze Blessing offer (RogueBonus ids); saved so a relog still shows it.
+    public List<int> BonusOffer { get; set; } = [];
+
+    // A run saved before a list existed reads it back as null.
+    [MemoryPackOnDeserialized]
+    private void FillAppendedMembers()
+    {
+        BonusOffer ??= [];
+    }
+
     public RogueRoomData? GetCurrentRoom()
     {
         return Rooms.GetValueOrDefault(CurrentSiteId);

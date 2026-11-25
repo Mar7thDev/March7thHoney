@@ -70,6 +70,10 @@ public sealed class HandlerStartRogueCsReq : Handler<StartRogueCsReq>
         await connection.SendPacket(new PacketSyncServerSceneChangeNotify());
         await connection.SendPacket(new PacketSyncRogueMapRoomScNotify(inst));
         await connection.SendPacket(new PacketSyncLineupNotify(player.LineupManager!.GetCurLineup()!));
+        // The Trailblaze Blessing offer rides its own notify before the response (official 4.7), which carries it too.
+        if (inst.BonusOffer.Count > 0)
+            await connection.SendPacket(
+                new PacketSyncRogueCommonPendingActionScNotify(RogueManager.BuildPendingAction(inst)));
         await connection.SendPacket(BasePacket.Create(CmdIds.StartRogueScRsp, new StartRogueScRsp
         {
             RogueGameInfo = manager.BuildRogueGameInfo(),
@@ -271,6 +275,14 @@ public sealed class HandlerHandleRogueCommonPendingActionCsReq : Handler<OFEDNNJ
         }
 
         var manager = player.RogueManager!;
+
+        // The run-start Trailblaze Blessing answer is its own arm and carries no queue position (official 4.7).
+        if (req.ILHBOODLNOH != null && await manager.AnswerBonus((int)req.ILHBOODLNOH.OOMKNHFIGAF) is { } bonusRsp)
+        {
+            await connection.SendPacket(BasePacket.Create(CmdIds.HandleRogueCommonPendingActionScRsp, bonusRsp));
+            return;
+        }
+
         var rsp = new HandleRogueCommonPendingActionScRsp();
 
         // Outside a Simulated Universe scene an unclaimed parameterless answer is another mode's arm, not a reroll.
