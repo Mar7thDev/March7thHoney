@@ -5,15 +5,18 @@ namespace March7thHoney.GameServer.Server.Packet.Send.MapRotation;
 
 public class PacketEnterMapRotationRegionScRsp : BasePacket
 {
-    public PacketEnterMapRotationRegionScRsp(MotionInfo motion) : base(CmdIds.EnterMapRotationRegionScRsp)
+    public PacketEnterMapRotationRegionScRsp(EnterMapRotationRegionCsReq req, int clientPosVersion, int curNum,
+        int maxNum) : base(CmdIds.EnterMapRotationRegionScRsp)
     {
         var proto = new EnterMapRotationRegionScRsp
         {
-            Motion = motion,
+            Motion = req.Motion,
+            RegionId = req.RegionId,
+            ClientPosVersion = (uint)clientPosVersion,
             EnergyInfo = new RotaterEnergyInfo
             {
-                CurNum = 5,
-                MaxNum = 5
+                CurNum = (uint)curNum,
+                MaxNum = (uint)maxNum
             }
         };
 

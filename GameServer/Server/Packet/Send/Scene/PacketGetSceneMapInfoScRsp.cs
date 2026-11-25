@@ -184,6 +184,8 @@ public class PacketGetSceneMapInfoScRsp : BasePacket
             {
                 foreach (var prop in player.SceneInstance.Entities.Values.OfType<EntityProp>())
                 {
+                    // Client-only props carry no server state and are withheld from the scene payload too.
+                    if (prop.PropInfo.IsClientOnly) continue;
                     if (mazeMap.MazePropList.Any(x => x.GroupId == (uint)prop.GroupId && x.ConfigId == (uint)prop.InstId))
                         continue;
 
