@@ -37,6 +37,7 @@ public static class PropInteractGraphLoader
             prop.GraphHasLockedBranch = parsed.HasLocked;
             prop.GraphHasRealClosedBranch = parsed.HasRealClosed;
             prop.GraphReleasesInteractOnOpen = parsed.ReleasesInteractOnOpen;
+            prop.GraphLockedBranchIsInert = parsed.SawLocked && !parsed.LockedActs && parsed.ClosedActs;
             if (parsed.ReleasesInteractOnOpen)
                 foreach (var template in parsed.AllLinks)
                 {
@@ -208,6 +209,20 @@ public static class PropInteractGraphLoader
                     ends.Total++;
                     if (inside) ends.InsideOpen++;
                 }
+                else if (type == "PropStateExecute")
+                {
+                    var state = node["State"]?.ToString() ?? "";
+                    var acts = BranchActs(node["Execute"]);
+                    if (state == "Locked")
+                    {
+                        result.SawLocked = true;
+                        result.LockedActs |= acts;
+                    }
+                    else if (state.Length == 0 || state.Equals("Closed", StringComparison.OrdinalIgnoreCase))
+                    {
+                        result.ClosedActs |= acts;
+                    }
+                }
                 else if (type == "PropReqInteract")
                 {
                     var interactId = node["InteractID"]?["FixedValue"]?["Value"]?.Value<int>() ?? 0;
@@ -220,6 +235,32 @@ public static class PropInteractGraphLoader
             }
         }
     }
+
+    /// <summary>
+    ///     Whether a PropStateExecute branch does anything for the player, as opposed to a toast or a billboard.
+    ///     Searched through nested lists: the "Mechanism Energy Hub" graph keeps its real TriggerCustomString one
+    ///     PropStateExecute below its Locked branch, and that nesting is the authored gate.
+    /// </summary>
+    private static bool BranchActs(JToken? execute)
+    {
+        if (execute is not JArray tasks) return false;
+        foreach (var token in tasks)
+        {
+            if (token is not JObject task) continue;
+            var type = (task["$type"]?.ToString() ?? task["Type"]?.ToString() ?? "").Replace("RPG.GameCore.", "");
+            if (BranchActions.Contains(type)) return true;
+            if (task.Properties().Any(property => BranchActs(property.Value))) return true;
+        }
+
+        return false;
+    }
+
+    private static readonly HashSet<string> BranchActions =
+    [
+        "PropReqInteract", "StartPropInteractMode", "TriggerCustomString", "TriggerCustomStringList",
+        "TriggerPerformance", "PlayMissionTalk", "PlaySimpleTalk", "PlayAndWaitSimpleTalk", "PlayOptionTalk",
+        "SetPropState", "ChangePropState", "FinishPerformanceMission", "CreateProp", "DestroyProp", "StartRaid"
+    ];
 
     private static TargetRef ReadTarget(JObject? targetType)
     {
@@ -246,6 +287,9 @@ public static class PropInteractGraphLoader
         public bool HasRealClosed { get; set; }
         public List<LinkTemplate> AllLinks { get; } = [];
         public bool ReleasesInteractOnOpen { get; set; }
+        public bool SawLocked { get; set; }
+        public bool LockedActs { get; set; }
+        public bool ClosedActs { get; set; }
     }
 
     private sealed class InteractEndCount

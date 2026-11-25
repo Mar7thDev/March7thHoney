@@ -108,6 +108,12 @@ public partial class PropInfo : PositionInfo
     /// </summary>
     [JsonIgnore] public List<PropInteractLink> InteractOnOpenLinks { get; set; } = [];
 
+    /// <summary>
+    ///     Every Locked branch of the prop's own graph only shows a toast while a Closed branch runs the real
+    ///     interaction: shipped Locked with no mission to move it, the control is dead.
+    /// </summary>
+    [JsonIgnore] public bool GraphLockedBranchIsInert { get; set; }
+
     // A cache written before the list existed reads it back as null.
     [MemoryPackOnDeserialized]
     private void FillMissingLinks()

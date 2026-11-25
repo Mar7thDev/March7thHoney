@@ -23,6 +23,23 @@ public class SceneEntityLoader(SceneInstance scene)
     private bool IsIncompatibleProp(GroupInfo group, PropInfo info) =>
         MissingLevelGraphProps.Contains((Scene.FloorId, group.Id, info.ID));
 
+    // Props a PropState sub names as its target (ParamInt1 group, ParamInt2 inst): a mission step drives those, so
+    // their authored state is the mission's to change.
+    private static HashSet<(int GroupId, int InstId)>? _propStateSubTargets;
+
+    private static HashSet<(int GroupId, int InstId)> PropStateSubTargets()
+    {
+        if (_propStateSubTargets != null) return _propStateSubTargets;
+
+        var targets = new HashSet<(int GroupId, int InstId)>();
+        foreach (var sub in GameData.SubMissionInfoData.Values)
+            if (sub.SubMissionInfo is
+                { FinishType: MissionFinishTypeEnum.PropState, ParamInt1: not 0, ParamInt2: not 0 } info)
+                targets.Add((info.ParamInt1, info.ParamInt2));
+
+        return _propStateSubTargets = targets;
+    }
+
     // The Astral Express boarding prop stays Closed until main 1000401 finishes.
     private const int StarTrainArrivalMain = 1000401;
 
@@ -377,6 +394,13 @@ public class SceneEntityLoader(SceneInstance scene)
 
             // Authored Locked with a Closed branch and no Locked branch never arms an interact button.
             if (prop.State == PropStateEnum.Locked && info.GraphHasRealClosedBranch && !info.GraphHasLockedBranch)
+                prop.State = PropStateEnum.Closed;
+
+            // A Locked branch that only toasts while the Closed branch acts is equally dead unless a PropState sub
+            // owns the prop. Official 4.7 ships the Divination Commission "Door Lock" console (floor 20221001
+            // g6/300005, toast-only Locked branch, whose unlocking ChangePropState the dump strips) Closed.
+            if (prop.State == PropStateEnum.Locked && info.GraphHasRealClosedBranch && info.GraphLockedBranchIsInert &&
+                !PropStateSubTargets().Contains((group.Id, info.ID)))
                 prop.State = PropStateEnum.Closed;
         }
 
