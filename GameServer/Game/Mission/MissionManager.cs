@@ -667,19 +667,48 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
     {
         GameData.SubMissionInfoData.TryGetValue(subMissionId, out var subMission);
         if (subMission == null) return;
-        if (Data.ReplayedRogueTutorialRewardIds.Contains(subMission.MainMissionId)) return;
-        GameData.RewardDataData.TryGetValue(subMission.SubMissionInfo?.SubRewardID ?? 0, out var reward);
         var itemList = new List<ItemData>();
 
-        foreach (var item in reward?.GetItems() ?? [])
+        if (!Data.ReplayedRogueTutorialRewardIds.Contains(subMission.MainMissionId))
         {
-            GameData.ItemConfigData.TryGetValue(item.Item1, out var itemExcel);
-            var res = await Player.InventoryManager!.AddItem(item.Item1, item.Item2,
-                itemExcel?.ItemMainType == ItemMainTypeEnum.AvatarCard); // notify if avatar card
-            if (res != null) itemList.Add(res);
+            GameData.RewardDataData.TryGetValue(subMission.SubMissionInfo?.SubRewardID ?? 0, out var reward);
+            foreach (var item in reward?.GetItems() ?? [])
+            {
+                GameData.ItemConfigData.TryGetValue(item.Item1, out var itemExcel);
+                var res = await Player.InventoryManager!.AddItem(item.Item1, item.Item2,
+                    itemExcel?.ItemMainType == ItemMainTypeEnum.AvatarCard); // notify if avatar card
+                if (res != null) itemList.Add(res);
+            }
         }
 
+        // The notify is what draws the "Items Obtained" band, and it also lists the items the sub's
+        // addMissionItem actions handed over (already granted by HandleFinishAction). Official 4.7: finishing
+        // 102110125 sends StartFinishSubMissionScNotify -> PlayerSyncScNotify{140124 x1} ->
+        // SubMissionRewardScNotify{140124 x1}, and a sub that grants nothing gets no notify at all.
+        itemList.AddRange(MissionItemGrants(subMission.SubMissionInfo));
+        if (itemList.Count == 0) return;
+
         await Player.SendPacket(new PacketSubMissionRewardScNotify(subMissionId, itemList));
+    }
+
+    /// <summary>
+    ///     The (item, count) pairs a sub's addMissionItem / addRecoverMissionItem finish actions grant, for display
+    ///     only. Zero and unpaired entries are skipped.
+    /// </summary>
+    private static List<ItemData> MissionItemGrants(SubMissionInfo? info)
+    {
+        var items = new List<ItemData>();
+        foreach (var action in info?.FinishActionList ?? [])
+        {
+            if (action.FinishActionType is not (FinishActionTypeEnum.addMissionItem
+                or FinishActionTypeEnum.addRecoverMissionItem)) continue;
+            var para = action.FinishActionPara;
+            for (var i = 0; i + 1 < para.Count; i += 2)
+                if (para[i] > 0 && para[i + 1] > 0)
+                    items.Add(new ItemData { ItemId = para[i], Count = para[i + 1] });
+        }
+
+        return items;
     }
 
     public async ValueTask HandleFinishType(MissionFinishTypeEnum finishType, object? arg = null, bool pushQuest = true)
