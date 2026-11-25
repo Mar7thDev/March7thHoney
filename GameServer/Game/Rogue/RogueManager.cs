@@ -345,8 +345,10 @@ public partial class RogueManager : BasePlayerManager
         if (scene == null || roomExcel == null) return false;
         // A room can draft while another of its monster groups still stands (official tutorial room 201 drafts after
         // its group-4 fight with the group-19 one alive); opening the exit then would let the player walk past the
-        // fight, and the run-start blessing draft would open the first room before any.
-        if (scene.Entities.Values.OfType<EntityMonster>().Any(monster => monster.IsAlive)) return false;
+        // fight, and the run-start blessing draft would open the first room before any. The tutorial keeps its own
+        // mission-driven gate above.
+        if (!IsTutorial(inst) && scene.Entities.Values.OfType<EntityMonster>().Any(monster => monster.IsAlive))
+            return false;
 
         var doors = scene.GetEntitiesInGroup<EntityProp>(roomExcel.GroupID)
             .Where(door => door.RogueDoorTarget != null && door.State != PropStateEnum.Open)
