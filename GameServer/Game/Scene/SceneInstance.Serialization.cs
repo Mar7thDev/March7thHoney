@@ -132,7 +132,12 @@ public partial class SceneInstance
             .GetValueOrDefault(groupId, []);
         foreach (var property in properties?.Values.Where(value => value.Side != GroupPropertySideEnum.ClientOnly) ?? [])
             group.BANBECDCDHG[property.Name] = saved.GetValueOrDefault(property.Name, property.DefaultValue);
-        group.EntityList.AddRange(Entities.Values.Where(entity => entity.GroupId == groupId)
+        // An IsClientOnly prop is created by the client from its own level data, keyed by (group, inst). A server
+        // copy collides on insert and aborts that prop's registration: floor 43301001 map rotation volumes
+        // 4/300001 and 22/300003 then "do not exist" and the dreamscape door never opens. Official 4.7 ships none
+        // of the dump's IsClientOnly props on any captured floor (group 4 there carries no entity at all).
+        group.EntityList.AddRange(Entities.Values
+            .Where(entity => entity.GroupId == groupId && entity is not EntityProp { PropInfo.IsClientOnly: true })
             .Select(entity => entity.ToProto()));
         return group;
     }

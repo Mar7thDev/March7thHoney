@@ -36,6 +36,21 @@ public static class PropInteractGraphLoader
             prop.GraphHasOpenBranch = parsed.HasOpen;
             prop.GraphHasLockedBranch = parsed.HasLocked;
             prop.GraphHasRealClosedBranch = parsed.HasRealClosed;
+            prop.GraphReleasesInteractOnOpen = parsed.ReleasesInteractOnOpen;
+            prop.GraphLockedBranchIsInert = parsed.SawLocked && !parsed.LockedActs && parsed.ClosedActs;
+            if (parsed.ReleasesInteractOnOpen)
+                foreach (var template in parsed.AllLinks)
+                {
+                    if (!TryResolve(template.Target, prop, group.Id, out var linkGroup, out var linkInst)) continue;
+                    if (linkGroup == group.Id && linkInst == prop.ID) continue;
+                    prop.InteractOnOpenLinks.Add(new PropInteractLink
+                    {
+                        GroupId = linkGroup,
+                        InstId = linkInst,
+                        InteractId = template.InteractId
+                    });
+                }
+
             if (parsed.Links.Count == 0) continue;
 
             foreach (var template in parsed.Links)
@@ -103,9 +118,15 @@ public static class PropInteractGraphLoader
             var file = new FileInfo(Path.Combine(resourcePath, graphPath));
             if (!file.Exists) return result;
             var graph = JObject.Parse(File.ReadAllText(file.FullName));
+            var interactEnds = new InteractEndCount();
             foreach (var sequenceKey in new[] { "OnInitSequece", "OnStartSequece" })
             foreach (var sequence in graph[sequenceKey] as JArray ?? [])
+            {
                 Walk(sequence["TaskList"] as JArray, [], result);
+                ScanTree(sequence["TaskList"], false, interactEnds, result);
+            }
+
+            result.ReleasesInteractOnOpen = interactEnds.Total > 0 && interactEnds.Total == interactEnds.InsideOpen;
         }
         catch
         {
@@ -159,6 +180,88 @@ public static class PropInteractGraphLoader
         }
     }
 
+    /// <summary>
+    ///     Walks every node of a task tree: counts the EndPropInteract leaves and how many sit inside a
+    ///     PropStateChangeListenerConfig{ToState:"Open"}, and collects every PropReqInteract edge whatever its guards.
+    /// </summary>
+    /// <remarks>
+    ///     The lift call consoles <c>Chap02_ElevatorSwicth_CallElevator_*</c> put every EndPropInteract behind the
+    ///     Open listener, so the client keeps the player in StartPropInteractMode until the console itself reaches
+    ///     Open. The Chap01 / Chap00 consoles end the interact inside the button branch and release on their own.
+    /// </remarks>
+    private static void ScanTree(JToken? token, bool insideOpenListener, InteractEndCount ends, GraphParse result)
+    {
+        switch (token)
+        {
+            case JArray array:
+                foreach (var child in array) ScanTree(child, insideOpenListener, ends, result);
+                break;
+            case JObject node:
+            {
+                var type = (node["$type"]?.ToString() ?? node["Type"]?.ToString() ?? "").Replace("RPG.GameCore.", "");
+                var inside = insideOpenListener;
+                if (type == "PropStateChangeListenerConfig" &&
+                    string.Equals(node["ToState"]?.ToString(), "Open", StringComparison.OrdinalIgnoreCase))
+                    inside = true;
+
+                if (type == "EndPropInteract")
+                {
+                    ends.Total++;
+                    if (inside) ends.InsideOpen++;
+                }
+                else if (type == "PropStateExecute")
+                {
+                    var state = node["State"]?.ToString() ?? "";
+                    var acts = BranchActs(node["Execute"]);
+                    if (state == "Locked")
+                    {
+                        result.SawLocked = true;
+                        result.LockedActs |= acts;
+                    }
+                    else if (state.Length == 0 || state.Equals("Closed", StringComparison.OrdinalIgnoreCase))
+                    {
+                        result.ClosedActs |= acts;
+                    }
+                }
+                else if (type == "PropReqInteract")
+                {
+                    var interactId = node["InteractID"]?["FixedValue"]?["Value"]?.Value<int>() ?? 0;
+                    if (interactId != 0)
+                        result.AllLinks.Add(new LinkTemplate(ReadTarget(node["TargetType"] as JObject), interactId, []));
+                }
+
+                foreach (var property in node.Properties()) ScanTree(property.Value, inside, ends, result);
+                break;
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Whether a PropStateExecute branch does anything for the player, as opposed to a toast or a billboard.
+    ///     Searched through nested lists: the "Mechanism Energy Hub" graph keeps its real TriggerCustomString one
+    ///     PropStateExecute below its Locked branch, and that nesting is the authored gate.
+    /// </summary>
+    private static bool BranchActs(JToken? execute)
+    {
+        if (execute is not JArray tasks) return false;
+        foreach (var token in tasks)
+        {
+            if (token is not JObject task) continue;
+            var type = (task["$type"]?.ToString() ?? task["Type"]?.ToString() ?? "").Replace("RPG.GameCore.", "");
+            if (BranchActions.Contains(type)) return true;
+            if (task.Properties().Any(property => BranchActs(property.Value))) return true;
+        }
+
+        return false;
+    }
+
+    private static readonly HashSet<string> BranchActions =
+    [
+        "PropReqInteract", "StartPropInteractMode", "TriggerCustomString", "TriggerCustomStringList",
+        "TriggerPerformance", "PlayMissionTalk", "PlaySimpleTalk", "PlayAndWaitSimpleTalk", "PlayOptionTalk",
+        "SetPropState", "ChangePropState", "FinishPerformanceMission", "CreateProp", "DestroyProp", "StartRaid"
+    ];
+
     private static TargetRef ReadTarget(JObject? targetType)
     {
         if (targetType == null) return new TargetRef(0, 0, "");
@@ -182,5 +285,16 @@ public static class PropInteractGraphLoader
         public bool HasOpen { get; set; }
         public bool HasLocked { get; set; }
         public bool HasRealClosed { get; set; }
+        public List<LinkTemplate> AllLinks { get; } = [];
+        public bool ReleasesInteractOnOpen { get; set; }
+        public bool SawLocked { get; set; }
+        public bool LockedActs { get; set; }
+        public bool ClosedActs { get; set; }
+    }
+
+    private sealed class InteractEndCount
+    {
+        public int Total { get; set; }
+        public int InsideOpen { get; set; }
     }
 }

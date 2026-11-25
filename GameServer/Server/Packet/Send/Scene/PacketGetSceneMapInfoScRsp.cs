@@ -81,9 +81,8 @@ public class PacketGetSceneMapInfoScRsp : BasePacket
             var runningBattleIds = player.MissionManager.GetRunningSubMissionList()
                 .Where(x => x.FinishType == MissionFinishTypeEnum.StageWin)
                 .Select(x => x.ParamInt1).ToHashSet();
-            var dropInert = mapData.PlaneID == 80112 ||
-                            GameData.MazePlaneData.TryGetValue(mapData.PlaneID, out var inertPlane) &&
-                            inertPlane.PlaneType == PlaneTypeEnum.Raid;
+            var dropInert = GameData.MazePlaneData.TryGetValue(mapData.PlaneID, out var inertPlane) &&
+                            SceneCompatRules.DropsInertServerGroups(mapData.PlaneID, inertPlane.PlaneType);
             foreach (var group in floorInfo.Groups.Values)
             {
                 if (currentScene != null && group.LoadSide != GroupLoadSideEnum.Client) continue;
@@ -185,6 +184,8 @@ public class PacketGetSceneMapInfoScRsp : BasePacket
             {
                 foreach (var prop in player.SceneInstance.Entities.Values.OfType<EntityProp>())
                 {
+                    // Client-only props carry no server state and are withheld from the scene payload too.
+                    if (prop.PropInfo.IsClientOnly) continue;
                     if (mazeMap.MazePropList.Any(x => x.GroupId == (uint)prop.GroupId && x.ConfigId == (uint)prop.InstId))
                         continue;
 

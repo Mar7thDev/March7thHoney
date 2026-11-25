@@ -1,0 +1,332 @@
+using March7thHoney.Data;
+using March7thHoney.Data.Config.Scene;
+using March7thHoney.Enums.Mission;
+using March7thHoney.Enums.Scene;
+using March7thHoney.GameServer.Game.Scene.Entity;
+
+namespace March7thHoney.GameServer.Game.Scene;
+
+/// <summary>
+///     Prop rules driven by the "group,inst" links a prop names in its ValueSource. The client graphs of the linked
+///     props only listen for state changes, so the server has to make them.
+/// </summary>
+public partial class SceneInstance
+{
+    /// <summary>
+    ///     Opens every minimap hint marker whose watched prop is already finished.
+    /// </summary>
+    /// <remarks>
+    ///     Official 4.7: a looted chest ships its marker at Open in the same refresh (11 of 11 loots, e.g. floor
+    ///     20221001 chest 114/300004 → 13 with marker 114/300005 → 1), and a solved Shifting Screen ships both of its
+    ///     markers at Open with the boards at CustomState01. A scene build runs the same check, so a save that
+    ///     finished the puzzle before markers were cleared stops showing the pin. Only markers whose own state list
+    ///     declares Open are moved.
+    /// </remarks>
+    public async ValueTask OpenSolvedMapMarkers(bool sendPacket)
+    {
+        foreach (var marker in Entities.Values.OfType<EntityProp>().ToList())
+        {
+            if (marker.IsGmSpawned || marker.State == PropStateEnum.Open) continue;
+            var info = marker.PropInfo;
+            if (info.MapMarkerWatchGroupId == 0 || info.MapMarkerWatchInstId == 0) continue;
+            if (!marker.Excel.PropStateList.Contains(PropStateEnum.Open)) continue;
+
+            var watched = FindProp(info.MapMarkerWatchGroupId, info.MapMarkerWatchInstId);
+            if (watched == null || !CountsAsSolved(watched)) continue;
+
+            await marker.SetState(PropStateEnum.Open, sendPacket);
+        }
+    }
+
+    /// <summary>
+    ///     Whether a watched prop is finished: a looted chest; a puzzle board at Open or at a post-solve
+    ///     CustomState01..09 (the Shifting Screen lands on 101, and the solved dimension variants author Open); or an
+    ///     ordinary console at Open (the InsertionDoor family watches a console, not a board).
+    /// </summary>
+    private static bool CountsAsSolved(EntityProp prop)
+    {
+        if (prop.State == PropStateEnum.ChestUsed) return true;
+        return prop.Excel.PropType switch
+        {
+            PropTypeEnum.PROP_MAZE_PUZZLE => prop.State is PropStateEnum.Open or
+                (>= PropStateEnum.CustomState01 and <= PropStateEnum.CustomState09),
+            PropTypeEnum.PROP_ORDINARY => prop.State == PropStateEnum.Open,
+            _ => false
+        };
+    }
+
+    /// <summary>
+    ///     A solved puzzle board (now Open) unlocks the console its ValueSource "LockedConsole" names, Locked → Closed.
+    ///     Official 4.7: the coil board press on floor 20222001 45/300002 ships the board Open and console 10/300013
+    ///     Closed in one refresh; left Locked, the console only shows "Unable to operate Central Console at the
+    ///     moment" and the "Return to the Creation Furnace" objective soft-locks.
+    /// </summary>
+    public async ValueTask UnlockLinkedConsole(EntityProp puzzle)
+    {
+        if (puzzle.State != PropStateEnum.Open) return;
+        await UnlockLockedConsole(puzzle.PropInfo.LockedConsoleGroupId, puzzle.PropInfo.LockedConsoleInstId, true);
+    }
+
+    /// <summary>
+    ///     Scene-build twin of <see cref="UnlockLinkedConsole" />. The defect left no saved state on the console, so
+    ///     the signal is the board: a live board at Open, or a saved Open board whose group is not loaded any more (the
+    ///     coil board's group unloads once its subs finish, so by the time the player reaches the console only its
+    ///     saved state remains).
+    /// </summary>
+    public async ValueTask UnlockSolvedPuzzleConsoles()
+    {
+        var links = new HashSet<(int GroupId, int InstId)>();
+        foreach (var prop in Entities.Values.OfType<EntityProp>())
+            if (prop.State == PropStateEnum.Open && prop.PropInfo.LockedConsoleGroupId != 0)
+                links.Add((prop.PropInfo.LockedConsoleGroupId, prop.PropInfo.LockedConsoleInstId));
+
+        if (FloorInfo != null && Player.SceneData?.ScenePropData.TryGetValue(FloorId, out var floorProps) == true)
+            foreach (var (groupId, savedProps) in floorProps)
+            {
+                if (!FloorInfo.Groups.TryGetValue(groupId, out var group)) continue;
+                foreach (var saved in savedProps.Where(saved => saved.State == PropStateEnum.Open))
+                    if (group.PropList.Find(prop => prop.ID == saved.PropId) is { LockedConsoleGroupId: not 0 } info)
+                        links.Add((info.LockedConsoleGroupId, info.LockedConsoleInstId));
+            }
+
+        foreach (var (groupId, instId) in links)
+            await UnlockLockedConsole(groupId, instId, false);
+    }
+
+    /// <summary>
+    ///     A lift press names the LIFT, never the call console the player pressed. A Chap02 call console holds the
+    ///     player in the interact pose until it reaches Open itself ("Cannot redirect"), so the pressed console moves
+    ///     to Open and the lift's other call consoles back to Closed, which re-arms them. Official 4.7: press 115140
+    ///     on floor 20222001 g51 ships lift → 14, console 300003 → 1 and 300002 → 0; press 114150 the reverse. The
+    ///     Chap01 / Chap00 consoles release on their own and are never moved (official 4.5 refreshes only the lift).
+    /// </summary>
+    public async ValueTask ApplyLiftCallConsoles(EntityProp lift, int interactId)
+    {
+        if (lift.Excel.PropType != PropTypeEnum.PROP_ELEVATOR || interactId == 0) return;
+        foreach (var (console, interactIds) in LiftCallConsoles(lift))
+        {
+            var target = interactIds.Contains(interactId) ? PropStateEnum.Open : PropStateEnum.Closed;
+            if (console.State != target) await console.SetState(target);
+        }
+    }
+
+    /// <summary>
+    ///     The call consoles of one lift: props of the lift's group whose graph releases the interact on Open and
+    ///     which request lift-position interacts on that lift, with the interact ids each one sends.
+    /// </summary>
+    private List<(EntityProp Console, List<int> InteractIds)> LiftCallConsoles(EntityProp lift)
+    {
+        var consoles = new List<(EntityProp, List<int>)>();
+        foreach (var console in GetEntitiesInGroup<EntityProp>(lift.GroupId))
+        {
+            if (console == lift || console.IsGmSpawned || !console.PropInfo.GraphReleasesInteractOnOpen) continue;
+            var interactIds = console.PropInfo.InteractOnOpenLinks
+                .Where(link => link.GroupId == lift.GroupId && link.InstId == lift.InstId &&
+                               GameData.InteractConfigData.TryGetValue(link.InteractId, out var row) &&
+                               IsLiftPosition(row.SrcState) && IsLiftPosition(row.TargetState))
+                .Select(link => link.InteractId)
+                .ToList();
+            if (interactIds.Count > 0) consoles.Add((console, interactIds));
+        }
+
+        return consoles;
+    }
+
+    private static bool IsLiftPosition(PropStateEnum state) =>
+        state is >= PropStateEnum.Elevator1 and <= PropStateEnum.Elevator3;
+
+    /// <summary>
+    ///     Story-lift unlock beat: the sub whose finish dismisses a floor's escort unlocks the lifts that are still on
+    ///     their authored Locked state. Each such lift takes the state its story-dimension variants agree on, the call
+    ///     console nearest the cabin opens and the lift's other call consoles close.
+    /// </summary>
+    /// <remarks>
+    ///     Official 4.7, floor 20231001 (main 1021201): finishing 102120113 unloads the escort group g20, then ships
+    ///     lift groups g30 and g31 with the lift at Elevator2 (15) and the 2F call console Open, states that survive
+    ///     relogs. Before the beat both lifts are Locked and every console press shows "Not authorized to use the
+    ///     lift" with no packet. The beat sub is the one the escort group's UnloadCondition finishes on and its NPC's
+    ///     follow-player AI file is named after. Only a lift still on its authored Locked state moves, so a cabin the
+    ///     player has ridden is never touched.
+    /// </remarks>
+    public async ValueTask ApplyStoryLiftUnlock(int subMissionId, int levelFloorId, bool sendPacket)
+    {
+        if (levelFloorId != FloorId || FloorInfo == null ||
+            !FloorInfo.Groups.Values.Any(group => group.EscortDismissalSubMissions.Contains(subMissionId))) return;
+
+        foreach (var lift in Entities.Values.OfType<EntityProp>().ToList())
+        {
+            if (lift.IsGmSpawned || lift.Excel.PropType != PropTypeEnum.PROP_ELEVATOR ||
+                lift.PropInfo.State != PropStateEnum.Locked || lift.State != PropStateEnum.Locked ||
+                lift.PropInfo.DimensionVariantState is not { } unlocked || !IsLiftPosition(unlocked)) continue;
+
+            await lift.SetState(unlocked, sendPacket);
+
+            var consoles = LiftCallConsoles(lift);
+            if (consoles.Count == 0) continue;
+            var nearest = consoles.MinBy(entry => DistanceSq(entry.Console.PropInfo, lift.PropInfo)).Console;
+            foreach (var (console, _) in consoles)
+            {
+                var target = console == nearest ? PropStateEnum.Open : PropStateEnum.Closed;
+                if (console.State != target) await console.SetState(target, sendPacket);
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Scene-build twin of <see cref="ApplyStoryLiftUnlock" />: a save whose beat sub finished before the beat
+    ///     existed still carries its lifts Locked.
+    /// </summary>
+    public async ValueTask ApplyFinishedStoryLiftUnlocks()
+    {
+        if (FloorInfo == null || Player.MissionManager == null) return;
+        foreach (var subMissionId in FloorInfo.Groups.Values.SelectMany(group => group.EscortDismissalSubMissions)
+                     .Distinct().ToList())
+        {
+            if (Player.MissionManager.GetSubMissionStatus(subMissionId) != MissionPhaseEnum.Finish) continue;
+            if (!GameData.SubMissionInfoData.TryGetValue(subMissionId, out var sub) || sub.SubMissionInfo == null)
+                continue;
+            await ApplyStoryLiftUnlock(subMissionId, sub.SubMissionInfo.LevelFloorID, false);
+        }
+    }
+
+    // The console on the floor the cabin stands on is the one nearest the cabin's authored position.
+    private static float DistanceSq(PositionInfo a, PositionInfo b)
+    {
+        var dx = a.PosX - b.PosX;
+        var dy = a.PosY - b.PosY;
+        var dz = a.PosZ - b.PosZ;
+        return dx * dx + dy * dy + dz * dz;
+    }
+
+    /// <summary>
+    ///     A <c>BaseConsole_*_Control_SimpleDoor</c> console at Open must have its doors Open too. Its client graph
+    ///     animates the door open when the console reaches Open and has no close path, so a save carrying the
+    ///     console's Open without the door's rebuilt the gate shut with no way to reopen it (floor 20123001: console
+    ///     8/300005 Open, gate 8/300004 Closed, blocking "Follow Perkins the robot"). Official 4.5 ships console and
+    ///     gate Open together and keeps both. Only a Closed door whose state list declares Open moves.
+    /// </summary>
+    public async ValueTask OpenSimpleDoorGates()
+    {
+        foreach (var console in Entities.Values.OfType<EntityProp>().ToList())
+        {
+            if (console.State != PropStateEnum.Open ||
+                console.PropInfo.InitLevelGraph?.Contains("Control_SimpleDoor", StringComparison.Ordinal) != true)
+                continue;
+
+            foreach (var (groupId, instIds) in console.PropInfo.UnlockDoorID)
+            foreach (var instId in instIds)
+            {
+                var door = FindProp(groupId, instId);
+                if (door is not { State: PropStateEnum.Closed } ||
+                    !door.Excel.PropStateList.Contains(PropStateEnum.Open)) continue;
+                await door.SetState(PropStateEnum.Open, false);
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Fog-volume clear beat: once every censer of a FogVolume group is Closed while its fog prop is still Open,
+    ///     the fog clears (Closed) and the censers lock (Locked). Returns whether the beat ran.
+    /// </summary>
+    /// <remarks>
+    ///     Official 4.7, floor 20231001 g54 (main 1021201): the third douse press finishes 102120124, whose
+    ///     PropState gate is the fog prop at Closed, ships the pressed censer and the fog prop Closed in one refresh,
+    ///     then re-adds the three censers at Locked. The fog prop's graph only listens for leaving Open, and the
+    ///     FogVolume group graph's predicate and targets are stripped from the dump, so the server has to run it.
+    ///     The group is recognised by its LevelGraph (FogVolume) and its props' graphs (Censer_ press props and one
+    ///     CenserVolumeFog prop). "All censers Closed, fog Open" is also the one-shot guard: after the beat the
+    ///     censers are Locked, and every post-beat copy authors them Locked.
+    /// </remarks>
+    public async ValueTask<bool> ApplyFogVolumeClear(int groupId, bool sendPacket)
+    {
+        if (FloorInfo == null || !FloorInfo.Groups.TryGetValue(groupId, out var group) ||
+            !group.LevelGraph.Contains("FogVolume", StringComparison.Ordinal)) return false;
+
+        var fogInstId = 0;
+        var censerInstIds = new List<int>();
+        foreach (var info in group.PropList)
+            if (info.InitLevelGraph?.Contains("CenserVolumeFog", StringComparison.Ordinal) == true)
+                fogInstId = info.ID;
+            else if (info.InitLevelGraph?.Contains("Censer_", StringComparison.Ordinal) == true)
+                censerInstIds.Add(info.ID);
+        if (fogInstId == 0 || censerInstIds.Count == 0) return false;
+
+        var fog = FindProp(groupId, fogInstId);
+        if (fog is not { State: PropStateEnum.Open }) return false;
+        var censers = new List<EntityProp>();
+        foreach (var instId in censerInstIds)
+        {
+            var censer = FindProp(groupId, instId);
+            if (censer is not { State: PropStateEnum.Closed }) return false;
+            censers.Add(censer);
+        }
+
+        await fog.SetState(PropStateEnum.Closed, sendPacket);
+        foreach (var censer in censers) await censer.SetState(PropStateEnum.Locked, sendPacket);
+        return true;
+    }
+
+    /// <summary>
+    ///     Scene-build twin of <see cref="ApplyFogVolumeClear" />: heals a save whose douse presses predate the beat
+    ///     (all censers Closed, fog still Open). The heartbeat's finish-type pass then completes the PropState sub
+    ///     that waits on the fog prop.
+    /// </summary>
+    public async ValueTask ClearDousedFogVolumes()
+    {
+        foreach (var groupId in Groups.ToList()) await ApplyFogVolumeClear(groupId, false);
+    }
+
+    /// <summary>
+    ///     Pressing a sequence-light seal controller lights its two flame pillars and its OWN lamp; the shared bridge
+    ///     opens only once every sibling seal's lamp is Open too. Official 4.7, floor 20232001: each seal ships its
+    ///     pillars and its lamp (58/300003 for seal 2, 58/300004 for seal 3), and the bridge 58/300001 appears only
+    ///     with the last lamp. Opening the bridge through the door links lit it on the first seal.
+    /// </summary>
+    public async ValueTask ApplySequenceLightPress(EntityProp controller)
+    {
+        var info = controller.PropInfo;
+        if (info.SequenceLightMappingGroupId == 0) return;
+
+        foreach (var pillar in info.SequenceLightPillars)
+            await OpenLinkedProp(pillar.GroupId, pillar.InstId);
+        await OpenLinkedProp(info.SequenceLightMappingGroupId, info.SequenceLightMappingInstId);
+
+        if (info.SequenceLightBridgeGroupId != 0 && SequenceLightLampsLit(info))
+            await OpenLinkedProp(info.SequenceLightBridgeGroupId, info.SequenceLightBridgeInstId);
+    }
+
+    // The controller's own lamp and every sibling controller's lamp are Open. Siblings resolve through the live
+    // controllers' own MappingProp links, so no floor or id table is needed.
+    private bool SequenceLightLampsLit(PropInfo controller)
+    {
+        if (FindProp(controller.SequenceLightMappingGroupId, controller.SequenceLightMappingInstId) is not
+            { State: PropStateEnum.Open }) return false;
+
+        foreach (var sibling in controller.SequenceLightSiblings)
+        {
+            var other = FindProp(sibling.GroupId, sibling.InstId);
+            if (other == null) return false;
+            if (other.PropInfo.SequenceLightMappingGroupId == 0) continue;
+            if (FindProp(other.PropInfo.SequenceLightMappingGroupId, other.PropInfo.SequenceLightMappingInstId) is
+                not { State: PropStateEnum.Open }) return false;
+        }
+
+        return true;
+    }
+
+    private async ValueTask OpenLinkedProp(int groupId, int instId)
+    {
+        var prop = FindProp(groupId, instId);
+        if (prop == null || prop.State == PropStateEnum.Open) return;
+        await prop.SetState(PropStateEnum.Open);
+    }
+
+    // Only a console still Locked moves, so a later step that already opened it is never reset.
+    private async ValueTask UnlockLockedConsole(int groupId, int instId, bool sendPacket)
+    {
+        if (groupId == 0 || instId == 0) return;
+        var console = FindProp(groupId, instId);
+        if (console is not { State: PropStateEnum.Locked }) return;
+        await console.SetState(PropStateEnum.Closed, sendPacket);
+    }
+}

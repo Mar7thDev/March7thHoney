@@ -114,19 +114,24 @@ public partial class SceneInstance
 
                 break;
             case PropTypeEnum.PROP_MAZE_PUZZLE:
+                // A solved puzzle drives only the graph-less members of its group: official 4.7 compass press on
+                // floor 20221001 g114/300002 ships the cargo ship 300003 (no InitLevelGraph) Open in the same refresh
+                // and leaves every graph-owning prop (map markers, waypoint controllers, HideShip) untouched. A
+                // chest is revealed only from Hidden/ChestLocked, so a looted one is never re-armed.
                 if (newState is PropStateEnum.Closed or PropStateEnum.Open)
                     foreach (var p in GetEntitiesInGroup<EntityProp>(prop.GroupId))
                     {
+                        if (!string.IsNullOrEmpty(p.PropInfo.InitLevelGraph) ||
+                            p.Excel.PropType == prop.Excel.PropType) continue;
+
                         if (p.Excel.PropType == PropTypeEnum.PROP_TREASURE_CHEST)
                         {
+                            if (p.State is not (PropStateEnum.Hidden or PropStateEnum.ChestLocked)) continue;
                             await p.SetState(PropStateEnum.ChestClosed);
-                        }
-                        else if (p.Excel.PropType == prop.Excel.PropType)
-                        {
-                            // Skip
                         }
                         else
                         {
+                            if (!p.Excel.PropStateList.Contains(PropStateEnum.Open)) continue;
                             await p.SetState(PropStateEnum.Open);
                         }
 
@@ -179,17 +184,33 @@ public partial class SceneInstance
                          GetEntitiesInGroup<EntityProp>(id.Key)
                              .Where(p => id.Value.Contains(p.PropInfo.ID))))
             {
-                await p.SetState(PropStateEnum.Open);
+                // A Shifting Screen's UnlockTarget link names its paired board, which follows the pressed board's
+                // new state (official 4.7: board 72/300001 → 101 ships 72/300003 at 101). Its graph has no Open branch.
+                await p.SetState(p.Excel.PropType == PropTypeEnum.PROP_MAZE_PUZZLE
+                    ? config.TargetState
+                    : PropStateEnum.Open);
                 await Player.MissionManager!.OnPlayerInteractWithProp();
             }
+
+        await ApplySequenceLightPress(prop);
 
         // Pad-puzzle groups reveal the hidden chest their ValueSource names on a real interaction, before
         // the PropState gate that waits on that chest is checked.
         if (FloorInfo?.Groups.TryGetValue(prop.GroupId, out var interactedGroup) == true)
             await RevealAuthoredChest(interactedGroup);
+        await RevealPuzzleChest(prop);
+        await UnlockLinkedConsole(prop);
+        await ApplyLiftCallConsoles(prop, interactId);
+
+        await OpenSolvedMapMarkers(true);
 
         // for mission
         await Player.MissionManager!.OnPlayerInteractWithProp();
+
+        // After the pressed censer's own PropState sub has seen it Closed: the beat locks the censers and clears the
+        // fog, whose sub is checked next.
+        if (await ApplyFogVolumeClear(prop.GroupId, true))
+            await Player.MissionManager.OnPlayerInteractWithProp();
 
         // plane event
         await Player.InventoryManager!.HandlePlaneEvent(prop.PropInfo.EventID);

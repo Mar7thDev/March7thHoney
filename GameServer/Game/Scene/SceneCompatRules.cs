@@ -1,3 +1,5 @@
+using March7thHoney.Enums.Scene;
+
 namespace March7thHoney.GameServer.Game.Scene;
 
 /// <summary>
@@ -39,4 +41,21 @@ public static class SceneCompatRules
 
     /// <summary>A console (MazeProp 104039) whose interaction moves every prop of its group to the new state.</summary>
     public static bool IsGroupStateConsole(int propId) => propId == 104039;
+
+    /// <summary>Simulated Universe lobby plane.</summary>
+    public const int RogueLobbyPlaneId = 80112;
+
+    /// <summary>
+    ///     Artisanship Commission plane. Its floor 20222001 authors g62 "Container01", an ungated noninitial server
+    ///     group the official never ships (absent from the 4.7 floor capture); registering it builds container
+    ///     geometry beside the third-coil Shifting Screen and blocks the screen hop.
+    /// </summary>
+    public const int ArtisanshipCommissionPlaneId = 20222;
+
+    /// <summary>
+    ///     Planes whose inert server groups (<c>GroupInfo.InertServerGroup</c>) are client scenery and are neither
+    ///     loaded nor listed on the map: raid planes, the Simulated Universe lobby and the Artisanship Commission.
+    /// </summary>
+    public static bool DropsInertServerGroups(int planeId, PlaneTypeEnum planeType) =>
+        planeType == PlaneTypeEnum.Raid || planeId is RogueLobbyPlaneId or ArtisanshipCommissionPlaneId;
 }

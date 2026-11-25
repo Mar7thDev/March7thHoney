@@ -1,3 +1,4 @@
+using March7thHoney.GameServer.Game.Scene.Component;
 using March7thHoney.GameServer.Server.Packet.Send.MapRotation;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
@@ -9,8 +10,16 @@ public class HandlerInteractChargerCsReq : Handler<ICBEPDGBHMM>
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, ICBEPDGBHMM req)
     {
-        player.ChargerNum = 5;
+        // A charger refills the same pool the bridge deploys spend.
+        var energy = RotatableRegionSceneComponent.MaxEnergy;
+        if (player.SceneInstance != null)
+        {
+            var region = RotatableRegionSceneComponent.Of(player.SceneInstance);
+            region.Refill();
+            energy = region.Energy;
+        }
+
         await connection.SendPacket(new PacketInteractChargerScRsp());
-        await connection.SendPacket(new PacketUpdateEnergyScNotify(player.ChargerNum, 5));
+        await connection.SendPacket(new PacketUpdateEnergyScNotify(energy, RotatableRegionSceneComponent.MaxEnergy));
     }
 }
