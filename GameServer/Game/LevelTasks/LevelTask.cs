@@ -207,11 +207,20 @@ public class LevelTask(PlayerInstance player)
         var (groupId, instId) = ResolveMissionPropTarget(subMission);
         if (groupId == 0 || instId == 0) return;
 
+        var info = subMission.SubMissionInfo;
+        PropStateEnum? awaited = info is { FinishType: MissionFinishTypeEnum.PropState, ParamInt3: not 0 }
+            ? (PropStateEnum)info.ParamInt3
+            : null;
+
         foreach (var entity in Player.SceneInstance.Entities.Values)
             if (entity is EntityProp prop && prop.GroupId == groupId && prop.InstId == instId)
                 try
                 {
                     var (target, viaClosed) = StepToClosedOrNext(prop.Excel.PropStateList, prop.State);
+                    if (!viaClosed &&
+                        OneShotAdvanceTarget(prop.Excel.PropStateList, prop.PropInfo.State, prop.State, awaited) is
+                            { } guarded)
+                        target = guarded;
                     if (target == prop.State) continue; // nothing left to advance - keep it idempotent
 
                     await prop.SetState(target);
@@ -298,6 +307,30 @@ public class LevelTask(PlayerInstance player)
         if (index >= 0 && index + 1 < stateList.Count) return (stateList[index + 1], false);
 
         return (current, false);
+    }
+
+    /// <summary>
+    ///     One-shot guard for the advance-to-next branch, which the scene-build reconcile re-runs on every build.
+    ///     The step belongs to the prop's authored state only: stepping a saved state walked a lift
+    ///     [Locked, Elevator1, Elevator2, Elevator3] one position further per rebuild until Elevator3, a state the
+    ///     lift graph has no branch for, so every press was swallowed without a packet (floor 20123001 g8/300001,
+    ///     sub 101090222; official 4.5 steps the authored Locked to Elevator1 exactly once).
+    /// </summary>
+    /// <returns>
+    ///     Null when the guard does not apply (the authored state is outside the list, the prop still sits on it,
+    ///     or stepping it changes nothing). Otherwise the state to land on: the current one when the prop is already
+    ///     on the accepted state or on the state its sub waits for, else the accepted state, which heals a save the
+    ///     old double step left on a foreign state.
+    /// </returns>
+    public static PropStateEnum? OneShotAdvanceTarget(List<PropStateEnum> stateList, PropStateEnum authored,
+        PropStateEnum current, PropStateEnum? awaited)
+    {
+        if (!stateList.Contains(authored) || current == authored) return null;
+
+        var (accepted, _) = StepToClosedOrNext(stateList, authored);
+        if (accepted == authored) return null;
+
+        return current == accepted || current == awaited ? current : accepted;
     }
 
     public async ValueTask<object?> CreateTrialPlayer(TaskConfigInfo act, SubMissionData subMission,
