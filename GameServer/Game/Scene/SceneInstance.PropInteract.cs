@@ -205,6 +205,11 @@ public partial class SceneInstance
         // for mission
         await Player.MissionManager!.OnPlayerInteractWithProp();
 
+        // After the pressed censer's own PropState sub has seen it Closed: the beat locks the censers and clears the
+        // fog, whose sub is checked next.
+        if (await ApplyFogVolumeClear(prop.GroupId, true))
+            await Player.MissionManager.OnPlayerInteractWithProp();
+
         // plane event
         await Player.InventoryManager!.HandlePlaneEvent(prop.PropInfo.EventID);
 

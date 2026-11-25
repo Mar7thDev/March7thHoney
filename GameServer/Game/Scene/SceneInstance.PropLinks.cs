@@ -163,6 +163,58 @@ public partial class SceneInstance
         }
     }
 
+    /// <summary>
+    ///     Fog-volume clear beat: once every censer of a FogVolume group is Closed while its fog prop is still Open,
+    ///     the fog clears (Closed) and the censers lock (Locked). Returns whether the beat ran.
+    /// </summary>
+    /// <remarks>
+    ///     Official 4.7, floor 20231001 g54 (main 1021201): the third douse press finishes 102120124, whose
+    ///     PropState gate is the fog prop at Closed, ships the pressed censer and the fog prop Closed in one refresh,
+    ///     then re-adds the three censers at Locked. The fog prop's graph only listens for leaving Open, and the
+    ///     FogVolume group graph's predicate and targets are stripped from the dump, so the server has to run it.
+    ///     The group is recognised by its LevelGraph (FogVolume) and its props' graphs (Censer_ press props and one
+    ///     CenserVolumeFog prop). "All censers Closed, fog Open" is also the one-shot guard: after the beat the
+    ///     censers are Locked, and every post-beat copy authors them Locked.
+    /// </remarks>
+    public async ValueTask<bool> ApplyFogVolumeClear(int groupId, bool sendPacket)
+    {
+        if (FloorInfo == null || !FloorInfo.Groups.TryGetValue(groupId, out var group) ||
+            !group.LevelGraph.Contains("FogVolume", StringComparison.Ordinal)) return false;
+
+        var fogInstId = 0;
+        var censerInstIds = new List<int>();
+        foreach (var info in group.PropList)
+            if (info.InitLevelGraph?.Contains("CenserVolumeFog", StringComparison.Ordinal) == true)
+                fogInstId = info.ID;
+            else if (info.InitLevelGraph?.Contains("Censer_", StringComparison.Ordinal) == true)
+                censerInstIds.Add(info.ID);
+        if (fogInstId == 0 || censerInstIds.Count == 0) return false;
+
+        var fog = FindProp(groupId, fogInstId);
+        if (fog is not { State: PropStateEnum.Open }) return false;
+        var censers = new List<EntityProp>();
+        foreach (var instId in censerInstIds)
+        {
+            var censer = FindProp(groupId, instId);
+            if (censer is not { State: PropStateEnum.Closed }) return false;
+            censers.Add(censer);
+        }
+
+        await fog.SetState(PropStateEnum.Closed, sendPacket);
+        foreach (var censer in censers) await censer.SetState(PropStateEnum.Locked, sendPacket);
+        return true;
+    }
+
+    /// <summary>
+    ///     Scene-build twin of <see cref="ApplyFogVolumeClear" />: heals a save whose douse presses predate the beat
+    ///     (all censers Closed, fog still Open). The heartbeat's finish-type pass then completes the PropState sub
+    ///     that waits on the fog prop.
+    /// </summary>
+    public async ValueTask ClearDousedFogVolumes()
+    {
+        foreach (var groupId in Groups.ToList()) await ApplyFogVolumeClear(groupId, false);
+    }
+
     // Only a console still Locked moves, so a later step that already opened it is never reset.
     private async ValueTask UnlockLockedConsole(int groupId, int instId, bool sendPacket)
     {
