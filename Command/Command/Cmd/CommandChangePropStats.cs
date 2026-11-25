@@ -1,3 +1,4 @@
+using March7thHoney.Database;
 using March7thHoney.Enums.Mission;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Player;
@@ -128,8 +129,10 @@ public class CommandChangePropStats : ICommand
             return;
         }
 
-        // SetState refreshes the client and saves the state unless the group resets on reload.
+        // SetState refreshes the client and records the state unless the group resets on reload. A repair has to
+        // survive a restart even when nothing else the player does marks the save dirty.
         await prop.SetState(state);
+        DatabaseHelper.MarkDirty(player.Uid);
         await arg.SendMsg(I18NManager.Translate("Game.Command.ChangePropStats.Changed", prop.EntityId.ToString(),
             prop.Excel.ID.ToString(), prop.GroupId.ToString(), prop.InstId.ToString(), StateText(previous),
             StateText(state)));
