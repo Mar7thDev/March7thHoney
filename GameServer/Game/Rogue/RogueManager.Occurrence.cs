@@ -140,8 +140,10 @@ public partial class RogueManager
             dialogue.PendingGroup = draftGroup;
             dialogue.PendingOffer = draft.SelectBuffs.Select(buff => buff.GetId()).ToList();
         }
-        else if (closes)
+        else if (closes && dialogue.PendingFinishOption == 0)
         {
+            // A pick re-sent while its draft is unanswered must not close the talk under the draft: the option's
+            // finish notify is still owed (TakeDeferredDialogueFinish).
             _closingDialogueHandle = handle;
         }
 
