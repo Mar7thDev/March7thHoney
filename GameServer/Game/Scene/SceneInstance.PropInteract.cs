@@ -119,24 +119,32 @@ public partial class SceneInstance
                 // and leaves every graph-owning prop (map markers, waypoint controllers, HideShip) untouched. A
                 // chest is revealed only from Hidden/ChestLocked, so a looted one is never re-armed.
                 if (newState is PropStateEnum.Closed or PropStateEnum.Open)
+                {
+                    // A board that names its reward chest (TargetChest) reveals exactly that one in
+                    // RevealPuzzleChest. A board without the link, which is every board of a cache built before
+                    // the link was read, keeps revealing the hidden chests of its group whether they own a graph
+                    // or not: nearly every chest in a puzzle group does, and nothing else would reveal it.
+                    var boardNamesChest = prop.PropInfo.PuzzleChestGroupId != 0;
                     foreach (var p in GetEntitiesInGroup<EntityProp>(prop.GroupId))
                     {
-                        if (!string.IsNullOrEmpty(p.PropInfo.InitLevelGraph) ||
-                            p.Excel.PropType == prop.Excel.PropType) continue;
+                        if (p.Excel.PropType == prop.Excel.PropType) continue;
+                        var ownsGraph = !string.IsNullOrEmpty(p.PropInfo.InitLevelGraph);
 
                         if (p.Excel.PropType == PropTypeEnum.PROP_TREASURE_CHEST)
                         {
+                            if (ownsGraph && boardNamesChest) continue;
                             if (p.State is not (PropStateEnum.Hidden or PropStateEnum.ChestLocked)) continue;
                             await p.SetState(PropStateEnum.ChestClosed);
                         }
                         else
                         {
-                            if (!p.Excel.PropStateList.Contains(PropStateEnum.Open)) continue;
+                            if (ownsGraph || !p.Excel.PropStateList.Contains(PropStateEnum.Open)) continue;
                             await p.SetState(PropStateEnum.Open);
                         }
 
                         await Player.MissionManager!.OnPlayerInteractWithProp();
                     }
+                }
 
                 break;
             case PropTypeEnum.PROP_ORDINARY:
