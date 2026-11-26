@@ -40,6 +40,52 @@ public class SceneEntityLoader(SceneInstance scene)
         return _propStateSubTargets = targets;
     }
 
+    // Consoles a puzzle board of this floor unlocks when it is solved (PropInfo.LockedConsole*): their authored
+    // Locked is a gate the board opens, not a dead control.
+    private HashSet<(int GroupId, int InstId)>? _lockedConsoleTargets;
+
+    private HashSet<(int GroupId, int InstId)> LockedConsoleTargets()
+    {
+        if (_lockedConsoleTargets != null) return _lockedConsoleTargets;
+
+        var targets = new HashSet<(int GroupId, int InstId)>();
+        foreach (var group in Scene.FloorInfo?.Groups.Values.ToList() ?? [])
+        foreach (var prop in group.PropList)
+            if (prop.LockedConsoleGroupId != 0)
+                targets.Add((prop.LockedConsoleGroupId, prop.LockedConsoleInstId));
+
+        return _lockedConsoleTargets = targets;
+    }
+
+    // Whether the loaded cache carries the links the story-lift unlock reads (GroupInfo.EscortDismissalSubMissions,
+    // PropInfo.DimensionVariantState). They are derived from raw files, so a cache built before they existed has none.
+    private static bool? _storyLiftLinksCached;
+
+    private static bool StoryLiftLinksCached() => _storyLiftLinksCached ??= GameData.FloorInfoData.Values.Any(floor =>
+        floor.Groups.Values.Any(group => group.EscortDismissalSubMissions.Count > 0));
+
+    /// <summary>
+    ///     A lift ships its authored State: official 4.7 floor 20212001 g3/300001 authors Elevator2 and ships 15,
+    ///     platform lifts authored Open ship 1. An omitted State reads back as Closed, so that case keeps the
+    ///     Elevator1 start.
+    /// </summary>
+    /// <remarks>
+    ///     A lift authored Locked waits for a story beat: a mission's ChangePropState step, or the story-lift unlock
+    ///     (<see cref="SceneInstance.ApplyStoryLiftUnlock" />), which reads links only a cache built with them
+    ///     carries. Where no beat can come - missions off, a Simulated Universe room, a cache without those links -
+    ///     the lift would stay Locked for good (14 lifts in the 4.8 data, the Alchemy Commission story lifts among
+    ///     them), so it keeps the Elevator1 start there.
+    /// </remarks>
+    private PropStateEnum InitialLiftState(PropInfo info)
+    {
+        if (info.State == PropStateEnum.Closed) return PropStateEnum.Elevator1;
+        if (info.State != PropStateEnum.Locked) return info.State;
+
+        var storyCanUnlock = Scene.Player.MissionEnabled && Scene.Excel.PlaneType != PlaneTypeEnum.Rogue &&
+                             StoryLiftLinksCached();
+        return storyCanUnlock ? PropStateEnum.Locked : PropStateEnum.Elevator1;
+    }
+
     // The Astral Express boarding prop stays Closed until main 1000401 finishes.
     private const int StarTrainArrivalMain = 1000401;
 
@@ -379,12 +425,7 @@ public class SceneEntityLoader(SceneInstance scene)
             if (Scene.Excel.PlaneType == PlaneTypeEnum.Raid)
                 prop.State = info.State;
             else
-                // A lift ships its authored State: official 4.7 floor 20212001 g3/300001 authors Elevator2 and ships
-                // 15, platform lifts authored Open ship 1. An omitted State reads back as Closed, so only that case
-                // keeps the Elevator1 fallback.
-                prop.State = prop.Excel.PropType == PropTypeEnum.PROP_ELEVATOR && info.State == PropStateEnum.Closed
-                    ? PropStateEnum.Elevator1
-                    : info.State;
+                prop.State = prop.Excel.PropType == PropTypeEnum.PROP_ELEVATOR ? InitialLiftState(info) : info.State;
 
             // The Express stays off the prologue platform until main 1000401 finishes. Missions off
             // keeps the docked train (the same Open the lite scene ships).
@@ -400,11 +441,13 @@ public class SceneEntityLoader(SceneInstance scene)
             if (prop.State == PropStateEnum.Locked && info.GraphHasRealClosedBranch && !info.GraphHasLockedBranch)
                 prop.State = PropStateEnum.Closed;
 
-            // A Locked branch that only toasts while the Closed branch acts is equally dead unless a PropState sub
-            // owns the prop. Official 4.7 ships the Divination Commission "Door Lock" console (floor 20221001
-            // g6/300005, toast-only Locked branch, whose unlocking ChangePropState the dump strips) Closed.
+            // A Locked branch that only toasts while the Closed branch acts is equally dead unless something owns
+            // the unlock: a PropState sub, or a puzzle board that names the prop as its LockedConsole. Official 4.7
+            // ships the Divination Commission "Door Lock" console (floor 20221001 g6/300005, toast-only Locked
+            // branch, whose unlocking ChangePropState the dump strips) Closed.
             if (prop.State == PropStateEnum.Locked && info.GraphHasRealClosedBranch && info.GraphLockedBranchIsInert &&
-                !PropStateSubTargets().Contains((group.Id, info.ID)))
+                !PropStateSubTargets().Contains((group.Id, info.ID)) &&
+                !LockedConsoleTargets().Contains((group.Id, info.ID)))
                 prop.State = PropStateEnum.Closed;
         }
 
