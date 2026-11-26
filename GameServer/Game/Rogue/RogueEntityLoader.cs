@@ -87,11 +87,13 @@ public class RogueEntityLoader(SceneInstance scene, PlayerInstance player) : Sce
         if (!BelongsToActiveRoom(group.Id)) return null;
         var manager = player.RogueManager;
         var roomExcel = manager?.GetActiveRoomExcel(Scene.EntryId);
-        // A few room groups author a second door (G31 of floor 80001002, G18 and G21 of 80001003). The official scene
-        // ships only the lowest-inst door of a group and never the extra (4.5 StartRogueScRsp for room 301 lists g31
-        // without inst 300004); the extra rendered a second portal beside the real exit.
-        if (roomExcel != null && IsDoor(info) &&
-            group.PropList.Any(other => !other.IsDelete && other.ID < info.ID && IsDoor(other))) return null;
+        // Room groups author two doors (300002 and 300004). A single-exit room ships only the lowest-inst one and
+        // never the spare (official 4.5 StartRogueScRsp for room 301 lists g31 without inst 300004); the spare
+        // rendered a second portal beside the real exit. A branching site keeps one door per next room: every room
+        // its pool can pick authors the pair, and ResolveDoorTarget gives each door its own destination.
+        if (manager != null && roomExcel != null && IsDoor(info) &&
+            group.PropList.Count(other => !other.IsDelete && other.ID < info.ID && IsDoor(other)) >=
+            Math.Max(1, manager.GetRoomExitTargets().Count)) return null;
 
         // Apply run-specific state before the first entity packet, including late group loads/relogin.
         var prop = await base.LoadProp(info, group, false);
