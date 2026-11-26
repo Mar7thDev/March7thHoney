@@ -13,6 +13,24 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
 {
     private static readonly Logger Logger = new("Message");
 
+    // Sender and ItemType reach the cache only when it is rebuilt from the raw message table. Without them a reply
+    // the player must pick cannot be told from a line the server may play, so sections keep the flow they had before
+    // the two were read (see AutoAdvance) instead of guessing.
+    private static bool? _speakersCached;
+
+    private static bool SpeakersCached
+    {
+        get
+        {
+            if (_speakersCached is { } known) return known;
+            if (GameData.MessageItemConfigData.Count == 0) return false;
+
+            var cached = GameData.MessageItemConfigData.Values.Any(item => item.Sender.Length > 0);
+            _speakersCached = cached;
+            return cached;
+        }
+    }
+
     public List<MessageSectionData> PendingMessagePerformSectionList { get; private set; } = [];
 
     #region Get
@@ -162,8 +180,9 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
             };
             // A chat that opens a new group plays up to its first reply as well: section 1200000 has to offer the
             // two answers after "Message failed to send" (official: group 12000 offers 120000002/120000003), not
-            // the System line the client never picks.
-            AutoAdvance(section);
+            // the System line the client never picks. Without speaker data the opening offer is left to the client,
+            // as it always was for a new group.
+            if (SpeakersCached) AutoAdvance(section);
             group.Sections.Add(section);
             Data.Groups.Add(groupId, group);
         }
@@ -259,7 +278,8 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
         {
             ItemId = itemId
         });
-        section.ConfirmedItemIds.Add(itemId);
+        // Without speaker data the history stays the last consumed item, which AutoAdvance keeps recording.
+        if (SpeakersCached) section.ConfirmedItemIds.Add(itemId);
         // A copy: NextItemIDList belongs to the shared config, not to this player's section.
         section.ToChooseItemId = [.. itemConfig.NextItemIDList];
         AutoAdvance(section);
@@ -303,13 +323,20 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
     ///     replies as well answered the player's own lines server-side (four picks of section 1211700 in one
     ///     instant). Played lines stay out of the history, which only lists client picks.
     /// </summary>
+    /// <remarks>
+    ///     A cache without Sender and ItemType cannot tell the two kinds apart. The section then keeps the flow it
+    ///     had before they were read: every single follow-up of its own is consumed and recorded, so the history
+    ///     the client gets is still the last consumed item.
+    /// </remarks>
     private static void AutoAdvance(MessageSectionData section)
     {
+        var speakersCached = SpeakersCached;
         var visited = new HashSet<int>();
         while (section.ToChooseItemId.Count == 1)
         {
             var nextId = section.ToChooseItemId[0];
-            if (!GameData.MessageItemConfigData.TryGetValue(nextId, out var next) || next.WaitsForClient()) return;
+            if (!GameData.MessageItemConfigData.TryGetValue(nextId, out var next)) return;
+            if (speakersCached ? next.WaitsForClient() : next.SectionID != section.SectionId) return;
             // The visited set stops a config chain that loops.
             if (!visited.Add(nextId))
             {
@@ -317,6 +344,7 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
                 return;
             }
 
+            if (!speakersCached) section.Items.Add(new MessageItemData { ItemId = nextId });
             section.ToChooseItemId = [.. next.NextItemIDList];
         }
     }
