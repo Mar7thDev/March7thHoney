@@ -71,11 +71,35 @@ public partial class GroupInfo
 
     [JsonIgnore] public int ChestRevealInstId { get; set; }
 
+    /// <summary>
+    ///     Subs whose finish dismisses this group's escort: the group unloads when the sub finishes and its NPC
+    ///     follows the player through an AI file named after the same sub (MazeNPC_FollowPlayer_&lt;sub&gt;.json).
+    ///     Floor 20231001 g20 names 102120113, the beat that unlocks that floor's story lifts.
+    /// </summary>
+    [JsonIgnore] public List<int> EscortDismissalSubMissions { get; set; } = [];
+
+    // A cache written before the list existed reads it back as null.
+    [MemoryPackOnDeserialized]
+    private void FillMissingLists()
+    {
+        EscortDismissalSubMissions ??= [];
+    }
+
     public void Load()
     {
         IsHoyoGroup ??= false;
         GroupRefreshID ??= 0;
         foreach (var prop in PropList) prop.Load(this);
+
+        var dismissedBy = UnloadCondition.Conditions
+            .Where(condition => condition is
+                { Type: LevelGroupMissionTypeEnum.SubMission, Phase: MissionPhaseEnum.Finish, ID: not 0 })
+            .Select(condition => condition.ID)
+            .ToHashSet();
+        foreach (var npc in NPCList)
+            if (TrailingId(npc.AIConfig?.AIFile) is { } subId && dismissedBy.Contains(subId) &&
+                !EscortDismissalSubMissions.Contains(subId))
+                EscortDismissalSubMissions.Add(subId);
 
         foreach (var source in ValueSource?.Values ?? [])
         {
@@ -192,6 +216,15 @@ public partial class GroupInfo
     {
         if (prop.IsDelete && prop.MappingInfoID != 0) return prop.LoadOnInitial;
         return !prop.IsDelete && prop.LoadOnInitial;
+    }
+
+    // The trailing "_<digits>" of a file name, e.g. MazeNPC_FollowPlayer_102120113.json → 102120113.
+    private static int? TrailingId(string? path)
+    {
+        if (string.IsNullOrEmpty(path)) return null;
+        var name = Path.GetFileNameWithoutExtension(path.Replace('\\', '/'));
+        var separator = name.LastIndexOf('_');
+        return separator >= 0 && int.TryParse(name[(separator + 1)..], out var id) && id > 0 ? id : null;
     }
 
     private static bool GraphContainsChangePropState(LevelGraphConfigInfo? graph)

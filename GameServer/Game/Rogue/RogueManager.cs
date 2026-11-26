@@ -20,10 +20,17 @@ public partial class RogueManager : BasePlayerManager
 {
     // Official 4.4 capture grants 50 (Java/C# references say 100).
     private const int StartCoinCount = 50;
+    private const int CoinItemId = 31;
     private const int TalentCoinItemId = 32;
+
+    // No table prices a smashed room destructible; official 4.5 World 1 pays 12 Cosmic Fragments for each of the two
+    // destructs in room 301.
+    private const int DestructFragmentCount = 12;
 
     // The official login capture lists aeons 1..7 although RogueAeon has 9 rows.
     private const int AeonLimit = 7;
+    private const int RoomTypeOccurrence = 3;
+    private const int RoomTypeRespite = 5;
     private const int RoomTypeElite = 6;
     private const int RoomTypeBoss = 7;
     // A query type is the field number of its CCKJAEDDDCL oneof arm, and versions renumber the arms (4.5 put the
@@ -78,6 +85,7 @@ public partial class RogueManager : BasePlayerManager
         // A run that already won but was never left is dropped: resuming it strands the client on a finished run.
         if (inst is { Status: RogueStatus.Doing, IsWin: false })
         {
+            RestoreDialogueDraft(inst);
             RogueInstance = inst;
             return;
         }
@@ -110,6 +118,7 @@ public partial class RogueManager : BasePlayerManager
         };
         inst.InitRooms();
         if (inst.StartSiteId == 0 || inst.Rooms.Count == 0) return Retcode.RetRogueAreaInvalid;
+        RollBonusOffer(inst);
 
         if (!await ActivateRogueLineup(avatarIds)) return Retcode.RetRogueStatusNotMatch;
 
@@ -220,6 +229,14 @@ public partial class RogueManager : BasePlayerManager
 
     private int ResolveRunMapId(RogueAreaConfigExcel area)
     {
+        // The formula is not the official rule for every area: World 1 (area 110) runs the authored seven-room map 3
+        // (official 4.5 StartRogueScRsp). Its formula map 101 has no RogueRoom rows, so the shared site pools left
+        // most of its sites without a room and the run could not leave the first one. World 2 (area 120) runs map 200
+        // (official 4.6 and 4.7), not 201.
+        if (GameData.RogueAreaMapData.TryGetValue(area.RogueAreaID, out var mapped) &&
+            GameData.RogueMapData.ContainsKey(mapped))
+            return mapped;
+
         var tier = RogueData.AreaDifficulty.GetValueOrDefault(area.RogueAreaID);
         if (tier == 0) tier = Math.Max(1, area.Difficulty);
         var mapId = area.AreaProgress * 100 + tier;
@@ -233,6 +250,25 @@ public partial class RogueManager : BasePlayerManager
             inst.IsWin && !(HasPendingTutorialSettlement(inst) && inst.GetCurrentRoom()?.Status == RogueRoomStatus.Finish) ||
             inst.BaseAvatarIds.Count == 0 || GetActiveRoomExcel(Player.Data.EntryId) == null) return false;
 
+        return await RestoreRunLineup(inst);
+    }
+
+    /// <summary>
+    ///     Resumes the live run from the lobby: the run overview's Continue sends EnterRogueCsReq, and official 4.5
+    ///     answers it by returning the player to the current room with the run lineup. Unhandled, the client retried
+    ///     the request forever.
+    /// </summary>
+    public async ValueTask<Retcode> ResumeRun()
+    {
+        if (RogueInstance is not { Status: RogueStatus.Doing, IsWin: false } inst ||
+            inst.GetCurrentRoom() is not { } room || inst.BaseAvatarIds.Count == 0 || !await RestoreRunLineup(inst))
+            return Retcode.RetRogueStatusNotMatch;
+
+        return await EnterRoomScene(room) ? Retcode.RetSucc : Retcode.RetFail;
+    }
+
+    private async ValueTask<bool> RestoreRunLineup(RogueInstance inst)
+    {
         var lineupManager = Player.LineupManager!;
         var lineup = lineupManager.GetExtraLineup(ExtraLineupType.LineupRogue);
         if (lineup?.BaseAvatars == null || !lineup.BaseAvatars
@@ -263,6 +299,7 @@ public partial class RogueManager : BasePlayerManager
     private async ValueTask<bool> EnterRoomScene(RogueRoomData room)
     {
         if (!GameData.RogueRoomData.TryGetValue(room.RoomId, out var roomExcel)) return false;
+        if (RogueInstance != null) OpenRoomDialogue(RogueInstance, room);
 
         // Spawn at the room's group anchor; the entrance's own start anchor is a positionless placeholder.
         await Player.EnterSceneByEntranceId(roomExcel.MapEntrance, roomExcel.GroupID, 1, false);
@@ -301,11 +338,17 @@ public partial class RogueManager : BasePlayerManager
     public async ValueTask<bool> OpenRoomExit()
     {
         if (RogueInstance is not { Status: RogueStatus.Doing } inst || inst.BuffSelect?.HasSelection == true ||
-            IsTutorial(inst) && !IsTutorialRoomCleared(inst))
+            IsTutorial(inst) && !IsTutorialRoomCleared(inst) || HasOpenRoomDialogue())
             return false;
         var scene = Player.SceneInstance;
         var roomExcel = scene == null ? null : GetActiveRoomExcel(scene.EntryId);
         if (scene == null || roomExcel == null) return false;
+        // A room can draft while another of its monster groups still stands (official tutorial room 201 drafts after
+        // its group-4 fight with the group-19 one alive); opening the exit then would let the player walk past the
+        // fight, and the run-start blessing draft would open the first room before any. The tutorial keeps its own
+        // mission-driven gate above.
+        if (!IsTutorial(inst) && scene.Entities.Values.OfType<EntityMonster>().Any(monster => monster.IsAlive))
+            return false;
 
         var doors = scene.GetEntitiesInGroup<EntityProp>(roomExcel.GroupID)
             .Where(door => door.RogueDoorTarget != null && door.State != PropStateEnum.Open)
@@ -316,7 +359,69 @@ public partial class RogueManager : BasePlayerManager
             door.State = ScenePropRules.RogueDoorOpenState(door.Excel, PropStateEnum.Open);
         await Player.SendPacket(new PacketSceneGroupRefreshScNotify(Player, doors.Cast<BaseGameEntity>().ToList(),
             null, SceneGroupRefreshType.Afibfmafncc));
+        await FinishCurrentRoom(inst);
         return true;
+    }
+
+    /// <summary>
+    ///     Marks the cleared room Finish and announces the rooms after it as Unlock. The official always sends the pair
+    ///     right after the exit portal appears (4.7 World 1-3 run: 646 portal, 647 Finish, 648 next room Unlock); without
+    ///     the Unlock the next domain's map icon stays grey.
+    /// </summary>
+    private async ValueTask FinishCurrentRoom(RogueInstance inst)
+    {
+        if (inst.GetCurrentRoom() is not { } room || room.Status == RogueRoomStatus.Finish) return;
+
+        room.Status = RogueRoomStatus.Finish;
+        await Player.SendPacket(new PacketSyncRogueMapRoomScNotify(inst));
+        foreach (var siteId in room.NextSiteIds)
+            if (inst.Rooms.TryGetValue(siteId, out var next))
+            {
+                next.Status = RogueRoomStatus.Unlock;
+                await Player.SendPacket(new PacketSyncRogueMapRoomScNotify(inst.MapId, next));
+            }
+
+        SaveRun();
+    }
+
+    /// <summary>
+    ///     The portal the exit must render, chosen by the DESTINATION room type: Occurrence 1022 (the blue "?" gate),
+    ///     Respite 1023, any other room 1021. Measured on all 22 portal refreshes of an official 4.7 World 1-3 run;
+    ///     the level groups mostly author 1000 (AetherDividePortal), which renders the wrong gate.
+    /// </summary>
+    internal static MazePropExcel? PortalPropFor(int roomId)
+    {
+        if (!GameData.RogueRoomData.TryGetValue(roomId, out var room)) return null;
+        var propId = room.RogueRoomType switch
+        {
+            RoomTypeOccurrence => 1022,
+            RoomTypeRespite => 1023,
+            _ => 1021
+        };
+        return GameData.MazePropData.TryGetValue(propId, out var excel) && excel.PropType == PropTypeEnum.PROP_ROGUE_DOOR
+            ? excel
+            : null;
+    }
+
+    /// <summary>
+    ///     Pays a smashed room destructible into the live run, in the official order (4.5 World 1, both destructs of
+    ///     room 301): the money row with the gain, the coin total, then a plane event naming Cosmic Fragments; the
+    ///     caller's removal refresh follows.
+    /// </summary>
+    public async ValueTask GrantDestructFragments()
+    {
+        if (RogueInstance is not { Status: RogueStatus.Doing } inst || Player.SceneInstance is not { } scene ||
+            GetActiveRoomExcel(scene.EntryId) == null) return;
+
+        inst.Coin += DestructFragmentCount;
+        SaveRun();
+        await Player.SendPacket(new PacketSyncRogueCommonActionResultScNotify(
+            RogueActionResultRows.MoneyGain(NHHMEPILLHL.Nlcdgipgfdj, inst.ActionSeq, DestructFragmentCount), DICEONDKEFF.Icfoncmfnlg));
+        await Player.SendPacket(new PacketSyncRogueVirtualItemInfoScNotify(inst.Coin));
+        await Player.SendPacket(new PacketScenePlaneEventScNotify(new ItemList
+        {
+            ItemList_ = { new Item { ItemId = CoinItemId } }
+        }));
     }
 
     public int GetCurrentMonsterLevel()
@@ -422,7 +527,7 @@ public partial class RogueManager : BasePlayerManager
         if (room.NextSiteIds.Count == 0 && (!IsTutorial(inst) || IsTutorialRoomCleared(inst)))
             inst.IsWin = true;
 
-        var coinGained = false;
+        var coinGain = 0;
         if (room.RoomType == RoomTypeBoss || tutorialBossWin)
         {
             inst.BuffSelect = null;
@@ -430,8 +535,8 @@ public partial class RogueManager : BasePlayerManager
         }
         else
         {
-            inst.Coin += Random.Shared.Next(20, 41) * Math.Max(1, battle.EntityMonsters.Count);
-            coinGained = true;
+            coinGain = Random.Shared.Next(20, 41) * Math.Max(1, battle.EntityMonsters.Count);
+            inst.Coin += coinGain;
 
             var pool = ResolveDraftPool(room, battle);
             if (pool.Count == 0)
@@ -455,6 +560,15 @@ public partial class RogueManager : BasePlayerManager
         }
         SaveRun();
 
+        // Official 4.5 World 1: a won battle reports its pay (the money row with the gain, then the coin total) ahead
+        // of the draft; with only a late coin sync the HUD lagged a room behind.
+        if (coinGain > 0)
+        {
+            await Player.SendPacket(new PacketSyncRogueCommonActionResultScNotify(
+                RogueActionResultRows.MoneyGain(NHHMEPILLHL.Nlcdgipgfdj, inst.ActionSeq, coinGain), DICEONDKEFF.Nlcdgipgfdj));
+            await Player.SendPacket(new PacketSyncRogueVirtualItemInfoScNotify(inst.Coin));
+        }
+
         if (inst.BuffSelect?.HasSelection == true)
         {
             // The 4.5 client needs the identical draft notify twice to arm RogueSelectBuffPage.
@@ -466,8 +580,6 @@ public partial class RogueManager : BasePlayerManager
             // A win with nothing to draft clears the room on the spot; a draft opens the exit when it resolves.
             await OpenRoomExit();
         }
-
-        if (coinGained) await Player.SendPacket(new PacketSyncRogueVirtualItemInfoScNotify(inst.Coin));
 
         if (inst is { IsWin: true, ExploreWin: true })
         {
@@ -500,13 +612,18 @@ public partial class RogueManager : BasePlayerManager
             : [];
     }
 
-    public Retcode? SelectBuff(int buffId)
+    public async ValueTask<Retcode?> SelectBuff(int buffId)
     {
-        if (RogueInstance?.BuffSelect is not { HasSelection: true } menu) return null;
-        if (buffId == 0 || menu.Select(RogueInstance, buffId) == null) return Retcode.RetRogueSelectBuffNotExist;
+        if (RogueInstance is not { BuffSelect: { HasSelection: true } menu } inst) return null;
+        if (buffId == 0 || menu.Select(inst, buffId) is not { } chosen) return Retcode.RetRogueSelectBuffNotExist;
 
-        TryOfferAeonBuff(RogueInstance);
+        TryOfferAeonBuff(inst);
         SaveRun();
+        // A drafted blessing the run already holds is enhanced instead, so report the level it now has.
+        var level = inst.Buffs.GetValueOrDefault(chosen.MazeBuffID)?.Level ?? chosen.MazeBuffLevel;
+        await SendBuffGranted(chosen.MazeBuffID, level);
+        // Official 4.5: the grants, then the finish notify of the Occurrence option that opened this draft.
+        await TakeDeferredDialogueFinish(inst);
         return Retcode.RetSucc;
     }
 
@@ -707,6 +824,15 @@ public partial class RogueManager : BasePlayerManager
     public static INHBMHCJJCN BuildPendingAction(RogueInstance inst)
     {
         var action = new INHBMHCJJCN();
+        // The run-start offer is answered before any draft exists (official 4.7 queue position 2).
+        if (inst.BonusOffer.Count > 0)
+        {
+            action.QueuePosition = (uint)inst.ActionSeq;
+            action.Detail = new DCFPEIMAMCN { JIPEPMDMCMB = new INKPGECIDNE() };
+            action.Detail.JIPEPMDMCMB.KPJPABDIOJB.AddRange(inst.BonusOffer.Select(id => (uint)id));
+            return action;
+        }
+
         if (inst.BuffSelect is not { HasSelection: true } menu) return action;
 
         action.QueuePosition = (uint)inst.ActionSeq;

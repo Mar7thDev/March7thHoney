@@ -15,6 +15,7 @@ using March7thHoney.Data.Rogue;
 using March7thHoney.Enums;
 using March7thHoney.Enums.Rogue;
 using March7thHoney.Enums.RogueMagic;
+using March7thHoney.Enums.Scene;
 using March7thHoney.Enums.TournRogue;
 using March7thHoney.Internationalization;
 using March7thHoney.Util;
@@ -351,6 +352,7 @@ public class ResourceManager
 
                 if (info.Groups.Count == 0) missingGroupInfos = true;
 
+                StampVariantLiftStates(info);
                 info.OnLoad();
             });
         });
@@ -363,6 +365,50 @@ public class ResourceManager
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", GameData.FloorInfoData.Count.ToString(),
             I18NManager.Translate("Word.FloorInfo")));
+    }
+
+    /// <summary>
+    ///     Story-dimension variant files ("_D100x") are not scene groups, but a lift authored Locked in the base file
+    ///     unlocks to the state its variants author. Record that state when every variant agrees on it.
+    /// </summary>
+    private static void StampVariantLiftStates(FloorInfo info)
+    {
+        foreach (var variants in info.GroupInstanceList
+                     .Where(reference => !reference.IsDelete && reference.GroupPath.Contains("_D100"))
+                     .GroupBy(reference => reference.ID))
+        {
+            if (!info.Groups.TryGetValue(variants.Key, out var group)) continue;
+            var lifts = group.PropList.Where(prop =>
+                prop.State == PropStateEnum.Locked &&
+                GameData.MazePropData.TryGetValue(prop.PropID, out var excel) &&
+                excel.PropType == PropTypeEnum.PROP_ELEVATOR).ToList();
+            if (lifts.Count == 0) continue;
+
+            var agreed = lifts.ToDictionary(prop => prop.ID, _ => (PropStateEnum?)null);
+            var disagreed = new HashSet<int>();
+            foreach (var variant in variants)
+            {
+                FileInfo variantFile = new(ResourcePaths.Resource(variant.GroupPath));
+                GroupInfo? variantGroup = null;
+                if (variantFile.Exists)
+                    LoadJsonFile(variantFile, variantFile.Name, false,
+                        text => variantGroup = JsonConvert.DeserializeObject<GroupInfo>(text));
+
+                foreach (var lift in lifts)
+                {
+                    var state = variantGroup?.PropList.Find(prop => prop.ID == lift.ID)?.State;
+                    if (state == null || agreed[lift.ID] is { } previous && previous != state)
+                        disagreed.Add(lift.ID);
+                    else
+                        agreed[lift.ID] = state;
+                }
+            }
+
+            foreach (var lift in lifts)
+                if (!disagreed.Contains(lift.ID) && agreed[lift.ID] is
+                        { } state and >= PropStateEnum.Elevator1 and <= PropStateEnum.Elevator3)
+                    lift.DimensionVariantState = state;
+        }
     }
 
     public static void LoadMissionInfo()
@@ -811,14 +857,16 @@ public class ResourceManager
     }
 
     /// <summary>
-    ///     Divergent Universe event NPCs (RogueTournNPC, RogueEventTourn* dialogues) are played by a client-side Act
-    ///     graph. The generic LevelGraph model drops the option/event lists the server answers with, so the graph is
-    ///     flattened into <see cref="RogueTournDialogueGraph" /> as well. A missing graph file is a legitimate state.
+    ///     Divergent Universe event NPCs (RogueTournNPC, RogueEventTourn* dialogues) and classic Simulated Universe
+    ///     Occurrence events (RogueNPC, RogueDialogue/Event* dialogues) are played by a client-side Act graph. The
+    ///     generic LevelGraph model drops the option/event lists the server answers with, so the graph is flattened into
+    ///     <see cref="RogueTournDialogueGraph" /> as well. A missing graph file is a legitimate state.
     /// </summary>
     public static void LoadRogueTournDialogueGraph(int npcId, RogueNPCConfigInfo config)
     {
         var entry = config.DialogueList.FirstOrDefault();
-        if (entry == null || !entry.DialoguePath.Contains("RogueEventTourn", StringComparison.Ordinal)) return;
+        if (entry == null || !entry.DialoguePath.Contains("RogueEventTourn", StringComparison.Ordinal) &&
+            !entry.DialoguePath.Contains("RogueDialogue/Event", StringComparison.Ordinal)) return;
 
         // Some official builds pad their resource paths with trailing whitespace.
         var file = new FileInfo(ResourcePaths.Resource(entry.DialoguePath.Trim()));

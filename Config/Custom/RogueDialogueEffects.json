@@ -1,0 +1,18 @@
+{
+  "Effects": [
+    {
+      "NpcId": 40398,
+      "OptionId": 14101,
+      "Fragments": 150
+    },
+    {
+      "NpcId": 40398,
+      "OptionId": 14102,
+      "BuffGroup": 100005
+    },
+    {
+      "NpcId": 40398,
+      "OptionId": 14103
+    }
+  ]
+}

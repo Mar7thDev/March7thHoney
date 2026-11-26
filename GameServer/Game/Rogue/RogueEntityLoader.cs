@@ -40,8 +40,10 @@ public class RogueEntityLoader(SceneInstance scene, PlayerInstance player) : Sce
         await base.LoadEntity();
 
         // A room that spawned no monster has no battle that could ever clear it, so its exit starts open
-        // instead of leaving the run at a dead end. Not verified against an official capture.
-        if (firstLoad && roomExcel != null && !Scene.Entities.Values.OfType<EntityMonster>().Any())
+        // instead of leaving the run at a dead end. Not verified against an official capture. An Occurrence is
+        // cleared by its talk instead: official 4.7 ships its exit Closed on entry and opens it after the talk.
+        if (firstLoad && roomExcel != null && !Scene.Entities.Values.OfType<EntityMonster>().Any() &&
+            player.RogueManager?.HasOpenRoomDialogue() != true)
             foreach (var door in Scene.GetEntitiesInGroup<EntityProp>(roomExcel.GroupID)
                          .Where(door => door.RogueDoorTarget != null))
                 door.State = PropStateEnum.Open;
@@ -83,11 +85,19 @@ public class RogueEntityLoader(SceneInstance scene, PlayerInstance player) : Sce
     public override async ValueTask<EntityProp?> LoadProp(PropInfo info, GroupInfo group, bool sendPacket = false)
     {
         if (!BelongsToActiveRoom(group.Id)) return null;
+        var manager = player.RogueManager;
+        var roomExcel = manager?.GetActiveRoomExcel(Scene.EntryId);
+        // Room groups author two doors (300002 and 300004). A single-exit room ships only the lowest-inst one and
+        // never the spare (official 4.5 StartRogueScRsp for room 301 lists g31 without inst 300004); the spare
+        // rendered a second portal beside the real exit. A branching site keeps one door per next room: every room
+        // its pool can pick authors the pair, and ResolveDoorTarget gives each door its own destination.
+        if (manager != null && roomExcel != null && IsDoor(info) &&
+            group.PropList.Count(other => !other.IsDelete && other.ID < info.ID && IsDoor(other)) >=
+            Math.Max(1, manager.GetRoomExitTargets().Count)) return null;
+
         // Apply run-specific state before the first entity packet, including late group loads/relogin.
         var prop = await base.LoadProp(info, group, false);
         if (prop == null) return null;
-        var manager = player.RogueManager;
-        var roomExcel = manager?.GetActiveRoomExcel(Scene.EntryId);
         if (manager != null && roomExcel != null)
         {
             if (prop.Excel.PropType == PropTypeEnum.PROP_ROGUE_DOOR && group.Id == roomExcel.GroupID)
@@ -96,6 +106,8 @@ public class RogueEntityLoader(SceneInstance scene, PlayerInstance player) : Sce
                 // (rogue_game_info{room_id, site}); OpenRoomExit opens it once the room is cleared.
                 prop.State = PropStateEnum.Closed;
                 prop.RogueDoorTarget = ResolveDoorTarget(manager.GetRoomExitTargets(), group, info.ID);
+                if (prop.RogueDoorTarget is { } target && RogueManager.PortalPropFor(target.RoomId) is { } portal)
+                    prop.Excel = portal;
             }
             if (manager.GetTutorialPropState(Scene.FloorId, group.Id, info) is { } state)
                 prop.State = state;
@@ -104,10 +116,17 @@ public class RogueEntityLoader(SceneInstance scene, PlayerInstance player) : Sce
         return prop;
     }
 
-    public override ValueTask<EntityNpc?> LoadNpc(NpcInfo info, GroupInfo group, bool sendPacket = false) =>
-        BelongsToActiveRoom(group.Id)
-            ? base.LoadNpc(info, group, sendPacket)
-            : ValueTask.FromResult<EntityNpc?>(null);
+    public override async ValueTask<EntityNpc?> LoadNpc(NpcInfo info, GroupInfo group, bool sendPacket = false)
+    {
+        if (!BelongsToActiveRoom(group.Id)) return null;
+        var npc = await base.LoadNpc(info, group, false);
+        if (npc == null) return null;
+        // An Occurrence's event NPC carries its talk (official 4.7 and 4.5, rogue_game_info {handle, event}); without
+        // it the client shows the placeholder line and no option can be picked.
+        npc.RogueGameInfo = player.RogueManager?.GetDialogueNpcInfo(group.Id);
+        if (sendPacket) await player.SendPacket(new PacketSceneGroupRefreshScNotify(player, npc));
+        return npc;
+    }
 
     // Doors are paired with next sites in ascending inst id / site id order; a surplus door leads to the last
     // site. Official captures only cover single-door rooms, so the pairing itself is unverified.
@@ -116,12 +135,14 @@ public class RogueEntityLoader(SceneInstance scene, PlayerInstance player) : Sce
         if (targets.Count == 0) return null;
 
         var doors = group.PropList
-            .Where(prop => !prop.IsDelete && GameData.MazePropData.TryGetValue(prop.PropID, out var excel) &&
-                           excel.PropType == PropTypeEnum.PROP_ROGUE_DOOR)
+            .Where(prop => !prop.IsDelete && IsDoor(prop))
             .Select(prop => prop.ID)
             .Order()
             .ToList();
         var index = doors.IndexOf(instId);
         return index < 0 ? null : targets[Math.Min(index, targets.Count - 1)];
     }
+
+    private static bool IsDoor(PropInfo prop) =>
+        GameData.MazePropData.TryGetValue(prop.PropID, out var excel) && excel.PropType == PropTypeEnum.PROP_ROGUE_DOOR;
 }

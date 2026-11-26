@@ -85,6 +85,34 @@ public class LevelTask(PlayerInstance player)
 
     private readonly ConcurrentDictionary<string, ExecuteTask> _cachedTasks = [];
 
+    // Set while tasks the client fires itself are dispatched: PropSetupUITrigger button callbacks (a real
+    // press) and performance acts (the client plays them and only then fires their strings). The server runs
+    // them early, at accept, so a custom string reached through them must not complete other subs. An
+    // AsyncLocal, because TriggerTask does not await the tasks it starts.
+    private static readonly AsyncLocal<bool> ClientArmedDispatch = new();
+
+    private static void RunClientArmed(Action dispatch) => RunDispatch(dispatch, true);
+
+    /// <summary>
+    ///     Runs an accepted sub's own graph as a mission graph, also when the accept happened inside a
+    ///     client-armed dispatch (a prop closed by an act string finishing a PropState sub).
+    /// </summary>
+    public static void RunMissionGraph(Action dispatch) => RunDispatch(dispatch, false);
+
+    private static void RunDispatch(Action dispatch, bool clientArmed)
+    {
+        var outer = ClientArmedDispatch.Value;
+        ClientArmedDispatch.Value = clientArmed;
+        try
+        {
+            dispatch();
+        }
+        finally
+        {
+            ClientArmedDispatch.Value = outer;
+        }
+    }
+
     #endregion
 
     #region Task
@@ -92,6 +120,19 @@ public class LevelTask(PlayerInstance player)
     public async ValueTask<object?> PlayMessage(TaskConfigInfo act, SubMissionData subMission, GroupInfo? group = null)
     {
         if (act is PlayMessage message) await Player.MessageManager!.AddMessageSection(message.MessageSectionID);
+
+        return null;
+    }
+
+    /// <summary>
+    ///     Arms a story raid (RaidID, IsSkipUI). The client enters the raid itself later, with StartRaidCsReq at the
+    ///     act's screen transfer, so nothing is entered here: entering now would move the player off the floor before
+    ///     the dialogue. What the server owes at this point is the message section the sub's act opens - the chat the
+    ///     client shows before the transfer (sub 102030121: Dan Heng, section 1200000).
+    /// </summary>
+    public async ValueTask<object?> OpenRaid(TaskConfigInfo act, SubMissionData subMission, GroupInfo? group = null)
+    {
+        await Player.MissionManager!.StartActMessageSections(subMission.MissionId, true);
 
         return null;
     }
@@ -112,6 +153,13 @@ public class LevelTask(PlayerInstance player)
     {
         if (act is TriggerCustomString triggerCustomString)
         {
+            // Only a mission graph's own strings complete waiting subs; group graphs pass a group and a sub
+            // without SubMissionInfo. This runs first so a finished ladder step accepts its successor before
+            // the first packet send can yield, ahead of the next string in the same task list.
+            if (group == null && subMission.SubMissionInfo is { } firing && !ClientArmedDispatch.Value)
+                await Player.MissionManager!.FinishCustomStringWaiters(triggerCustomString.CustomString.Value,
+                    firing.ID);
+
             foreach (var groupInfo in Player.SceneInstance?.FloorInfo?.Groups ?? [])
                 if (groupInfo.Value.PropTriggerCustomString.TryGetValue(triggerCustomString.CustomString.Value,
                         out var list))
@@ -146,15 +194,18 @@ public class LevelTask(PlayerInstance player)
     public async ValueTask<object?> TriggerPerformance(TaskConfigInfo act, SubMissionData subMission,
         GroupInfo? group = null)
     {
+        // An act ends with the client's own strings ("404021501_Finish" after a choice talk); resolving them here
+        // finished the running choice talk at accept, before the player made the choice.
         if (act is TriggerPerformance triggerPerformance)
-        {
-            if (triggerPerformance.PerformanceType == ELevelPerformanceTypeEnum.E)
-                Player.TaskManager?.PerformanceTrigger.TriggerPerformanceE(triggerPerformance.PerformanceID,
-                    subMission);
-            else if (triggerPerformance.PerformanceType == ELevelPerformanceTypeEnum.D)
-                Player.TaskManager?.PerformanceTrigger.TriggerPerformanceD(triggerPerformance.PerformanceID,
-                    subMission);
-        }
+            RunClientArmed(() =>
+            {
+                if (triggerPerformance.PerformanceType == ELevelPerformanceTypeEnum.E)
+                    Player.TaskManager?.PerformanceTrigger.TriggerPerformanceE(triggerPerformance.PerformanceID,
+                        subMission);
+                else if (triggerPerformance.PerformanceType == ELevelPerformanceTypeEnum.D)
+                    Player.TaskManager?.PerformanceTrigger.TriggerPerformanceD(triggerPerformance.PerformanceID,
+                        subMission);
+            });
 
         await ValueTask.CompletedTask;
 
@@ -207,11 +258,31 @@ public class LevelTask(PlayerInstance player)
         var (groupId, instId) = ResolveMissionPropTarget(subMission);
         if (groupId == 0 || instId == 0) return;
 
+        var info = subMission.SubMissionInfo;
+        PropStateEnum? awaited = info is { FinishType: MissionFinishTypeEnum.PropState, ParamInt3: not 0 }
+            ? (PropStateEnum)info.ParamInt3
+            : null;
+
+        var serverOnlyTarget = false;
         foreach (var entity in Player.SceneInstance.Entities.Values)
             if (entity is EntityProp prop && prop.GroupId == groupId && prop.InstId == instId)
                 try
                 {
+                    // Placed directly and never stepped: once the prop sits on the sub's state, the heuristic
+                    // below would answer Closed again and every scene rebuild would undo the sub's own target.
+                    if (ServerOnlyPropTarget(subMission.SubMissionInfo, prop, Player.SceneInstance.FloorId) is
+                        { } placed)
+                    {
+                        serverOnlyTarget = true;
+                        await prop.SetState(placed);
+                        continue;
+                    }
+
                     var (target, viaClosed) = StepToClosedOrNext(prop.Excel.PropStateList, prop.State);
+                    if (!viaClosed &&
+                        OneShotAdvanceTarget(prop.Excel.PropStateList, prop.PropInfo.State, prop.State, awaited) is
+                            { } guarded)
+                        target = guarded;
                     if (target == prop.State) continue; // nothing left to advance - keep it idempotent
 
                     await prop.SetState(target);
@@ -229,6 +300,42 @@ public class LevelTask(PlayerInstance player)
                 {
                     // ignored
                 }
+
+        // Nothing but this placement can satisfy the sub, so its gate runs now (also when a save already holds the
+        // state): official 4.5 places the entrance and finishes sub 403000395 in the same burst.
+        if (serverOnlyTarget) await Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.PropState);
+    }
+
+    /// <summary>
+    ///     The state a PropState sub's target must be placed on by the server because nothing else can move it, or
+    ///     null when the ordinary step applies. The shape: the sub expects a state the prop declares, the prop's own
+    ///     graph has no PropStateExecute branch (the client has no mover), and <see cref="StepToClosedOrNext" /> is a
+    ///     no-op on the prop's authored state, so the ChangePropState task can never reach the expectation.
+    /// </summary>
+    /// <remarks>
+    ///     Measured over the cached 4.8 missions: of the 82 PropState subs that run a ChangePropState task, only
+    ///     403000395 ("Simulated Universe (I)") has this shape. Its target is the Simulated Universe entrance in
+    ///     Herta's Office (floor 80112001 group 15 inst 300002, MazeProp 1003, authored Closed, expected Open); its
+    ///     graph only toasts "complete Long Wait for the Blade's Edge first", so the main mission never advanced.
+    ///     The authored state is the key, never the live one: a prop authored Locked does move (Locked to Closed)
+    ///     and keeps the step, and the live state is already the expectation after the placement. CheckPoint
+    ///     expectations are finished by the PropState handler without a placement.
+    /// </remarks>
+    private static PropStateEnum? ServerOnlyPropTarget(SubMissionInfo? info, EntityProp prop, int floorId)
+    {
+        if (info is not { FinishType: MissionFinishTypeEnum.PropState, ParamInt3: > 0 } ||
+            prop.GroupId != info.ParamInt1 || prop.InstId != info.ParamInt2 ||
+            info.LevelFloorID != 0 && info.LevelFloorID != floorId) return null;
+
+        var want = (PropStateEnum)info.ParamInt3;
+        if (want is PropStateEnum.CheckPointDisable or PropStateEnum.CheckPointEnable ||
+            !prop.Excel.PropStateList.Contains(want)) return null;
+
+        var graph = prop.PropInfo;
+        if (string.IsNullOrEmpty(graph.InitLevelGraph) || graph.GraphHasOpenBranch || graph.GraphHasLockedBranch ||
+            graph.GraphHasRealClosedBranch) return null;
+
+        return StepToClosedOrNext(prop.Excel.PropStateList, graph.State).State == graph.State ? want : null;
     }
 
     /// <summary>
@@ -298,6 +405,30 @@ public class LevelTask(PlayerInstance player)
         if (index >= 0 && index + 1 < stateList.Count) return (stateList[index + 1], false);
 
         return (current, false);
+    }
+
+    /// <summary>
+    ///     One-shot guard for the advance-to-next branch, which the scene-build reconcile re-runs on every build.
+    ///     The step belongs to the prop's authored state only: stepping a saved state walked a lift
+    ///     [Locked, Elevator1, Elevator2, Elevator3] one position further per rebuild until Elevator3, a state the
+    ///     lift graph has no branch for, so every press was swallowed without a packet (floor 20123001 g8/300001,
+    ///     sub 101090222; official 4.5 steps the authored Locked to Elevator1 exactly once).
+    /// </summary>
+    /// <returns>
+    ///     Null when the guard does not apply (the authored state is outside the list, the prop still sits on it,
+    ///     or stepping it changes nothing). Otherwise the state to land on: the current one when the prop is already
+    ///     on the accepted state or on the state its sub waits for, else the accepted state, which heals a save the
+    ///     old double step left on a foreign state.
+    /// </returns>
+    public static PropStateEnum? OneShotAdvanceTarget(List<PropStateEnum> stateList, PropStateEnum authored,
+        PropStateEnum current, PropStateEnum? awaited)
+    {
+        if (!stateList.Contains(authored) || current == authored) return null;
+
+        var (accepted, _) = StepToClosedOrNext(stateList, authored);
+        if (accepted == authored) return null;
+
+        return current == accepted || current == awaited ? current : accepted;
     }
 
     public async ValueTask<object?> CreateTrialPlayer(TaskConfigInfo act, SubMissionData subMission,
@@ -454,8 +585,11 @@ public class LevelTask(PlayerInstance player)
         GroupInfo? group = null)
     {
         if (act is PropSetupUITrigger propSetupUiTrigger)
-            foreach (var task in propSetupUiTrigger.ButtonCallback)
-                TriggerTask(task, subMission, group);
+            RunClientArmed(() =>
+            {
+                foreach (var task in propSetupUiTrigger.ButtonCallback)
+                    TriggerTask(task, subMission, group);
+            });
 
         await ValueTask.CompletedTask;
 

@@ -40,6 +40,8 @@ namespace March7thHoney.Data.Config.Task;
 [MemoryPackUnion(32, typeof(AdventureTriggerTargetAbility))]
 [MemoryPackUnion(33, typeof(AdvByContainBehaviorFlag))]
 [MemoryPackUnion(34, typeof(PropSetupTrigger))]
+[MemoryPackUnion(35, typeof(WaitCustomString))]
+[MemoryPackUnion(36, typeof(FinishPerformanceMission))]
 public abstract partial class TaskConfigInfo
 {
     public string Type { get; set; } = "";
@@ -77,6 +79,22 @@ public abstract partial class TaskConfigInfo
         if (typeStr == "PropSetupTrigger")
         {
             var res = PropSetupTrigger.LoadFromJsonObject(json);
+            res.Type = type;
+            return res;
+        }
+
+        // Caches written before these two types existed hold them as UnknownTaskConfigInfo, which only
+        // disables the custom-string waiter resolution until the cache is rebuilt.
+        if (typeStr == "WaitCustomString")
+        {
+            var res = WaitCustomString.LoadFromJsonObject(json);
+            res.Type = type;
+            return res;
+        }
+
+        if (typeStr == "FinishPerformanceMission")
+        {
+            var res = FinishPerformanceMission.LoadFromJsonObject(json);
             res.Type = type;
             return res;
         }

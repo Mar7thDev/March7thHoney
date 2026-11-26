@@ -14,7 +14,8 @@ public class MissionHandlerAddRecoverMissionItem : MissionFinishActionHandler
         {
             var itemId = @params[i];
             var count = @params[i + 1];
-            await player.InventoryManager!.AddItem(itemId, count);
+            // No scene toast: the sub's SubMissionRewardScNotify lists this grant (MissionManager.HandleSubMissionReward).
+            await player.InventoryManager!.AddItem(itemId, count, notify: false);
         }
     }
 }

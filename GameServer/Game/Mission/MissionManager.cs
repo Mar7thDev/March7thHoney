@@ -515,6 +515,10 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
         await Player.SendPacket(new PacketStartFinishSubMissionScNotify(missionId));
         if (!killSub && Player.SceneInstance != null)
             await Player.SceneInstance.OpenRaidDomainPortals(missionId, true);
+        await ApplyPropStateFinishEffect(subMission.SubMissionInfo);
+        if (Player.SceneInstance != null)
+            await Player.SceneInstance.ApplyStoryLiftUnlock(missionId, subMission.SubMissionInfo?.LevelFloorID ?? 0,
+                true);
 
         if (mainMission.MissionInfo != null)
             await HandleFinishAction(mainMission.MissionInfo, missionId);
@@ -667,19 +671,48 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
     {
         GameData.SubMissionInfoData.TryGetValue(subMissionId, out var subMission);
         if (subMission == null) return;
-        if (Data.ReplayedRogueTutorialRewardIds.Contains(subMission.MainMissionId)) return;
-        GameData.RewardDataData.TryGetValue(subMission.SubMissionInfo?.SubRewardID ?? 0, out var reward);
         var itemList = new List<ItemData>();
 
-        foreach (var item in reward?.GetItems() ?? [])
+        if (!Data.ReplayedRogueTutorialRewardIds.Contains(subMission.MainMissionId))
         {
-            GameData.ItemConfigData.TryGetValue(item.Item1, out var itemExcel);
-            var res = await Player.InventoryManager!.AddItem(item.Item1, item.Item2,
-                itemExcel?.ItemMainType == ItemMainTypeEnum.AvatarCard); // notify if avatar card
-            if (res != null) itemList.Add(res);
+            GameData.RewardDataData.TryGetValue(subMission.SubMissionInfo?.SubRewardID ?? 0, out var reward);
+            foreach (var item in reward?.GetItems() ?? [])
+            {
+                GameData.ItemConfigData.TryGetValue(item.Item1, out var itemExcel);
+                var res = await Player.InventoryManager!.AddItem(item.Item1, item.Item2,
+                    itemExcel?.ItemMainType == ItemMainTypeEnum.AvatarCard); // notify if avatar card
+                if (res != null) itemList.Add(res);
+            }
         }
 
+        // The notify is what draws the "Items Obtained" band, and it also lists the items the sub's
+        // addMissionItem actions handed over (already granted by HandleFinishAction). Official 4.7: finishing
+        // 102110125 sends StartFinishSubMissionScNotify -> PlayerSyncScNotify{140124 x1} ->
+        // SubMissionRewardScNotify{140124 x1}, and a sub that grants nothing gets no notify at all.
+        itemList.AddRange(MissionItemGrants(subMission.SubMissionInfo));
+        if (itemList.Count == 0) return;
+
         await Player.SendPacket(new PacketSubMissionRewardScNotify(subMissionId, itemList));
+    }
+
+    /// <summary>
+    ///     The (item, count) pairs a sub's addMissionItem / addRecoverMissionItem finish actions grant, for display
+    ///     only. Zero and unpaired entries are skipped.
+    /// </summary>
+    private static List<ItemData> MissionItemGrants(SubMissionInfo? info)
+    {
+        var items = new List<ItemData>();
+        foreach (var action in info?.FinishActionList ?? [])
+        {
+            if (action.FinishActionType is not (FinishActionTypeEnum.addMissionItem
+                or FinishActionTypeEnum.addRecoverMissionItem)) continue;
+            var para = action.FinishActionPara;
+            for (var i = 0; i + 1 < para.Count; i += 2)
+                if (para[i] > 0 && para[i + 1] > 0)
+                    items.Add(new ItemData { ItemId = para[i], Count = para[i + 1] });
+        }
+
+        return items;
     }
 
     public async ValueTask HandleFinishType(MissionFinishTypeEnum finishType, object? arg = null, bool pushQuest = true)
@@ -762,23 +795,109 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
         return handled;
     }
 
+    /// <summary>
+    ///     Finishes the running subs whose own graph waits on a custom string that a mission graph just fired
+    ///     (a WaitCustomString paired with the sub's FinishPerformanceMission in one task list).
+    /// </summary>
+    /// <remarks>
+    ///     Official 4.7: the whisper beat of main 2020103 fires "202010306_Finish" ... "202010309_Finish" from
+    ///     sub 202010360's graph and the server closes the leftover transcribe-ladder sub (202010308, a Talk
+    ///     sub) with no client report. Without this the ladder sub stayed Doing forever and kept a dead
+    ///     "N/500" objective in the tracker. Finishing one step can accept the next one waiting on the same
+    ///     string, so the lookup repeats until nothing new matches.
+    ///     <paramref name="firingSubMissionId" /> is never resolved: a sub whose graph fires and waits on its
+    ///     own string (the Vidyadhara seal position talks 102150104-106) completes on the player's action,
+    ///     and resolving it at accept removed the three seal markers from the minimap.
+    /// </remarks>
+    public async ValueTask FinishCustomStringWaiters(string value, int firingSubMissionId)
+    {
+        if (!Enabled || value.Length == 0) return;
+
+        var tried = new HashSet<int>();
+        while (true)
+        {
+            var waiters = GetRunningSubMissionIdList()
+                .Where(id => id != firingSubMissionId && !tried.Contains(id))
+                .Where(id => GameData.SubMissionInfoData.GetValueOrDefault(id)?.SubMissionTaskInfo
+                    ?.FinishesOnCustomString(value, $"Mission_{id}") == true)
+                .ToList();
+            if (waiters.Count == 0) return;
+
+            foreach (var id in waiters)
+            {
+                tried.Add(id);
+                await FinishSubMission(id);
+            }
+        }
+    }
+
     public async ValueTask HandleCustomValue(List<MissionCustomValue> values, int missionId)
     {
         if (!Enabled) return;
 
         GameData.SubMissionInfoData.TryGetValue(missionId, out var subMission);
         if (subMission == null) return;
-        var mainMissionId = subMission.MainMissionId;
-        GameData.MainMissionData.TryGetValue(mainMissionId, out var mainMission);
+        GameData.MainMissionData.TryGetValue(subMission.MainMissionId, out var mainMission);
         if (mainMission == null) return;
 
+        await ApplyCustomValues(mainMission, values, true);
+    }
+
+    /// <summary>
+    ///     UpdateMainMissionCustomValueCsReq: the client's act-level SetMissionCustomValue reports a choice
+    ///     against the main directly (official 4.4 {main_mission_id, value, BGDFHBAANLB "LoadGroup_1"}). Acts that
+    ///     branch on ByCompareMissionCustomValue read the stored value back, so a dropped report leaves the
+    ///     next choice talk open with nobody speaking.
+    /// </summary>
+    public async ValueTask<Retcode> UpdateMainMissionCustomValue(int mainMissionId, uint value, string name)
+    {
+        if (!Enabled) return Retcode.RetSucc;
+        if (!GameData.MainMissionData.TryGetValue(mainMissionId, out var mainMission))
+            return Retcode.RetMissionNotExist;
+        if (GetMainMissionStatus(mainMissionId) != MissionPhaseEnum.Accept) return Retcode.RetMissionNotDoing;
+        if (name.Length == 0) return Retcode.RetMissionCustomValueNotValid;
+
+        // The request carries no slot index. Resolve it from the main's declared values when the cache knows
+        // their names; otherwise the record is name-keyed only and the index-addressed gates are skipped.
+        var slot = mainMission.MissionInfo?.MissionCustomValueList.Find(x => x.Name == name);
+
+        // The name is client input and not every reported name is declared, so bound the distinct records
+        // one main can collect instead of rejecting undeclared names.
+        var stored = Data.MainMissionCustomValues.GetValueOrDefault(mainMissionId) ?? [];
+        if (stored.All(x => x.Key != name) && stored.Count >= MaxCustomValuesPerMain)
+            return Retcode.RetMissionCustomValueNotValid;
+
+        var record = new MissionCustomValue { CustomValue = value, BGDFHBAANLB = name };
+        if (slot != null) record.Index = (uint)slot.Index;
+        await ApplyCustomValues(mainMission, [record], slot != null);
+        MarkDirty();
+        return Retcode.RetSucc;
+    }
+
+    private const int MaxCustomValuesPerMain = 16;
+
+    /// <summary>The main's stored custom values, as GetMainMissionCustomValueScRsp and the update reply carry them.</summary>
+    public IReadOnlyList<MissionCustomValueRecord> GetMainMissionCustomValues(int mainMissionId)
+    {
+        return Data.MainMissionCustomValues.GetValueOrDefault(mainMissionId) ?? [];
+    }
+
+    /// <summary>
+    ///     Stores reported custom values and accepts the main's CustomValue-gated subs they satisfy.
+    ///     <paramref name="indexed" /> is false when the values carry no trustworthy slot index, so only the
+    ///     name-addressed TakeParamStrList gates may accept.
+    /// </summary>
+    private async ValueTask ApplyCustomValues(MainMissionExcel mainMission, List<MissionCustomValue> values,
+        bool indexed)
+    {
+        var mainMissionId = mainMission.MainMissionID;
         var sync = new MissionSync();
         foreach (var mission in mainMission.MissionInfo?.SubMissionList ?? [])
             if (mission.TakeType == SubMissionTakeTypeEnum.CustomValue &&
                 GetSubMissionStatus(mission.ID) == MissionPhaseEnum.None)
             {
                 var accept = CustomValueStrGateSatisfied(mission, values);
-                if (!accept)
+                if (!accept && indexed)
                 {
                     List<List<int>> list = [mission.TakeParamIntList ?? []];
                     if (mission.TakeParamIntList?.Count > 5)

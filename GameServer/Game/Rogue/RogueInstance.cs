@@ -40,6 +40,23 @@ public partial class RogueInstance
     // One-shot flag for SyncRogueExploreWinScNotify on the run-final battle win.
     [MemoryPackIgnore] public bool ExploreWin { get; set; }
 
+    // Append-only below (MemoryPack member order).
+
+    // The unanswered run-start Trailblaze Blessing offer (RogueBonus ids); saved so a relog still shows it.
+    public List<int> BonusOffer { get; set; } = [];
+
+    // Occurrence talks by handle; handles are run-scoped (official handles run 10, 11, 12... across one run).
+    public Dictionary<int, RogueDialogueData> Dialogues { get; set; } = [];
+    public int DialogueSeq { get; set; }
+
+    // A run saved before a member existed reads it back as null.
+    [MemoryPackOnDeserialized]
+    private void FillAppendedMembers()
+    {
+        BonusOffer ??= [];
+        Dialogues ??= [];
+    }
+
     public RogueRoomData? GetCurrentRoom()
     {
         return Rooms.GetValueOrDefault(CurrentSiteId);
@@ -111,6 +128,26 @@ public partial class RogueRoomData
     public RogueRoomStatus Status { get; set; }
     public List<int> NextSiteIds { get; set; } = [];
     public int RoomType { get; set; }
+}
+
+/// <summary>The event talk of one Occurrence room.</summary>
+[MemoryPackable]
+public partial class RogueDialogueData
+{
+    public int Handle { get; set; }
+
+    // The RogueNPC event the talk plays: the announce's owner and the key of its option list and Act graph.
+    public int NpcId { get; set; }
+    public int SiteId { get; set; }
+    public List<int> Options { get; set; } = [];
+    public List<int> Selected { get; set; } = [];
+    public bool Closed { get; set; }
+
+    // An option whose effect opened a blessing draft owes its finish notify until the draft is answered (official
+    // 4.5: pick, draft, answer, then the finish notify). The offered rows are kept so a relog deals the same cards.
+    public int PendingFinishOption { get; set; }
+    public int PendingGroup { get; set; }
+    public List<int> PendingOffer { get; set; } = [];
 }
 
 [MemoryPackable]

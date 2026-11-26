@@ -54,7 +54,7 @@ dotnet run --project Proto/Tool/ProtoOrganizer -c Release -- cmdids
 
 Aliases point to constant names rather than numbers, so the alias file does not need changes when command IDs change. `cmdids --check` only compares and does not write; `scripts/verify-security.py` uses it to confirm that the constants match the schema.
 
-A command enum name is not necessarily the protobuf message type name: handlers bind to the current command constant and parse the real message type, so searching for a `message` with the same name as the enum member can miss the existing structure. When a request has no handler, the framework automatically sends an empty success response; that response cannot be taken as evidence that the feature ran.
+A command enum name is not necessarily the protobuf message type name: handlers bind to the current command constant and parse the real message type, so searching for a `message` with the same name as the enum member can miss the existing structure. When a request has no handler, the framework automatically sends an empty success response, found by name (`XxxCsReq` to `XxxScRsp`) or, for a request whose response is named differently, from the pairs listed in `GameServer/Server/UnhandledRequestResponder.cs`; that response cannot be taken as evidence that the feature ran.
 
 ## Upgrading to a new client version
 

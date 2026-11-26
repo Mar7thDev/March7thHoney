@@ -305,7 +305,10 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
             // Official: the raid's own mains are removed when a finished run is left.
             foreach (var mainId in config?.MainMissionIDList ?? [])
                 await Player.MissionManager!.RemoveMainMission(mainId);
-            await Player.SendPacket(new PacketRaidInfoNotify());
+            // No empty RaidInfoNotify here, unlike an unfinished leave: the official 4.7 leave burst of a finished
+            // raid carries none. The client resolves the raid's MainMissionIDAfter auto-track from the FINISH
+            // status FinishRaid sent, and a reset arriving first wiped it, so the next story mission's tracker
+            // and minimap markers only appeared after a manual Navigate.
             if (config?.FinishEntranceID is not > 0 ||
                 !(await Player.TryEnterScene(config.FinishEntranceID, 0, true)).Success)
                 await ReturnToOldSpot(record);

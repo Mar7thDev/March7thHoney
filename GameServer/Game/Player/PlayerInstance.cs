@@ -166,7 +166,6 @@ public partial class PlayerInstance(PlayerData data)
     public bool? PendingMissionEnabledOverride { get; set; }
 
     public int NextBattleId { get; set; } = 0;
-    public int ChargerNum { get; set; } = 0;
     public bool LoginAnnounceSent { get; set; }
 
     public uint ActiveFarmElementEntityId { get; set; }
@@ -292,6 +291,7 @@ public partial class PlayerInstance(PlayerData data)
             // Runs on every load, not just once: a save can stall at any point in the chain, and the
             // pass is a no-op when every accepted main already has a running sub-mission.
             await MissionManager.RepairStalledMainMissions(false);
+            await MissionManager.StartRunningMessageSections();
         }
 
         FriendManager!.PruneExpiredDevelopmentRecords();

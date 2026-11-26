@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using MemoryPack;
 using March7thHoney.Enums.Mission;
 using March7thHoney.Util;
@@ -27,9 +28,13 @@ public class MissionData : BaseDatabaseDataHelper
     /// </summary>
     public List<int> PreparedMainMissionIds { get; set; } = [];
 
-    public Dictionary<int, int> SubMissionProgressDict { get; set; } = [];
+    // The save thread serializes these while game threads update them, without a shared lock. Enumerating a plain
+    // Dictionary under that race can throw or persist a duplicate key, and a duplicate key fails the next boot.
+    // MemoryPack writes ConcurrentDictionary in Dictionary's format, and reading keeps the first of a duplicate
+    // key instead of throwing, so existing rows load unchanged.
+    public ConcurrentDictionary<int, int> SubMissionProgressDict { get; set; } = new();
 
-    public Dictionary<int, List<MissionCustomValueRecord>> MainMissionCustomValues { get; set; } = [];
+    public ConcurrentDictionary<int, List<MissionCustomValueRecord>> MainMissionCustomValues { get; set; } = new();
 
     public int TrackingMainMissionId { get; set; }
 

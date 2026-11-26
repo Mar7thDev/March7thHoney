@@ -14,12 +14,17 @@ public class EntityNpc(SceneInstance scene, GroupInfo group, NpcInfo npcInfo) : 
     public override int EntityId { get; set; }
     public override int GroupId { get; set; } = group.Id;
 
+    // A Simulated Universe Occurrence event NPC: its talk's handle and event, which the client binds the announced
+    // dialogue to.
+    public NpcRogueGameInfo? RogueGameInfo { get; set; }
+
     public override SceneEntityInfo ToProto()
     {
         SceneNpcInfo npc = new()
         {
             NpcId = (uint)NpcId
         };
+        if (RogueGameInfo != null) npc.ExtraInfo = new NpcExtraInfo { RogueGameInfo = RogueGameInfo };
 
         return new SceneEntityInfo
         {

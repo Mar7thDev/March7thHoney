@@ -85,9 +85,24 @@ public partial class SceneInstance
     /// </summary>
     public async ValueTask RevealAuthoredChest(GroupInfo group)
     {
-        if (group.ChestRevealGroupId == 0 || group.ChestRevealInstId == 0) return;
+        await RevealHiddenChest(group.ChestRevealGroupId, group.ChestRevealInstId);
+    }
 
-        var chest = FindProp(group.ChestRevealGroupId, group.ChestRevealInstId);
+    /// <summary>
+    ///     Hexanexus / RubikCube boards name their reward chest on the prop itself (ValueSource "TargetChest"), not
+    ///     on the group. Reveal it when the board is used.
+    /// </summary>
+    public async ValueTask RevealPuzzleChest(EntityProp board)
+    {
+        await RevealHiddenChest(board.PropInfo.PuzzleChestGroupId, board.PropInfo.PuzzleChestInstId);
+    }
+
+    // Only a Hidden or ChestLocked chest is revealed, so pressing the puzzle again never resurrects a looted chest.
+    private async ValueTask RevealHiddenChest(int groupId, int instId)
+    {
+        if (groupId == 0 || instId == 0) return;
+
+        var chest = FindProp(groupId, instId);
         if (chest == null || chest.State is not (PropStateEnum.Hidden or PropStateEnum.ChestLocked)) return;
         await chest.SetState(PropStateEnum.ChestClosed);
     }
