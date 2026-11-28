@@ -191,6 +191,19 @@ public class LevelTask(PlayerInstance player)
         return null;
     }
 
+    public async ValueTask<object?> RaidSceneTransfer(TaskConfigInfo act, SubMissionData subMission,
+        GroupInfo? group = null)
+    {
+        var info = subMission.SubMissionInfo;
+        if (info is not { FinishType: MissionFinishTypeEnum.EnterFloor, ParamInt2: > 0 }) return null;
+
+        var entrance = Mission.MissionManager.FindEntranceForFloor(info.ParamInt2);
+        if (entrance == null || Player.Data.FloorId == entrance.FloorID) return null;
+
+        await Player.EnterSceneByEntranceId(entrance.ID, 0, 0, true);
+        return null;
+    }
+
     public async ValueTask<object?> TriggerPerformance(TaskConfigInfo act, SubMissionData subMission,
         GroupInfo? group = null)
     {
