@@ -3156,7 +3156,7 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
                 .SequenceEqual(draftedBuffs.Select(buff => buff.MazeBuffID)) == true));
     var draftedPick = draftedBuffs.FirstOrDefault();
     Check("drafted classic blessing can be picked into the run",
-        draftedPick != null && roguePlayer.RogueManager.SelectBuff(draftedPick.MazeBuffID) == Retcode.RetSucc &&
+        draftedPick != null && await roguePlayer.RogueManager.SelectBuff(draftedPick.MazeBuffID) == Retcode.RetSucc &&
         rogueInst.Buffs.TryGetValue(draftedPick.MazeBuffID, out var ownedPick) &&
         ownedPick.Level == draftedPick.MazeBuffLevel);
     rogueInst.BuffSelect = null;

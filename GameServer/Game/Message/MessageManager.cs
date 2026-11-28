@@ -37,11 +37,17 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
 
     public MessageSectionData? GetMessageSectionData(int sectionId)
     {
-        GameData.MessageSectionConfigData.TryGetValue(sectionId, out var sectionConfig);
-        if (sectionConfig == null) return null;
-        var groupId = sectionConfig.GroupID;
-        if (!Data.Groups.TryGetValue(groupId, out var group)) return null;
-        return group.Sections.FirstOrDefault(m => m.SectionId == sectionId);
+        if (GameData.MessageSectionConfigData.TryGetValue(sectionId, out var sectionConfig) &&
+            Data.Groups.TryGetValue(sectionConfig.GroupID, out var group))
+        {
+            var found = group.Sections.FirstOrDefault(m => m.SectionId == sectionId);
+            if (found != null) return found;
+        }
+
+        if (Data.Groups.TryGetValue(0, out var performGroup))
+            return performGroup.Sections.FirstOrDefault(m => m.SectionId == sectionId);
+
+        return null;
     }
 
     public List<MessageGroup> GetMessageGroup(int contactId)
@@ -249,6 +255,62 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
         }
 
         // broadcast to mission system
+        await Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.MessagePerformSectionFinish);
+        await Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.MessageSectionFinish);
+    }
+
+    public async ValueTask FinishPerformSection(int sectionId, IEnumerable<int>? confirmedItems = null)
+    {
+        if (sectionId == 0) return;
+
+        if (GetMessageSectionData(sectionId) is { Status: MessageSectionStatus.MessageSectionDoing })
+        {
+            if (confirmedItems != null) RecordConfirmedItems(sectionId, confirmedItems);
+            await FinishSection(sectionId);
+            return;
+        }
+
+        var groupId = GameData.MessageSectionConfigData.TryGetValue(sectionId, out var sectionConfig)
+            ? sectionConfig.GroupID
+            : 0;
+        if (!Data.Groups.TryGetValue(groupId, out var group))
+        {
+            group = new MessageGroupData
+            {
+                GroupId = groupId,
+                CurrentSectionId = sectionId,
+                RefreshTime = Extensions.GetUnixSec(),
+                Status = MessageGroupStatus.MessageGroupFinish
+            };
+            Data.Groups[groupId] = group;
+        }
+
+        var section = group.Sections.Find(m => m.SectionId == sectionId);
+        if (section == null)
+        {
+            section = new MessageSectionData
+            {
+                SectionId = sectionId,
+                Status = MessageSectionStatus.MessageSectionFinish
+            };
+            group.Sections.Add(section);
+        }
+        else
+        {
+            section.Status = MessageSectionStatus.MessageSectionFinish;
+        }
+
+        if (confirmedItems != null)
+            foreach (var itemId in confirmedItems)
+                if (itemId > 0)
+                    section.ConfirmedItemIds.Add(itemId);
+
+        group.CurrentSectionId = sectionId;
+        group.RefreshTime = Extensions.GetUnixSec();
+        if (group.Sections.All(m => m.Status == MessageSectionStatus.MessageSectionFinish))
+            group.Status = MessageGroupStatus.MessageGroupFinish;
+
+        MarkDirty();
         await Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.MessagePerformSectionFinish);
         await Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.MessageSectionFinish);
     }

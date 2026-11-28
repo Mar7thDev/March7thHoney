@@ -45,16 +45,21 @@ public static class MissionSyncBuilder
         if (mainId > 0) sync.DEPBONHELFD.Add((uint)mainId);
     }
 
-    public static void AttachCustomValues(MissionSync sync, int mainId, IReadOnlyList<MissionCustomValueRecord> records)
+    public static ONHKODAFEMH BuildCustomValueList(IReadOnlyList<MissionCustomValueRecord> records)
     {
-        if (mainId <= 0 || records.Count == 0) return;
         var list = new ONHKODAFEMH();
         foreach (var record in records)
             list.CustomValueList.Add(ToProto(record));
+        return list;
+    }
+
+    public static void AttachCustomValues(MissionSync sync, int mainId, IReadOnlyList<MissionCustomValueRecord> records)
+    {
+        if (mainId <= 0 || records.Count == 0) return;
         ReplaceCustomValueRecord(sync, new MJBANFPPEFH
         {
             Id = (uint)mainId,
-            CustomValueList = list
+            CustomValueList = BuildCustomValueList(records)
         });
     }
 

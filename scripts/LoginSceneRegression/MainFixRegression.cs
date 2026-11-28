@@ -10,6 +10,7 @@ using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Mission;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Avatar;
+using March7thHoney.GameServer.Game.Mission;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet;
 using March7thHoney.GameServer.Server.Packet.Recv.Lineup;
@@ -337,9 +338,203 @@ internal static class MainFixRegression
             player.Data.EntryId == 101010102);
         check("reset raid notify carries an empty item list", RaidInfoNotify.Parser.ParseFrom(
             new March7thHoney.GameServer.Server.Packet.Send.Raid.PacketRaidInfoNotify().Data).ItemList != null);
+
+        await StoryPlaythroughFixes(peer, check);
         player.Connection = null;
 
         await HeadFrameDisplay(scratch, peer, check, capture);
+    }
+
+    private static async Task StoryPlaythroughFixes(KcpConversation peer, Action<string, bool> check)
+    {
+        var player = new PlayerInstance(60946);
+        await player.InitializeAsync();
+        player.Data.Level = 70;
+        player.Data.WorldLevel = 6;
+        var conn = new ProbeConnection(peer) { Player = player };
+        player.Connection = conn;
+        player.MissionManager!.Data.EnableMissionOverride = true;
+
+        check("TeleportRotatableRegion mission finish action handler is registered",
+            MissionManager.ActionHandlers.ContainsKey(FinishActionTypeEnum.TeleportRotatableRegion));
+        check("SetCustomValue mission finish action handler is registered",
+            MissionManager.ActionHandlers.ContainsKey(FinishActionTypeEnum.SetCustomValue));
+
+        var tpEntry = GameData.MapEntranceData.ContainsKey(2056101) ? 2056101 : PlayerInstance.DefaultSpawnEntryId;
+        var tpGroup = tpEntry == 2056101 ? 360 : 0;
+        var tpAnchor = tpEntry == 2056101 ? 1 : 0;
+        await MissionManager.ActionHandlers[FinishActionTypeEnum.TeleportRotatableRegion]
+            .OnHandle([tpEntry, tpGroup, tpAnchor, 0, 0], [], player);
+        check("TeleportRotatableRegion moves player to target entrance", player.Data.EntryId == tpEntry);
+
+        if (player.SceneInstance is { FloorId: 20561001 } scene20561 &&
+            scene20561.FloorInfo?.Groups.TryGetValue(4, out var g4) == true &&
+            g4.PropList.Any(p => p.ID == 300002 && p.HasEditorOnlyLevelGraph()))
+        {
+            var g4Props = scene20561.GetEntitiesInGroup<March7thHoney.GameServer.Game.Scene.Entity.EntityProp>(4);
+            check("20561001 G4 DesignerBackup prop 300002 is excluded while normal prop 300001 loads",
+                g4Props.All(p => p.InstId != 300002) && g4Props.Any(p => p.InstId == 300001));
+        }
+
+        if (GameData.MapEntranceData.ContainsKey(2057101) &&
+            GameData.SubMissionInfoData.TryGetValue(105470106, out var fdSub))
+        {
+            player.MissionManager.Data.SetMainMissionStatus(1054701, MissionPhaseEnum.Accept);
+            player.MissionManager.Data.SetSubMissionStatus(105470106, MissionPhaseEnum.Accept);
+            await player.EnterSceneByEntranceId(2057101, 0, 0, false);
+            var fdEntryPipe = player.SceneInstance!.GetEntitiesInGroup<March7thHoney.GameServer.Game.Scene.Entity.EntityProp>(134)
+                .FirstOrDefault(prop => prop.InstId == 300001);
+            var fdExitPipe = player.SceneInstance.GetEntitiesInGroup<March7thHoney.GameServer.Game.Scene.Entity.EntityProp>(134)
+                .FirstOrDefault(prop => prop.InstId == 300002);
+            check("running FiveDim mission 105470106 auto-opens G134 entry pipe 300001 without opening exit pipe 300002",
+                fdEntryPipe?.State == PropStateEnum.Open && fdExitPipe?.State != PropStateEnum.Open);
+            await player.SceneInstance.UpdateGroupProperty(134, "LG_110001_Finish", 2);
+            check("FiveDimFinish sub-mission 105470106 completes when LG_110001_Finish reaches 2",
+                fdSub.SubMissionInfo != null &&
+                player.MissionManager.GetSubMissionStatus(105470106) == MissionPhaseEnum.Finish);
+        }
+
+        if (GameData.MapEntranceData.ContainsKey(40571002) &&
+            GameData.SubMissionInfoData.TryGetValue(105470310, out var raidTransferSub))
+        {
+            player.RaidManager!.Data.CurRaidId = 40571;
+            player.MissionManager.Data.SetMainMissionStatus(1054703, MissionPhaseEnum.Accept);
+            player.MissionManager.Data.SetSubMissionStatus(105470310, MissionPhaseEnum.Accept);
+            var raidTransferTask = raidTransferSub.SubMissionTaskInfo?.OnStartSequece
+                .SelectMany(x => x.TaskList)
+                .FirstOrDefault(x => x.Type == "RPG.GameCore.RaidSceneTransfer");
+            if (raidTransferTask != null)
+                await player.TaskManager!.LevelTask.RaidSceneTransfer(raidTransferTask, raidTransferSub);
+            check("RaidSceneTransfer moves player to target raid floor 40571002 and finishes 105470310",
+                raidTransferTask != null && player.Data.FloorId == 40571002 &&
+                player.MissionManager.GetSubMissionStatus(105470310) == MissionPhaseEnum.Finish);
+            if (GameData.MapEntranceData.ContainsKey(40571001) &&
+                GameData.SubMissionInfoData.ContainsKey(105470307))
+            {
+                player.MissionManager.Data.SetSubMissionStatus(105470307, MissionPhaseEnum.Accept);
+                await player.EnterSceneByEntranceId(40571001, 0, 0, false);
+                var g5Loaded = player.SceneInstance!.Groups.Contains(5);
+                await player.BattleManager!.StartStage(20571084);
+                var battleStageId = player.BattleInstance?.StageId ?? 0;
+                player.BattleInstance = null;
+                check("40571001 G5 loads for 105470307 and StartStage(20571084) resolves StageWin 20571085x",
+                    g5Loaded && battleStageId.ToString().StartsWith("20571085"));
+            }
+            player.RaidManager.Data.CurRaidId = 0;
+        }
+
+        if (GameData.MainMissionData.TryGetValue(1054707, out var m1054707) && m1054707.MissionInfo != null)
+        {
+            player.MissionManager.Data.SetMainMissionStatus(1054707, MissionPhaseEnum.Accept);
+            await player.MissionManager.HandleFinishAction(m1054707.MissionInfo, 105470711);
+            check("SetCustomValue finish action stores MCV_BallCheckpoint=1 on main 1054707",
+                player.MissionManager.Data.MainMissionCustomValues.TryGetValue(1054707, out var cvList) &&
+                cvList.Any(x => x.Key == "MCV_BallCheckpoint" && x.CustomValue == 1));
+        }
+
+        if (GameData.MainMissionData.ContainsKey(1054706) && GameData.MainMissionData.ContainsKey(1054705) &&
+            GameData.MainMissionData.ContainsKey(1054708) && GameData.RaidConfigData.ContainsKey(4057300))
+        {
+            var storyPlayer = new PlayerInstance(60947);
+            await storyPlayer.InitializeAsync();
+            storyPlayer.Data.Level = 70;
+            storyPlayer.Data.WorldLevel = 6;
+            storyPlayer.Connection = new ProbeConnection(peer) { Player = storyPlayer };
+            var mm = storyPlayer.MissionManager!;
+            mm.Data.EnableMissionOverride = true;
+            mm.Data.SetMainMissionStatus(1054702, MissionPhaseEnum.Finish);
+            mm.Data.SetMainMissionStatus(1054706, MissionPhaseEnum.Accept);
+            for (var s = 105470601; s <= 105470608; s++)
+                mm.Data.SetSubMissionStatus(s, MissionPhaseEnum.Finish);
+            mm.Data.SetSubMissionStatus(105470609, MissionPhaseEnum.Accept);
+            storyPlayer.SceneData!.FloorSavedData[20572001] = new() { ["FSV_CrystalBallCanUse"] = 1 };
+            await storyPlayer.EnterSceneByEntranceId(2057201, 27, 1, false);
+
+            var fsv20572 = storyPlayer.SceneInstance!.BuildClientFloorSavedData();
+            await storyPlayer.SceneInstance.UpdateGroupProperty(14, "CrystalBall_State_GP", 1);
+            check("4.7 dry-run: 20572001 exposes zero-default FSVs and CrystalBall_State_GP completes 105470609",
+                fsv20572.ContainsKey("FSV_CrystalBallCanUse") && fsv20572.ContainsKey("FSV_StageState_01") &&
+                mm.GetSubMissionStatus(105470609) == MissionPhaseEnum.Finish &&
+                mm.GetSubMissionStatus(105470610) == MissionPhaseEnum.Accept);
+            foreach (var talkSub in new[] { 105470610, 105470611, 105470612, 105470613, 105470614, 105470615, 105470616, 105470617 })
+                await mm.HandleTalkStr($"Mission_{talkSub}");
+            var musicPipe = storyPlayer.SceneInstance!.GetEntitiesInGroup<March7thHoney.GameServer.Game.Scene.Entity.EntityProp>(9)
+                .FirstOrDefault(prop => prop.InstId == 300001);
+            check("4.7 dry-run: 105470618 opens G9 music pipe 300001",
+                mm.GetSubMissionStatus(105470618) == MissionPhaseEnum.Accept && musicPipe?.State == PropStateEnum.Open);
+            await storyPlayer.SceneInstance.UpdateGroupProperty(9, "LG_110001_MusicLevelFinished", 1);
+            check("4.7 dry-run: 105470618 finishes and transfers to 10501001 for 105470619",
+                mm.GetSubMissionStatus(105470618) == MissionPhaseEnum.Finish &&
+                storyPlayer.Data.FloorId == 10501001 &&
+                mm.GetSubMissionStatus(105470619) == MissionPhaseEnum.Accept);
+            await mm.HandleTalkStr("Mission_105470619");
+            check("4.7 dry-run: 105470619 finishes Main 1054706 and auto-accepts Main 1054705 (105470501)",
+                mm.GetMainMissionStatus(1054706) == MissionPhaseEnum.Finish &&
+                mm.GetMainMissionStatus(1054705) == MissionPhaseEnum.Accept &&
+                mm.GetSubMissionStatus(105470501) == MissionPhaseEnum.Accept);
+
+            await mm.HandleTalkStr("Mission_105470501");
+            await mm.HandleTalkStr("Mission_105470502");
+            await storyPlayer.MessageManager!.FinishPerformSection(1508701);
+            check("4.7 dry-run: standalone PerformSection 1508701 finishes 105470503",
+                mm.GetSubMissionStatus(105470503) == MissionPhaseEnum.Finish &&
+                mm.GetSubMissionStatus(105470531) == MissionPhaseEnum.Accept);
+            foreach (var talkSub in new[] { 105470531, 105470504, 105470505, 105470506 })
+                await mm.HandleTalkStr($"Mission_{talkSub}");
+            var talkReq = new FinishTalkMissionCsReq { TalkStr = "Mission_105470507", SubMissionId = 0 };
+            talkReq.CustomValueList.Add(new MissionCustomValue { Index = 1, BGDFHBAANLB = "FareWellChoice", CustomValue = 1 });
+            await new March7thHoney.GameServer.Server.Packet.Recv.Mission.HandlerFinishTalkMissionCsReq()
+                .OnHandle(storyPlayer.Connection, [], talkReq.ToByteArray());
+            await mm.HandleTalkStr("Mission_105470508");
+            check("4.7 dry-run: 105470508 cancels 105470523 without running its teleport and enters 10502001",
+                mm.GetSubMissionStatus(105470508) == MissionPhaseEnum.Finish &&
+                mm.GetSubMissionStatus(105470523) == MissionPhaseEnum.Cancel &&
+                mm.GetSubMissionStatus(105470516) == MissionPhaseEnum.None &&
+                storyPlayer.Data.FloorId == 10502001 &&
+                mm.GetSubMissionStatus(105470536) == MissionPhaseEnum.Accept);
+            await mm.HandleTalkStr("Mission_105470536");
+            check("4.7 dry-run: cancelled 105470523 does not resurrect when subsequent subs finish",
+                mm.GetSubMissionStatus(105470523) == MissionPhaseEnum.Cancel);
+            await mm.HandleTalkStr("Mission_105470509");
+            await mm.HandleTalkStr("Mission_105470510");
+            await storyPlayer.MessageManager.FinishPerformSection(1508801);
+            foreach (var talkSub in new[] { 105470532, 105470511, 105470512, 105470513, 105470514, 105470515, 105470516, 105470517 })
+                await mm.HandleTalkStr($"Mission_{talkSub}");
+            var statusReq = new GetMissionStatusCsReq();
+            statusReq.MainMissionIdList.Add(1054705);
+            var statusRsp = GetMissionStatusScRsp.Parser.ParseFrom(
+                new March7thHoney.GameServer.Server.Packet.Send.Mission.PacketGetMissionStatusScRsp(statusReq, storyPlayer).Data);
+            var sceneMission = mm.BuildSceneMissionInfo(storyPlayer.SceneInstance!.FloorInfo, storyPlayer.SceneInstance.FloorId);
+            check("4.7 dry-run: GetMissionStatusScRsp and SceneMissionInfo ship FareWellChoice and keep deleted subs cancelled",
+                statusRsp.MainMissionMcvList.Any(m => m.MainMissionId == 1054705 &&
+                    m.CustomValueList.CustomValueList.Any(v => v.BGDFHBAANLB == "FareWellChoice" && v.CustomValue == 1)) &&
+                sceneMission.JLMGBADJBKN.Any(x => x.MainMissionId == 1054705) &&
+                mm.GetSubMissionStatus(105470523) == MissionPhaseEnum.Cancel &&
+                mm.GetSubMissionStatus(105470524) == MissionPhaseEnum.Cancel);
+
+            var raidRec = await storyPlayer.RaidManager!.EnterRaid(40573, 0);
+            check("4.7 dry-run: Raid 40573 enters 40573001 and accepts 105470801",
+                raidRec != null && storyPlayer.Data.FloorId == 40573001 &&
+                mm.GetSubMissionStatus(105470801) == MissionPhaseEnum.Accept);
+            await mm.HandleTalkStr("Mission_105470801");
+            await mm.HandleTalkStr("Mission_105470802");
+            await storyPlayer.RaidManager.LeaveRaid(false);
+            check("4.7 dry-run: leaving finished Raid 40573 completes 105470534 & 105470535 and accepts 105470521",
+                storyPlayer.RaidManager.Data.CurRaidId == 0 &&
+                storyPlayer.Data.FloorId == 10501001 &&
+                mm.GetSubMissionStatus(105470534) == MissionPhaseEnum.Finish &&
+                mm.GetSubMissionStatus(105470535) == MissionPhaseEnum.Finish &&
+                mm.GetSubMissionStatus(105470521) == MissionPhaseEnum.Accept);
+            await mm.HandleTalkStr("Mission_105470521");
+            await mm.HandleTalkStr("Mission_105470529");
+            await mm.HandleTalkStr("Mission_105470522");
+            check("4.7 dry-run: final chain 105470521 -> 529 -> 522 finishes Main 1054705 completely",
+                storyPlayer.Data.FloorId == 20551001 &&
+                mm.GetMainMissionStatus(1054705) == MissionPhaseEnum.Finish);
+            storyPlayer.Connection = null;
+        }
+
+        player.Connection = null;
     }
 
     /// <summary>

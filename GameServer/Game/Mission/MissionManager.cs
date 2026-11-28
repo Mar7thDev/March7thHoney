@@ -12,6 +12,7 @@ using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.DailyActive;
 using March7thHoney.GameServer.Game.Mission.FinishAction;
 using March7thHoney.GameServer.Game.Mission.FinishType;
+using March7thHoney.GameServer.Game.Mission.FinishType.Handler;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
@@ -392,6 +393,7 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
             {
                 await Player.SceneInstance.SyncGroupInfo();
                 await EnsureRunningKillMonsterTargetsVisible();
+                await EnsureRunningFiveDimEntryPropsOpen();
                 await SyncStartedKillMonsterSceneSnapshot(sync);
             }
         }
@@ -454,6 +456,7 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
             await Player.SceneInstance.SyncGroupInfo();
             await LoadRunningMissionGroupsForCurrentFloor();
             await EnsureRunningKillMonsterTargetsVisible();
+            await EnsureRunningFiveDimEntryPropsOpen();
             await SyncStartedKillMonsterSceneSnapshot(sync);
         }
 
@@ -472,6 +475,26 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
         }
 
         await Player.RaidManager!.CheckIfLeaveRaid();
+    }
+
+    public async ValueTask DeleteSubMission(int missionId)
+    {
+        if (!Enabled || missionId <= 0) return;
+        if (Data.GetSubMissionStatus(missionId) == MissionPhaseEnum.None) return;
+
+        Data.SetSubMissionStatus(missionId, MissionPhaseEnum.Cancel);
+        Data.SubMissionProgressDict.Remove(missionId, out _);
+        DatabaseHelper.MarkDirty(Player.Uid);
+
+        var sync = new MissionSync();
+        sync.MissionList.Add(new Proto.Mission
+        {
+            Id = (uint)missionId,
+            Status = MissionStatus.MissionNone
+        });
+        await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
+        if (Player.SceneInstance != null)
+            await Player.SceneInstance.SyncGroupInfo();
     }
 
     public async ValueTask FinishSubMission(int missionId)
@@ -509,6 +532,7 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
             await Player.SceneInstance.SyncGroupInfo();
             await LoadRunningMissionGroupsForCurrentFloor();
             await EnsureRunningKillMonsterTargetsVisible();
+            await EnsureRunningFiveDimEntryPropsOpen();
             await SyncStartedKillMonsterSceneSnapshot(sync);
         }
 
@@ -533,7 +557,12 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
 
         foreach (var nextMission in GetRunningSubMissionList())
         {
-            FinishTypeHandlers.TryGetValue(nextMission.FinishType, out var handler);
+            var finishType = FinishTypeHandlers.ContainsKey(nextMission.FinishType)
+                ? nextMission.FinishType
+                : MissionHandlerGroupPropertyValue.MatchesMission(nextMission)
+                    ? MissionFinishTypeEnum.GroupPropertyValue
+                    : nextMission.FinishType;
+            FinishTypeHandlers.TryGetValue(finishType, out var handler);
             if (handler != null) await handler.HandleMissionFinishType(Player, nextMission, null);
         }
 
@@ -614,12 +643,29 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
             await Player.SendPacket(new PacketHeartDialScriptChangeScNotify(HeartDialUnlockStatus.UnlockAll));
     }
 
+    internal int CurrentFinishActionMainMissionId { get; private set; }
+
     public async ValueTask HandleFinishAction(MissionInfo info, int subMissionId)
     {
         var subMission = info.SubMissionList.Find(x => x.ID == subMissionId);
         if (subMission == null) return;
 
-        foreach (var action in subMission.FinishActionList ?? []) await HandleFinishAction(action);
+        var prevMainId = CurrentFinishActionMainMissionId;
+        CurrentFinishActionMainMissionId = info.MainMissionID;
+        try
+        {
+            var actions = subMission.FinishActionList ?? [];
+            foreach (var action in actions)
+                if (action.FinishActionType == FinishActionTypeEnum.SetFloorSavedValue)
+                    await HandleFinishAction(action);
+            foreach (var action in actions)
+                if (action.FinishActionType != FinishActionTypeEnum.SetFloorSavedValue)
+                    await HandleFinishAction(action);
+        }
+        finally
+        {
+            CurrentFinishActionMainMissionId = prevMainId;
+        }
     }
 
     public async ValueTask HandleFinishAction(FinishActionInfo actionInfo)
@@ -719,7 +765,9 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
     {
         FinishTypeHandlers.TryGetValue(finishType, out var handler);
         foreach (var mission in GetRunningSubMissionList())
-            if (mission.FinishType == finishType)
+            if (mission.FinishType == finishType ||
+                (finishType is MissionFinishTypeEnum.GroupPropertyValue or MissionFinishTypeEnum.FiveDimFinish &&
+                 MissionHandlerGroupPropertyValue.MatchesMission(mission)))
                 if (handler != null)
                     await handler.HandleMissionFinishType(Player, mission, arg);
 
@@ -1371,6 +1419,70 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
         }
 
         await ApplyRunningMissionPropStates();
+        await EnsureRunningFiveDimEntryPropsOpen();
+    }
+
+    public async ValueTask EnsureRunningFiveDimEntryPropsOpen()
+    {
+        if (!Enabled) return;
+        var scene = Player.SceneInstance;
+        if (scene == null) return;
+
+        HashSet<int> targetGroupIds = [];
+        foreach (var info in GetRunningSubMissionList())
+        {
+            if (info.LevelFloorID != 0 && info.LevelFloorID != scene.FloorId) continue;
+
+            if (MissionHandlerGroupPropertyValue.MatchesMission(info) && info.ParamInt1 > 0)
+            {
+                targetGroupIds.Add(info.ParamInt1);
+            }
+            else if (info.FinishType == MissionFinishTypeEnum.FloorSavedValue &&
+                     !string.IsNullOrEmpty(info.ParamStr1) && scene.FloorInfo != null)
+            {
+                var targetNorm = Scene.SceneInstance.NormalizeFloorSavedValueKey(info.ParamStr1);
+                foreach (var group in scene.FloorInfo.Groups.Values)
+                {
+                    if (group.GroupPropertyMap.Values.Any(p =>
+                            Scene.SceneInstance.TryExtractNormalizedLittleGameKey(p.Name) == targetNorm))
+                        targetGroupIds.Add(group.Id);
+                }
+            }
+        }
+
+        foreach (var groupId in targetGroupIds)
+        {
+            foreach (var prop in scene.GetEntitiesInGroup<EntityProp>(groupId))
+            {
+                var isEntryPipe = prop.PropInfo.PropID is 105005 or 105006 ||
+                                  (prop.PropInfo.PropID == 105032 && prop.InstId == 300001 &&
+                                   prop.State == PropStateEnum.Locked);
+                if (!isEntryPipe) continue;
+                if (prop.State is PropStateEnum.Closed or PropStateEnum.Locked)
+                    await prop.SetState(PropStateEnum.Open);
+            }
+        }
+    }
+
+    public async ValueTask ApplyRunningRaidSceneTransfers()
+    {
+        if (!Enabled || Player.TaskManager?.LevelTask == null) return;
+
+        foreach (var id in GetRunningSubMissionIdList())
+        {
+            if (!GameData.SubMissionInfoData.TryGetValue(id, out var subMission)) continue;
+            var info = subMission.SubMissionInfo;
+            if (info is not { FinishType: MissionFinishTypeEnum.EnterFloor, ParamInt2: > 0 }) continue;
+            if (Player.Data.FloorId == info.ParamInt2) continue;
+
+            var transferTask = subMission.SubMissionTaskInfo?.OnStartSequece
+                .SelectMany(x => x.TaskList)
+                .FirstOrDefault(x => x.Type == "RPG.GameCore.RaidSceneTransfer");
+            if (transferTask == null) continue;
+
+            await Player.TaskManager.LevelTask.RaidSceneTransfer(transferTask, subMission);
+            break;
+        }
     }
 
     /// <summary>
@@ -1475,6 +1587,14 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
                 missionInfo.FinishedMainMissionIdList.Add((uint)mainId);
             else
                 missionInfo.UnfinishedMainMissionIdList.Add((uint)mainId);
+
+        foreach (var mainId in mainIds.Union(Data.RunningMainMissionIds))
+            if (Data.MainMissionCustomValues.TryGetValue(mainId, out var records) && records.Count > 0)
+                missionInfo.JLMGBADJBKN.Add(new MainMissionCustomValue
+                {
+                    MainMissionId = (uint)mainId,
+                    CustomValueList = MissionSyncBuilder.BuildCustomValueList(records)
+                });
 
         // Report activities on this floor as unfinished so map icons and entrance NPCs stay active.
         // This changes the scene snapshot, not mission state.
