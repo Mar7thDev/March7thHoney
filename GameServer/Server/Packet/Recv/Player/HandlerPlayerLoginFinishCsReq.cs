@@ -26,6 +26,7 @@ public class HandlerPlayerLoginFinishCsReq : PlayerHandler
             player?.MissionManager?.Data.FinishedMainMissionIds ?? []));
         var daily = player?.GetComponentOrDefault<DailyActiveManager>();
         if (daily != null) await connection.SendPacket(new PacketDailyActiveInfoNotify(daily));
+        if (player?.MissionManager != null) await player.MissionManager.ApplyRunningRaidSceneTransfers();
         await SendHoyoToonLuaAutoRun(connection);
     }
 

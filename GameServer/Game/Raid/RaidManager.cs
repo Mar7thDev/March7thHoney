@@ -302,6 +302,9 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
 
         if (record.Status == RaidStatus.Finish)
         {
+            Data.CurRaidId = 0;
+            Data.CurRaidWorldLevel = 0;
+            MarkDirty();
             // Official: the raid's own mains are removed when a finished run is left.
             foreach (var mainId in config?.MainMissionIDList ?? [])
                 await Player.MissionManager!.RemoveMainMission(mainId);
@@ -312,6 +315,9 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
             if (config?.FinishEntranceID is not > 0 ||
                 !(await Player.TryEnterScene(config.FinishEntranceID, 0, true)).Success)
                 await ReturnToOldSpot(record);
+            if (config == null) await ClearRaid(record.RaidId, record.WorldLevel);
+            await Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.RaidFinishedAndTransfer);
+            return;
         }
         else
         {
@@ -324,7 +330,6 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
             if (!save || config == null) await ClearRaid(record.RaidId, record.WorldLevel);
         }
 
-        if (config == null && record.Status == RaidStatus.Finish) await ClearRaid(record.RaidId, record.WorldLevel);
         Data.CurRaidId = 0;
         Data.CurRaidWorldLevel = 0;
         MarkDirty();

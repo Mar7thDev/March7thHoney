@@ -1373,6 +1373,27 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
         await ApplyRunningMissionPropStates();
     }
 
+    public async ValueTask ApplyRunningRaidSceneTransfers()
+    {
+        if (!Enabled || Player.TaskManager?.LevelTask == null) return;
+
+        foreach (var id in GetRunningSubMissionIdList())
+        {
+            if (!GameData.SubMissionInfoData.TryGetValue(id, out var subMission)) continue;
+            var info = subMission.SubMissionInfo;
+            if (info is not { FinishType: MissionFinishTypeEnum.EnterFloor, ParamInt2: > 0 }) continue;
+            if (Player.Data.FloorId == info.ParamInt2) continue;
+
+            var transferTask = subMission.SubMissionTaskInfo?.OnStartSequece
+                .SelectMany(x => x.TaskList)
+                .FirstOrDefault(x => x.Type == "RPG.GameCore.RaidSceneTransfer");
+            if (transferTask == null) continue;
+
+            await Player.TaskManager.LevelTask.RaidSceneTransfer(transferTask, subMission);
+            break;
+        }
+    }
+
     /// <summary>
     ///     Re-applies the ChangePropState level task of every RUNNING sub on the current floor whose graph
     ///     carries the task - PropState subs (target in ParamInt1/ParamInt2) and story Talk subs whose graph

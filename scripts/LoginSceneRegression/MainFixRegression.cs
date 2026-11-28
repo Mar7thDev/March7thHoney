@@ -337,6 +337,45 @@ internal static class MainFixRegression
             player.Data.EntryId == 101010102);
         check("reset raid notify carries an empty item list", RaidInfoNotify.Parser.ParseFrom(
             new March7thHoney.GameServer.Server.Packet.Send.Raid.PacketRaidInfoNotify().Data).ItemList != null);
+        if (GameData.MapEntranceData.ContainsKey(40571002) &&
+            GameData.SubMissionInfoData.TryGetValue(105470310, out var raidTransferSub))
+        {
+            player.RaidManager!.Data.CurRaidId = 40571;
+            player.MissionManager!.Data.EnableMissionOverride = true;
+            player.MissionManager.Data.SetMainMissionStatus(1054703, MissionPhaseEnum.Accept);
+            player.MissionManager.Data.SetSubMissionStatus(105470310, MissionPhaseEnum.Accept);
+            var raidTransferTask = raidTransferSub.SubMissionTaskInfo?.OnStartSequece
+                .SelectMany(x => x.TaskList)
+                .FirstOrDefault(x => x.Type == "RPG.GameCore.RaidSceneTransfer");
+            if (raidTransferTask != null)
+                await player.TaskManager!.LevelTask.RaidSceneTransfer(raidTransferTask, raidTransferSub);
+            check("RaidSceneTransfer moves player to target raid floor 40571002 and finishes 105470310",
+                raidTransferTask != null && player.Data.FloorId == 40571002 &&
+                player.MissionManager.GetSubMissionStatus(105470310) == MissionPhaseEnum.Finish);
+            player.RaidManager.Data.CurRaidId = 0;
+        }
+        if (GameData.RaidConfigData.ContainsKey(4057300) &&
+            GameData.MainMissionData.ContainsKey(1054705) &&
+            GameData.MainMissionData.ContainsKey(1054708))
+        {
+            var raidPlayer = new PlayerInstance(60947);
+            await raidPlayer.InitializeAsync();
+            raidPlayer.Connection = new ProbeConnection(peer) { Player = raidPlayer };
+            var mm = raidPlayer.MissionManager!;
+            mm.Data.EnableMissionOverride = true;
+            mm.Data.SetMainMissionStatus(1054705, MissionPhaseEnum.Accept);
+            mm.Data.SetSubMissionStatus(105470534, MissionPhaseEnum.Accept);
+            mm.Data.SetSubMissionStatus(105470535, MissionPhaseEnum.Accept);
+            var raidRec = await raidPlayer.RaidManager!.EnterRaid(40573, 0);
+            await mm.HandleTalkStr("Mission_105470801");
+            await mm.HandleTalkStr("Mission_105470802");
+            await raidPlayer.RaidManager.LeaveRaid(false);
+            check("leaving finished Raid 40573 clears CurRaidId and immediately settles 105470534 & 105470535",
+                raidRec != null && raidPlayer.RaidManager.Data.CurRaidId == 0 &&
+                mm.GetSubMissionStatus(105470534) == MissionPhaseEnum.Finish &&
+                mm.GetSubMissionStatus(105470535) == MissionPhaseEnum.Finish);
+            raidPlayer.Connection = null;
+        }
         player.Connection = null;
 
         await HeadFrameDisplay(scratch, peer, check, capture);
