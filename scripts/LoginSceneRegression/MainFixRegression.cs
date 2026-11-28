@@ -337,6 +337,34 @@ internal static class MainFixRegression
             player.Data.EntryId == 101010102);
         check("reset raid notify carries an empty item list", RaidInfoNotify.Parser.ParseFrom(
             new March7thHoney.GameServer.Server.Packet.Send.Raid.PacketRaidInfoNotify().Data).ItemList != null);
+        if (GameData.MapEntranceData.ContainsKey(2056101))
+        {
+            await player.EnterSceneByEntranceId(2056101, 0, 0, false);
+            if (player.SceneInstance is { FloorId: 20561001 } scene20561 &&
+                scene20561.FloorInfo?.Groups.TryGetValue(4, out var g4) == true &&
+                g4.PropList.Any(p => p.ID == 300002 && p.HasEditorOnlyLevelGraph()))
+            {
+                var g4Props = scene20561.GetEntitiesInGroup<March7thHoney.GameServer.Game.Scene.Entity.EntityProp>(4);
+                check("20561001 G4 DesignerBackup prop 300002 is excluded while normal prop 300001 loads",
+                    g4Props.All(p => p.InstId != 300002) && g4Props.Any(p => p.InstId == 300001));
+            }
+        }
+        if (GameData.MapEntranceData.ContainsKey(40571001) &&
+            GameData.SubMissionInfoData.ContainsKey(105470307))
+        {
+            player.RaidManager!.Data.CurRaidId = 40571;
+            player.MissionManager!.Data.EnableMissionOverride = true;
+            player.MissionManager.Data.SetMainMissionStatus(1054703, MissionPhaseEnum.Accept);
+            player.MissionManager.Data.SetSubMissionStatus(105470307, MissionPhaseEnum.Accept);
+            await player.EnterSceneByEntranceId(40571001, 0, 0, false);
+            var g5Loaded = player.SceneInstance!.Groups.Contains(5);
+            await player.BattleManager!.StartStage(20571084);
+            var battleStageId = player.BattleInstance?.StageId ?? 0;
+            player.BattleInstance = null;
+            player.RaidManager.Data.CurRaidId = 0;
+            check("40571001 G5 loads for 105470307 and StartStage(20571084) resolves StageWin 20571085x",
+                g5Loaded && battleStageId.ToString().StartsWith("20571085"));
+        }
         player.Connection = null;
 
         await HeadFrameDisplay(scratch, peer, check, capture);

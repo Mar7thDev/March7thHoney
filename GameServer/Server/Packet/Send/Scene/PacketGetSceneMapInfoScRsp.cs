@@ -78,9 +78,14 @@ public class PacketGetSceneMapInfoScRsp : BasePacket
             var dimensionGroups = floorInfo.DimensionList.FirstOrDefault(x => x.ID == (int)mazeMap.DimensionId)?
                 .GroupIDList.ToHashSet();
             var missionData = player.MissionManager!.Data;
-            var runningBattleIds = player.MissionManager.GetRunningSubMissionList()
+            var runningSubs = player.MissionManager.GetRunningSubMissionList();
+            var runningBattleIds = runningSubs
                 .Where(x => x.FinishType == MissionFinishTypeEnum.StageWin)
                 .Select(x => x.ParamInt1).ToHashSet();
+            var runningFloorGroupIds = runningSubs
+                .Where(x => x.LevelFloorID == (int)floorId && x.GroupIDList != null)
+                .SelectMany(x => x.GroupIDList!)
+                .ToHashSet();
             var dropInert = GameData.MazePlaneData.TryGetValue(mapData.PlaneID, out var inertPlane) &&
                             SceneCompatRules.DropsInertServerGroups(mapData.PlaneID, inertPlane.PlaneType);
             foreach (var group in floorInfo.Groups.Values)
@@ -120,7 +125,8 @@ public class PacketGetSceneMapInfoScRsp : BasePacket
                     group.UnloadCondition.IsTrue(missionData, false) ||
                     group.ForceUnloadCondition.IsTrue(missionData, false) ||
                     !group.SavedValueCondition.IsTrue(floorSavedData) ||
-                    (group.RelatedBattleId.Count > 0 && !group.RelatedBattleId.Any(runningBattleIds.Contains)))
+                    (group.RelatedBattleId.Count > 0 && !group.RelatedBattleId.Any(runningBattleIds.Contains) &&
+                     !runningFloorGroupIds.Contains(group.Id)))
                     continue;
 
                 mazeMap.MazeGroupList.Add(new MazeGroup { GroupId = (uint)group.Id });
