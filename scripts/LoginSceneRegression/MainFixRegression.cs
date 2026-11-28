@@ -10,6 +10,7 @@ using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Mission;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Avatar;
+using March7thHoney.GameServer.Game.Mission;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet;
 using March7thHoney.GameServer.Server.Packet.Recv.Lineup;
@@ -337,6 +338,25 @@ internal static class MainFixRegression
             player.Data.EntryId == 101010102);
         check("reset raid notify carries an empty item list", RaidInfoNotify.Parser.ParseFrom(
             new March7thHoney.GameServer.Server.Packet.Send.Raid.PacketRaidInfoNotify().Data).ItemList != null);
+        check("TeleportRotatableRegion mission finish action handler is registered",
+            MissionManager.ActionHandlers.ContainsKey(FinishActionTypeEnum.TeleportRotatableRegion));
+        check("SetCustomValue mission finish action handler is registered",
+            MissionManager.ActionHandlers.ContainsKey(FinishActionTypeEnum.SetCustomValue));
+        var tpEntry = GameData.MapEntranceData.ContainsKey(2056101) ? 2056101 : PlayerInstance.DefaultSpawnEntryId;
+        var tpGroup = tpEntry == 2056101 ? 360 : 0;
+        var tpAnchor = tpEntry == 2056101 ? 1 : 0;
+        await MissionManager.ActionHandlers[FinishActionTypeEnum.TeleportRotatableRegion]
+            .OnHandle([tpEntry, tpGroup, tpAnchor, 0, 0], [], player);
+        check("TeleportRotatableRegion moves player to target entrance", player.Data.EntryId == tpEntry);
+        if (GameData.MainMissionData.TryGetValue(1054707, out var m1054707) && m1054707.MissionInfo != null)
+        {
+            player.MissionManager!.Data.EnableMissionOverride = true;
+            player.MissionManager.Data.SetMainMissionStatus(1054707, MissionPhaseEnum.Accept);
+            await player.MissionManager.HandleFinishAction(m1054707.MissionInfo, 105470711);
+            check("SetCustomValue finish action stores MCV_BallCheckpoint=1 on main 1054707",
+                player.MissionManager.Data.MainMissionCustomValues.TryGetValue(1054707, out var cvList) &&
+                cvList.Any(x => x.Key == "MCV_BallCheckpoint" && x.CustomValue == 1));
+        }
         player.Connection = null;
 
         await HeadFrameDisplay(scratch, peer, check, capture);

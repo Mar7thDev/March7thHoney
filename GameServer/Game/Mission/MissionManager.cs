@@ -614,12 +614,29 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
             await Player.SendPacket(new PacketHeartDialScriptChangeScNotify(HeartDialUnlockStatus.UnlockAll));
     }
 
+    internal int CurrentFinishActionMainMissionId { get; private set; }
+
     public async ValueTask HandleFinishAction(MissionInfo info, int subMissionId)
     {
         var subMission = info.SubMissionList.Find(x => x.ID == subMissionId);
         if (subMission == null) return;
 
-        foreach (var action in subMission.FinishActionList ?? []) await HandleFinishAction(action);
+        var prevMainId = CurrentFinishActionMainMissionId;
+        CurrentFinishActionMainMissionId = info.MainMissionID;
+        try
+        {
+            var actions = subMission.FinishActionList ?? [];
+            foreach (var action in actions)
+                if (action.FinishActionType == FinishActionTypeEnum.SetFloorSavedValue)
+                    await HandleFinishAction(action);
+            foreach (var action in actions)
+                if (action.FinishActionType != FinishActionTypeEnum.SetFloorSavedValue)
+                    await HandleFinishAction(action);
+        }
+        finally
+        {
+            CurrentFinishActionMainMissionId = prevMainId;
+        }
     }
 
     public async ValueTask HandleFinishAction(FinishActionInfo actionInfo)
