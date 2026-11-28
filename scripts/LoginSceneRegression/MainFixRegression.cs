@@ -337,6 +337,36 @@ internal static class MainFixRegression
             player.Data.EntryId == 101010102);
         check("reset raid notify carries an empty item list", RaidInfoNotify.Parser.ParseFrom(
             new March7thHoney.GameServer.Server.Packet.Send.Raid.PacketRaidInfoNotify().Data).ItemList != null);
+        if (GameData.SubMissionInfoData.ContainsKey(105470503))
+        {
+            player.MissionManager!.Data.EnableMissionOverride = true;
+            player.MissionManager.Data.SetMainMissionStatus(1054705, MissionPhaseEnum.Accept);
+            player.MissionManager.Data.SetSubMissionStatus(105470503, MissionPhaseEnum.Accept);
+            await player.MessageManager!.FinishPerformSection(1508701);
+            check("FinishPerformSection completes standalone IsPerformMessage sub-mission 105470503 (1508701)",
+                player.MissionManager.GetSubMissionStatus(105470503) == MissionPhaseEnum.Finish);
+        }
+        if (GameData.SubMissionInfoData.ContainsKey(105470507))
+        {
+            player.MissionManager!.Data.EnableMissionOverride = true;
+            player.MissionManager.Data.SetMainMissionStatus(1054705, MissionPhaseEnum.Accept);
+            player.MissionManager.Data.SetSubMissionStatus(105470507, MissionPhaseEnum.Accept);
+            var talkReq = new FinishTalkMissionCsReq { TalkStr = "Mission_105470507", SubMissionId = 0 };
+            talkReq.CustomValueList.Add(new MissionCustomValue { Index = 1, BGDFHBAANLB = "FareWellChoice", CustomValue = 1 });
+            await new March7thHoney.GameServer.Server.Packet.Recv.Mission.HandlerFinishTalkMissionCsReq()
+                .OnHandle(connection, [], talkReq.ToByteArray());
+            var statusReq = new GetMissionStatusCsReq();
+            statusReq.MainMissionIdList.Add(1054705);
+            var statusRsp = GetMissionStatusScRsp.Parser.ParseFrom(
+                new March7thHoney.GameServer.Server.Packet.Send.Mission.PacketGetMissionStatusScRsp(statusReq, player).Data);
+            var sceneMission = player.MissionManager.BuildSceneMissionInfo(
+                player.SceneInstance?.FloorInfo, player.SceneInstance?.FloorId ?? 0);
+            check("FinishTalkMissionCsReq(SubMissionId=0) stores CustomValueList and GetMissionStatus/SceneMissionInfo ship it",
+                player.MissionManager.GetSubMissionStatus(105470507) == MissionPhaseEnum.Finish &&
+                statusRsp.MainMissionMcvList.Any(m => m.MainMissionId == 1054705 &&
+                    m.CustomValueList.CustomValueList.Any(v => v.BGDFHBAANLB == "FareWellChoice" && v.CustomValue == 1)) &&
+                sceneMission.JLMGBADJBKN.Any(m => m.MainMissionId == 1054705));
+        }
         player.Connection = null;
 
         await HeadFrameDisplay(scratch, peer, check, capture);

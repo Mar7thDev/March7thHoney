@@ -22,13 +22,9 @@ public class HandlerFinishPerformSectionIdCsReq : Handler<FinishPerformSectionId
         // Same section-finish path as FinishSectionIdCsReq; the manager syncs the group/section status and
         // fans out the MessageSectionFinish / MessagePerformSectionFinish mission types. The picked items are
         // recorded first: they are the section's history, and FinishSection only accepts a running section.
-        if (sectionId != 0 && player.MessageManager?.GetMessageSectionData(sectionId) != null)
-        {
-            if (payload != null)
-                player.MessageManager.RecordConfirmedItems(sectionId,
-                    payload.DPPAFBAHEFH.Select(item => (int)item.ItemId));
-            await player.MessageManager.FinishSection(sectionId);
-        }
+        if (sectionId != 0 && player.MessageManager != null)
+            await player.MessageManager.FinishPerformSection(sectionId,
+                payload?.DPPAFBAHEFH.Select(item => (int)item.ItemId));
 
         await connection.SendPacket(new PacketFinishPerformSectionIdScRsp(payload));
     }

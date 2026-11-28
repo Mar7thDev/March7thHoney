@@ -1476,6 +1476,14 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
             else
                 missionInfo.UnfinishedMainMissionIdList.Add((uint)mainId);
 
+        foreach (var mainId in mainIds.Union(Data.RunningMainMissionIds))
+            if (Data.MainMissionCustomValues.TryGetValue(mainId, out var records) && records.Count > 0)
+                missionInfo.JLMGBADJBKN.Add(new MainMissionCustomValue
+                {
+                    MainMissionId = (uint)mainId,
+                    CustomValueList = MissionSyncBuilder.BuildCustomValueList(records)
+                });
+
         // Report activities on this floor as unfinished so map icons and entrance NPCs stay active.
         // This changes the scene snapshot, not mission state.
         if (floorId != 0)
