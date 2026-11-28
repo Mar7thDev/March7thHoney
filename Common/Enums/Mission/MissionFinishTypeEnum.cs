@@ -807,6 +807,7 @@ public enum MissionFinishTypeEnum
     BangbooMaxSimultaneousIdCount = 480507,
     ExpeditionBattlePassStageCnt = 430011,
     DiceyDungeonNodeFinish = 480600,
+    FiveDimFinish = 480700,
     DiceyDungeonLevelFinish = 480601,
     RealityShowBuffNum = 470011,
     RealityShowResult = 470012,

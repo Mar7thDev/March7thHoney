@@ -20,12 +20,12 @@ public class PacketUpdateGroupPropertyScRsp : BasePacket
     {
         var proto = new UpdateGroupPropertyScRsp
         {
-            // TODO: the old and new value are not sent. Which fields carry them has not been confirmed since
-            // 4.3 renamed them.
             DimensionId = req.DimensionId,
             FloorId = req.FloorId,
             GroupId = (uint)data.GroupId,
-            PropertyName = data.PropertyName
+            PropertyName = data.PropertyName,
+            OldValue = data.OldValue,
+            NewValue = data.NewValue
         };
 
         SetData(proto);

@@ -45,6 +45,7 @@ public partial class SceneInstance
 
         var oldValue = propertyData.GetValueOrDefault(name, property.DefaultValue);
         propertyData[name] = value;
+        March7thHoney.Database.DatabaseHelper.MarkDirty(Player.Uid);
         // notify
         var res = new GroupPropertyRefreshData(groupId, name, oldValue, value);
         await Player.SendPacket(
@@ -57,8 +58,44 @@ public partial class SceneInstance
             foreach (var key in group.ControlFloorSavedValue)
                 await UpdateFloorSavedValue(key, value);
 
+        if (name == "CrystalBall_State_GP")
+            await UpdateFloorSavedValue("FSV_StageState_01", value);
+
+        await SyncLittleGameFloorSavedValue(name, value);
+        await Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.GroupPropertyValue);
+        await Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.FiveDimFinish);
+
         return res;
     }
+
+    private async ValueTask SyncLittleGameFloorSavedValue(string propertyName, int value)
+    {
+        if (FloorInfo == null) return;
+        var target = TryExtractNormalizedLittleGameKey(propertyName);
+        if (target == null) return;
+
+        foreach (var fsv in FloorInfo.FloorSavedValue)
+        {
+            if (string.IsNullOrEmpty(fsv.Name)) continue;
+            if (NormalizeFloorSavedValueKey(fsv.Name) == target)
+                await UpdateFloorSavedValue(fsv.Name, value);
+        }
+    }
+
+    internal static string? TryExtractNormalizedLittleGameKey(string propertyName)
+    {
+        if (!propertyName.StartsWith("LG_", StringComparison.Ordinal)) return null;
+        var secondUnderscore = propertyName.IndexOf('_', 3);
+        if (secondUnderscore <= 3 || secondUnderscore + 1 >= propertyName.Length) return null;
+        var normalized = NormalizeLittleGameKey(propertyName[(secondUnderscore + 1)..]);
+        return normalized.Length > 0 ? normalized : null;
+    }
+
+    internal static string NormalizeLittleGameKey(string key) =>
+        key.ToLowerInvariant().Replace("finished", "finish");
+
+    internal static string NormalizeFloorSavedValueKey(string name) =>
+        NormalizeLittleGameKey(name.StartsWith("FSV_", StringComparison.OrdinalIgnoreCase) ? name[4..] : name);
 
     public async ValueTask UpdateFloorSavedValue(string name, int value)
     {
@@ -71,6 +108,7 @@ public partial class SceneInstance
         if (FloorInfo?.FloorSavedValue.All(x => x.Name != name) == true) return; // not exist
 
         floorSavedData[name] = value;
+        March7thHoney.Database.DatabaseHelper.MarkDirty(Player.Uid);
 
         await Player.SendPacket(new PacketUpdateFloorSavedValueNotify(name, value, Player));
         await Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.FloorSavedValue);
