@@ -11,9 +11,6 @@ public class MissionHandlerDelSubMission : MissionFinishActionHandler
         if (@params.Count < 1) return;
 
         foreach (var subMissionId in @params)
-        {
-            await player.MissionManager!.AcceptSubMission(subMissionId);
-            await player.MissionManager!.FinishSubMission(subMissionId);
-        }
+            await player.MissionManager!.DeleteSubMission(subMissionId);
     }
 }
