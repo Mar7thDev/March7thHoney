@@ -10,6 +10,7 @@ using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Mission;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Avatar;
+using March7thHoney.GameServer.Game.Mission;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet;
 using March7thHoney.GameServer.Server.Packet.Recv.Lineup;
@@ -337,6 +338,28 @@ internal static class MainFixRegression
             player.Data.EntryId == 101010102);
         check("reset raid notify carries an empty item list", RaidInfoNotify.Parser.ParseFrom(
             new March7thHoney.GameServer.Server.Packet.Send.Raid.PacketRaidInfoNotify().Data).ItemList != null);
+        if (GameData.MainMissionData.ContainsKey(1054705) && GameData.SubMissionInfoData.ContainsKey(105470508))
+        {
+            var cancelPlayer = new PlayerInstance(60946);
+            await cancelPlayer.InitializeAsync();
+            cancelPlayer.Connection = new ProbeConnection(peer) { Player = cancelPlayer };
+            var mm = cancelPlayer.MissionManager!;
+            mm.Data.EnableMissionOverride = true;
+            mm.Data.SetMainMissionStatus(1054705, MissionPhaseEnum.Accept);
+            mm.Data.SetSubMissionStatus(105470507, MissionPhaseEnum.Finish);
+            mm.Data.SetSubMissionStatus(105470508, MissionPhaseEnum.Accept);
+            mm.Data.SetSubMissionStatus(105470523, MissionPhaseEnum.Accept);
+            await mm.HandleTalkStr("Mission_105470508");
+            check("delSubMission cancels 105470523 without running its teleport or follow-up branch",
+                mm.GetSubMissionStatus(105470508) == MissionPhaseEnum.Finish &&
+                mm.GetSubMissionStatus(105470523) == MissionPhaseEnum.Cancel &&
+                mm.GetSubMissionStatus(105470516) == MissionPhaseEnum.None &&
+                cancelPlayer.Data.FloorId == 10502001);
+            await mm.HandleTalkStr("Mission_105470536");
+            check("cancelled sub-mission 105470523 does not resurrect when subsequent sub-missions finish",
+                mm.GetSubMissionStatus(105470523) == MissionPhaseEnum.Cancel);
+            cancelPlayer.Connection = null;
+        }
         player.Connection = null;
 
         await HeadFrameDisplay(scratch, peer, check, capture);
