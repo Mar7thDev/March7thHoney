@@ -196,15 +196,11 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         // Fixed-level trials resolve the stage at world level 0. World-level-scaled story
         // trials (IsUseWorldLevel) keep the player's own world level.
         var resolveLevel = Player.LineupManager!.StageResolveWorldLevel();
-        GameData.StageConfigData.TryGetValue(eventId, out var stageConfig);
+        var stageConfig = ResolveStageForEvent(eventId, resolveLevel);
         if (stageConfig == null)
         {
-            GameData.StageConfigData.TryGetValue(eventId * 10 + resolveLevel, out stageConfig);
-            if (stageConfig == null)
-            {
-                await Player.SendPacket(new PacketSceneEnterStageScRsp());
-                return;
-            }
+            await Player.SendPacket(new PacketSceneEnterStageScRsp());
+            return;
         }
 
         if (NextBattleStageConfig != null)
@@ -233,6 +229,30 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
 
         await Player.SendPacket(new PacketSceneEnterStageScRsp(battleInstance));
         Player.SceneInstance?.OnEnterStage();
+    }
+
+    private StageConfigExcel? ResolveStageForEvent(int eventId, int resolveLevel)
+    {
+        if (TryResolveStageFromEvent(eventId, resolveLevel, out var stageConfig) && stageConfig != null)
+            return stageConfig;
+
+        var floorInfo = Player.SceneInstance?.FloorInfo;
+        var floorId = Player.SceneInstance?.FloorId ?? 0;
+        if (floorInfo == null || Player.MissionManager == null) return null;
+
+        foreach (var sub in Player.MissionManager.GetRunningSubMissionList())
+        {
+            if (sub.FinishType != MissionFinishTypeEnum.StageWin || sub.ParamInt1 <= 0) continue;
+            if (sub.LevelFloorID != 0 && sub.LevelFloorID != floorId) continue;
+            if (sub.GroupIDList == null || !sub.GroupIDList.Any(gid =>
+                    floorInfo.Groups.TryGetValue(gid, out var g) && g.RelatedBattleId.Contains(eventId)))
+                continue;
+
+            if (TryResolveStageFromEvent(sub.ParamInt1, resolveLevel, out stageConfig) && stageConfig != null)
+                return stageConfig;
+        }
+
+        return null;
     }
 
     public async ValueTask<BattleInstance?> StartCocoonStage(int cocoonId, int wave, int worldLevel)

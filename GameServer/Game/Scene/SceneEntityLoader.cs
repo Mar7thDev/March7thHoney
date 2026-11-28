@@ -21,7 +21,16 @@ public class SceneEntityLoader(SceneInstance scene)
     ];
 
     private bool IsIncompatibleProp(GroupInfo group, PropInfo info) =>
-        MissingLevelGraphProps.Contains((Scene.FloorId, group.Id, info.ID));
+        MissingLevelGraphProps.Contains((Scene.FloorId, group.Id, info.ID)) ||
+        info.HasEditorOnlyLevelGraph();
+
+    private bool IsRelatedBattleActive(GroupInfo group)
+    {
+        if (group.RelatedBattleId.Count == 0) return true;
+        return Scene.Player.MissionManager!.GetRunningSubMissionList().Any(x =>
+            (x.FinishType == MissionFinishTypeEnum.StageWin && group.RelatedBattleId.Contains(x.ParamInt1)) ||
+            (x.LevelFloorID == Scene.FloorId && x.GroupIDList?.Contains(group.Id) == true));
+    }
 
     // Props a PropState sub names as its target (ParamInt1 group, ParamInt2 inst): a mission step drives those, so
     // their authored state is the mission's to change.
@@ -203,10 +212,7 @@ public class SceneEntityLoader(SceneInstance scene)
                     Scene.Groups.Remove(group.Id);
                     unloadedGroups.Add(group.Id);
                 }
-                else if (group.RelatedBattleId.Count > 0 && !Scene.Player.MissionManager!.GetRunningSubMissionList()
-                             .Any(x =>
-                                 x.FinishType == MissionFinishTypeEnum.StageWin &&
-                                 group.RelatedBattleId.Contains(x.ParamInt1)))
+                else if (!IsRelatedBattleActive(group))
                 {
                     foreach (var entity in Scene.Entities.Values.Where(entity => entity.GroupId == group.Id))
                     {
@@ -282,8 +288,7 @@ public class SceneEntityLoader(SceneInstance scene)
         if (Scene.Groups.Contains(info.Id) || Scene.Entities.Values.Any(x => x.GroupId == info.Id))
             return null;
 
-        if (info.RelatedBattleId.Count > 0 && !Scene.Player.MissionManager!.GetRunningSubMissionList().Any(x =>
-                x.FinishType == MissionFinishTypeEnum.StageWin && info.RelatedBattleId.Contains(x.ParamInt1)))
+        if (!IsRelatedBattleActive(info))
             return null; // mission not activated
 
         // TODO atmosphere conditions
