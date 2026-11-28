@@ -49,6 +49,8 @@ public class MissionData : BaseDatabaseDataHelper
     // actual gameplay must not pay those main/sub rewards again. Existing rows default to empty.
     public List<int> ReplayedRogueTutorialRewardIds { get; set; } = [];
 
+    public List<int> CancelledSubMissionIds { get; set; } = [];
+
     /// <summary>Whether the mission system is live for this player. Get-only, so it is not a DB column.</summary>
     public bool MissionEnabled => EnableMissionOverride ?? ConfigManager.Config.ServerOption.EnableMission;
 
@@ -64,6 +66,7 @@ public class MissionData : BaseDatabaseDataHelper
     {
         if (FinishedSubMissionIds.Contains(missionId)) return MissionPhaseEnum.Finish;
         if (RunningSubMissionIds.Contains(missionId)) return MissionPhaseEnum.Accept;
+        if (CancelledSubMissionIds?.Contains(missionId) == true) return MissionPhaseEnum.Cancel;
         return MissionPhaseEnum.None;
     }
 
@@ -98,20 +101,30 @@ public class MissionData : BaseDatabaseDataHelper
 
     public void SetSubMissionStatus(int missionId, MissionPhaseEnum phase)
     {
+        CancelledSubMissionIds ??= [];
         if (phase == MissionPhaseEnum.Finish)
         {
             FinishedSubMissionIds.SafeAdd(missionId);
             RunningSubMissionIds.Remove(missionId);
+            CancelledSubMissionIds.Remove(missionId);
         }
         else if (phase == MissionPhaseEnum.Accept)
         {
             FinishedSubMissionIds.Remove(missionId);
             RunningSubMissionIds.SafeAdd(missionId);
+            CancelledSubMissionIds.Remove(missionId);
+        }
+        else if (phase == MissionPhaseEnum.Cancel)
+        {
+            FinishedSubMissionIds.Remove(missionId);
+            RunningSubMissionIds.Remove(missionId);
+            CancelledSubMissionIds.SafeAdd(missionId);
         }
         else
         {
             FinishedSubMissionIds.Remove(missionId);
             RunningSubMissionIds.Remove(missionId);
+            CancelledSubMissionIds.Remove(missionId);
         }
     }
 

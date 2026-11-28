@@ -474,6 +474,26 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
         await Player.RaidManager!.CheckIfLeaveRaid();
     }
 
+    public async ValueTask DeleteSubMission(int missionId)
+    {
+        if (!Enabled || missionId <= 0) return;
+        if (Data.GetSubMissionStatus(missionId) == MissionPhaseEnum.None) return;
+
+        Data.SetSubMissionStatus(missionId, MissionPhaseEnum.Cancel);
+        Data.SubMissionProgressDict.Remove(missionId, out _);
+        DatabaseHelper.MarkDirty(Player.Uid);
+
+        var sync = new MissionSync();
+        sync.MissionList.Add(new Proto.Mission
+        {
+            Id = (uint)missionId,
+            Status = MissionStatus.MissionNone
+        });
+        await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
+        if (Player.SceneInstance != null)
+            await Player.SceneInstance.SyncGroupInfo();
+    }
+
     public async ValueTask FinishSubMission(int missionId)
     {
         if (!Enabled || IsCompletedActivitySubMission(missionId)) return;
