@@ -1,4 +1,5 @@
 using March7thHoney.Enums.Mission;
+using March7thHoney.GameServer.Game.Mission;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
@@ -25,6 +26,16 @@ public class PacketGetMissionStatusScRsp : BasePacket
             else
             {
                 proto.UnfinishedMainMissionIdList.Add(item);
+            }
+
+            if (player.MissionManager.Data.MainMissionCustomValues.TryGetValue((int)item, out var records) &&
+                records.Count > 0)
+            {
+                proto.MainMissionMcvList.Add(new MainMissionCustomValue
+                {
+                    MainMissionId = item,
+                    CustomValueList = MissionSyncBuilder.BuildCustomValueList(records)
+                });
             }
         }
 
