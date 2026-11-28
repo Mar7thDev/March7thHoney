@@ -337,6 +337,49 @@ internal static class MainFixRegression
             player.Data.EntryId == 101010102);
         check("reset raid notify carries an empty item list", RaidInfoNotify.Parser.ParseFrom(
             new March7thHoney.GameServer.Server.Packet.Send.Raid.PacketRaidInfoNotify().Data).ItemList != null);
+        if (GameData.MapEntranceData.ContainsKey(2057101) &&
+            GameData.SubMissionInfoData.TryGetValue(105470106, out var fdSub))
+        {
+            player.MissionManager!.Data.EnableMissionOverride = true;
+            player.MissionManager.Data.SetMainMissionStatus(1054701, MissionPhaseEnum.Accept);
+            player.MissionManager.Data.SetSubMissionStatus(105470106, MissionPhaseEnum.Accept);
+            await player.EnterSceneByEntranceId(2057101, 0, 0, false);
+            var fdEntryPipe = player.SceneInstance!.GetEntitiesInGroup<March7thHoney.GameServer.Game.Scene.Entity.EntityProp>(134)
+                .FirstOrDefault(prop => prop.InstId == 300001);
+            var fdExitPipe = player.SceneInstance.GetEntitiesInGroup<March7thHoney.GameServer.Game.Scene.Entity.EntityProp>(134)
+                .FirstOrDefault(prop => prop.InstId == 300002);
+            check("running FiveDim mission 105470106 auto-opens G134 entry pipe 300001 without opening exit pipe 300002",
+                fdEntryPipe?.State == PropStateEnum.Open && fdExitPipe?.State != PropStateEnum.Open);
+            await player.SceneInstance.UpdateGroupProperty(134, "LG_110001_Finish", 2);
+            check("FiveDimFinish sub-mission 105470106 completes when LG_110001_Finish reaches 2",
+                fdSub.SubMissionInfo != null &&
+                player.MissionManager.GetSubMissionStatus(105470106) == MissionPhaseEnum.Finish);
+        }
+        if (GameData.MapEntranceData.ContainsKey(2057201) &&
+            GameData.SubMissionInfoData.ContainsKey(105470609))
+        {
+            player.MissionManager!.Data.EnableMissionOverride = true;
+            player.MissionManager.Data.SetMainMissionStatus(1054706, MissionPhaseEnum.Accept);
+            player.MissionManager.Data.SetSubMissionStatus(105470609, MissionPhaseEnum.Accept);
+            await player.EnterSceneByEntranceId(2057201, 0, 0, false);
+            var fsv20572 = player.SceneInstance!.BuildClientFloorSavedData();
+            await player.SceneInstance.UpdateGroupProperty(14, "CrystalBall_State_GP", 1);
+            check("20572001 exposes zero-default FSVs and CrystalBall_State_GP syncs FSV_StageState_01 to finish 105470609",
+                fsv20572.ContainsKey("FSV_CrystalBallCanUse") && fsv20572.ContainsKey("FSV_StageState_01") &&
+                player.SceneInstance.GetFloorSavedValue("FSV_StageState_01") == 1 &&
+                player.MissionManager.GetSubMissionStatus(105470609) == MissionPhaseEnum.Finish);
+            if (GameData.SubMissionInfoData.ContainsKey(105470618))
+            {
+                player.MissionManager.Data.SetSubMissionStatus(105470618, MissionPhaseEnum.Accept);
+                await player.MissionManager.EnsureRunningFiveDimEntryPropsOpen();
+                var musicPipe = player.SceneInstance.GetEntitiesInGroup<March7thHoney.GameServer.Game.Scene.Entity.EntityProp>(9)
+                    .FirstOrDefault(prop => prop.InstId == 300001);
+                await player.SceneInstance.UpdateGroupProperty(9, "LG_110001_MusicLevelFinished", 1);
+                check("105470618 opens 20572001 G9 music pipe 300001 and finishes via LG_110001_MusicLevelFinished",
+                    musicPipe?.State == PropStateEnum.Open &&
+                    player.MissionManager.GetSubMissionStatus(105470618) == MissionPhaseEnum.Finish);
+            }
+        }
         player.Connection = null;
 
         await HeadFrameDisplay(scratch, peer, check, capture);

@@ -8,6 +8,12 @@ namespace March7thHoney.GameServer.Game.Mission.FinishType.Handler;
 [MissionFinishType(MissionFinishTypeEnum.GroupPropertyValue)]
 public class MissionHandlerGroupPropertyValue : MissionFinishTypeHandler
 {
+    public static bool MatchesMission(SubMissionInfo info) =>
+        info.FinishType is MissionFinishTypeEnum.GroupPropertyValue or MissionFinishTypeEnum.FiveDimFinish ||
+        (info.FinishType == MissionFinishTypeEnum.Unknown &&
+         info.ParamInt1 > 0 &&
+         info.ParamStr1.StartsWith("LG_", StringComparison.Ordinal));
+
     public override async ValueTask HandleMissionFinishType(PlayerInstance player, SubMissionInfo info, object? arg)
     {
         var floorId = info.LevelFloorID;
@@ -33,3 +39,6 @@ public class MissionHandlerGroupPropertyValue : MissionFinishTypeHandler
         if (prop == value) await player.QuestManager!.AddQuestProgress(quest.QuestID, 1);
     }
 }
+
+[MissionFinishType(MissionFinishTypeEnum.FiveDimFinish)]
+public class MissionHandlerFiveDimFinish : MissionHandlerGroupPropertyValue;

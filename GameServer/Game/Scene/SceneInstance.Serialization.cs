@@ -94,7 +94,7 @@ public partial class SceneInstance
         var persisted = Player.SceneData!.FloorSavedData.GetValueOrDefault(FloorId, []);
 
         foreach (var (name, defaultValue) in ResolveFloorSavedValueDefaults())
-            if (defaultValue != 0)
+            if (!string.IsNullOrEmpty(name))
                 result[name] = defaultValue;
 
         // Preserve the floor-wide activity-entry compatibility defaults. Platform-only stage
@@ -120,7 +120,10 @@ public partial class SceneInstance
 
     private static bool IsMainMissionStateValue(string name)
     {
-        return name is "SceneStateByMainMission" or "WorldStateByMainMission";
+        return name is "SceneStateByMainMission" or "WorldStateByMainMission" ||
+               name.StartsWith("FSV_FinishMainLine", StringComparison.OrdinalIgnoreCase) ||
+               name.StartsWith("FSV_LockMainLine", StringComparison.OrdinalIgnoreCase) ||
+               name.StartsWith("FSV_Final", StringComparison.OrdinalIgnoreCase);
     }
 
     // Initial snapshots and LOADED notifications must describe the same complete group.
