@@ -12,6 +12,7 @@ using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.DailyActive;
 using March7thHoney.GameServer.Game.Mission.FinishAction;
 using March7thHoney.GameServer.Game.Mission.FinishType;
+using March7thHoney.GameServer.Game.Mission.FinishType.Handler;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
@@ -392,6 +393,7 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
             {
                 await Player.SceneInstance.SyncGroupInfo();
                 await EnsureRunningKillMonsterTargetsVisible();
+                await EnsureRunningFiveDimEntryPropsOpen();
                 await SyncStartedKillMonsterSceneSnapshot(sync);
             }
         }
@@ -454,6 +456,7 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
             await Player.SceneInstance.SyncGroupInfo();
             await LoadRunningMissionGroupsForCurrentFloor();
             await EnsureRunningKillMonsterTargetsVisible();
+            await EnsureRunningFiveDimEntryPropsOpen();
             await SyncStartedKillMonsterSceneSnapshot(sync);
         }
 
@@ -509,6 +512,7 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
             await Player.SceneInstance.SyncGroupInfo();
             await LoadRunningMissionGroupsForCurrentFloor();
             await EnsureRunningKillMonsterTargetsVisible();
+            await EnsureRunningFiveDimEntryPropsOpen();
             await SyncStartedKillMonsterSceneSnapshot(sync);
         }
 
@@ -533,7 +537,12 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
 
         foreach (var nextMission in GetRunningSubMissionList())
         {
-            FinishTypeHandlers.TryGetValue(nextMission.FinishType, out var handler);
+            var finishType = FinishTypeHandlers.ContainsKey(nextMission.FinishType)
+                ? nextMission.FinishType
+                : MissionHandlerGroupPropertyValue.MatchesMission(nextMission)
+                    ? MissionFinishTypeEnum.GroupPropertyValue
+                    : nextMission.FinishType;
+            FinishTypeHandlers.TryGetValue(finishType, out var handler);
             if (handler != null) await handler.HandleMissionFinishType(Player, nextMission, null);
         }
 
@@ -719,7 +728,9 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
     {
         FinishTypeHandlers.TryGetValue(finishType, out var handler);
         foreach (var mission in GetRunningSubMissionList())
-            if (mission.FinishType == finishType)
+            if (mission.FinishType == finishType ||
+                (finishType is MissionFinishTypeEnum.GroupPropertyValue or MissionFinishTypeEnum.FiveDimFinish &&
+                 MissionHandlerGroupPropertyValue.MatchesMission(mission)))
                 if (handler != null)
                     await handler.HandleMissionFinishType(Player, mission, arg);
 
@@ -1371,6 +1382,49 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
         }
 
         await ApplyRunningMissionPropStates();
+        await EnsureRunningFiveDimEntryPropsOpen();
+    }
+
+    public async ValueTask EnsureRunningFiveDimEntryPropsOpen()
+    {
+        if (!Enabled) return;
+        var scene = Player.SceneInstance;
+        if (scene == null) return;
+
+        HashSet<int> targetGroupIds = [];
+        foreach (var info in GetRunningSubMissionList())
+        {
+            if (info.LevelFloorID != 0 && info.LevelFloorID != scene.FloorId) continue;
+
+            if (MissionHandlerGroupPropertyValue.MatchesMission(info) && info.ParamInt1 > 0)
+            {
+                targetGroupIds.Add(info.ParamInt1);
+            }
+            else if (info.FinishType == MissionFinishTypeEnum.FloorSavedValue &&
+                     !string.IsNullOrEmpty(info.ParamStr1) && scene.FloorInfo != null)
+            {
+                var targetNorm = Scene.SceneInstance.NormalizeFloorSavedValueKey(info.ParamStr1);
+                foreach (var group in scene.FloorInfo.Groups.Values)
+                {
+                    if (group.GroupPropertyMap.Values.Any(p =>
+                            Scene.SceneInstance.TryExtractNormalizedLittleGameKey(p.Name) == targetNorm))
+                        targetGroupIds.Add(group.Id);
+                }
+            }
+        }
+
+        foreach (var groupId in targetGroupIds)
+        {
+            foreach (var prop in scene.GetEntitiesInGroup<EntityProp>(groupId))
+            {
+                var isEntryPipe = prop.PropInfo.PropID is 105005 or 105006 ||
+                                  (prop.PropInfo.PropID == 105032 && prop.InstId == 300001 &&
+                                   prop.State == PropStateEnum.Locked);
+                if (!isEntryPipe) continue;
+                if (prop.State is PropStateEnum.Closed or PropStateEnum.Locked)
+                    await prop.SetState(PropStateEnum.Open);
+            }
+        }
     }
 
     /// <summary>
